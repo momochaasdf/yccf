@@ -1,0 +1,126 @@
+/* CSS Document */
+
+body {
+	margin-top: 0px;
+}
+.listMain{
+width:980px; height:1300px; margin:0 auto; font-size:12px;
+}
+.search{
+width:980px;  margin:10px auto; background:#fff; 
+}
+.search_input{
+float:left; width:270px; height:44px; line-height:44px;
+}
+.search_inputK{
+width:220px; float:left; margin-top:10px;
+}
+.search_inputBut{
+width:34px; height:29px; float:right; margin-top:6px;
+}
+
+.listMain_bottom{
+width:980px; height:1366px;
+}
+.listMain_bottom_left{
+width:100%; height:1250px; float:left; background:#FFF;
+}
+.listShop{
+width:950px; height:1126px; padding:20px 15px;
+}
+.listShop_main{
+width:650px; height:135px;cursor:pointer; 
+float: left;border-right: 1px dashed  #CCC;
+}
+.listShop_main_pic{
+width:82px; height:82px; float:left; border:1px solid #ccc;margin-left: 15px;
+}
+.listShop_main_center{
+width:315px; height:84px; float:left; padding-left:10px;
+}
+.listShop_main_right{
+width:210px; height:84px; float:left;
+}
+.listShop_main div{
+	margin-top: 20px;
+}
+.listShop_main_right_{
+	width: 289px;float: right;
+	height: 135px;
+	background: #F8F8F8;
+}
+.listMain_bottom_right{
+width:270px; height:auto; margin-left:10px; float:right;
+}
+.listMain_bottom_right_banner{
+width:270px; height:34px; margin-bottom:10px;
+}
+.hot_tuijian{
+width:230px; height:254px; background:#fff; padding:15px 20px; margin-bottom:10px;
+}
+.shopList_ad{
+width:270px; height:508px;
+}
+.shopList_ad_pic{
+height:117px; margin-bottom:6px;border:1px solid #ccc;
+}
+
+.sort{
+width:100%; height:34px; background:#f5f5f5; border-top:1px solid #f88b00; line-height:34px;
+}
+.sort ul{
+padding:0px;
+}
+.sort ul li{
+float:left;
+margin-right:50px;
+}
+
+.sort ul li a:link   {text-decoration:none; color:#000000;}
+.sort ul li a:visited{text-decoration:none; color:#000000;border-bottom:2px solid #f88b00;}
+.sort ul li a:hover  {color:#fd6400;  text-decoration:none; border-bottom:2px solid #f88b00;}
+.sort ul li a:active{border-bottom:2px solid #f88b00; }
+.sort ul li a  {display:block; text-align:center; height:30px;}
+
+/* 常见问题与解答开始 */
+
+.qa{
+ height:auto;
+border:1px solid #ccc;
+border-top:2px solid #D94809;
+background:#fff;
+margin-bottom: 10px;
+}
+.qa_title{
+ height:34px; line-height:34px; font-size:16px;color: #D94809;
+ font-weight: bold;
+ margin-left: 5px;
+}
+.qa_content{
+color:#989898; padding-top:5px;
+overflow: hidden;
+ margin: 0 10px;
+}
+.qTitle{
+height:20px;
+font-size: 14px;
+color: #4395C6;
+}
+.qasign{
+height: 100%;
+width: 7px;
+background:url(../../images/image_index/qasign.png) 0 0 repeat-y;
+display: block;
+float: left;
+}
+.aContent{
+padding-left: 7px;
+font-size: 13px;
+}
+.qa_li{
+margin-bottom: 10px;
+}
+.qTitle_a{
+color: #4395C6;
+}
+/* 常见问题与解答结束 */

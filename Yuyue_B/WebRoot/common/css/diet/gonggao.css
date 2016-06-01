@@ -1,0 +1,85 @@
+
+.notice {
+	background-color:#ffffff;
+    height: 418px;
+    margin-bottom: 4px;
+    overflow: hidden;
+    width: 238px;
+    
+}
+
+.notice ul{
+padding: 0;
+margin: 0;
+background-color:#D3702D;
+}
+
+.tab-hd {
+    background:url("../../images/diet/main/jianbian4.jpg");
+    color: #404040;
+    height: 40px;
+    margin-bottom: -1px;
+    border-bottom: 1px solid #D5D5D5; 
+   margin-top: -1px;
+   width: 420px;
+}
+
+
+ul, ol {
+    list-style: none outside none;
+}
+
+element.style {
+    outline: medium none;
+}
+.notice .tab-hd li {
+    padding: 0 12px;
+    line-height: 42px;
+}
+.tab-hd li.tab-cur {
+    background-color: #FFFFFF;
+    border-color: #D5D5D5 ;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    color:#FC822D;
+    font-weight: bold;
+    margin-left: -1px;
+    margin-right: -1px;
+    position: relative;
+    border-top: 3px solid #FC822D;
+    height: 38px;
+    line-height: 38px;
+}
+
+.tab-hd li {
+    border-top: 1px solid #EEEEEE;
+    float: left;
+    height: 40px;
+    line-height: 18px;
+        color: #000;
+}
+.tab-hd li a {
+	line-height: 40px;	
+}
+.tab-pal a:hover{
+	text-decoration: underline;
+}
+
+
+
+.notice .tab-bd li {
+    float: left;
+    height: 22px;
+    line-height: 22px;
+    overflow: hidden;
+    padding: 4px 10px 0 5px;
+    width: 230px;
+}
+.show{
+display: block;
+}
+.hide{
+display: none;
+}
+

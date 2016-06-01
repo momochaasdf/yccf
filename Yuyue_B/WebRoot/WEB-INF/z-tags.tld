@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<taglib xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="2.0" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd">
+  <description><![CDATA["自定义标签，用于JSP、 FreeMarker."]]></description>
+  <display-name>"Z Tags"</display-name>
+  <tlib-version>1.0</tlib-version>
+  <short-name>z</short-name>
+  <uri>/z-tags</uri>
+  
+  <tag>
+	<name>pgination</name>
+	<tag-class>com.deying.core.util.view.jsp.ui.PaginationTag</tag-class>
+	<body-content>JSP</body-content>
+	<attribute>
+		<name>start</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue><!-- 表示该自定义标签的某属性的值可以直接指定或者通过动态计算指定 -->
+	</attribute>
+	<attribute>
+		<name>totalCount</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>pageSize</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>url</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>type</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+  </tag>
+  <tag>
+	<name>dict</name>
+	<tag-class>com.deying.core.util.view.jsp.DictTag</tag-class>
+	<body-content>JSP</body-content>
+	<attribute>
+		<name>type</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>code</name>
+		<required>true</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>language</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+	<attribute>
+		<name>hidden</name>
+		<required>false</required>
+		<rtexprvalue>true</rtexprvalue>
+	</attribute>
+  </tag>
+  
+  <tag>
+	<name>nav</name>
+	<tag-class>com.deying.core.util.view.jsp.NavTag</tag-class>
+	<body-content>JSP</body-content>
+  </tag>
+</taglib>

@@ -1,0 +1,217 @@
+html, body, div, table, caption, thead, tbody, tfoot, tr, th, td, h1, h2, h3, h4, h5, h6, p, ul, li, img, a, button, span {
+	margin: 0;
+	padding: 0;
+}
+body {
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #fff;
+	background: #c97303;
+}
+html {
+	height: 100%;
+}
+table {
+	table-layout: fixed;
+	border-collapse: collapse;
+}
+input {
+	border: 0 none;
+}
+a {
+	text-decoration: none;	
+}
+.body-bg {
+	width: auto;
+	margin: 0 auto;
+	background: url(../images/login/triangle.png) no-repeat left -100px;
+}
+#wrap {
+	width: 955px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+#error {
+	color:#f00;
+}
+/*介绍*/
+.left-box {
+	width:260px;
+	float:left;
+	background: url(../images/login/login_name.png) no-repeat;
+	margin-top: 120px;
+	padding-top: 40px;
+	margin-left: 55px;
+	display: inline;
+}
+.function {
+	overflow: hidden;
+	margin:0 auto;
+	margin-top: 20px
+}
+.function p {
+	font-size:12px;
+}
+.function p.f-title {
+	font-size:14px;
+	font-weight: bold;
+}
+/*登录*/
+.right-box {
+	width:489px;
+	height:454px;
+	float:right;
+	background: url(../images/login/login_box.png) no-repeat;
+	margin-top: 30px;
+}
+.login {
+	width: 242px;
+	margin: 0 auto;
+	margin-top: 140px;
+	*margin-top: 0!important;
+}
+.r-box {
+	width:242px;
+	height:291px;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+.login-form {
+	width:242px;
+	margin-top:30px;
+}
+.login-form td {
+	width:242px;
+}
+.login-form input {
+	font-weight:bold;
+	color:#ffa200;
+	font-size:16px;
+}
+.login-form input.input {
+	height: 28px;
+	width: 189px;
+	border: 1px solid #bfbfbf;
+	line-height: 28px;
+	padding: 0;
+	padding-left:10px;
+	* margin-top:-1px;
+}
+.login-form input#password {
+	background: #e9e9e9 url(../images/login/login_input2.png) no-repeat 10px;
+}
+.login-form input#validatecode {
+	background: #e9e9e9 url(../images/login/login_input3.png) no-repeat 10px;
+}
+.login-form input.code-input {
+	height: 26px;
+	width:66px;
+}
+.input-padding {
+	padding-bottom:20px;
+}
+.login-form label {
+	color: #9e9e9e; 
+}
+.validatecode {
+	margin-top: -3px;
+	margin-left: 10px
+}
+.forgetpwd {
+	color: #268cd2;
+	padding-left:80px;
+}
+input.login-button {
+	background: url(../images/login/login-btn-over.png) no-repeat;
+	width: 237px;
+	height: 39px;
+	border:none;
+	cursor: pointer;
+	color: #fff;
+	margin-top: 10px;
+}
+/*合作商家*/
+.friends {
+	width:960px;
+	height:85px;
+	border-bottom: 1px solid #ff7200;
+	background: #d57a03;
+	margin: 30px auto 0 auto;
+	clear: both;
+	overflow: hidden;
+}
+.friends .f-title {
+	width: 50px;
+	margin-top: 28px;
+	padding-left: 40px;
+	font-weight: bold;
+	float: left;
+}
+.friends .f-img {
+	width: 850px;
+	float: left;
+	overflow: hidden;
+}
+.friend {
+	width:112px;
+	height:69px;
+	overflow:hidden;
+	float:left;
+	margin-right:25px;
+	margin-top:8px;
+	border:1px solid #e3e3e3;
+}
+.jcarousel-container {
+    position: relative;
+	overflow: hidden;
+	width: 820px;
+}
+.jcarousel-clip {
+    z-index: 2;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+.jcarousel-list {
+    z-index: 1;
+    overflow: hidden;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin: 0;
+    padding: 0;
+}
+.jcarousel-list li,
+.jcarousel-item {
+    float: left;
+    list-style: none;
+    width: 112px;
+    height: 69px;
+}
+.jcarousel-next {
+    z-index: 3;
+    display: none;
+}
+.jcarousel-prev {
+    z-index: 3;
+    display: none;
+}
+
+/*copyright*/
+#footer {
+	margin: 10px 0 20px 0;
+	text-align: center;
+	padding-top: 20px;
+	background: url(../images/login/footer_border.jpg) repeat-x top;
+}
+#footer a{
+	margin-left: 40px;
+	color: #fff;
+}
+.right-box{
+	color: #000;
+}
+.wrongMsg{
+	color: red;
+}

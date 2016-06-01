@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>快点订订单邮件提醒</title>
+</head>
+
+<body style="margin:0; padding:0">
+	<div style="width:100%; height:1000px">
+        <div style="width:650px; height:1000px; font-size:12px; border:1px solid #CCC; font-family:'微软雅黑'; color:#5b5b5b;margin:0 auto">
+                <div style="width:571px; height:800px; padding-top:80px; margin:0 auto">
+                <div style="width:568px; height:150px">
+                    <span style=" height:60px;color:#5b5b5b; line-height:50px;font-size:14px; font-weight:bold; display:block">尊敬的 @orderRelation 您好：</span>
+                    <span style="display:block; line-height:25px">感谢您在快点订(<a href="">www.kuaidianding.com</a>)消费！</span>
+                    <span style="display:block; line-height:28px">您的订单
+                        <span style="color:#9C855F">"@titleOrderId"</span>已确认收到，您可进入
+                            <span style="color:#9C855F">"我的订单"</span>页面随时关注订单状态，并对订单进行查看、删除等操作。</span>
+                </div>
+                <!--top down-->
+                <div style="width:568px; height:535px;margin-top:20px">
+                    <div style="width:100%; height:21px; padding-top:20px">
+                        <span style="color:#5b5b5b; font-weight:bold">订单信息</span>
+                    </div>
+                    <div style="100%; border:1px solid #d4e3f6">
+                        <div style="width:568px; height:37px;background-color:#d4e3f6;">
+                            <div style="width:140px; height:20px; text-align:center;padding-top:17px;border-right:2px solid #abaaa8; color:#52565f;float:left">
+                            	订单编号
+                            </div>     					
+                            <div style="width:140px; height:20px; text-align:center;padding-top:17px;border-right:2px solid #abaaa8; color:#52565f;float:left">
+                            	订单总金额
+                            </div>
+                            <div style="width:140px; height:20px; text-align:center;padding-top:17px;border-right:2px solid #abaaa8; color:#52565f;float:left">
+                            	下单时间
+                            </div>
+                            <div style="width:139px; height:20px; text-align:center;padding-top:17px;border-right:2px solid #abaaa8; color:#52565f;float:left">
+                            	下单人姓名
+                            </div>
+                        </div>
+                        <!--title down-->
+                        <div style="width:568px; height:37px">
+                            <div style="width:140px; height:20px; text-align:center;padding-top:17px;border-right:2px solid #abaaa8; color:#9e7f6d;float:left">
+                            	@contentOrderId
+                            </div>     					
+                            <div style="width:140px; height:25px; text-align:center;padding-top:10px;border-right:2px solid #abaaa8; color:#b51c31;float:left">
+                            	<span style="font-weight:bold; font-size:18px">￥<span style="font-size:14px">@orderPrice</span></span>
+                            </div>
+                            <div style="width:140px; height:20px; text-align:center;padding-top:17px;border-right:2px solid #abaaa8; color:#52565f;float:left">
+                            	@orderTime
+                            </div>
+                            <div style="width:139px; height:20px; text-align:center;padding-top:17px;border-right:2px solid #abaaa8; color:#52565f;float:left">
+                            	@orderRelation
+                            </div>
+                        </div>
+                        <!--1-->
+                    </div>
+                    <div style="width:100%; height:420px">
+                   	  <div style="width:100%; height:25px; margin-top:25px;color:#b51c31; font-weight:bold">
+                          <img width="6" height="6" src="images/pic_blue_circle.png" style="margin-right:3px"/>付款声明
+                      </div>
+                      <div style="width:100%; height:20px;font-weight:bold; margin-bottom:30px">
+                       		请你在下单后半个小时内付款，逾期您预订的餐桌将会失效。需要重新进行下单，才可消费，请谅解！
+                      </div>
+                        <div style="width:100%; height:20px;font-weight:bold">
+                       		<img width="6" height="6" src="images/pic_blue_circle.png" style="margin-right:3px"/>重新声明：
+                        </div>
+                      <div style="width:100%">
+                       		<p style="margin:0; margin-top:5px">
+                                本邮件仅表明销售方已经收到了您提交的订单；销售方收到您的订单信息后，只有在销售方将您在订单中订购的商品从仓库
+                                实际直接向您发出时（以商品出库为标志），方式为您与销售方之间就实际直接向您发出的商品建立了合
+                                同关系；只有在销售方实际直接向您发出了订单中订购的其他商品时，您和销售方之间就订单中该其他以实际
+                                直接向您发出的商品才成立合同关系。
+                            </p>
+                            <p style="margin:0; margin-top:5px">
+                            	你可以随时登陆您在快点订注册的账户，查询您的订单状态。更多内同请见最新的快点订网站用户注册协议及快点订网站各类
+                                购物规则，我们建议您不时地予以浏览阅读。
+                            </p>
+                      </div>
+                        <div style="width:100%; height:20px;font-weight:bold; margin-top:25px">
+                       		<img width="6" height="6" src="images/pic_blue_circle.png" style="margin-right:3px"/>账户安全提醒：                        
+                        </div>
+                        <div style="width:100%">
+                       		<p style="margin:0; margin-top:5px">
+                            	互联网账户存在被盗风险，为了保障您的账户及资金安全，快点订提醒您访问
+                                <a href="">我的快点订</a>--><a href="">账户安全</a>
+                                尽快启用所有安全服务。
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--bottom down-->
+        </div>
+    </div>
+</body>
+</html>

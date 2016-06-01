@@ -1,0 +1,168 @@
+/*  循环想上滚动*/
+.topLoop{ overflow:hidden; position:relative;   } 
+.topLoop .hd{ overflow:hidden;  height:30px; background:#f4f4f4;  } 
+.topLoop .hd .prev,.topLoop .hd .next{ display:block;  width:9px; height:10px; line-height:10px; float:right; margin-right:10px; margin-top:10px;  overflow:hidden;   
+cursor:pointer; background:url("images/icoUp.gif") center no-repeat;} 
+.topLoop .hd .next{ background:url("images/icoDown.gif") center no-repeat;  } 
+.topLoop .hd ul{ float:right; overflow:hidden; zoom:1; margin-top:10px;  } 
+.topLoop .hd ul li{ position:relative; _display:inline; float:left;  width:10px; height:10px; overflow:hidden; background:#ccc; margin-right:10px; text-indent:-999px; cursor:pointer; 
+    -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; behavior: url(../PIE.htc);} 
+.topLoop .hd ul li.on{ background:#f00;  } 
+.topLoop .bd{ padding:10px; } 
+.topLoop .bd ul{ overflow:hidden; zoom:1; } 
+
+.slideBox{ width:250px; height:290px; overflow:hidden; position:relative;    } 
+.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:10px; bottom:10px; z-index:1; } 
+.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  } 
+.slideBox .hd ul li{ float:left; margin-right:5px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; } 
+.slideBox .hd ul li.on{ background:#f00; color:#fff; } 
+.slideBox .bd{ position:relative; height:100%; z-index:0;   } 
+
+/* CSS Document */
+
+body {
+	margin-top: 0px;
+}
+.listMain{
+width:980px; height:1300px; margin:0 auto; font-size:12px;
+}
+.search{
+width:980px; height:44px; margin:10px auto; background:#fff; line-height:44px;
+}
+.search_input{
+float:left; width:270px; height:44px; line-height:44px;
+}
+.search_inputK{
+width:220px; float:left; margin-top:10px;
+}
+.search_inputBut{
+width:34px; height:29px; float:right; margin-top:6px;
+}
+
+.listMain_bottom{
+width:980px; height:1366px;
+}
+.listMain_bottom_left{
+width:690px; height:1250px; float:left; background:#FFF;
+}
+.listShop{
+width:650px; height:1126px; padding:20px 15px;
+}
+.listShop_main{
+width:634px; height:120px; border-bottom:1px solid #ccc;padding-top:20px;cursor:pointer; padding-left: 10px;
+}
+.listShop_main_pic{
+width:82px; height:82px; float:left; border:1px solid #ccc;
+}
+.listShop_main_center{
+width:330px; height:84px; float:left; padding-left:10px;
+}
+.listShop_main_right{
+width:210px; height:84px; float:left;
+}
+
+.listMain_bottom_right{
+width:270px; height:1137px; margin-left:10px; float:right;
+}
+.listMain_bottom_right_banner{
+width:270px; height:34px; margin-bottom:10px;
+}
+.hot_tuijian{
+width:258px; height:221px;  padding:15px 20px; margin-bottom:10px;
+cursor: pointer;
+}
+.shopList_ad{
+width:270px; height:508px;
+}
+.shopList_ad_pic{
+height:117px; margin-bottom:6px;border:1px solid #ccc;
+}
+
+
+.sort ul{
+padding:0px;
+}
+.sort ul li{
+float:left;
+margin-right:50px;
+}
+
+.sort ul li a:link   {text-decoration:none; color:#000000;}
+.sort ul li a:visited{text-decoration:none; color:#000000;border-bottom:2px solid #f88b00;}
+.sort ul li a:hover  {color:#fd6400;  text-decoration:none; border-bottom:2px solid #f88b00;}
+.sort ul li a:active{border-bottom:2px solid #f88b00; }
+.sort ul li a  {display:block; text-align:center; height:30px;}
+
+/* 常见问题与解答开始 */
+
+.qa{
+ height:auto;
+border:1px solid #ccc;
+border-top:2px solid #D94809;
+background:#fff;
+margin-bottom: 10px;
+}
+.qa_title{
+ height:34px; line-height:34px; font-size:16px;color: #D94809;
+ font-weight: bold;
+ margin-left: 5px;
+}
+.qa_content{
+color:#989898; padding-top:5px;
+overflow: hidden;
+ margin: 0 10px;
+}
+.qTitle{
+height:20px;
+font-size: 14px;
+color: #4395C6;
+}
+.qasign{
+height: 100%;
+width: 7px;
+background:url(../../images/image_index/qasign.png) 0 0 repeat-y;
+display: block;
+float: left;
+}
+.aContent{
+padding-left: 7px;
+font-size: 13px;
+}
+.qa_li{
+margin-bottom: 10px;
+}
+.qTitle_a{
+color: #4395C6;
+}
+
+.reserveBtn {
+	cursor:pointer;
+	width:140px; 
+	height:43px; 
+	position:absolute; 
+	left: 466px; 
+	top: 21px; 
+	background:url(../../images/diet/shopList/reserveBtn.png) no-repeat; 
+	text-align:center; 
+	line-height:43px;
+	font-size:16px; 
+	color:#FFF;
+}
+.reserveBtn_ {
+	cursor:pointer;
+	width:140px; 
+	height:43px; 
+	position:absolute; 
+	left: 466px; 
+	top: 21px; 
+	background:url(../../images/diet/shopList/reserveBtnOn.png) no-repeat; 
+	text-align:center; 
+	line-height:43px;
+	font-size:16px; 
+	color:#000;
+}
+
+.reserveBtn:hover {
+	color:#000;
+	background-image:url(../../images/diet/shopList/reserveBtnOn.png); 
+}

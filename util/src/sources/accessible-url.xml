@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<data_pool>  
+
+    <comment>后台可以直接访问的URL</comment>  
+    <data name="accessible-url" >
+    	<list>
+    		<value>/</value>
+    		<value>/index.jsp</value>
+    		<value>/index</value>
+    		<value>/user/user_login</value>
+    		<value>/login</value>
+    		<value>/cooperation_loadCooperationShop</value>
+    		<value>/checkCode_check</value>
+    		<value>/internal_login</value>
+    		<value>/internal_logining</value>
+    		<value>/jinternal_search</value>
+    		<value>/global/verifyCode_*</value>
+    		<value>/json/global/verifyCode_*</value>
+    		<value>/json/global/upload_upload</value>
+    		<value>/mobile</value>
+    		<value>/finance/finance_refundSuccess</value>
+    		<value>/finance/kbcash_transSuccess</value>
+    		<!-- 银联回调接口 -->
+    		<value>/finance/finance_getPayResult</value>
+    		<!-- 代理忘记密码 -->
+    		<value>/global/fgtpwd_*</value>
+    		<value>/json/global/fgtpwd_*</value>
+    		
+    	</list>
+    </data>
+    
+</data_pool> 

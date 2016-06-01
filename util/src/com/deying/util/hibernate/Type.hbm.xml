@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+    
+    <typedef name="CodeMsgEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.CodeMsgEnum</param>
+    </typedef>
+    
+    <typedef name="BankCardEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.BankCardEnum</param>
+    </typedef>
+    
+    <typedef name="ClientTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.ClientTypeEnum</param>
+    </typedef>
+    
+    <typedef name="ProfitType" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.ProfitType</param>
+    </typedef>
+    
+    <typedef name="CollectTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.CollectTypeEnum</param>
+    </typedef>
+    
+    <typedef name="ElementTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.ElementTypeEnum</param>
+    </typedef>
+    
+    <typedef name="EntityEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.EntityEnum</param>
+    </typedef>
+    
+    <typedef name="ModuleEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.ModuleEnum</param>
+    </typedef>
+    
+    <typedef name="OpenCloseEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.OpenCloseEnum</param>
+    </typedef>
+    
+    <typedef name="OrderTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.OrderTypeEnum</param>
+    </typedef>
+    
+    <typedef name="PhoneTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.PhoneTypeEnum</param>
+    </typedef>
+    
+    <typedef name="PriceRangeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.PriceRangeEnum</param>
+    </typedef>
+    
+    <typedef name="ShopSortEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.ShopSortEnum</param>
+    </typedef>
+    
+    <typedef name="TableTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.TableTypeEnum</param>
+    </typedef>
+    
+    <typedef name="TimeIntervalEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.TimeIntervalEnum</param>
+    </typedef>
+    
+    <typedef name="UserTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.UserTypeEnum</param>
+    </typedef>
+    
+    <typedef name="YesNoEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.YesNoEnum</param>
+    </typedef>
+    
+    <typedef name="CloseStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.CloseStateEnum</param>
+    </typedef>
+    
+    <typedef name="FUserEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.FUserEnum</param>
+    </typedef>
+    
+    <typedef name="PurchaseStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.PurchaseStateEnum</param>
+    </typedef>
+    
+    <typedef name="DeletedStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.DeletedStateEnum</param>
+    </typedef>
+    
+    <typedef name="ReserveRoomStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.ReserveRoomStateEnum</param>
+    </typedef>
+    
+    <typedef name="RoomStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.RoomStateEnum</param>
+    </typedef>
+    
+    <typedef name="StateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.StateEnum</param>
+    </typedef>
+    
+    <typedef name="CouponTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.CouponTypeEnum</param>
+    </typedef>
+    
+    <typedef name="OnShelfStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.OnShelfStateEnum</param>
+    </typedef>
+    
+    <typedef name="CouponNoStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.CouponNoStateEnum</param>
+    </typedef>
+    
+    <typedef name="ApplyRefundStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.ApplyRefundStateEnum</param>
+    </typedef>
+    
+    <typedef name="ThirdUserTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.ThirdUserTypeEnum</param>
+    </typedef>
+    
+    <typedef name="DeletedStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.DeletedStateEnum</param>
+    </typedef>
+    
+    <typedef name="IntegralActionTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.IntegralActionTypeEnum</param>
+    </typedef>
+    
+    <typedef name="IntegralGetsTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.IntegralGetsTypeEnum</param>
+    </typedef>
+    
+    <typedef name="UseTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.UseTypeEnum</param>
+    </typedef>
+    
+    <typedef name="VerifyStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.VerifyStateEnum</param>
+    </typedef>
+    
+    <typedef name="CateMethodEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.CateMethodEnum</param>
+    </typedef>
+    <typedef name="CateTasteEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.CateTasteEnum</param>
+    </typedef>
+    <typedef name="DifficultyEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.DifficultyEnum</param>
+    </typedef>
+    
+    <typedef name="MsgStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.MsgStateEnum</param>
+    </typedef>
+    
+    <typedef name="OutMealOrderEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.OutMealOrderEnum</param>
+    </typedef>
+    
+    <typedef name="UserStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.UserStateEnum</param>
+    </typedef>
+    
+    <typedef name="MsgModuleEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.MsgModuleEnum</param>
+    </typedef>
+    
+    <typedef name="MsgTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.MsgTypeEnum</param>
+    </typedef>
+    
+    <typedef name="ComplaintTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.ComplaintTypeEnum</param>
+    </typedef>
+    
+    <typedef name="KBTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.KBTypeEnum</param>
+    </typedef>
+    
+    <typedef name="NoticeCategoryEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.NoticeCategoryEnum</param>
+    </typedef>
+    
+    <typedef name="NoticeTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.NoticeTypeEnum</param>
+    </typedef>
+    
+    <typedef name="SpreadCategoryEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.SpreadCategoryEnum</param>
+    </typedef>
+    
+    <typedef name="SpreadTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.SpreadTypeEnum</param>
+    </typedef>
+    
+    <typedef name="TimeUnitEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.TimeUnitEnum</param>
+    </typedef>
+    
+    <typedef name="AgentLevelEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.AgentLevelEnum</param>
+    </typedef>
+    
+    <typedef name="TradeTypeEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.TradeTypeEnum</param>
+    </typedef>
+    
+    <typedef name="AdType" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.AdType</param>
+    </typedef>
+    
+    <typedef name="AdCategory" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.AdCategory</param>
+    </typedef>
+    
+    <typedef name="TerminalType" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.TerminalType</param>
+    </typedef>
+    
+    <typedef name="VipLevel" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.VipLevel</param>
+    </typedef>
+    
+    <typedef name="PushMsgType" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.PushMsgType</param>
+    </typedef>
+    
+    <typedef name="PushMsgState" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.PushMsgState</param>
+    </typedef>
+    
+    <typedef name="CloseDelStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.CloseDelStateEnum</param>
+    </typedef>
+    
+    <typedef name="AgentStateEnum" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.state.AgentStateEnum</param>
+    </typedef>
+    
+    <typedef name="ProjectType" class="com.deying.util.hibernate.EnumUserType">
+    	<param name="class">com.deying.util.enums.entity.ProjectType</param>
+    </typedef>
+    
+</hibernate-mapping>

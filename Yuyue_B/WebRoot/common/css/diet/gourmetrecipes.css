@@ -1,0 +1,101 @@
+body{
+margin:0;
+padding:0;
+font-size:12px;
+}
+.daoHang_smallblock{
+line-height:42px;
+color:#fff;
+text-align:center;
+background-color:#ff7e23;
+}
+.daoHang_smallblock_exception{
+line-height:42px;
+color:#fff;
+text-align:center;
+background-color:#712704;
+}
+.hot_word{
+line-height:24px; 
+border:1px solid #CCC; 
+text-align:center;
+margin-right:10px; 
+float:left; 
+background-color:#f6f6f6
+}
+.hot_TheRecipe{
+	width:209px;
+	height:226px;
+	margin-bottom:11px;
+	margin-right:10px;
+	float:left;
+	border:1px solid #ccc;
+}
+.hot_TheRecipe_in_pic_1{
+width:207px; 
+height:22px; 
+text-align:right; 
+padding-right:2px
+}
+.hot_TheRecipe_in_pic_2{
+width:199px; 
+height:148px;
+padding-left:10px; 
+}
+.hot_TheRecipe_in_word{
+width:209px; 
+height:60px; 
+line-height:20px; 
+text-align:center
+}
+.food_ranking{
+height:31px;
+width:300PX;
+line-height:31px;
+border-bottom:1px dashed #CCCCCC;
+}
+.food_ranking_word_1{
+width:116px; 
+height:31px; 
+color:#2f5e96; 
+float:left
+}
+.food_ranking_word_2{
+width:138px; 
+height:31px; 
+float:left
+}
+.food_ranking_word_3{ 
+height:31px; 
+float:left
+}
+.new_Food{
+width:120px; 
+height:152px; 
+float:left; 
+margin-right:20px
+}
+.new_Food_word{
+width:120px; 
+height:58px; 
+text-align:center; 
+margin-top:3px
+}
+.point{
+width:4px; 
+height:14px; 
+float:left;
+margin-right:7px;
+margin-top:3PX;
+background-repeat:no-repeat; 
+background-image:url(../../images/thirdVersion/pic_point.jpg)
+}
+.center_right{
+width:90%; 
+height:42px; 
+background:url(../../images/thirdVersion/ico_2.jpg) no-repeat; 
+margin-left:20px; 
+line-height:36px; 
+font-size:14px;
+font-weight:bold;
+}

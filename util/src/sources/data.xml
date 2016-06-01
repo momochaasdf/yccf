@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<data_pool>  
+
+	<comment>图片上传路径</comment>
+	<data name="upload_path">
+		<map>
+			<comment>发现美食的主图上传路径</comment>
+			<entry key="findCate" value="upload/img/member/findcate" />
+			<comment>美食菜谱的主图上传路径</comment>
+			<entry key="cateMenu" value="upload/img/member/catemenu" />
+			<comment>预约订单点评</comment>
+			<entry key="reserveComment" value="upload/img/comment/reserve" />		
+			<comment>前台系统公告点评</comment>
+			<entry key="sysInfoPublish" value="upload/img/comment/sysInfoPublish" />
+			<comment>礼品主图</comment>
+			<entry key="giftPic" value="upload/img/shop/giftPic" />
+			<comment>美食评论</comment>
+			<entry key="cateComment" value="upload/img/comment/cate" />
+			<comment>代理商合同</comment>
+			<entry key="agentContract" value="upload/img/agent/contract" />
+			<comment>下级员工合同</comment>
+			<entry key="agentSubordinate" value="upload/img/agent/subordinate" />
+			<comment>推广申请</comment>
+			<entry key="spreadApply" value="upload/img/spread/ad" />
+			<comment>广告</comment>
+			<entry key="ad" value="upload/img/ad" />
+			<comment>推广二维码</comment>
+			<entry key="spreadQrcode" value="upload/qrcode/spreadQrcode" />
+			<comment>积分商城商品 图片-swf</comment>
+			<entry key="ingoods" value="upload/img/ingood/ingoods" />
+			<comment>积分商城商品 图片-kind</comment>
+			<entry key="ingoodk" value="upload/img/ingood/ingoodk" />
+			<comment>积分商城商品 图片-正方形</comment>
+			<entry key="ingoodz" value="upload/img/ingood/ingoodz" />
+			<comment>积分商城商品 图片-长方形</comment>
+			<entry key="ingoodc" value="upload/img/ingood/ingoodc" />
+			<comment>积分商城-商品分类图片</comment>
+			<entry key="ingoodcategory" value="upload/img/ingood/ingoodcategory" />
+		</map>
+	</data>
+
+    <comment>敏感字过滤</comment>  
+    <data name="sensitive-words" >
+    	<set>
+    		<value>操,*</value>
+    		<value>艹,*</value>
+    		<value>傻\s*吊,**</value>
+    		<value>傻\s*b,**</value>
+    		<value>傻\s*屄,**</value>
+    		<value>二\s*货,**</value>
+    		<value>草泥马,***</value>
+    		<value>滚蛋,**</value>
+    		<value>滚,*</value>
+    		<value>fuck,*</value>
+    	</set>
+    </data>
+</data_pool> 

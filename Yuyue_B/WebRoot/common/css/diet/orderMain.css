@@ -1,0 +1,343 @@
+/* CSS Document */
+.clearfix:after {
+	clear: both;
+	content: " ";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+.inotice {
+	background: url("../../images/image_index/common_icon.png") no-repeat
+		scroll 0 0 transparent;
+	display: inline-block;
+	background-position: -17px -26px;
+	margin-right: 6px;
+	vertical-align: -3px;
+}
+
+.qiehuanshopNoticeUl {
+	margin: 0;
+	padding: 0;
+}
+
+.qiehuanshopNoticeUl li {
+	background: url(../../images/images_index/list_image.jpg) 0 50%
+		no-repeat;
+	padding-left: 5px;
+	width：100
+	%
+	float
+	:
+	left;
+}
+
+.mainConOut .mainConRowM .reserveCon .quickTime {
+	margin-bottom: 10px;
+	margin-top: 2px;
+}
+
+.reserveCon .quickPepleNum,.quickContact {
+	height: 35px;
+	line-height: 35px;
+}
+
+.pdtb5 {
+	padding: 5px 0;
+}
+
+.clearfix:after {
+	clear: both;
+	content: " ";
+	display: block;
+	height: 0;
+	visibility: hidden;
+}
+
+.clearfix {
+	display: block;
+}
+
+.reserveCon input {
+	color: #ACACAC;
+	margin-right: 2px;
+	padding-left: 4px;
+	padding-right: 4px;
+}
+
+.bd {
+	border: 1px solid #B5B5B5;
+}
+
+.hg20 {
+	height: 20px;
+	line-height: 20px;
+}
+
+input,textarea,select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+.reserveCon div.quickBt {
+	float: left;
+	margin-left: 6px;
+	padding-bottom: 5px;
+	padding-left: 16px;
+	padding-top: 18px;
+}
+
+.quickBt input.quickBt02 {
+	background: none repeat scroll 0 0 #FF8A00;
+	font-size: 15px;
+}
+
+.quickBt input {
+	border: 0 none;
+	color: #FFFFFF;
+	cursor: pointer;
+	font-size: 18px;
+	height: 26px;
+	line-height: 26px;
+	text-align: center;
+	width: 80px;
+}
+
+.flLf {
+	float: left;
+	padding-left: 0 !important;
+}
+
+.mgrg5 {
+	margin-right: 5px !important;
+}
+
+input,select,textarea {
+	vertical-align: middle;
+}
+
+.mgrg5 {
+	margin-right: 5px !important;
+}
+
+.quickBt {
+	float: left;
+	margin-left: 6px;
+	padding-bottom: 5px;
+	padding-left: 16px;
+	padding-top: 18px;
+}
+
+.orange {
+	color: #FF8A00;
+}
+
+.order_food_shop {
+	width: 162px;
+	height: 166px;
+	float: left;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
+
+.lin_hight_14px {
+	line-height: 24px;
+}
+
+.price_red_b {
+	color: #FF0000;
+	font-weight: bold;
+}
+
+.quantity-form {
+	height: 22px;
+	margin: 0 auto;
+	overflow: hidden;
+	text-align: left;
+	width: 66px;
+	float: left;
+}
+
+.p-quantity a.decrement {
+	background-position: 0 0;
+	margin-right: 2px;
+}
+
+.p-quantity a {
+	background: url("../../../common/images/images_index/amount-bg.png")
+		no-repeat scroll 0 0 transparent;
+	display: block;
+	float: left;
+	height: 13px;
+	line-height: 100px;
+	margin-top: 4px;
+	overflow: hidden;
+	width: 18px;
+}
+
+.p-quantity .quantity-form input {
+	float: left;
+}
+
+.quantity-text {
+	-moz-border-bottom-colors: none;
+	-moz-border-image: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background-color: #FFFFFF;
+	border-style: solid;
+	border-width: 1px;
+	height: 18px;
+	overflow: hidden;
+	padding-top: 2px;
+	text-align: center;
+	width: 24px;
+}
+
+.p-quantity a.increment {
+	background-position: 0 -13px;
+	float: right;
+}
+
+.order-top-bg {
+	background:
+		url("../../../common/images/images_index/order_dingdan_bg.jpg")
+		repeat-x 0 0;
+	width: 92px;
+	height: 7px;
+}
+
+.order-site-bg {
+	width: 7px;
+	height: 314px;
+	background:
+		url("../../../common/images/images_index/order_dingdan_bg_bai.jpg")
+		repeat-y;
+}
+
+.order-bottom-bg {
+	width: 100%;
+	height: 6px;
+	background:
+		url("../../../common/images/images_index/order_dingdan_bg_bai.jpg")
+		repeat-x;
+}
+
+.order-number-increment {
+	height: 13px;
+	cursor: pointer;
+	line-height: 100px;
+	margin-top: 4px;
+	margin-left: 2px;
+	overflow: hidden;
+	display: block;
+	float: left;
+	width: 18px;
+	background: url("../../../common/images/images_index/amount-bg.png")
+		no-repeat scroll 0 -13px transparent;
+}
+
+.order-number-decrement {
+	height: 13px;
+	cursor: pointer;
+	line-height: 100px;
+	margin-top: 4px;
+	margin-right: 2px;
+	overflow: hidden;
+	display: block;
+	float: left;
+	width: 18px;
+	background: url("../../../common/images/images_index/amount-bg.png")
+		no-repeat scroll 0 0 transparent;
+}
+
+.order-foodList-li {
+	margin-bottom: 6px;
+	height: 25px;
+	font-family: "微软雅黑";
+}
+
+.order-foodList-foodName {
+	float: left;
+	width: 100px;
+	height: 22px;
+	line-height: 22px;
+}
+
+.order-foodList-operate {
+	float: left;
+	height: 22px;
+	line-height: 22px;
+	margin: 0 auto;
+	overflow: hidden;
+	text-align: left;
+	width: 85px;
+	*width:100px;
+}
+
+.order-foodList-operate-span {
+	display: block;
+	float: left;
+	height: 22px;
+	line-height: 22px;
+}
+
+.order-foodList-operate-input {
+	height: 16px;
+	text-align: center;
+	*width:25px;
+}
+
+.order-foodList-money {
+	float: left;
+	padding-left: 6px;
+	height: 22px;
+	margin: 0 auto;
+	overflow: hidden;
+	text-align: left;
+	line-height: 22px;
+}
+
+/* 点好了按钮样式 */
+.order_seleckOk_common {
+	width: 91px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	margin: 0 auto;
+	color: #FFFFFF;
+	font-size: 14px;
+	background: url("../../images/images_index/buttonChange.png") no-repeat
+		scroll -99px -628px transparent;
+}
+
+.order_seleckOk_hove {
+	width: 90px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	margin: 0 auto;
+	background: url("../../images/images_index/buttonChange.png") no-repeat
+		scroll -99px -660px transparent;
+	color: #FFFFFF;
+	font-size: 14px;
+}
+
+#submitOrder {
+	cursor: pointer;
+	width:100%; 
+	height:38px; 
+	background:url(../../images/thirdVersion/button_1.jpg) no-repeat; 
+	line-height:38px; 
+	text-align:center; 
+	color:#fff; 
+	font-weight:bold; 
+	font-size:14px;
+}
+
+#submitOrder:hover {
+	color:#000; 
+	background-image:url(../../images/thirdVersion/submit_order.png); 
+}

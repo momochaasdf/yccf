@@ -1,0 +1,83 @@
+ul.pagingUL {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	font-size: 12px;
+}
+
+ul.pagingUL li {
+	float: left;
+	display: block;
+	cursor: pointer;
+	padding: 4px;
+	margin: 1px;
+	border: 1px solid #eee;
+}
+
+ul.pagingUL li.currentPage {
+	background-color: #eee;
+}
+
+/*============ 分页标签样式 ==============*/
+.pagnation {
+	margin: 3px;
+	padding: 3px;
+	text-align: center;
+}
+
+.pagnation li {
+	display: inline;
+}
+
+.pagnation li a {
+	-x-system-font: none;
+	border: 1px solid #7F7F7F;
+	color: #4D4D4D;
+	font-family: 宋体;
+	font-size: 12px;
+	font-size-adjust: none;
+	font-stretch: normal;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: normal;
+	line-height: normal;
+	margin: 3px;
+	padding: 3px 6px;
+	text-decoration: none;
+}
+
+.pagnation li a:hover {
+	background: #EEEEEE none repeat scroll 0 0;
+	border: 1px solid #7F7F7F;
+	color: #4D4D4D;
+}
+
+.pagnation .current a {
+	background-color: #FF6600;
+	border: 1px solid #FF6600;
+	color: #FFFFFF;
+	font-weight: bold;
+	margin: 2px;
+}
+
+.pagnation .current a:hover {
+	background-color: #036CB4;
+	border: 1px solid #036CB4;
+	color: #FFFFFF;
+	cursor: text;
+	font-weight: bold;
+	margin: 2px;
+}
+
+.pagnation .disabled a {
+	border: 1px solid #BBBBBB;
+	color: #BBBBBB;
+	margin: 2px;
+}
+
+.pagnation .disabled a:hover {
+	background: #FFFFFF none repeat scroll 0 0;
+	border: 1px solid #BBBBBB;
+	color: #BBBBBB;
+	cursor: text;
+}
