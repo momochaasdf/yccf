@@ -121,8 +121,6 @@
 
 	<servlet>
 		<servlet-name>dwr-invoker</servlet-name>
-		<display-name>DWR Servlet</display-name>
-		<description>Direct Web Remoter Servlet</description>
 		<servlet-class>
 			org.directwebremoting.servlet.DwrServlet
 		</servlet-class>
