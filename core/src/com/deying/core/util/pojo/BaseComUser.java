@@ -20,6 +20,7 @@ public abstract class BaseComUser  implements Serializable {
 	public static String REF = "ComUser";
 	public static String PROP_STATUS = "status";
 	public static String PROP_CRT_TIME = "crtTime";
+	public static String PROP_COMPANY_ID = "companyId";
 	public static String PROP_UPD_UID = "updUid";
 	public static String PROP_LOGIN_ID = "loginId";
 	public static String PROP_PASSWORD = "password";
