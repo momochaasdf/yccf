@@ -113,15 +113,19 @@
 				<prop key="hibernate.cache.provider_configuration_file_resource_path">/ehcache-hibernate.xml</prop>
 			</props>
 		</property>
-		<property name="packagesToScan" value="com.deying.core.pojo.*"></property> 
-		<!-- 配置映射文件
-		<property name="mappingDirectoryLocations">
-            <list>
-	            <value>classpath*:com/deying/core/pojo</value>
-	            <value>classpath*:com/deying/util/hibernate</value>
-            </list>
-        </property>
-         -->
+		<property name="packagesToScan">
+		  <list>
+            <value>com.deying.core.pojo.*</value>
+            <value>com.deying.*</value>
+        </list>
+		</property> 
+<!-- 		配置映射文件 -->
+<!-- 		<property name="mappingDirectoryLocations"> -->
+<!--             <list> -->
+<!-- 	            <value>classpath*:com/deying/pojo</value> -->
+<!--             </list> -->
+<!--         </property> -->
+        
        
         <property name="mappingJarLocations">
 		   <list>
@@ -167,7 +171,8 @@
     
     <aop:config>
   		<aop:pointcut id="businessService"
-        	expression="execution(* com.deying.core.service.*.*.*(..))
+        	expression="execution(* com.deying.service.*.*.*(..))
+        	or execution(* com.deying.core.service.*.*.*(..))
         				or execution(* com.deying.core.business.service.*.*(..))
         				or execution(* com.deying.util.annotation.AnnIService.*(..))
         				or execution(* com.deying.util.comman.GenericService.*(..))"/>

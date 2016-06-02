@@ -10,4 +10,5 @@
 	<include file="config/struts-core.xml" />
 	<include file="config/struts-checkCode.xml" />
 	<include file="config/struts-cooperationShop.xml" />
+	<include file="config/struts-test.xml" />
 </struts>
