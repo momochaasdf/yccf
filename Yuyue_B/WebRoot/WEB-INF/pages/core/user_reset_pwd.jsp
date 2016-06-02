@@ -46,90 +46,44 @@
 	</head>
 
 	<body>
-	<div class='right'>
-		<div class="o-mt">
-				<h2 style="margin-top: 0;">
-					<a href="javascript:void(0);" style="color:#cc0000">帐号管理</a>&nbsp;>>&nbsp;
-					<a  style="color:#cc0000" href="<%=path %>/core/user/resetPwd_list.do">密码重置</a>
-				</h2>
+		<div class='right'>
+			<div class="o-mt">
+					<h2 style="margin-top: 0;">
+						<a href="javascript:void(0);" style="color:#cc0000">帐号管理</a>&nbsp;>>&nbsp;
+						<a  style="color:#cc0000" href="<%=path %>/core/user/resetPwd_list.do">密码重置</a>
+					</h2>
 			</div>
-<%-- 		<div id="operate" style="margin-bottom: 20px;">
-			<div id="table_select_circle" style="width: 750px;">
-				<div class="rtop">
-					<div class="r1"></div>
-					<div class="r2"></div>
-					<div class="r3"></div>
-					<div class="r4"></div>
+			<form action="#" method="post" id="resetForm" style="clear: both;">
+				<fieldset class="navSearch">
+					<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
+					<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
+						<tr>
+							<th style="width: 20%">登录账号</th>
+							<td style="width: 30%"><input type="text" name="info.loginId" value="${info.loginId}"/></td>
+							<th style="width: 20%">姓名</th>
+							<td style="width: 30%"><input type="text" name="info.userName" value="${info.userName}"/></td>
+						</tr><tr>
+							<th style="width: 20%">状态</th>
+							<td style="width: 30%">
+								<input type="radio" name="info.status" id="status2" value="" <s:if test="info.status == 2">checked="checked"</s:if> /><label for="status2" >全部</label>
+								<input type="radio" name="info.status" id="status1" value="1" <s:if test="info.status == 1">checked="checked"</s:if> /><label for="status1" >可用</label>
+								<input type="radio" name="info.status" id="status0" value="0" <s:if test="info.status == 0">checked="checked"</s:if> /><label for="status0" >禁用</label>
+							</td>
+							<th style="width: 20%"></th>
+							<td style="width: 30%"></td>
+						</tr>
+					</table>
+					<br />
+				</fieldset>
+				<div class="msg"><s:actionmessage/><s:fielderror/><s:actionerror/></div>
+				<div class="navButton">
+					<input type="button" value="检索" class="btSearch" onclick="doAction('resetForm','resetPwd_list','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
 				</div>
-				<div class="circle_content">
-					<div
-						style="position: absolute; left: 20px; top: -13px; width: 100px; color: #4395C6">
-						检索条件
-					</div>
-					<div style="margin-top: 10px;">
-						<form action="#" method="post" id="resetForm">
-							<table>
-								<tr>
-									<td align="right">
-										登录账号:
-									</td>
-									<td>
-										<input type="text" name="info.loginId"
-											value="${inUser.loginId}" />
-									</td>
-								</tr>
-								<tr>
-									<td align="right">
-										姓名:
-									</td>
-									<td>
-										<input type="text" name="info.userName"
-											value="${inUser.userName}" />
-									</td>
-								</tr>
-								<tr>
-									<td align="right">
-										状态:
-									</td>
-									<td>
-										<s:radio list="#{'0':'可用','1':'禁用'}" name="info.status" />
-									</td>
-								</tr>
-								<tr>
-									<td align="right">
-										用户类型:
-									</td>
-									<td>
-										<s:radio list="#{'0':'系统用户','2':'普通用户'}"
-											name="info.userType" />
-									</td>
-								</tr>
-								<tr style="height: 30px;">
-									<td colspan="4" style="">
-										<input type="hidden" name="_ns" id="_ns" value="/core/user/" />
-										<input type="hidden" name="id" id="id" />
-										<input type="hidden" name=_query id="_query" value="_query" />
-									</td>
-								</tr>
-								<tr>
-									<td colspan="4" style="text-align: center;">
-									<input type="button"   class="btSearch" value="查找"  onclick="doAction('resetForm','resetPwd_list','')" style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path %>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
-									</td>
-								</tr>
-							</table>
-						</form>
-					</div>
-				</div>
-				<div class="rtop">
-					<div class="r4"></div>
-					<div class="r3"></div>
-					<div class="r2"></div>
-					<div class="r1"></div>
-				</div>
-			</div>
-		</div>
-		<div>
-			<div style="margin-left: 27px;">
+				<input type="hidden" name="_ns" id="_ns" value="/core/user/"/>
+				<input type="hidden" name="id" id="id"/>
+				<input type="hidden" name=_query id="_query" value="_query"/>
+			</form>
+			<div>
 				<table cellspacing="0" class="table_list" style="width: 100%">
 					<tr style="background: none" class="table_tr_title title_qingse">
 						<td style="border-left: 2px solid #F5F5F5; width: 5%">
@@ -143,9 +97,6 @@
 						</td>
 						<td>
 							状态
-						</td>
-						<td>
-							用户类型
 						</td>
 						<td style="width: 20%">
 							操作
@@ -166,19 +117,13 @@
 								<s:property value="userName" />
 							</td>
 							<td align="center">
-								<s:if test="status==0">可用</s:if>
-								<s:elseif test="status==1">禁用</s:elseif>
-								<s:else>&nbsp;</s:else>
-							</td>
-							<td align="center">
-								<s:if test="userType==0">系统用户</s:if>
-								<s:elseif test="userType==2">普通用户</s:elseif>
+								<s:if test="status==1">可用</s:if>
+								<s:elseif test="status==0">禁用</s:elseif>
 								<s:else>&nbsp;</s:else>
 							</td>
 							<td align="center">
 								<s:if test="userId!=#session['_COM_FRAMEWORK_USER_KEY'].userId">
-									<a
-										href="javascript:reset('<s:property value="userId"/>','<s:property value="userName"/>');">重置密码</a>
+									<a href="javascript:reset('<s:property value="userId"/>','<s:property value="userName"/>');">重置密码</a>
 								</s:if>
 								&nbsp;
 							</td>
@@ -186,16 +131,14 @@
 					</s:iterator>
 				</table>
 			</div>
-			<div  style="margin-left: 27px;">
+			<div>
 				<d:pages currentPage="%{currentPage}" showPageNumber="3"
 						totalPage="%{totalPage}" url="resetPwd_list.do" cssClass="pagnation">
 					<s:param name="info.loginId">${info.loginId}</s:param>
 					<s:param name="info.userName">${info.userName}</s:param>
 					<s:param name="info.status">${info.status}</s:param>
-					<s:param name="info.userType">${info.userType}</s:param>
 				</d:pages>
 			</div>
-		</div> --%>
 		</div>
 	</body>
 </html>
