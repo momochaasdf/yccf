@@ -54,6 +54,7 @@ public abstract class BaseComUser  implements Serializable {
 	// fields
 	private java.lang.String loginId;
 	private java.lang.String userName;
+	private java.lang.String companyId;
 	private java.lang.String password;
 	private java.lang.String status;
 	private java.lang.String crtUid;
@@ -120,6 +121,14 @@ public abstract class BaseComUser  implements Serializable {
 	}
 
 
+
+	public java.lang.String getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(java.lang.String companyId) {
+		this.companyId = companyId;
+	}
 
 	/**
 	 * Return the value associated with the column: PASSWORD
