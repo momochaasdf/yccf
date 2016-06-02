@@ -22,8 +22,6 @@ public class UserAction extends BaseMgrAction {
 
 	private ComUser user = null;
 	
-	private ComUser inUser = null;
-	
 	private String id;
 	private String userId;
 	private String roles;
@@ -51,11 +49,14 @@ public class UserAction extends BaseMgrAction {
 		if(userName != null){
 			c.like("userName", userName);
 		}
-		if(status != null ){
-			c.eq("status", status==null?null:status.toString());
+		if(status != null && status != 2){
+			c.eq("status", status.toString());
 		}
 		if(companyId != null){
-			c.eq("companyId", companyId ==null?null:companyId);
+			c.eq("companyId", companyId);
+		}
+		if (status == null) {
+			info.put("status", "2");
 		}
 		dataPage = commonService.find(c
 				, ComUser.class,  currentPage, pageSize);
@@ -299,14 +300,6 @@ public class UserAction extends BaseMgrAction {
 	}
 	public void setUser(ComUser user) {
 		this.user = user;
-	}
-
-	public ComUser getInUser() {
-		return inUser;
-	}
-
-	public void setInUser(ComUser inUser) {
-		this.inUser = inUser;
 	}
 
 	public String getUserId() {
