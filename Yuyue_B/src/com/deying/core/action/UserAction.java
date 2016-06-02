@@ -70,10 +70,14 @@ public class UserAction extends BaseMgrAction {
 	public String reset() throws Exception {
 		LOG.debug("----------------UserAction -> reset------------------");
 //		String userId = this.getCtxUser().getUserType();
-		ComUser u = this.userService.get(this.id);
-		u.setPassword(DigestUtils.md5Hex("00000000"));
-        this.userService.update(u);
-		msg="密码重置成功";
+		try {
+			ComUser u = this.userService.get(this.id);
+			u.setPassword(DigestUtils.md5Hex("00000000"));
+	        this.userService.update(u);
+			msg="密码重置成功";
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return list();
 	}
 	
