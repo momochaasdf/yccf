@@ -118,7 +118,7 @@
 		<div class="o-mt">
 				<h2 style="margin-top: 0;">
 					<a href="javascript:void(0);" style="color:#cc0000">帐号管理</a>&nbsp;>>&nbsp;
-					<a  style="color:#cc0000" href="<%=path %>/core/user/resetPwd_list.do">密码修改</a>
+					<a  style="color:#cc0000" href="<%=path %>/core/user/changePwd.do">密码修改</a>
 				</h2>
 			</div>
 		<div class="msg" style="clear: both;"><s:actionmessage/><s:fielderror/><s:actionerror/> </div>
