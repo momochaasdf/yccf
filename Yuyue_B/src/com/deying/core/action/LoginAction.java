@@ -62,7 +62,7 @@ public class LoginAction extends BaseMgrAction {
 		uc.setUserId(user.getUserId());
 		uc.setUserName(user.getUserName());
 		uc.setLoginId(user.getLoginId());
-		
+		uc.setCompanyId(user.getCompanyId());
 
 		long count = messageService.getUnreadAlertMsgCount(1001);
 		//把当前未读的信息数量存session
