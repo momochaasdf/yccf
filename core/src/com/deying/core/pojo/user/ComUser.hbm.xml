@@ -13,8 +13,11 @@
         <property name="loginId" type="java.lang.String">
             <column name="LOGIN_ID" length="100" not-null="true" unique="true" />
         </property>
-        <property name="userName" type="java.lang.String">
-            <column name="USER_NAME" length="100" not-null="true" />
+        <property name="loginId" type="java.lang.String">
+            <column name="LOGIN_ID" length="100" not-null="true" unique="true" />
+        </property>
+        <property name="companyId" type="java.lang.String">
+            <column name="COMPANY_ID" length="20" not-null="true" />
         </property>
         <property name="password" type="java.lang.String">
             <column name="PASSWORD" length="32" not-null="true" />
