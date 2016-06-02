@@ -77,6 +77,7 @@ public class UserAction extends BaseMgrAction {
 			msg="密码重置成功";
 		} catch (Exception e) {
 			e.printStackTrace();
+			msg="密码重置失败";
 		}
 		return list();
 	}
