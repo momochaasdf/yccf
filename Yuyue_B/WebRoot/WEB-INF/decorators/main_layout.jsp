@@ -141,8 +141,7 @@ font-weight: bold;font-size: 14px;line-height: 0;">(&nbsp;${sessionScope._COM_FR
 		<div style="width: 1200px;margin:0 auto;">
 			<div style="width:198px;height:80px; float: left;margin-left: 10px;">
 				<img src="<%=ctx %>/common/images/main/logo_index.jpg" width="198"
-					height="80" style="cursor:pointer; "
-					onclick="javascript:window.location.href='<%=FileConstants.FRONTEND_URL%>'" />
+					height="80" style="cursor:pointer; " />
 			</div>
 		</div>
 	</div>
