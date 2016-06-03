@@ -116,7 +116,7 @@
 		<property name="packagesToScan">
 		  <list>
             <value>com.deying.core.pojo.*</value>
-            <value>com.deying.*</value>
+            <value>com.deying.core.*</value>
         </list>
 		</property> 
 <!-- 		配置映射文件 -->
@@ -171,8 +171,7 @@
     
     <aop:config>
   		<aop:pointcut id="businessService"
-        	expression="execution(* com.deying.service.*.*.*(..))
-        	or execution(* com.deying.core.service.*.*.*(..))
+        	expression="execution(* com.deying.core.service.*.*.*(..))
         				or execution(* com.deying.core.business.service.*.*(..))
         				or execution(* com.deying.util.annotation.AnnIService.*(..))
         				or execution(* com.deying.util.comman.GenericService.*(..))"/>

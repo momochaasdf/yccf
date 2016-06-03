@@ -27,7 +27,7 @@
 		<div class="right" style="background:#FFF;">
 		<div class="o-mt">
 				<h2 style="margin-top: 0;">
-					<a href="<%=path %>/core/customer/loan/ComM_list.do" style="color:#cc0000">字典管理</a>
+					<a href="<%=path %>/core/customer/loan/ComM_list.do" style="color:#cc0000">借款客户管理</a>
 				</h2>
 			</div></div>
 		<form action="#" method="post" id="loanCustomerForm" style="clear: both;">
@@ -35,20 +35,15 @@
 			<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
 			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 				<tr>
-	<th style="width: 20%">代码</th>
-	<td style="width: 30%"><input type="text" name="inLoanCustomer.loanCustomerCode" value="${inLoanCustomer.loanCustomerCode}"/></td>
-	<th style="width: 20%">名称</th>
-	<td style="width: 30%"><input type="text" name="inLoanCustomer.loanCustomerName" value="${inLoanCustomer.loanCustomerName}"/></td>
+	<th style="width: 20%">姓名</th>
+	<td style="width: 30%"><input type="text" name="inLoanCustomer.customerName" value="${inLoanCustomer.customerName}"/></td>
+	<th style="width: 20%">身份证号</th>
+	<td style="width: 30%"><input type="text" name="inLoanCustomer.cardId" value="${inLoanCustomer.cardId}"/></td>
 </tr><tr>
-	<th style="width: 20%">类型代码</th>
-	<td style="width: 30%"><input type="text" name="inLoanCustomer.loanCustomerTypeCode" value="${inLoanCustomer.loanCustomerTypeCode}"/></td>
+	<th style="width: 20%">手机号码</th>
+	<td style="width: 30%"><input type="text" name="inLoanCustomer.telephone" value="${inLoanCustomer.telephone}"/></td>
 	<th style="width: 20%"></th>
 	<td style="width: 30%"></td>
-</tr><tr>
-	<th style="width: 20%">排序</th>
-	<td style="width: 30%"><input type="text" name="inLoanCustomer.sortNo" value="${inLoanCustomer.sortNo}"/></td>
-	<th style="width: 20%">&nbsp;</th>
-	<td style="width: 30%">&nbsp;</td>
 </tr>
 			</table>
 		</fieldset>
@@ -63,11 +58,10 @@
 		<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 			<thead>
 			<tr>
-				<th style="width: 5%">序号</th>
-				<th>代码</th>
-				<th>名称</th>
-				<th>类型代码</th>
-				<th>排序</th>
+				<th style="width: 5%">名称</th>
+				<th>头像</th>
+				<th>手机号</th>
+				<th>身份证号</th>
 				<th style="width: 20%">操作</th>
 			</tr>
 			</thead>
@@ -75,14 +69,14 @@
 			<s:iterator value="pgn.data" status="st">
 			<tr <s:if test="!#st.odd">class="trodd"</s:if>>
 				<td align="center"><s:property value="%{pgn.start+#st.index + 1}"/></td>
-				<td><s:property value="loanCustomerCode"/>&nbsp;</td>
-				<td><s:property value="loanCustomerName"/>&nbsp;</td>
-				<td><s:property value="loanCustomerTypeCode"/>&nbsp;</td>
-				<td><s:property value="sortNo"/>&nbsp;</td>
+				<td><s:property value="customerName"/>&nbsp;</td>
+				<td><img src='<s:property value="picUrl"/>'></img>&nbsp;</td>
+				<td><s:property value="cardId"/>&nbsp;</td>
+				<td><s:property value="telephone"/>&nbsp;</td>
 				<td align="center">
-					<a href="<%=request.getContextPath()%>/core/customer/loan/ComU_edit.do?id=<s:property value="loanCustomerId"/>">修改</a> 
+					<a href="<%=request.getContextPath()%>/core/customer/loan/ComU_edit.do?id=<s:property value="customerId"/>">修改</a> 
 					<a href="javascript:doDel('<s:property value="loanCustomerId"/>','');">删除</a>
-					<a href="<%=request.getContextPath()%>/core/customer/loan/ComR_load.do?id=<s:property value="loanCustomerId"/>">查看</a>
+					<a href="<%=request.getContextPath()%>/core/customer/loan/ComR_load.do?id=<s:property value="customerId"/>">查看</a>
 				</td>
 			</tr>
 			</s:iterator>

@@ -33,6 +33,10 @@ public class LoanCustomerAction extends BaseMgrAction {
 	@Autowired
 	private LoanCustomerService loanCustomerService = null;
 
+	public void setLoanCustomerService(LoanCustomerService loanCustomerService) {
+		this.loanCustomerService = loanCustomerService;
+	}
+
 	private LoanCustomer loanCustomer = null;
 
 	private LoanCustomer inLoanCustomer = null;
@@ -49,7 +53,7 @@ public class LoanCustomerAction extends BaseMgrAction {
 		this.start = this.start == null ? 0 : this.start;
 		this.inLoanCustomer = this.inLoanCustomer == null ? new LoanCustomer()
 				: this.inLoanCustomer;
-		Condition[] conds = new Condition[2];
+		Condition[] conds = new Condition[1];
 		conds[0] = OrderBy.desc("crtTime");
 		this.pgn = this.loanCustomerService.listByPage(
 				this.inLoanCustomer, this.start, 10, MatchMode.ANYWHERE,
