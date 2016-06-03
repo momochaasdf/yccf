@@ -16,6 +16,15 @@ import com.deying.util.core.com.framework.common.tools.Constants;
 import com.deying.util.data.TextUtils;
 
 public class BaseMgrAction extends BaseAction {
+	/**
+	 * 静态资源根地址
+	 */
+	public static final String ASSERTS_ROOT_DIR = "/home/";
+	/**
+	 * 图片资源相对地址
+	 */
+	public static final String ASSERTS_IMAGES_DIR = "images/";
+	
 
 	private static final long serialVersionUID = 1L;
 
