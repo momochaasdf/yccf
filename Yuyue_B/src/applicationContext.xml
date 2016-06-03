@@ -120,19 +120,19 @@
         </list>
 		</property> 
 <!-- 		配置映射文件 -->
-<!-- 		<property name="mappingDirectoryLocations"> -->
-<!--             <list> -->
-<!-- 	            <value>classpath*:com/deying/pojo</value> -->
-<!--             </list> -->
-<!--         </property> -->
+		<property name="mappingDirectoryLocations">
+            <list>
+	            <value>classpath*:com/deying/core/pojo</value>
+            </list>
+        </property>
         
        
-        <property name="mappingJarLocations">
+        <!-- <property name="mappingJarLocations">
 		   <list>
 		     <value>WEB-INF/lib/core.jar</value>
 		     <value>WEB-INF/lib/util.jar</value>
 		   </list>
-	    </property> 
+	    </property> -->
 	
 	</bean>
  
