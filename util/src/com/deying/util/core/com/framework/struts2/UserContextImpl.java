@@ -7,6 +7,7 @@ public class UserContextImpl implements UserContext{
 	private String userName;
 	private String loginId;
 	private String companyId;
+	private String companyName;
 	
 	public UserContextImpl() {
 		super();
@@ -39,6 +40,12 @@ public class UserContextImpl implements UserContext{
 	}
 	public void setCompanyId(String companyId) {
 		this.companyId = companyId;
+	}
+	public String getCompanyName() {
+		return companyName;
+	}
+	public void setCompanyName(String companyName) {
+		this.companyName = companyName;
 	}
 	
 

@@ -8,13 +8,13 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 	<head>
-		<title>快点订商家管理系统</title>
+		<title>仪诚财富管理系统</title>
 		<link rel="icon" href="<%=ctx %>/common/imgs/favicon.ico" type="image/x-icon" />
 		<meta content="text/html; charset=utf-8" http-equiv="Content-type"/>
 		<meta http-equiv='P3P' name='CP'
 			content='CURa ADMa DEVa PSAo PSDo OUR BUS UNI PUR INT DEM STA PRE COM NAV OTC NOI DSP COR' />
-		<meta name="keywords" content="快点订商家管理系统" />
-		<meta name="description" content="快点订商家管理系统" />
+		<meta name="keywords" content="仪诚财富管理系统" />
+		<meta name="description" content="仪诚财富管理系统" />
 		<link href="<%=ctx %>/common/css/login.css" rel="stylesheet" type="text/css"/>
 		<script type="text/javascript" src="<%=ctx%>/common/js/jquery-1.4.4.min.js" charset="utf-8"></script>
 	<script type="text/javascript" src="<%=ctx%>/common/js/formvalidator/formValidator-4.1.3.js" charset="utf-8"></script>
@@ -176,16 +176,16 @@
 	
 	<body>
 		<div class="body-bg">
-			<div onclick="javascript:window.location.href='${backendUrl}/app/deying/shop_kdd/kddShopApp.apk'"  style="cursor:pointer;position: absolute;top: 302px;right: 0;width: 166px;height: 303px;background-image: url('<%=ctx %>/common/imgs/float.png');">
-			</div>
+			<%--<div onclick="javascript:window.location.href='${backendUrl}/app/deying/shop_kdd/kddShopApp.apk'"  style="cursor:pointer;position: absolute;top: 302px;right: 0;width: 166px;height: 303px;background-image: url('<%=ctx %>/common/imgs/float.png');">
+			</div>--%>
 			<div id="wrap">
 				<div class="left-box">
 					<div class="function img1">
 						<p class="f-title">
-							节省商家人力成本
+							节省公司人力成本
 						</p>
 						<p>
-							通过网站、手机点单，节省商家人力成本
+							通过网站、手机系统管理，节省公司人力成本
 						</p>
 					</div>
 					<div class="function img2">
@@ -198,10 +198,10 @@
 					</div>
 					<div class="function img3">
 						<p class="f-title">
-							视图化的订单统计
+							视图化的理财统计
 						</p>
 						<p>
-							视图化的订单统计，直观不易出错
+							视图化的理财统计，直观不易出错
 						</p>
 					</div>
 				</div>
@@ -301,32 +301,14 @@
 					</form>
 				</div>
 			</div>
-			<div class="friends">
-				<div class="f-title">
-					<p>
-						合作
-					</p>
-					<p>
-						商家
-					</p>
-				</div>
-				<div class="f-img">
-					<ul id="mycarousel">
-						<s:iterator value="shops">
-							<li class="friend"  >
-								<a target="_blank" href="${frontendUrl }/shopIndex/shopIndex_loadOne.action?id=${id }"><img src="${picture }" width="112" height="69"  border="0"/></a>
-							</li>
-						</s:iterator>
-					</ul>
-				</div>
+			<div style="height: 100px;">
 			</div>
 			<div id="footer">
 				<p>
 					Copyright &copy; 2015
-					<strong>KuaiDianDing.Com</strong> All rights
+					<strong>yichengcaifu.com</strong> All rights
 					reserved.&nbsp;&nbsp;&nbsp;&nbsp;苏ICP备13027952号-2
-					<a href="${frontendUrl }" title="快点订"target="_blank"
-						rel="external">快点订</a>
+					<a href="#" title="仪诚财富" rel="external">仪诚财富</a>
 				</p>
 			</div>
 		</div>

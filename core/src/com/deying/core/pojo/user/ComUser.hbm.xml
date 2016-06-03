@@ -26,16 +26,16 @@
             <column name="STATUS" length="2" not-null="true" />
         </property>
         <property name="crtUid" type="java.lang.String">
-            <column name="CRT_UID" length="32" not-null="true" />
+            <column name="CRT_UID" length="32" />
         </property>
         <property name="crtTime" type="java.util.Date">
-            <column name="CRT_TIME" length="7" not-null="true" />
+            <column name="CRT_TIME" length="7" />
         </property>
         <property name="updUid" type="java.lang.String">
-            <column name="UPD_UID" length="32" not-null="true" />
+            <column name="UPD_UID" length="32" />
         </property>
         <property name="updTime" type="java.util.Date">
-            <column name="UPD_TIME" length="7" not-null="true" />
+            <column name="UPD_TIME" length="7" />
         </property>
         <set name="comUserRoles" inverse="true" cascade="all-delete-orphan">
             <key>

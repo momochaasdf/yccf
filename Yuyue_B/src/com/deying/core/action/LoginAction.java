@@ -9,8 +9,10 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
+import com.deying.core.pojo.user.ComDict;
 import com.deying.core.pojo.user.ComUser;
 import com.deying.core.service.element.IMessageService;
+import com.deying.core.service.user.impl.DictServiceImpl;
 import com.deying.core.service.user.impl.UserServiceImpl;
 import com.deying.core.util.MenuSet;
 import com.deying.util.FileConstants;
@@ -28,6 +30,8 @@ public class LoginAction extends BaseMgrAction {
 	private UserServiceImpl userService;
 	@Resource
 	private IMessageService messageService;
+	@Resource
+	private DictServiceImpl dictService;
 	
 	private String loginId;
 	private String password;
@@ -63,7 +67,11 @@ public class LoginAction extends BaseMgrAction {
 		uc.setUserName(user.getUserName());
 		uc.setLoginId(user.getLoginId());
 		uc.setCompanyId(user.getCompanyId());
-
+		
+		//取得公司名称
+		ComDict dict = (ComDict) this.dictService.findUniqueByProperty("dictCode", user.getCompanyId());
+		uc.setCompanyName(dict.getDictName());
+		
 		long count = messageService.getUnreadAlertMsgCount(1001);
 		//把当前未读的信息数量存session
 		this.ctx.setSessionAttr(FileConstants.UNREAD_MSG_COUNT, count);
@@ -113,5 +121,14 @@ public class LoginAction extends BaseMgrAction {
 	public void setMessageService(IMessageService messageService) {
 		this.messageService = messageService;
 	}
+
+	public DictServiceImpl getDictService() {
+		return dictService;
+	}
+
+	public void setDictService(DictServiceImpl dictService) {
+		this.dictService = dictService;
+	}
+	
 
 }
