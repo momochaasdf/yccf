@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="core.customer.loan" extends="struts" namespace="/core/customer/loan">
+		<action name="ComM_*" class="com.deying.core.action.LoanCustomerAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/customer_loan_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/customer_loan_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.LoanCustomerAction" method="{1}">
+			<result name="add">/WEB-INF/pages/core/customer_loan_add.jsp</result>
+			<result name="list">/WEB-INF/pages/core/customer_loan_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/customer_loan_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.LoanCustomerAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/core/customer_loan_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/core/customer_loan_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/customer_loan_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.LoanCustomerAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/customer_loan_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/customer_loan_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.LoanCustomerAction" method="{1}">
+			<result name="load">/WEB-INF/pages/core/customer_loan_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/customer_loan_load.jsp</result>
+		</action>
+	</package>
+<!-- 	<package name="core.customer.financing" extends="struts" namespace="/core/customer/financing"> -->
+<!-- 		<action name="ComM_*" class="com.deying.core.action.FinancingCustomerAction" method="{1}"> -->
+<!-- 			<result name="list">/WEB-INF/pages/core/customer_financing_{1}.jsp</result> -->
+<!-- 			<result name="input">/WEB-INF/pages/core/customer_financing_list.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="ComC_*" class="com.deying.core.action.FinancingCustomerAction" method="{1}"> -->
+<!-- 			<result name="add">/WEB-INF/pages/core/customer_financing_add.jsp</result> -->
+<!-- 			<result name="list">/WEB-INF/pages/core/customer_financing_list.jsp</result> -->
+<!-- 			<result name="input">/WEB-INF/pages/core/customer_financing_add.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="ComU_*" class="com.deying.core.action.FinancingCustomerAction" method="{1}"> -->
+<!-- 			<result name="edit">/WEB-INF/pages/core/customer_financing_{1}.jsp</result> -->
+<!-- 			<result name="list">/WEB-INF/pages/core/customer_financing_list.jsp</result> -->
+<!-- 			<result name="input">/WEB-INF/pages/core/customer_financing_edit.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="ComD_*" class="com.deying.core.action.FinancingCustomerAction" method="{1}"> -->
+<!-- 			<result name="list">/WEB-INF/pages/core/customer_financing_list.jsp</result> -->
+<!-- 			<result name="input">/WEB-INF/pages/core/customer_financing_list.jsp</result> -->
+<!-- 		</action> -->
+<!-- 		<action name="ComR_*" class="com.deying.core.action.FinancingCustomerAction" method="{1}"> -->
+<!-- 			<result name="load">/WEB-INF/pages/core/customer_financing_{1}.jsp</result> -->
+<!-- 			<result name="input">/WEB-INF/pages/core/customer_financing_load.jsp</result> -->
+<!-- 		</action> -->
+<!-- 	</package> -->
+</struts>
