@@ -124,25 +124,25 @@ public class Generator {
 	private static String date = DateUtils.format(new Date(), "yyMMdd");
 	
 	private static Connection connection;
-	static {
-		String driverClass = FileConstants.JDBC_DRIVEE_CLASS;
-		String jdbcUrl = FileConstants.JDBC_URL;
-		String user = FileConstants.JDBC_USER_NAME;
-		String password = FileConstants.JDBC_PASSWORD;
-		try {
-			Class.forName(driverClass).newInstance();
-			connection = java.sql.DriverManager.getConnection(jdbcUrl, user, password);
-			init();
-		}catch (Exception e) {
-			LOGGER.error("jdbc inputStream 关闭异常", e);
-		} finally {
-			try {
-				connection.close();
-			} catch (Exception e) {
-				LOGGER.error("jdbc 关闭异常", e);
-			}
-		}
-	}
+//	static {
+//		String driverClass = FileConstants.JDBC_DRIVEE_CLASS;
+//		String jdbcUrl = FileConstants.JDBC_URL;
+//		String user = FileConstants.JDBC_USER_NAME;
+//		String password = FileConstants.JDBC_PASSWORD;
+//		try {
+//			Class.forName(driverClass).newInstance();
+//			connection = java.sql.DriverManager.getConnection(jdbcUrl, user, password);
+//			init();
+//		}catch (Exception e) {
+//			LOGGER.error("jdbc inputStream 关闭异常", e);
+//		} finally {
+//			try {
+//				connection.close();
+//			} catch (Exception e) {
+//				LOGGER.error("jdbc 关闭异常", e);
+//			}
+//		}
+//	}
 	
 	private static void init()
 	{

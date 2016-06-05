@@ -13,4 +13,5 @@
 	<include file="config/struts-test.xml" />
 	<include file="config/struts-customer.xml" />
 	<include file="config/struts-notice.xml" />
+	<include file="config/struts-backup.xml" />
 </struts>

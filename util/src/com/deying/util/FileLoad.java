@@ -35,6 +35,7 @@ public class FileLoad {
 
 	static {
 		properties = new String[]{
+				"jdbc.properties",
 				"base.properties",
 				"url.properties"
 		};
