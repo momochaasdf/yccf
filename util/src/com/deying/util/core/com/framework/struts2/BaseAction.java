@@ -39,7 +39,9 @@ import com.deying.util.data.DataConvert;
 import com.deying.util.http.HttpUtil;
 import com.deying.util.page.DataPage;
 import com.deying.util.security.SecurityUtils;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
+import com.opensymphony.xwork2.util.ValueStack;
 @SuppressWarnings("unchecked")
 public class BaseAction extends ActionSupport implements
 				ServletRequestAware, ServletResponseAware{
@@ -116,6 +118,14 @@ public class BaseAction extends ActionSupport implements
 	protected String jsonCode(String returnCode) {
 		jsonObject.element(ERROR_CODE, returnCode);
 		return JSON;
+	}
+	
+	/**
+	 * 获得值栈
+	 * @return
+	 */
+	public ValueStack getValueStack(){
+		return ActionContext.getContext().getValueStack();
 	}
 	
 	/**

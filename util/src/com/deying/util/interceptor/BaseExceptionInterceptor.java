@@ -50,6 +50,7 @@ public class BaseExceptionInterceptor implements Interceptor {
 			LOG.info("==>Session <<{}>>.End <<{}>> action.Method <<{}>> of class <<{}>>",new String[]{session,actionName,method,actionClass});
 			return returnStr;
 		}catch(Exception e) {
+			e.printStackTrace();
 			//登录拦截器使用- 登录完链式操作之前的请求，当操作发生异常时跳转的地址。
 			//因为此异常为非正常操作引起的(登录以后继续执行上次请求)
 			String responsePath = (String)hreq.getAttribute(FileConstants.RESPONSE_PATH);

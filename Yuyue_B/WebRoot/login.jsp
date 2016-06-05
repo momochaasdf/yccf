@@ -305,10 +305,9 @@
 			</div>
 			<div id="footer">
 				<p>
-					Copyright &copy; 2015
-					<strong>yichengcaifu.com</strong> All rights
-					reserved.&nbsp;&nbsp;&nbsp;&nbsp;苏ICP备13027952号-2
-					<a href="#" title="仪诚财富" rel="external">仪诚财富</a>
+					Copyright &copy; 2016
+					<strong>yichengcaifu.com</strong> All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;
+					<strong>仪诚财富</strong>
 				</p>
 			</div>
 		</div>

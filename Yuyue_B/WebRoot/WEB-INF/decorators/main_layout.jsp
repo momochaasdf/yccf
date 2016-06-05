@@ -182,16 +182,11 @@ font-weight: bold;font-size: 14px;line-height: 0;">(&nbsp;${sessionScope._COM_FR
 		style="width:100%; height:auto;margin-top:10px; border-top:2px solid #ff7d23;float: left;">
 		<div id="ft">
 			<div class="copyright" id="yui_3_8_0_1_1368666683020_213">
-				<p id="yui_3_8_0_1_1368666683020_212">
-					&copy; <span title="I:3; Q:6; S:6; C:24; F:0; T:75.72; H:com">2015</span>
-					<a href="<%=FileConstants.FRONTEND_URL%>">快点订</a> kuaidianding.com
-					<span style="cursor: pointer;"
-						onclick="javascript:window.location.href='http://www.miibeian.gov.cn/'">苏ICP备13027952号-2</span>
-					<a
-						href="<%=FileConstants.FRONTEND_URL %>/diet/bottom_electronicBulletin.action ">
-						电子公告服务规则</a>
+				<p>
+					Copyright &copy; 2016
+					<strong>yichengcaifu.com</strong> All rights reserved.&nbsp;&nbsp;&nbsp;&nbsp;
+					<strong>仪诚财富</strong>
 				</p>
-				<p id="yui_3_8_0_1_1368666683020_212">网站邮箱 web@kuaidianding.com</p>
 			</div>
 
 			<ul class="cert cf">

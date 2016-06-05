@@ -12,4 +12,5 @@
 	<include file="config/struts-cooperationShop.xml" />
 	<include file="config/struts-test.xml" />
 	<include file="config/struts-customer.xml" />
+	<include file="config/struts-notice.xml" />
 </struts>
