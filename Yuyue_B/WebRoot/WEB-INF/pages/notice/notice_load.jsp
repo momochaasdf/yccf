@@ -27,10 +27,14 @@
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
 				<th>标题</th>
-				<td><input type="text" name="data.title" value="${data.title}" readonly="readonly" /></td>
+				<td>
+					<input type="text" name="data.title" value="${data.title}" readonly="readonly" />
+				</td>
 			</tr><tr>
 				<th>内容</th>
-				<td><textarea rows="5" cols="50" style="height:180px" name="data.content" readonly="readonly" >${data.content}</textarea></td>
+				<td>
+					<textarea rows="5" cols="50" style="height:180px" name="data.content" readonly="readonly" >${data.content}</textarea>
+				</td>
 			</tr><tr>
 				<th>状态</th>
 				<td>

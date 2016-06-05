@@ -74,7 +74,11 @@
 <script type='text/javascript'
 	src='<%=ctx%>/dwr/interface/RegisterUser.js'></script>
 <decorator:head />
+<div id="loading_background" class="loading_background" style="display: none; "></div>
+<div id="loading_progressBar" class="loading_progressBar" style="display: none; ">数据加载中，请稍等...</div>
 <script type="text/javascript">
+var loadingbox = $("#loading_background,#loading_progressBar");
+loadingbox.hide(); 
 	$(function(){
 		$(".menu-div").click(function(){
 			if($(this).hasClass("closed")){

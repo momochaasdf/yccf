@@ -73,7 +73,9 @@
 				<div class="msg"><s:actionmessage/><s:fielderror/><s:actionerror/></div>
 				<div class="navButton">
 					<input type="button" value="检索" class="btSearch" onclick="doAction('noticeForm','notice_list','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
+					<s:if test="#session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('总经理')>=0 || #session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('行政总监')>=0 || #session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('人事助理')>=0">
 					<input class="btAdd"  value="新增"  onclick="doAction('noticeForm','notice_add','')" style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path %>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+					</s:if>
 				</div>
 				<input type="hidden" name="_ns" id="_ns" value="/notice/"/>
 				<input type="hidden" name="id" id="id"/>
@@ -118,8 +120,10 @@
 								<s:else>&nbsp;</s:else>
 							</td>
 							<td align="center">
+								<s:if test="#session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('总经理')>=0 || #session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('行政总监')>=0 || #session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('人事助理')>=0">
 								<a href="<%=path %>/notice/notice_edit.do?id=<s:property value="noticeId"/>">修改</a> 
 								<a href="javascript:doDel('<s:property value="noticeId"/>','');">删除</a>
+								</s:if>
 								<a href="<%=path %>/notice/notice_load.do?id=<s:property value="noticeId"/>">查看</a>
 							</td>
 						</tr>

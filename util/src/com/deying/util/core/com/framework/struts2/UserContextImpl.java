@@ -8,6 +8,7 @@ public class UserContextImpl implements UserContext{
 	private String loginId;
 	private String companyId;
 	private String companyName;
+	private String roleNames;
 	
 	public UserContextImpl() {
 		super();
@@ -47,7 +48,11 @@ public class UserContextImpl implements UserContext{
 	public void setCompanyName(String companyName) {
 		this.companyName = companyName;
 	}
-	
-
+	public String getRoleNames() {
+		return roleNames;
+	}
+	public void setRoleNames(String roleNames) {
+		this.roleNames = roleNames;
+	}
 
 }

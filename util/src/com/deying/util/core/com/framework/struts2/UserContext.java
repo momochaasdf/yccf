@@ -12,6 +12,8 @@ public interface UserContext {
 	
 	public String getCompanyName();
 	
+	public String getRoleNames();
+	
 	public void setUserId(String userId);
 	
 	public void setLoginId(String loginId);
@@ -21,4 +23,6 @@ public interface UserContext {
 	public void setCompanyId(String companyId);
 	
 	public void setCompanyName(String companyName);
+	
+	public void setRoleNames(String roleNames);
 }

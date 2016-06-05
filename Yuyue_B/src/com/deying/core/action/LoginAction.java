@@ -3,6 +3,8 @@
  */
 package com.deying.core.action;
 
+import java.util.Iterator;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -10,7 +12,9 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.struts2.ServletActionContext;
 
 import com.deying.core.pojo.user.ComDict;
+import com.deying.core.pojo.user.ComRole;
 import com.deying.core.pojo.user.ComUser;
+import com.deying.core.pojo.user.ComUserRole;
 import com.deying.core.service.element.IMessageService;
 import com.deying.core.service.user.impl.DictServiceImpl;
 import com.deying.core.service.user.impl.UserServiceImpl;
@@ -71,6 +75,39 @@ public class LoginAction extends BaseMgrAction {
 		//取得公司名称
 		ComDict dict = (ComDict) this.dictService.findUniqueByProperty("dictCode", user.getCompanyId());
 		uc.setCompanyName(dict.getDictName());
+		
+		// 取得用户角色
+		Iterator<ComUserRole> it = user.getComUserRoles().iterator();
+		String roleStr = "";
+		while (it.hasNext()) {
+			ComUserRole userRole = it.next();
+			ComRole role = userRole.getComRole();
+			roleStr += role.getRoleName() + ",";
+		}
+		
+//		// 取得用户角色
+//		ComUser userRoles = this.commonService.get(CriteriaWrapper.newInstance()
+//				.eq("userId", user.getUserId())
+//				, ComUser.class, "comUserRoles");
+//		
+//		Set<ComUserRole> setUserRoles = userRoles.getComUserRoles();
+//		String[] roleIds = new String[setUserRoles.size()];
+//		Iterator<ComUserRole> it = setUserRoles.iterator();
+//		int i = 0;
+//		while (it.hasNext()) {
+//			ComUserRole userRole = it.next();
+//			roleIds[i] = userRole.getId();
+//			i++;
+//		}
+//		
+//		List<ComRole> roles = this.commonService.find(CriteriaWrapper.newInstance()
+//				.in("roleId", roleIds)
+//				, ComRole.class);
+//		String roleStr = "";
+//		for (ComRole role : roles) {
+//			roleStr += role.getRoleName() + ",";
+//		}
+		uc.setRoleNames(roleStr);
 		
 		long count = messageService.getUnreadAlertMsgCount(1001);
 		//把当前未读的信息数量存session
