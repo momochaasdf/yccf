@@ -1,16 +1,10 @@
 package com.deying.core.action;
 
 import java.io.File;
-import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.struts2.ServletActionContext;
 import org.hibernate.criterion.MatchMode;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -24,41 +18,39 @@ import com.deying.util.core.com.framework.struts2.BaseMgrAction;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class LoanCustomerAction extends BaseMgrAction {
+public class CustomerLoanAction extends BaseMgrAction {
 	private static final Logger log = LoggerFactory
-			.getLogger(LoanCustomerAction.class);
+			.getLogger(CustomerLoanAction.class);
 
 	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	private LoanCustomerService loanCustomerService = null;
 
-	public void setLoanCustomerService(LoanCustomerService loanCustomerService) {
-		this.loanCustomerService = loanCustomerService;
-	}
 
-	private LoanCustomer loanCustomer = null;
 
-	private LoanCustomer inLoanCustomer = null;
+	private LoanCustomer customer = null;
+
+	private LoanCustomer inCustomer = null;
 
 	private String id;
 
 	public String list() throws Exception {
-		LOG.debug("--------------------LoanCustomerAction -> list----------------");
+		LOG.debug("--------------------customerAction -> list----------------");
 		if (this.ctx.getSessionAttr(Constants.SEARCH_COND) instanceof LoanCustomer
 				&& this._query == null) {// 编辑或新增或删除返回检索页面使用先前保存的检索条件
-			this.inLoanCustomer = (LoanCustomer) this.ctx
+			this.inCustomer = (LoanCustomer) this.ctx
 					.getSessionAttr(Constants.SEARCH_COND);
 		}
 		this.start = this.start == null ? 0 : this.start;
-		this.inLoanCustomer = this.inLoanCustomer == null ? new LoanCustomer()
-				: this.inLoanCustomer;
+		this.inCustomer = this.inCustomer == null ? new LoanCustomer()
+				: this.inCustomer;
 		Condition[] conds = new Condition[1];
 		conds[0] = OrderBy.desc("crtTime");
 		this.pgn = this.loanCustomerService.listByPage(
-				this.inLoanCustomer, this.start, 10, MatchMode.ANYWHERE,
+				this.inCustomer, this.start, 10, MatchMode.ANYWHERE,
 				conds, null);
-		this.ctx.setSessionAttr(Constants.SEARCH_COND, this.inLoanCustomer);
+		this.ctx.setSessionAttr(Constants.SEARCH_COND, this.inCustomer);
 		return LIST;
 	}
 
@@ -68,18 +60,19 @@ public class LoanCustomerAction extends BaseMgrAction {
 	 * @return
 	 */
 	public String add() throws Exception {
-		LOG.debug("--------------------LoanCustomerAction -> add----------------");
+		LOG.debug("--------------------customerAction -> add----------------");
 		return ADD;
 	}
 
 	public String save() throws Exception {
-		LOG.debug("--------------------LoanCustomerAction -> save----------------");
-		if (loanCustomer != null) {
-			String picUrl = saveFile(ASSERTS_ROOT_DIR,ASSERTS_IMAGES_DIR,file);
+		LOG.debug("--------------------customerAction -> save----------------");
+		if (customer != null) {
+			String picUrl = saveFile(ASSERTS_ROOT_DIR,ASSERTS_IMAGES_DIR,fileUpload);
 			if(null!=picUrl){
-				loanCustomer.setPicUrl(picUrl);
+				customer.setPicUrl(picUrl);
 			}
-			this.loanCustomerService.save(loanCustomer);
+			customer.setCompanyId(this.getCtxUser().getCompanyId());
+			this.loanCustomerService.save(customer);
 			this.addActionMessage(this.getText("do.success.back"));
 		}
 		return list();
@@ -98,8 +91,8 @@ public class LoanCustomerAction extends BaseMgrAction {
 	 * @return
 	 */
 	public String edit() throws Exception {
-		LOG.debug("--------------------LoanCustomerAction -> edit----------------");
-		this.loanCustomer = this.loanCustomerService.get(id);
+		LOG.debug("--------------------customerAction -> edit----------------");
+		this.customer = this.loanCustomerService.get(id);
 		return EDIT;
 	}
 
@@ -109,14 +102,21 @@ public class LoanCustomerAction extends BaseMgrAction {
 	 * @return
 	 */
 	public String upd() throws Exception {
-		LOG.debug("--------------------LoanCustomerAction -> upd----------------");
-		if (loanCustomer != null) {
-			String picUrl = saveFile(ASSERTS_ROOT_DIR,ASSERTS_IMAGES_DIR,file);
+		LOG.debug("--------------------customerAction -> upd----------------");
+		if (customer != null) {
+			LoanCustomer existCustomer = this.loanCustomerService.get(customer.getCustomerId());
+			existCustomer.setCustomerName(customer.getCustomerName());
+			existCustomer.setIndustry(customer.getIndustry());
+			existCustomer.setCardId(customer.getCardId());
+			existCustomer.setTelephone(customer.getTelephone());
+			existCustomer.setAddress(customer.getAddress());
+			
+			String picUrl = saveFile(ASSERTS_ROOT_DIR,ASSERTS_IMAGES_DIR,fileUpload);
 			if(null!=picUrl){
-				loanCustomer.setPicUrl(picUrl);
+				existCustomer.setPicUrl(picUrl);
 			}
-			this.loanCustomer = this.loanCustomerService
-					.update(loanCustomer);
+			this.customer = this.loanCustomerService
+					.update(existCustomer);
 			this.addActionMessage(this.getText("do.success.back"));
 		}
 		return list();
@@ -126,9 +126,9 @@ public class LoanCustomerAction extends BaseMgrAction {
 		if (hasErrors()) {
 			return true;
 		}
-		LoanCustomer r = this.loanCustomerService
-				.get(this.loanCustomer.getCustomerId());
-		if (r == null) {
+		LoanCustomer customer = this.loanCustomerService
+				.get(this.customer.getCustomerId());
+		if (customer == null) {
 			this.addActionError(this.getText("err.no.entity"));
 		}
 		if (hasErrors()) {
@@ -143,7 +143,7 @@ public class LoanCustomerAction extends BaseMgrAction {
 	 * @return
 	 */
 	public String del() throws Exception {
-		LOG.debug("--------------------LoanCustomerAction -> del----------------");
+		LOG.debug("--------------------customerAction -> del----------------");
 		if (this.id != null) {
 			this.loanCustomerService.deleteById(this.id);
 		}
@@ -155,8 +155,8 @@ public class LoanCustomerAction extends BaseMgrAction {
 		if (hasErrors()) {
 			return true;
 		}
-		LoanCustomer r = this.loanCustomerService.get(this.id);
-		if (r == null || this.id == null) {
+		LoanCustomer customer = this.loanCustomerService.get(this.id);
+		if (customer == null || this.id == null) {
 			this.addActionError(this.getText("err.no.entity"));
 		}
 		if (hasErrors()) {
@@ -171,8 +171,8 @@ public class LoanCustomerAction extends BaseMgrAction {
 	 * @return
 	 */
 	public String load() throws Exception {
-		LOG.debug("--------------------LoanCustomerAction -> load----------------");
-		this.loanCustomer = this.loanCustomerService.get(id);
+		LOG.debug("--------------------customerAction -> load----------------");
+		this.customer = this.loanCustomerService.get(id);
 		return LOAD;
 	}
 
@@ -208,7 +208,7 @@ public class LoanCustomerAction extends BaseMgrAction {
 		SimpleDateFormat fmt = new SimpleDateFormat("yyyyMMddHHmmssSSS");
 		String fileTempPath = file.getAbsolutePath();
 		System.out.println("fileTempPath: " + fileTempPath);
-		String fileTypeName = fileTempPath.substring(fileTempPath
+		String fileTypeName = fileUploadFileName.substring(fileUploadFileName
 				.lastIndexOf(".") + 1);
 		String fileRealName = fmt.format(new Date()) + "."
 				+ fileTypeName.toLowerCase();
@@ -229,6 +229,24 @@ public class LoanCustomerAction extends BaseMgrAction {
 		return fileSavePathWithoutRoot;
 	}
 
+	
+
+	public LoanCustomer getCustomer() {
+		return customer;
+	}
+
+	public void setCustomer(LoanCustomer customer) {
+		this.customer = customer;
+	}
+
+	public LoanCustomer getInCustomer() {
+		return inCustomer;
+	}
+
+	public void setInCustomer(LoanCustomer inCustomer) {
+		this.inCustomer = inCustomer;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -237,29 +255,19 @@ public class LoanCustomerAction extends BaseMgrAction {
 		this.id = id;
 	}
 
-	public LoanCustomer getLoanCustomer() {
-		return loanCustomer;
+	public void setLoanCustomerService(LoanCustomerService loanCustomerService) {
+		this.loanCustomerService = loanCustomerService;
 	}
 
-	public void setLoanCustomer(LoanCustomer loanCustomer) {
-		this.loanCustomer = loanCustomer;
+	public void setFileUpload(File fileUpload) {
+		this.fileUpload = fileUpload;
+	}
+	public void setFileUploadFileName(String fileUploadFileName) {
+		this.fileUploadFileName = fileUploadFileName;
 	}
 
-	public LoanCustomer getInLoanCustomer() {
-		return inLoanCustomer;
-	}
-
-	public void setInLoanCustomer(LoanCustomer inLoanCustomer) {
-		this.inLoanCustomer = inLoanCustomer;
-	}
-
-	public File getFile() {
-		return file;
-	}
-
-	public void setFile(File file) {
-		this.file = file;
-	}
-
-	private File file;
+	private File fileUpload;
+	
+	private String fileUploadFileName;
+	
 }

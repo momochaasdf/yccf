@@ -20,7 +20,7 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table(name = "tbl_loan_customer",uniqueConstraints = @UniqueConstraint(columnNames = "CUSTOMER_NAME"))
-public class LoanCustomer implements java.io.Serializable {
+public class LoanCustomer implements java.io.Serializable,Cloneable {
 
 	private String customerId;
 	private String customerName;

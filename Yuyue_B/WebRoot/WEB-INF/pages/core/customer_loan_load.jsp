@@ -23,43 +23,48 @@
 	<div class="msg" style="clear: both;">
 		<s:actionmessage />
 	</div>
-	<form action="#" method="post" id="loanCustomerForm">
+	<form action="#" method="post" id="customerForm">
 		<div class="navButton">
 			<input type="button" value="返回" class="btBack"
-				onclick="doAction('loanCustomerForm','ComM_list','');"
+				onclick="doAction('customerForm','ComM_list','');"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
-			<input type="hidden" name="loanCustomer.companyId"
-				value="${loanCustomer.customerId}" readonly="readonly" />
+			<input type="hidden" name="customer.companyId"
+				value="${customer.customerId}" readonly="readonly" />
 			<tr>
 				<th>名称</th>
-				<td><input type="text" name="loanCustomer.customerName"
-					value="${loanCustomer.customerName}" readonly="readonly" /></td>
+				<td><input type="text" name="customer.customerName"
+					value="${customer.customerName}" readonly="readonly" /></td>
 			</tr>
 			<tr>
 				<th>所属单位</th>
-				<td><input type="text" name="loanCustomer.industry"
-					value="${loanCustomer.industry}" readonly="readonly" /></td>
+				<td><input type="text" name="customer.industry"
+					value="${customer.industry}" readonly="readonly" /></td>
 			</tr>
 			<tr>
-				<th>身份证号</th>
-				<td><input type="text" name="loanCustomer.cardId"
-					value="${loanCustomer.cardId}" readonly="readonly" /></td>
+				<th>证件号码</th>
+				<td><input type="text" name="customer.cardId"
+					value="${customer.cardId}" readonly="readonly" /></td>
 			</tr>
 			<tr>
 				<th>电话号码</th>
-				<td><input type="text" name="loanCustomer.telephone"
-					value="${loanCustomer.telephone}" readonly="readonly" /></td>
+				<td><input type="text" name="customer.telephone"
+					value="${customer.telephone}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<th>住址</th>
+				<td><input type="text" name="customer.address"
+					value="${customer.address}" readonly="readonly" /></td>
 			</tr>
 			<tr>
 				<th style="height:40px;">头像</th>
-				<td style="height:40px;"><img src="${loanCustomer.picUrl}" width="40px" height="40px"/></td>
+				<td style="height:40px;"><img src="${customer.picUrl}" width="40px" height="40px"/></td>
 			</tr>
 		</table>
 		<div class="navButton">
 			<input type="button" value="返回" class="btBack"
-				onclick="doAction('loanCustomerForm','ComM_list','');"
+				onclick="doAction('customerForm','ComM_list','');"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/customer/loan/" />
