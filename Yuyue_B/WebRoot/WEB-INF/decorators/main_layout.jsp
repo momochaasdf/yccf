@@ -39,6 +39,8 @@
 <script type="text/javascript"
 	src="<%=ctx%>/common/js/jquery-1.7.2.min.js" charset="utf-8"></script>
 <script type="text/javascript"
+	src="<%=ctx%>/common/js/jquery.form.js" charset="utf-8"></script>
+<script type="text/javascript"
 	src="<%=ctx%>/common/js/formvalidator/formValidator-4.1.3.js"
 	charset="utf-8"></script>
 <script type="text/javascript"
@@ -73,6 +75,8 @@
 <script type='text/javascript' src='<%=ctx%>/dwr/util.js'></script>
 <script type='text/javascript'
 	src='<%=ctx%>/dwr/interface/RegisterUser.js'></script>
+<script type="text/javascript"
+		src="<%=ctx%>/common/js/datepicker/WdatePicker.js"></script>
 <decorator:head />
 <div id="loading_background" class="loading_background" style="display: none; "></div>
 <div id="loading_progressBar" class="loading_progressBar" style="display: none; ">数据加载中，请稍等...</div>

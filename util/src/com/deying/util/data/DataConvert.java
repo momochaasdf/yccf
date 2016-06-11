@@ -84,7 +84,11 @@ public class DataConvert {
 					//throw new BaseException("convert value error in obtionInfoVal method.");
 				} 
 			}else if(clazz.equals(Date.class)) {
-				t = (T)DateUtils.parse(obj.toString()); 
+				if (obj.length() <= 10) {
+					t = (T)DateUtils.parse(obj.toString(), DateUtils.DATE_STR);
+				} else {
+					t = (T)DateUtils.parse(obj.toString());	
+				}
 			}else if(clazz.equals(Calendar.class)) {
 				t = (T)DateUtils.parse2Calenar(obj.toString()); 
 			}else {

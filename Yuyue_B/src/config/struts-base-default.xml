@@ -20,7 +20,7 @@
                 <interceptor-ref name="modelDriven"/>
                 <interceptor-ref name="fileUpload">
                 	<!-- 配置允许上传的文件类型 -->
-		           <param name="allowedExtensions">bmp,gif,jpeg,pcx,tiff,ico,jpg,png,apk,ipa</param>
+		           <param name="allowedExtensions">bmp,gif,jpeg,pcx,tiff,ico,jpg,png,apk,ipa,xls</param>
 		           <!-- 配置允许上传的文件大小 -->
 		           <param name="maximumSize">20971520</param>
                 </interceptor-ref>
