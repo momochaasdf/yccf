@@ -52,6 +52,10 @@ public class HolidayServiceImpl extends GenericServiceImpl<Holiday, String> impl
 				json.setMsg(msg.toString());
 			} else {
 				for(Holiday entity :list){
+					List<Holiday> delEntityList = this.findByProperty("startTime", entity.getStartTime());
+					for (Holiday delEntity : delEntityList) {
+						this.delete(delEntity);
+					}
 					this.save(entity);
 				}
 			}
