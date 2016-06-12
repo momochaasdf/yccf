@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<project basedir="." default="publish" name="${project.name}">
+	
+	<ant antfile="../../util/build/build.xml" />
+	<ant antfile="../../core/build/build.xml" />
+	<ant antfile="../../timer/build/build.xml" />
+	
+	<property file="build.properties" />
+	
+	<!-- import template -->
+	<import file="../../util/build/build-template.xml" />
+	
+	<property name="build.project" value="${dist.dir}/${project.name}"/>
+	<property name="war.dir" value="${dist.dir}/war" />
+	
+	<target name="init" description="初始化目标文件夹">
+		<mkdir dir="${build.classes.dir}"/>
+		<mkdir dir="${war.dir}"/>
+	</target>
+	
+	<target name="self" depends="init" description="复制打包文件">
+		<copy todir="${build.project}" encoding="${build.encoding}">
+			<fileset dir="${webapp}">
+				<exclude name="**/*.jar"/>
+				<exclude name="WEB-INF/classes/**" />
+			</fileset>
+		</copy>
+		<echo>复制备份配置文件的log4j.properties</echo>
+		<delete dir="${build.project}/WEB-INF" includes="log4j.properties" />
+		<copy todir="${build.project}/WEB-INF" encoding="${build.encoding}">
+			<fileset dir="${conf.dir}"  includes="log4j.properties" />
+		</copy>	
+	</target>
+	
+	<target name="compile" depends="self" description="编译java文件">
+		<javac srcdir="${src}" destdir="${build.classes.dir}" classpathref="classpath" 
+			encoding="${build.encoding}" includeantruntime="true" debug="true" />
+		<copy todir="${build.classes.dir}" encoding="${build.encoding}">
+			<fileset dir="${src}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<echo>复制备份配置文件的applicationContext.xml</echo>
+		<delete dir="${build.classes.dir}" includes="applicationContext.xml" />
+		<copy todir="${build.classes.dir}" encoding="${build.encoding}">
+			<fileset dir="${conf.dir}"  includes="applicationContext.xml" />
+		</copy>	
+	</target>
+	
+	<target name="war" depends="compile" description="打 war包">
+		<war warfile="${war.dir}/${project.war}" webxml="${build.project}/WEB-INF/web.xml">
+			<lib dir="${webapp}/WEB-INF/lib"/>
+			<lib dir="${jar.dir}"/>
+			<classes dir="${build.classes.dir}"/>
+			<fileset dir="${build.project}" />
+		</war>
+	</target>
+	
+	<target name="release" depends="war,clean" description="发布 war包">
+		
+	</target>
+	
+	<target name="publish" depends="war,clean" description="发布 war包至 tomcat目录下">
+	</target>
+	
+	<target name="clean" depends="init" description="清除打包用临时文件">
+	</target>
+</project>

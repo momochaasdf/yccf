@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<decorators defaultdir="/WEB-INF/decorators">
+	<excludes>
+		<pattern>/exit.do*</pattern>
+		<pattern>/login.jsp*</pattern>
+		<pattern>/WEB-INF/pages/report/report.jsp*</pattern>
+		<pattern>/card/report/Report_reportDetail.do*</pattern>
+		<pattern>/Report_reportDetail.do*</pattern>
+		<pattern>/report/Report_reportDetail.do*</pattern>
+		<pattern>/common/js/*</pattern>
+		<pattern>/common/css/*</pattern>
+		<pattern>/common/imgs/*</pattern>
+		<pattern>/print/*</pattern>
+		<pattern>/help*</pattern>
+		<pattern>/*.action</pattern>
+		<pattern>/*.action?*</pattern>
+		<pattern>/reg*</pattern>
+		<pattern>/statistics/Statistics_printPop.do?*</pattern>
+		<pattern>/coupon/coupon_popView.do?*</pattern>
+		<pattern>/finance/finance_print.do?*</pattern>
+		<pattern>/moderation/moderation_preview.do?*</pattern>
+		<pattern>/json/upload.do</pattern>
+		<pattern>/finance/OrderStatistics_shopInfo.do?*</pattern>
+		<pattern>/spread/spreadApply_shopInfo.do?*</pattern>
+		<pattern>/finance/OrderStatistics_bankCardInfo.do?*</pattern>
+		<pattern>/finance/finance_reimburseZFB.do?*</pattern>
+		<pattern>/finance/kbcash_transToZfb.do?*</pattern>
+
+		<!-- 呼叫中心 -->
+		<pattern>/appointment/appointment_*</pattern>
+		<pattern>/finance/integral_inReimburseZFB.do?*</pattern>
+	</excludes>
+	<!--decorator结点指定了模板的位置和文件名，通过pattern来指定哪些路径引用哪个模板-->
+	<decorator name="main" page="/WEB-INF/decorators/main_layout.jsp">
+ 	<pattern>/*</pattern> 	
+	<pattern>/*.do</pattern>
+	</decorator>
+	<decorator name="main-left" page="/WEB-INF/decorators/left.jsp"/>
+</decorators>

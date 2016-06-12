@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="notice" extends="struts" namespace="/notice">
+		<action name="notice_*" class="com.deying.core.action.NoticeAction" method="{1}">
+			<result name="list">/WEB-INF/pages/notice/notice_{1}.jsp</result>
+			<result name="load">/WEB-INF/pages/notice/notice_{1}.jsp</result>
+			<result name="add">/WEB-INF/pages/notice/notice_{1}.jsp</result>
+			<result name="edit">/WEB-INF/pages/notice/notice_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/notice/notice_list.jsp</result>
+		</action>
+	</package>
+</struts>

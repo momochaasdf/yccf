@@ -1,0 +1,197 @@
+/* 澶氫釜涓婃粴鍔�- 鍏敤绫�*/ 
+.picList li{ width:126px;  } 
+.picList .pic{ text-align:center; line-height:0px;  } 
+.picList .pic img{ height:100px; padding:2px; border:1px solid #ccc; } 
+.picList .pic a:hover img{ border-color:#f00;  } 
+.picList .title{ line-height:24px;   } 
+ 
+/* 澶氫釜涓婃粴鍔�- 鍏敤绫�*/ 
+.topLoop{ overflow:hidden; position:relative;  border:1px solid #ccc;   } 
+.topLoop .hd{ overflow:hidden;  background:#f4f4f4; height: 15px; } 
+.topLoop .hd .prev,.topLoop .hd .next{ display:block;  width:9px; height:10px; line-height:10px; float:right; margin-right:10px; margin-top:1px;  overflow:hidden;   
+     cursor:pointer; background:url("../../images/diet/main/icoUp.gif") center no-repeat;} 
+.topLoop .hd .next{ background:url("../../images/diet/main/icoDown.gif") center no-repeat;  } 
+.topLoop .hd ul{ float:right; overflow:hidden; zoom:1; margin-top:10px;  } 
+.topLoop .hd ul li{ position:relative; _display:inline; float:left;  width:10px; height:10px; overflow:hidden; background:#ccc; margin-right:10px; text-indent:-999px; cursor:pointer; 
+    -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; behavior: url(PIE.htc);} 
+.topLoop .hd ul li.on{ background:#f00;  } 
+.topLoop .bd{ padding:5px;   } 
+.topLoop .bd ul{ overflow:hidden; zoom:1; }
+
+/* 澶氫釜涓婃粴鍔�- 鍏敤绫�*/ 
+.topLoop1{ overflow:hidden; position:relative;  } 
+.topLoop1 .hd{ overflow:hidden;  background:#f4f4f4; height: 15px; } 
+.topLoop1 .hd .prev,.topLoop .hd .next{ display:block;  width:9px; height:10px; line-height:10px; float:right; margin-right:10px; margin-top:1px;  overflow:hidden;   
+     cursor:pointer; background:url("../../images/diet/main/icoUp.gif") center no-repeat;} 
+.topLoop1 .hd .next{ background:url("../../images/diet/main/icoDown.gif") center no-repeat;  } 
+.topLoop1 .hd ul{ float:right; overflow:hidden; zoom:1; margin-top:10px;  } 
+.topLoop1 .hd ul li{ position:relative; _display:inline; float:left;  width:10px; height:10px; overflow:hidden; background:#ccc; margin-right:10px; text-indent:-999px; cursor:pointer; 
+    -webkit-border-radius: 10px; -moz-border-radius: 10px; border-radius: 10px; behavior: url(PIE.htc);} 
+.topLoop1 .hd ul li.on{ background:#f00;  } 
+.topLoop1 .bd{ padding:10px;   } 
+.topLoop1 .bd ul{ overflow:hidden; zoom:1; }
+
+
+.slideBox{ width:100%; height:320px; overflow:hidden; position:relative;    } 
+.slideBox .hd{ height:15px; overflow:hidden; position:absolute; right:10px; bottom:10px; z-index:1; } 
+.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  } 
+.slideBox .hd ul li{ float:left; margin-right:5px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; } 
+.slideBox .hd ul li.on{ background:#f00; color:#fff; } 
+.slideBox .bd{ position:relative; height:100%; z-index:0;   } 
+
+
+
+/* 澶氫釜涓婃粴鍔�- 鍏敤绫�*/ 
+
+
+
+body {
+	font-family: 寰蒋闆呴粦;
+	font-size: 12px;
+	margin: 0;padding: 0;width: 100%;
+}
+.diet_guanggao{
+	width:100%; height:320px; position:relative;
+}
+.diet_guanggao .diet_guanggao_right{
+	width:1202px; height:320px; margin:0 auto; position:relative;
+}
+
+.diet_guanggao .diet_guanggao_right div img{
+	width: 950px;height: 320px;
+}
+.guanggao_xiahuaxian{
+	width:100%; height:10px; background:url(../../images/diet/main/border_bottom.jpg) repeat-x;
+}
+.main{
+	margin-top:-340px;
+}
+.main .main_shortcutSearch{
+	width:1202px; min-width:1000px; margin:0 auto; height:320px;
+}
+.main .main_shortcutSearch .main_shortcutSearch_top{
+	 margin-top:-50px;* margin-top:-40px;_margin-top:-40px; position:relative; 
+}
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+.main .main_shortcutSearch .main_shortcutSearch_top{
+	 margin-top:-40px;
+}
+}
+.main .main_shortcutSearch .main_shortcutSearch_title{
+	width:260px; height:51px;background:url(../../images/diet/main/banner_1.png) no-repeat; line-height:51px;
+}
+.main_shortcutSearch_title span{
+	margin-left:30px; font-weight:bold; font-size:14px; color:#f5f5f5; 
+}
+.main_shortcutSearch_click div{
+	cursor: pointer;
+}
+.main_shortcutSearch_click{
+	width:250px; height:320px; border-left:1px solid #a73103; border-right:1px solid #a73103;
+}
+.main_shortcutSearch_click .main_shortcutSearch_click_xiao{
+	width:100%; height:40px; line-height:40px; background:#f9f9f9; font-weight:bold;
+	border-bottom: 1px solid #DDD;
+	z-index: 9;
+}
+.main_shortcutSearch_click_fade{
+	width:100%; height:106px; border-bottom:1px solid #eae6e5; padding-top:8px;
+}
+.main_shortcutSearch_click_fade{
+	display:none;
+	border-bottom: 1px solid #DDD;
+	background:#FFF;
+	margin-top: -1px;
+	z-index: 10;
+}
+.heads .hover,.heads .hovers{
+	background:#712704;
+}
+.options,.diet_guanggao{
+	cursor: pointer;
+}
+.phs{
+	border-left: 1px solid #DDD;border-right: 1px solid #DDD;
+	border-bottom: 1px solid #FFF;
+	background: #FFF;
+}
+#ph{
+	border-bottom: 1px solid #EBEBEB;
+}
+.pointer:hover{
+	background: #FD8F12;
+	color: #FFF;
+	cursor: pointer;
+}
+
+.panicBuy {
+	width:129px; 
+	height:37px; 
+	position:absolute; 
+	left: -6px; 
+	top: 184px; 
+	background:url(../../images/diet/main/qianggou.jpg) no-repeat scroll 0 0 transparent;
+	line-height:40px;
+}
+
+.panicBuy:hover {
+	cursor: pointer;
+	background:url(../../images/diet/main/qianggouon.png) no-repeat scroll 0 0 transparent;
+}
+.main_shortcutSearch_click_fade span:hover{
+	color: #FF7E23;
+	cursor: pointer;
+}
+.canting_ .canting_Dis{
+	display: block;
+}
+.canting_old{
+	width:233px; height:26px; padding-left:20px;position:relative;line-height: 26px;
+	background: url(../../images/wwqtest/my_menubg.gif) no-repeat scroll 0 1px transparent;
+	
+}
+.canting_ {
+	background: url(../../images/wwqtest/my_menubg.gif) no-repeat scroll 0 -26px transparent;
+	border-right-style: none;
+	z-index: 99;
+}
+.canting_Dis{
+	display: none;
+}
+.canting_Dis div div:hover{
+	color: red;
+	text-decoration: underline;
+}
+.con-wrap {
+    box-shadow: 0 8px 6px -6px #CCCCCC;
+    height: 320px;
+    margin-bottom: 15px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+
+
+
+.diet_guanggao ul {
+    height: 320px;
+    overflow: hidden;
+}
+ol, ul {
+    list-style: none outside none;
+}
+body {
+    color: #333333;
+    font: 12px/150% Arial,Verdana,"瀹嬩綋";
+}
+.diet_guanggao li {
+    background-position: center top;
+    background-repeat: no-repeat;
+    display: table;
+    height: 320px;
+    width: 100%;
+}
+.cateMenu_:hover{
+	text-decoration: underline;
+	cursor: pointer;
+}

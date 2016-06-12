@@ -1,0 +1,272 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xmlns:context="http://www.springframework.org/schema/context"
+		xmlns:aop="http://www.springframework.org/schema/aop"
+		xmlns:tx="http://www.springframework.org/schema/tx"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+				http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+				http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+				http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd">
+
+	<!-- 注解 -->
+	<context:annotation-config/>
+	<!-- 启用Bean扫描 -->
+	<context:component-scan base-package="com.deying,com.deying.util.core.com.framework,com.deying.util.core.com.framework.struts2.components" />
+	<!-- 启用AOP -->
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
+	
+	<!-- RMI -->
+<!-- 	<bean id="sendMsg" class="com.deying.core.util.rmi.SendMsgImpl"></bean>
+	<bean id="remoteFactory" class="com.deying.util.rmi.RemoteFactory" init-method="createRemote" >
+		<property name="remotes">
+			<list>
+				<ref bean="sendMsg"/>
+			</list>
+		</property>
+	</bean> -->
+	
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath:sources/jdbc.properties</value>
+			</list>
+		</property>
+	</bean>	
+	
+	<bean id="fileConstants" class="com.deying.util.FileConstants" >
+		<property name="driveClass" value="${driverClass}"></property>
+		<property name="jdbcUrl" value="${jdbcUrl}"></property>
+		<property name="jdbcUser" value="${user}"></property>
+		<property name="jdbcPassword" value="${password}"></property>
+		<property name="batchSize" value="${batchSize}"></property>
+	</bean>
+	
+	<bean id="dataSourceTargetC3p0" class="com.mchange.v2.c3p0.ComboPooledDataSource" destroy-method="close">
+		<!-- Oracle
+		<property name="driverClass" value="oracle.jdbc.driver.OracleDriver"/>
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@192.168.2.201:1521:orcl"/> 
+ --> 
+		<!-- MYSQL -->
+		<property name="driverClass" value="${driverClass}"/>
+		<property name="jdbcUrl" value="${jdbcUrl}"/>
+		<!-- SqlServer 
+		<property name="driverClass" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+		<property name="jdbcUrl" value="jdbc:sqlserver://localhost:1433;DataBaseName=stock"/>-->
+		<property name="user" value="${user}"/>
+		<property name="password" value="${password}"/>
+		<!-- 当连接池中的连接用完时，C3P0一次性创建新连接的数目 -->
+		<property name="acquireIncrement" value="2"/>
+		<!-- 定义在从数据库获取新连接失败后重复尝试获取的次数，默认为30 -->
+		<property name="acquireRetryAttempts" value="3"/>
+		<!-- 两次连接中间隔时间，单位毫秒，默认为1000 -->
+		<property name="acquireRetryDelay" value="1000"/>
+		<!-- 连接关闭时默认将所有未提交的操作回滚。默认为false -->
+		<property name="autoCommitOnClose" value="false"/>
+		<!-- 初始化时创建的连接数，应在minPoolSize与maxPoolSize之间取值。默认为3 -->
+		<property name="initialPoolSize" value="3"/>
+		<property name="minPoolSize" value="1"/>
+		<property name="maxPoolSize" value="10"/>
+		<!-- 最大空闲时间，超过空闲时间的连接将被丢弃。为0或负数则永不丢弃。默认为0 -->
+		<property name="maxIdleTime" value="120"/>
+<!-- 		<property name="idleConnectionTestPeriod" value="300"/> 300 seconds
+        <property name="connectionTesterClassName" value="com.deying.util.mysql.MysqlReplicationConnectionTester"/> -->
+		<!--  
+    breakAfterAcquireFailure：获取连接失败将会引起所有等待获取连接的线程抛出异常。但是数据源仍有效保留，并在下次调   用getConnection()的时候继续尝试获取连接。如果设为true，那么在尝试获取连接失败后该数据源将申明已断开并永久关闭。默认为 false； 
+    checkoutTimeout：当连接池用完时客户端调用getConnection()后等待获取新连接的时间，超时后将抛出SQLException，如设为0则无限期等待。单位毫秒，默认为0； 
+    connectionTesterClassName： 通过实现ConnectionTester或QueryConnectionTester的类来测试连接，类名需设置为全限定名。默认为 com.mchange.v2.C3P0.impl.DefaultConnectionTester； 
+    idleConnectionTestPeriod：隔多少秒检查所有连接池中的空闲连接，默认为0表示不检查； 
+    maxStatements：JDBC的标准参数，用以控制数据源内加载的PreparedStatement数量。但由于预缓存的Statement属 于单个Connection而不是整个连接池。所以设置这个参数需要考虑到多方面的因素，如果maxStatements与 maxStatementsPerConnection均为0，则缓存被关闭。默认为0； 
+    maxStatementsPerConnection：连接池内单个连接所拥有的最大缓存Statement数。默认为0； 
+    numHelperThreads：C3P0是异步操作的，缓慢的JDBC操作通过帮助进程完成。扩展这些操作可以有效的提升性能，通过多线程实现多个操作同时被执行。默认为3； 
+    preferredTestQuery：定义所有连接测试都执行的测试语句。在使用连接测试的情况下这个参数能显著提高测试速度。测试的表必须在初始数据源的时候就存在。默认为null； 
+    propertyCycle： 用户修改系统配置参数执行前最多等待的秒数。默认为300； 
+    testConnectionOnCheckout：因性能消耗大请只在需要的时候使用它。如果设为true那么在每个connection提交的时候都 将校验其有效性。建议使用idleConnectionTestPeriod或automaticTestTable 
+等方法来提升连接测试的性能。默认为false； 
+    testConnectionOnCheckin：如果设为true那么在取得连接的同时将校验连接的有效性。默认为false。
+		
+	</bean>
+	<bean id="dataSource" class="com.p6spy.engine.spy.P6DataSource"	destroy-method="close">
+		<constructor-arg>
+			<ref local="dataSourceTargetC3p0" />
+		</constructor-arg>-->
+	</bean>
+	<!-- 把数据源注入给Session工场 -->
+	<bean id="sessionFactory" class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSourceTargetC3p0" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<!--<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
+					<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>-->
+				<prop key="hibernate.dialect">com.deying.util.mysql.MysqlCustomDialect</prop>
+				<prop key="hibernate.hbm2ddl.auto">none</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="houseKeepingTestSql">select 1</prop>
+				<prop key="hibernate.query.substitutions">true Y, false N</prop>
+				<prop key="hibernate.jdbc.batch_size">${batchSize}</prop>
+				<prop key="hibernate.connection.autocommit">true</prop>  
+				<prop key="hibernate.cache.use_second_level_cache">true</prop>
+				<prop key="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</prop>
+				<prop key="hibernate.cache.provider_configuration_file_resource_path">/ehcache-hibernate.xml</prop>
+			</props>
+		</property>
+		<property name="packagesToScan">
+		  <list>
+            <value>com.deying.core.pojo.*</value>
+            <value>com.deying.core.*</value>
+        </list>
+		</property> 
+<!-- 		配置映射文件 -->
+		<property name="mappingDirectoryLocations">
+            <list>
+	            <value>classpath*:com/deying/core/pojo</value>
+            </list>
+        </property>
+        
+       
+        <!-- <property name="mappingJarLocations">
+		   <list>
+		     <value>WEB-INF/lib/core.jar</value>
+		     <value>WEB-INF/lib/util.jar</value>
+		   </list>
+	    </property> -->
+	
+	</bean>
+ 
+	<bean id="dataSource" class="com.deying.util.core.com.framework.hibernate3.DynamicDataSource">
+		<property name="targetDataSources">
+			<map key-type="java.lang.String">
+				<entry key="DEFAULT" value-ref="dataSourceTargetC3p0" />
+			<!-- 	<entry key="MJ" value-ref="dataSourceMJ" />-->
+			</map>
+		</property>
+		<property name="defaultTargetDataSource" ref="dataSourceTargetC3p0" />
+	</bean>
+	
+
+	
+	
+	<!--  <bean id="sqlServerDataSource" class="org.apache.commons.dbcp.BasicDataSource"  destroy-method="close">        
+    <property name="driverClassName" value="com.microsoft.jdbc.sqlserver.SQLServerDriver" />       
+    <property name="url" value="jdbc:microsoft:sqlserver://172.16.30.80:1433;DataBaseName=AsiaCardServer;SelectMethod=cursor" />       
+    <property name="username" value="sa" />       
+    <property name="password" value="sa" /> 
+    <property name="maxActive"><value>80</value></property>     
+    <property name="maxIdle"><value>20</value></property>     
+    <property name="maxWait"><value>3000</value></property>      
+	</bean>  -->
+ 
+
+
+	
+	<!-- 定义事务操作 -->
+    <bean id="txManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+    <!-- 使用注解事务管理 -->
+    <tx:annotation-driven transaction-manager="txManager"/> 
+    
+    <aop:config>
+  		<aop:pointcut id="businessService"
+        	expression="execution(* com.deying.core.service.*.*.*(..))
+        				or execution(* com.deying.core.business.service.*.*(..))
+        				or execution(* com.deying.util.annotation.AnnIService.*(..))
+        				or execution(* com.deying.util.comman.GenericService.*(..))"/>
+  		<aop:advisor 
+     		 pointcut-ref="businessService"
+      			advice-ref="tx-advice"/>
+	</aop:config>
+
+	<tx:advice id="tx-advice" transaction-manager="txManager">
+	  <tx:attributes>
+	    <tx:method name="get*" propagation="SUPPORTS" read-only="true" rollback-for="Throwable"/>
+	    <tx:method name="find*" propagation="SUPPORTS" read-only="true" rollback-for="Throwable"/>
+	    <tx:method name="list*" propagation="SUPPORTS" read-only="true" rollback-for="Throwable"/>
+	    <tx:method name="*" propagation="REQUIRED" rollback-for="Throwable"/>
+	  </tx:attributes>
+	</tx:advice>
+	
+	<!-- =====================================timer================================================= -->
+	<!-- <bean id="processOrderTimer" class="com.deying.timer.ProcessOrderTimer" />
+	<bean id="processOrderTimerJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		调用的类
+		<property name="targetObject">
+			<ref bean="processOrderTimer" />
+		</property>
+		调用类中的方法
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+	</bean>
+	<bean id="processOrderTimerTrigger" lazy-init="false"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="processOrderTimerJob" />
+		</property>
+		<property name="cronExpression">
+			<value>0 0/30 * * * ?</value>
+		</property>
+	</bean>
+	
+	<bean id="extractCashTimer" class="com.deying.timer.ExtractCashTimer" />
+	<bean id="extractCashTimerJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		调用的类
+		<property name="targetObject">
+			<ref bean="extractCashTimer" />
+		</property>
+		调用类中的方法
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+	</bean>
+	<bean id="extractCashTimerTrigger" lazy-init="false"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="extractCashTimerJob" />
+		</property>
+		<property name="cronExpression">
+			<value>0 20 0 ? * 3</value> 每周二 00:20:00 执行 ，次定时起必须在 InitOrderTimer 之后执行 0 20 0 ? * 3
+		</property>
+	</bean> -->
+	
+	<!-- 数据库备份定时器，每天 23:45:00 执行 -->
+	<bean id="databaseBackupTimer" class="com.deying.util.timer.DatabaseBackupTimer" />
+	<bean id="databaseBackupTimerJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="databaseBackupTimer" />
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>execute</value>
+		</property>
+	</bean>
+	<bean id="databaseBackupTimerTrigger" lazy-init="false"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="databaseBackupTimerJob" />
+		</property>
+		<property name="cronExpression">
+			<value>0 45 23 * * ?</value><!-- 每天 23:45:00 执行 -->
+		</property>
+	</bean>
+	
+	
+	<bean id="scheduler"
+		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
+		<property name="triggers">
+			<list>
+				<!-- <ref bean="processOrderTimerTrigger" />
+				<ref bean="extractCashTimerTrigger" /> -->
+				<ref bean="databaseBackupTimerTrigger" />
+			</list>
+		</property>
+	</bean>
+
+</beans>

@@ -1,0 +1,59 @@
+/* CSS Document */
+.review_messgae{
+	width:980px;
+	background:#fff;
+	margin-top: 12px;
+	margin-right: auto;
+	margin-bottom: 0px;
+	margin-left: auto;
+	float: left;
+}
+.review_messgae_top{
+	width:980px;
+	height:34px;
+}
+.review_messgae_content{
+	width:980px;
+	float: left;
+}
+.review_messgae_content_left{
+	width: 95%;
+    height:auto;
+	margin-left: 20px;
+    margin-top: 15px;
+}
+.review_messgae_content_left_content{
+ width:498px; height:78px; margin:16px auto; border-bottom:1px dashed #000000;
+ }
+ 
+.review_messgae_content_left_content ul{
+ width: 90%;padding-left:0px;
+}
+ 
+.review_messgae_content_right{
+	width:270px;
+	height:608px;
+	float:left;
+	padding-top: 20px;
+ }
+
+.review_messgae_content_left_kj{
+width:100%; height:auto; min-height:160px; border-bottom:1px dashed #ccc; margin-bottom:10px; float: left;padding-bottom: 6px;
+}
+
+.review_messgae_content_left_pic{
+width:120px; height:160px; float:left; color:#136781;text-align: center;
+}
+.review_messgae_content_left_nr{
+width:705px; height:auto; float:left; min-height:160px;margin-left: 15px;
+}
+.linh_24{
+line-height:24px;
+}
+.fontColore_orange{
+color:#fe7b73;
+}
+
+.review_mess{
+line-height:24px; margin-top:8px; margin-bottom:8px;
+}

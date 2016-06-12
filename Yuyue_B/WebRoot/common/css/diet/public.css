@@ -1,0 +1,59 @@
+@CHARSET "UTF-8";
+
+.body {
+	font-size:12px;
+	padding-top: 0px;
+	margin-top: 0px;
+	font-family: 微软雅黑;
+	background:#ece9e2;
+}
+
+html, body, div, span, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, address, big, cite, code, del, em, font, img, ins, small, strong, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend {
+    margin: 0;
+    padding: 0;
+}
+ul{
+list-style:none;
+margin:0px;
+padding: 0px;
+}
+.money{
+color:red; font-size:16px;
+}
+.left20_font14{
+margin-left:20px; font-size:14px;
+}
+.lin_30{
+height:30px; line-height:30px;
+}
+
+.letter_2px{
+ Letter-spacing:2px;
+}
+.font_size_18px{
+font-size:18px;
+}
+.font_bold{
+font-weight:bold;
+}
+.h_112{ height:112px;}
+.linh_16{
+ line-height:16px; font-weight:bold; margin-bottom:12px;
+ }
+.linh_24{
+ line-height:24px;
+ }
+ 
+.mar_bottom{
+margin-bottom:8px;
+}
+/*清除浮动的类*/
+.cl{
+clear: left;
+}
+.cr{
+clear: right;
+}
+.cb{
+clear: both;
+}

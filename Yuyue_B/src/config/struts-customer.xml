@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="customer.loan" extends="struts"
+		namespace="/customer/loan">
+		<action name="*" class="com.deying.core.action.CustomerLoanAction"
+			method="{1}">
+			<result name="list">/WEB-INF/pages/customer/loan_list.jsp</result>
+			<result name="load">/WEB-INF/pages/customer/loan_load.jsp</result>
+			<result name="add">/WEB-INF/pages/customer/loan_add.jsp</result>
+			<result name="edit">/WEB-INF/pages/customer/loan_edit.jsp</result>
+			<result name="input">/WEB-INF/pages/customer/loan_list.jsp</result>
+		</action>
+	</package>
+	<package name="customer.financing" extends="struts"
+		namespace="/customer/financing">
+		<action name="*" class="com.deying.core.action.CustomerFinancingAction"
+			method="{1}">
+			<result name="list">/WEB-INF/pages/customer/financing_list.jsp</result>
+			<result name="load">/WEB-INF/pages/customer/financing_load.jsp
+			</result>
+			<result name="add">/WEB-INF/pages/customer/financing_add.jsp
+			</result>
+			<result name="edit">/WEB-INF/pages/customer/financing_edit.jsp
+			</result>
+			<result name="input">/WEB-INF/pages/customer/financing_list.jsp
+			</result>
+		</action>
+	</package>
+</struts>

@@ -1,0 +1,334 @@
+/*圆角矩形样式模板 开始*/
+div.rtop,div.rbottom {
+	display: block;
+	background: #FFF;
+}
+
+div.rtop div,div.rbottom div {
+	display: block;
+	height: 1px;
+	background: #F5F6F5
+}
+
+div.r1 {
+	margin: 0 5px
+}
+
+div.r2 {
+	margin: 0 3px
+}
+
+div.r3 {
+	margin: 0 2px
+}
+
+div.rtop div.r4,div.rbottom div.r4 {
+	margin: 0 1px;
+	height: 2px
+}
+
+/*圆角矩形样式模板 结束*/ 
+
+/*列表样式模板 开始*/
+.table_list {
+	background-color: #FFFFFF;
+}
+
+.table_tr_title td {
+	width: 150px;
+	height: 38px;
+	background: url(../images/tablelisttitle.png) repeat-x 0 0;
+	text-align: center;
+	border-right: 2px solid #F5F5F5;
+	text-align: center;
+	 font-size: 12px;
+    font-weight: bold;
+}
+
+.title_blue{
+color: #4395C6;
+}
+.title_purple{
+color: #9F84B6;
+}
+.title_pink{
+color: #844853;
+}
+.title_qingse{
+color: #177F45;
+}
+
+
+.table_tr_content td {
+	height: 38px;
+	border-right: 2px solid #EEE;
+	text-align: center;
+}
+
+/*列表样式模板 结束*/ 
+
+/*桌子管理样式 开始*/
+#table_select_circle {
+	margin-left: 27px;
+	background: #F5F6F5;
+	margin-top: 10px;
+}
+
+.filter-item dt {
+	float: left;
+	padding: 6px 10px 0 0;
+	text-align: right;
+	width: 90px;
+}
+
+.filter-item dd {
+	background: none repeat scroll 0 0 #FFFFFF;
+	padding: 2px 0 6px 0px;
+	margin-left: -20px;
+	display: inline;
+}
+
+.filter-item .all {
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	margin: 4px 4px 0px 0px;
+	padding: 0 3px;
+}
+
+.filter-item a {
+	float: left;
+	height: 18px;
+	line-height: 18px;
+	margin: 4px 4px 0 0;
+	padding: 0 3px;
+	white-space: nowrap;
+}
+
+.filter-item .sel,.filter-item a:hover {
+	background-color: #00B5DA;
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.filter-item .sel:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+.param-filter .first {
+	padding: 1px 0 0 90px;
+}
+
+.filter-item .brand-sel-box {
+	padding-left: 0;
+	position: relative;
+	z-index: 2;
+}
+div.selece_item {
+	height: 40px;
+	border-bottom: 1px dotted #D0D0CF;
+}
+div.circle_content {
+	padding: 10px;
+	position: relative
+}
+#operate .addtable {
+	cursor:pointer;
+	display: block;
+	width: 145px;
+	height: 32px;
+	background: url(../images/addtable.png) 0 0 no-repeat;
+	float: left;
+}
+/*桌子管理样式 结束*/
+
+
+.food_title{
+	height: 44px;
+	background: url(../images/title_bg.png) 0 0 repeat-x;
+}
+.addfood{
+	cursor:pointer;
+	display: block;
+	width: 117px;
+	height: 32px;
+	float: left;
+	background: url(../images/operate_bg.png) 0 0 no-repeat;
+	text-indent: 45px;
+	vertical-align: middle;
+	padding-top: 8px;
+	font-size: 14px;
+	color: white;
+	margin-right: 10px;
+}
+.search_text{
+background: url(../images/search_text1.png) 0 0 no-repeat;
+text-indent: 27px;
+width: 141px;
+height: 28px;
+}
+
+/*相册页面样式开始*/
+.album_list_div {
+	height: auto;
+	overflow: hidden;
+	margin: 0 auto;
+	padding: 10px 0 0 10px;
+}
+
+.album_list_div ul {
+	margin: 0px;
+	padding: 0px;
+	float: left;
+	list-style-type: none;
+}
+
+.album_list_div ul li {
+	width: 170px;
+	height: 170px;
+	float: left;
+	display: inline;
+	margin: 0 10px 10px 0;
+}
+.warpAlber{
+height: 165px; width:146px; position: relative;background: #FFF
+}
+.alberbg{
+height: 100px; width:140px;background: #FFF;border: 1px solid #CCCCCC;position:absolute;z-index: 10;cursor: pointer;
+}
+.alberoffset{
+height: 100px; width:140px; position:absolute;border: 1px solid #CCCCCC; background: #FFF;z-index: 0;left: 6px;top: 6px;
+}
+/*相册页面样式结束*/
+/*公告页面样式开始*/
+
+.text_input{
+background: url(../images/textinput.png) 0 0 no-repeat;
+width: 97px;
+height: 26px;
+padding-left: 6px;
+}
+.text_input_ext{
+background: url(../images/textinput_ext.png) 0 0 no-repeat;
+width: 200px;
+height: 26px;
+padding-left: 6px;
+}
+.text_input_coupon{
+background: url(../images/textinput.png) 0 5px no-repeat;
+width: 97px;
+height: 26px;
+padding-left: 6px;
+}
+/*公告页面样式开始*/
+.dp_selectli{
+height:31px;
+float:left;
+margin-right: 5px;
+width: 98px;
+text-align: center;
+line-height: 31px;
+background: url(../imgs/pinlunBut2.png)no-repeat  #fff;
+}
+.dp_title .checkPinLun{
+	background: url(../imgs/pinlunBut1.png)no-repeat #fff;
+	font-weight: bold;
+}
+.dp_title{
+	cursor: pointer;
+}
+/*点评页面样式开始
+.dp_title{
+list-style:none;
+margin:0;
+padding:0;
+border:0px;
+}
+
+.dp_li_hove_span{
+display: block;
+float: left;
+line-height: 30px;
+text-align: center;
+height:30px;
+width:72px;
+display:block;
+float:left;
+color:white;
+background: url(../images/dianping.png) no-repeat -28px 0;
+}
+.dp_li_hove_next_span{
+height:30px;
+width:16px;
+display:block;
+float:left;
+background: url(../images/dianping.png) no-repeat -84px -64px;
+}
+.dp_li_com_next_span{
+height:30px;
+width:15px;
+display:block;
+float:left;
+background: url(../images/dianping.png) no-repeat -84px -95px;
+}
+.dp_li_com_span{
+display: block;
+float: left;
+line-height: 30px;
+text-align: center;
+height:30px;
+width:72px;
+display:block;
+float:left;
+color:#7D7D7D;
+background: url(../images/dianping.png) no-repeat -28px -32px;
+}
+.dp_top{
+height:5px;
+background: url(../images/dianping.png) repeat-x 0 -158px;
+width:938px;
+}
+.dp_left{
+float:left;
+height:2001px;
+width:4px;
+margin-top:-1px;
+background: url(../images/dp_left.png) repeat-y 0 0;
+}
+.dp_content{
+float:left;
+width:930px;
+height:2000px;
+
+}
+.dp_right{
+float:left;
+height:2001px;
+width:4px;
+margin-top:-1px;
+background: url(../images/dp_left.png) repeat-y 0 0;
+}
+.dp_bottom{
+float:left;
+height:5px;
+width:938px;
+background: url(../images/dianping.png) repeat-x 0 -158px;
+}
+.purchase_info{
+width:87%;margin:10px auto;height:auto;background:#FFF;padding:20px 50px;
+}
+.purchase_info_d1{
+	height:150px;
+}
+.purchase_info_d1 div{
+	float:left;width:380px;height:25px;line-height:25px;
+}
+.purchase_info_d2{
+	height:1px;border-top:2px solid #CCC;margin-top:10px;margin-bottom:10px;
+}
+.purchase_info_t1{
+	line-height:30px;height:30px;font-size:14px;font-weight:bold;
+}
+
+/*点评页面样式开始*/

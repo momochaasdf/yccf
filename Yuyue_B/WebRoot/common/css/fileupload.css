@@ -1,0 +1,56 @@
+.abc_sharepic {
+	display: inline;
+	float: left;
+	height: 129px;
+	margin-bottom: 10px;
+	margin-right: 20px;
+	overflow: hidden;
+	position: relative;
+	width: 168px;
+}
+
+.abc_addpic {
+	display: inline;
+	float: left;
+	height: 129px;
+	margin-bottom: 10px;
+	margin-left: 0;
+	margin-right: 20px;
+	overflow: hidden;
+	position: relative;
+	width: 168px;
+}
+
+.abc_addpic a {
+	border: 1px dashed #FF9900;
+	color: #999999;
+	display: block;
+	height: 126px;
+	text-align: center;
+	width: 166px;
+}
+
+.abc_addpic a span {
+	color: #999999;
+	cursor: pointer;
+	display: block;
+	font-size: 40px;
+	font-weight: bolder;
+	line-height: 30px;
+	padding-top: 34px;
+}
+
+.abc_addpic a p {
+	color: #999999;
+	cursor: pointer;
+	position: static;
+	text-align: center;
+}
+
+.abc_addpic a:hover {
+	color: #FF9900;
+	text-decoration: none;
+}
+.clear_left{
+clear: left;
+}

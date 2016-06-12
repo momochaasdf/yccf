@@ -1,6 +1,8 @@
 
 package com.deying.core.service.user.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,5 +23,4 @@ public class DictServiceImpl extends GenericServiceImpl<ComDict, String> impleme
 	public void setDao(DictDao dao) {
 		super.setDao(dao);
 	}
-	
 }

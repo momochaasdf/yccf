@@ -1,0 +1,182 @@
+body,td,th {
+	font-family: 微软雅黑;
+	font-size: 12px;
+	margin:0;
+	padding:0;
+}
+body {
+	margin-top: 0px;
+}
+.qiehuanshopNoticeUl {
+	margin: 0;
+	padding: 0;
+}
+#shopNotice div {
+	margin: 5px 0px 5px 0px;
+	height: 25px;
+	line-height: 25px;
+	background: url(../../images/image_index/dottedLine.gif) repeat-x scroll
+		left center #FFFFFF;
+}
+.shop_messgae_top div{
+	cursor: pointer;
+}
+#shopNotice div span {
+	background: #FFF;
+}
+ul{
+padding:0;
+margin:0;
+list-style:none;
+}
+.dianjishuxing{
+	background: #FB8B03;
+	color: #FFF;
+}
+.shop_messgae_content_left {
+    float: left;
+    font-size: 12px;
+    height: 350px;
+    padding-top: 10px;
+    width: 554px;
+}
+
+.shop_messgae_content_left_content {
+    border-bottom: 1px dashed #000000;
+    height: 78px;
+    margin: 16px auto;
+    width: 498px;
+	padding-bottom:15px;
+}
+
+.shop_tuijian_content_left {
+    height: 288px;
+    width: 900px;
+	margin-top:10px;
+}
+
+.food_shop {
+    float: left;
+    height: 144px;
+    margin-left: 8px;
+    width: 168px;
+}
+
+.shop_tuijian_content_font {
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+}
+.food_shop img {
+    height: 112px;
+    width: 143px;
+}
+.price_red_right_b {
+    color: #FF0000;
+    float: right;
+    font-weight: bold;
+}
+.linh_16 {
+    font-weight: bold;
+    line-height: 16px;
+    margin-bottom: 12px;
+}
+.linh_24 {
+    line-height: 24px;
+}
+#map_container {
+    border: 1px solid #EEE;
+    height: 325px;
+    width: 315px;
+}
+.foodList div{
+	height: 20px;
+	line-height: 20px;
+}
+.foodListPicture{
+	background:#EFEFEF;
+}
+.foodListPictures{
+	background: #D16E2A;
+	color: #FFF;
+}
+.foodListPicture:hover{
+	cursor: pointer;
+	background: #D16E2A;
+	color: #FFF;
+}
+
+#orderDish {
+	width: 167px; 
+	height:48px; 
+	background:url(../../images/diet/shopIndex/button_2.jpg) no-repeat; 
+	margin-top:30px; 
+	line-height:48px; 
+	text-align:center;
+	cursor:pointer;
+	font-size:14px; 
+	color:#fff;
+	float: left;
+}
+#orderDish_ {
+	width: 167px; 
+	height:48px; 
+	background:url(../../images/diet/shopIndex/order_dish_on.png) no-repeat; 
+	margin-top:30px; 
+	line-height:48px; 
+	text-align:center;
+	cursor:pointer;
+	font-size:14px; 
+	color:#000;
+	float: left;
+}
+
+#orderDish:hover {
+	background-image:url(../../images/diet/shopIndex/order_dish_on.png); 
+	color: #000;
+}
+#collectShop {
+	width: 72px; 
+	height:36px; 
+	background:url(../../images/thirdVersion/guanzhu.png) no-repeat scroll -146px 0; 
+	margin-top:30px; 
+	line-height:36px; 
+	text-align:center;
+	cursor:pointer;
+	font-size:14px; 
+	float: right;
+}
+
+#collectShop:hover {
+	background-position:0px 0px;
+}
+.slideBox {position:relative;}
+.slideBox .hd{ height:15px; overflow:hidden; position:absolute; z-index:1; left: 225px;top: 211px;} 
+.slideBox .hd ul{ overflow:hidden; zoom:1; float:left;  } 
+.slideBox .hd ul li{ float:left; margin-right:5px;  width:15px; height:15px; line-height:14px; text-align:center; background:#fff; cursor:pointer; } 
+.slideBox .hd ul li.on{ background:#f00; color:#fff; } 
+.slideBox .bd{ position:relative; height:100%; z-index:0;   }
+
+
+
+
+
+
+	
+
+        /* 图片按钮(上)滚动 - 公用类 */ 
+        .picBtnTop{ width:1190px;height:100%; border:1px solid #ccc; padding:6px 5px 0px 5px;  position:relative;  overflow:hidden;  zoom:1;   } 
+        .picBtnTop .hd{ width:235px;  height:100%;float: left;} 
+        .picBtnTop .hd ul li{ width:228px; padding:0  5px 5px 0; line-height:0px;  } 
+        .picBtnTop .hd ul li img{ width:85px; height:60px; border:4px solid #ddd; cursor:pointer;  } 
+        .picBtnTop .hd ul li.on{ background:url("../../images/thirdVersion/icoRight.gif") no-repeat;background-position: right; } 
+        .picBtnTop .hd ul li.on img{ border-color:#f60;  } 
+        .picBtnTop .bd{ width:954px; height:410px;* height:418px; position:relative; float: left; } 
+        .picBtnTop .bd img{ width:954px; height:418px;  } 
+        .picBtnTop .bd li{ position:relative; zoom:1; } 
+        .picBtnTop .bd li .pic{ position:relative; z-index:0; line-height:0px;  } 
+        .picBtnTop .bd li .bg{ width:954px; height:30px; position:absolute; left:0; bottom:0; z-index:1;  background:#000; filter:alpha(opacity=60);opacity:0.6;    } 
+        .picBtnTop .bd li .title{ width:954px; height:30px; line-height:30px; left:0; bottom:0;   position:absolute; z-index:2;  } 
+        .picBtnTop .bd li .title a{ color:#fff;  } 
+
+	

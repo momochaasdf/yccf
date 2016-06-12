@@ -1,0 +1,85 @@
+@CHARSET "UTF-8";
+
+body,td,th {
+	font-family: 微软雅黑;
+	font-size: 12px;
+}
+
+body {
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: #ECE9E2;
+	background-image: none;
+	background-origin: padding-box;
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: auto auto;
+	margin-bottom: 0;
+	margin-left: 0;
+	margin-right: 0;
+	margin-top: 0;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+}
+
+ul {
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	padding-bottom: 0;
+	padding-left: 0;
+	padding-right: 0;
+	padding-top: 0;
+}
+
+#main li {
+	cursor: pointer;
+	display: block;
+	float: left;
+	height: 50px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+.showpinglun a:link {
+	-moz-text-blink: none;
+	-moz-text-decoration-color: -moz-use-text-color;
+	-moz-text-decoration-line: none;
+	-moz-text-decoration-style: solid;
+	color: #FFFFFF;
+}
+
+.r_submitReplay {
+	width: 93px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	float: left;
+	margin-top: 8px;
+	background: url("../../images/images_index/buttonChange.png") no-repeat
+		scroll -99px -628px transparent;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-family: 黑体;
+}
+.r_submitReplay_hove {
+	width: 93px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	float: left;
+	margin-top: 8px;
+	background: url("../../images/images_index/buttonChange.png") no-repeat
+		scroll -99px -660px transparent;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-family: 黑体;
+	cursor: pointer;
+}
+
+.gg span {
+    background: url("../../images/diet/main/t_zuoxiang.png") no-repeat scroll 0 -99px transparent;
+    margin-left: 15px;
+}

@@ -1,0 +1,30 @@
+.ui-select {
+	position: relative;
+	float: left;
+	margin-right: 10px;
+	cursor: pointer;
+}
+.ui-sel-gray {
+	color:#C4C4C4;
+}
+.ui-select .ui-sel-title {
+	position: absolute;
+	margin-left:10px;
+	left: 0;
+	top: 0;
+}
+.ui-select .ui-select-panel {
+	background-color: #FFF;
+	position: absolute; 
+	z-index: 10000; 
+	border: 1px solid #B27040;
+	left: 0;
+	max-height: 300px;
+	overflow: auto;
+}
+.ui-select .ui-select-item {
+	padding: 3px 0 3px 10px;
+}
+.ui-select .ui-select-item:hover {
+	background-color: #B27040;
+}

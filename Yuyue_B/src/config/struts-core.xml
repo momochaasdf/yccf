@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="core.role" extends="struts" namespace="/core/role">
+		<action name="ComM_*" class="com.deying.core.action.RoleAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/role_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/role_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.RoleAction" method="{1}">
+			<result name="add">/WEB-INF/pages/core/role_add.jsp</result>
+			<result name="list">/WEB-INF/pages/core/role_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/role_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.RoleAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/core/role_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/core/role_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/role_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.RoleAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/role_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/role_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.RoleAction" method="{1}">
+			<result name="load">/WEB-INF/pages/core/role_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/role_load.jsp</result>
+		</action>
+	</package>
+	
+	<package name="core.role.json" extends="json" namespace="/core/role">
+		<action name="ComJ_*" class="com.deying.core.action.RoleAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+	
+	<package name="core.user" extends="struts" namespace="/core/user">
+		<action name="ComM_*" class="com.deying.core.action.UserAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/user_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/user_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.UserAction" method="{1}">
+			<result name="add">/WEB-INF/pages/core/user_add.jsp</result>
+			<result name="list">/WEB-INF/pages/core/user_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/user_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.UserAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/core/user_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/core/user_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/user_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.UserAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/user_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/user_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.UserAction" method="{1}">
+			<result name="load">/WEB-INF/pages/core/user_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/user_load.jsp</result>
+		</action>
+		<action name="changePwd" class="com.deying.core.action.UserAction" method="changePwd">
+			<result name="success">/WEB-INF/pages/core/user_change_pwd.jsp</result>
+			<result name="input">/WEB-INF/pages/core/user_change_pwd.jsp</result>
+		</action>
+		<action name="upPwd" class="com.deying.core.action.UserAction" method="upPwd">
+			<result name="success">/WEB-INF/pages/core/user_change_pwd.jsp</result>
+			<result name="input">/WEB-INF/pages/core/user_change_pwd.jsp</result>
+		</action>
+		<action name="resetPwd_*" class="com.deying.core.action.UserAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/user_reset_pwd.jsp</result>
+			<result name="reset">/WEB-INF/pages/core/user_reset_pwd.jsp</result>
+		</action>
+	</package>
+	<package name="core.user.json" extends="json" namespace="/core/user">
+		<action name="ComJ_*" class="com.deying.core.action.UserAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+	<package name="core.function" extends="struts" namespace="/core/function">
+		<action name="ComM_*" class="com.deying.core.action.FunctionAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/function_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/function_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.FunctionAction" method="{1}">
+			<result name="add">/WEB-INF/pages/core/function_add.jsp</result>
+			<result name="list">/WEB-INF/pages/core/function_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/function_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.FunctionAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/core/function_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/core/function_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/function_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.FunctionAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/function_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/function_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.FunctionAction" method="{1}">
+			<result name="load">/WEB-INF/pages/core/function_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/function_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.function.json" extends="json" namespace="/core/function">
+		<action name="ComJ_*" class="com.deying.core.action.FunctionAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+	
+	<package name="core.dict" extends="struts" namespace="/core/dict">
+		<action name="ComM_*" class="com.deying.core.action.DictAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/dict_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/dict_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.DictAction" method="{1}">
+			<result name="add">/WEB-INF/pages/core/dict_add.jsp</result>
+			<result name="list">/WEB-INF/pages/core/dict_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/dict_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.DictAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/core/dict_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/core/dict_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/dict_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.DictAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/dict_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/dict_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.DictAction" method="{1}">
+			<result name="load">/WEB-INF/pages/core/dict_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/dict_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.dict.json" extends="json" namespace="/core/dict">
+		<action name="ComJ_*" class="com.deying.core.action.DictAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+	<package name="ComUser.login" extends="struts" namespace="/">
+		<action name="login" class="com.deying.core.action.LoginAction" method="login">
+			<result name="success" type="redirect">/loginSuccess.jsp</result>
+			<result name="successIntegralShop" type="redirect">/loginSuccessIntegralShop.jsp</result>
+			<result name="input" type="redirect" >/cooperation_loadCooperationShop.action?msg=${msg}</result>
+		</action>
+		<action name="exit" class="com.deying.core.action.LoginAction" method="exit">
+			<result name="input" type="redirect" >/cooperation_loadCooperationShop.action?msg=${msg}</result>
+		</action>
+	</package>
+</struts>

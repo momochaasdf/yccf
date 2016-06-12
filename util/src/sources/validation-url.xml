@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<data_pool>  
+
+    <comment>frontend URL权限验证</comment>  
+    <data name="validation-url" >
+    	<list>
+    		<value>/diet/diet_subreply</value>
+    		<value>/diet/diet_reply4shop</value>
+    		<value>/diet/diet_collectShop</value>
+    		<value>/diet/diet_newsCommnet</value>
+    		<value>/user/User_*</value>
+    		<value>/order/order_*</value>
+    		<value>/jorder/order_orderComment</value>
+    		<value>/coupon/coupon_docommitSuc</value>
+    		<value>/coupon/coupon_couponOrder</value>
+    		<value>/jcoupon/coupon_doComment</value>
+    		<value>/jcoupon/coupon_buyOrNoBur</value>
+    		<value>/outMeal/OutMeal_myOutMealCart</value>
+    		<value>/uploadmenu/uploadmenu_*</value>
+    		<value>/gourmetrecipes/Gourmetrecipes_saveFindCate</value>
+    		<value>/jgourmetrecipes/Gourmetrecipes_collect</value>
+    		<value>/jgourmetrecipes/Gourmetrecipes_comment</value>
+    		<value>/kcredit/kcredit_*</value>
+    		<value>/user/Account_accountSafe</value>
+    	</list>
+    </data>
+    
+</data_pool> 

@@ -1,0 +1,22 @@
+#
+#Thu Feb 28 11:16:59 CST 2013
+genBasicCompId=false
+sessionFactoryName=
+profile=
+daoSFId=
+version=3.2
+jndiPath=
+detectM2M=false
+reStrategyClass=
+springDaoFile=
+useJavaTypes=true
+keyGenerator=native
+libInstallFolder=WebRoot/WEB-INF/lib
+addLibs2Project=true
+genVersionTag=false
+sessionFactoryId=
+basePersistenceClass=
+reSettingsFile=/Yuyue_B/hibernate.reveng.xml
+configFile=/deying/src/hibernate.cfg.xml
+createConfigFile=true
+addLibs2Classpath=true

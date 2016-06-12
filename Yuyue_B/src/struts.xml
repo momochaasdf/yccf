@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.i18n.encoding" value="utf-8"></constant>
+    <constant name="struts.multipart.maxSize" value="1000000000" />
+	<include file="config/struts-base-default.xml" />
+	<include file="config/struts-core.xml" />
+	<include file="config/struts-checkCode.xml" />
+	<include file="config/struts-cooperationShop.xml" />
+	<include file="config/struts-test.xml" />
+	<include file="config/struts-customer.xml" />
+	<include file="config/struts-notice.xml" />
+	<include file="config/struts-backup.xml" />
+	<include file="config/struts-holiday.xml" />
+</struts>

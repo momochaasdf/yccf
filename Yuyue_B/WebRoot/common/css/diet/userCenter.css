@@ -1,0 +1,532 @@
+/*
+	用户中心的订单样式开始
+*/
+#orderContent ul li {
+	float: left;
+	width: 100px;
+	height: 50px;
+	line-height: 50px;
+	text-align: center;
+}
+
+#orderContent ul li ul li {
+	width: 30px;
+	float: left;
+	line-height: 50px;
+}
+
+#order_title li {
+	float: left;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	text-align: center;
+}
+
+.comment {
+	display: none;
+	border: 1px solid #EDD28B;
+	border-radius: 10px 10px 10px 10px;
+	box-shadow: none;
+	margin: 15px 10px 10px 10px;
+	position: relative;
+	background: none no-repeat scroll 0 0 #FFFDEE;
+}
+
+.pos_stat {
+	position: static;
+}
+
+.comment .comment_pb-t {
+	background: url("../../images/fuser/icon-pj2013.png") no-repeat scroll
+		-43px 0 transparent;
+	font-size: 0;
+	height: 17px;
+	left: 590px;
+	line-height: 0;
+	overflow: hidden;
+	top: -17px;
+	width: 23px;
+}
+
+.comment_pb-t {
+	left: 10px;
+	top: -19px;
+}
+
+.comment_pb {
+	position: absolute;
+}
+
+#orderTitle li {
+	font-size: 14px;
+	float: left;
+	margin-right: 5px;
+	width: 137px;
+	height: 30px;
+	border-bottom: 3px solid #FA8C00;
+	text-align: center;
+	vertical-align: bottom;
+	line-height: 45px;
+}
+
+#orderItem ul {
+	height: 60px;
+	list-style: none;
+	border-bottom: 1px solid white;
+}
+
+#orderItem li {
+	height: 60px;
+	float: left;
+	width: 137px;
+	margin-right: 5px;
+	text-align: center;
+	vertical-align: bottom;
+	line-height: 60px;
+}
+
+.da {
+	text-decoration: none;
+	display: block;
+	background: url("../../images/images_index/amount-bg.png") 0 0 no-repeat
+		;
+	height: 13px;
+	width: 18px;
+	float: left;
+	margin-top: 3px;
+}
+
+.ea {
+	text-decoration: none;
+	display: block;
+	background: url("../../images/images_index/amount-bg.png") 0 -13px
+		no-repeat;
+	height: 13px;
+	width: 18px;
+	float: left;
+	margin-top: 3px;
+}
+
+.goToPay {
+	background: url("../../images/images_index/to_order_button.jpg")
+		no-repeat;
+	text-align: center;
+	line-height: 39px;
+	font-size: 18px;
+	color: #FFFFFF;
+	display: block;
+	height: 39px;
+	width: 159px;
+}
+
+.youLike {
+	width: 790px;
+	margin-top: 10px;
+}
+
+.oneLikeShop {
+	float: left;
+	height: 140px;
+	width: 148px;
+	margin: 0px 0px 10px 10px;
+}
+
+/*
+	用户中心的订单样式结束
+*/
+.main {
+	height: auto;
+	margin: 0 auto;
+	width: 980px;
+}
+
+.user_center_nav {
+	border: 1px solid #CCC;
+	float: left;
+	height: auto;
+	width: 158px;
+}
+
+.main_right {
+	float: left;
+	height: 648px;
+	margin-left: 8px;
+	width: 810px;
+}
+
+.user_center_nav_title {
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: #E76706;
+	background-image: none;
+	background-origin: padding-box;
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: auto auto;
+	border-bottom-color: #833E07;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	color: #FFFFFF;
+	height: 33px;
+	line-height: 33px;
+}
+
+.user_center_nav_nr_kj {
+	
+}
+
+.user_center_nav_nr_title {
+	border-bottom-color: #CCCCCC;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	height: 30px;
+}
+
+.left_nr {
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: #FFFFFF;
+	background-image: none;
+	background-origin: padding-box;
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: auto auto;
+	border-bottom-color: #CCCCCC;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+.left_nr ul {
+	margin-left: 25px;
+}
+
+.left_nr li {
+	line-height: 24px;
+}
+
+.main_right_1 {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: #FFF4E2;
+	background-image: none;
+	background-origin: padding-box;
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: auto auto;
+	border-bottom-color: #CCCCCC;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-image-outset: 0 0 0 0;
+	border-image-repeat: stretch stretch;
+	border-image-slice: 100% 100% 100% 100%;
+	border-image-source: none;
+	border-image-width: 1 1 1 1;
+	border-left-color-ltr-source: physical;
+	border-left-color-rtl-source: physical;
+	border-left-color-value: #CCCCCC;
+	border-left-style-ltr-source: physical;
+	border-left-style-rtl-source: physical;
+	border-left-style-value: solid;
+	border-left-width-ltr-source: physical;
+	border-left-width-rtl-source: physical;
+	border-left-width-value: 1px;
+	border-right-color-ltr-source: physical;
+	border-right-color-rtl-source: physical;
+	border-right-color-value: #CCCCCC;
+	border-right-style-ltr-source: physical;
+	border-right-style-rtl-source: physical;
+	border-right-style-value: solid;
+	border-right-width-ltr-source: physical;
+	border-right-width-rtl-source: physical;
+	border-right-width-value: 1px;
+	border-top-color: #CCCCCC;
+	border-top-style: solid;
+	border-top-width: 1px;
+	height: 194px;
+	padding-bottom: 10px;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	width: 768px;
+}
+
+.main_right_kj_left {
+	float: left;
+	height: 190px;
+	text-align: center;
+	width: 110px;
+}
+
+.main_right_kj_right {
+	float: left;
+	height: 190px;
+	padding-left: 20px;
+	width: 630px;
+}
+
+.main_right_kj_right_xx {
+	-moz-border-bottom-colors: none;
+	-moz-border-left-colors: none;
+	-moz-border-right-colors: none;
+	-moz-border-top-colors: none;
+	background-attachment: scroll;
+	background-clip: border-box;
+	background-color: #FEF9F3;
+	background-image: none;
+	background-origin: padding-box;
+	background-position: 0 0;
+	background-repeat: repeat;
+	background-size: auto auto;
+	border-bottom-color: #CCCCCC;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-image-outset: 0 0 0 0;
+	border-image-repeat: stretch stretch;
+	border-image-slice: 100% 100% 100% 100%;
+	border-image-source: none;
+	border-image-width: 1 1 1 1;
+	border-left-color-ltr-source: physical;
+	border-left-color-rtl-source: physical;
+	border-left-color-value: #CCCCCC;
+	border-left-style-ltr-source: physical;
+	border-left-style-rtl-source: physical;
+	border-left-style-value: solid;
+	border-left-width-ltr-source: physical;
+	border-left-width-rtl-source: physical;
+	border-left-width-value: 1px;
+	border-right-color-ltr-source: physical;
+	border-right-color-rtl-source: physical;
+	border-right-color-value: #CCCCCC;
+	border-right-style-ltr-source: physical;
+	border-right-style-rtl-source: physical;
+	border-right-style-value: solid;
+	border-right-width-ltr-source: physical;
+	border-right-width-rtl-source: physical;
+	border-right-width-value: 1px;
+	border-top-color: #CCCCCC;
+	border-top-style: solid;
+	border-top-width: 1px;
+	height: 124px;
+	line-height: 28px;
+	padding-bottom: 0;
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-top: 10px;
+	width: 442px;
+}
+
+.border_bottom_1_soli_yelowe {
+	border-bottom-color: #FED899;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+}
+
+.main_right_2 {
+	border-bottom: 1px solid #CCCCCC;
+	border-top: 1px solid #CCCCCC;
+	margin-top: 10px;
+}
+
+.main_right_2_title {
+	border-bottom-color: #FA8D00;
+	border-bottom-style: solid;
+	border-bottom-width: 3px;
+	height: 30px;
+	line-height: 30px;
+}
+
+.kuai {
+	float: left;
+	height: 30px;
+	text-align: center;
+	width: 68px;
+}
+
+.kuai_nr {
+	
+}
+
+.userCenter_ad {
+	margin: 10px auto;
+	width: 788px;
+}
+
+/*用户中心基本信息开始*/
+.user_center_right {
+	float: left;
+	background-color: #FFFFFF;
+	border: 1px solid #CCC;
+	height: auto;
+	margin-left: 9px;
+	width: 809px;
+}
+
+.main_right_up_in_in_1_1 {
+	height: 31px;
+	padding-left: 29px;
+	padding-top: 8px;
+	border-bottom: 1px solid #d37130
+}
+
+.main_right_up_in_in_1 {
+	height: 34px;
+	line-height:34px;
+	padding-left: 20px;
+	border-bottom: 1px solid #d37130;
+	font-size: 14px;
+	color: #CC0000;
+	font-weight: bold;
+}
+
+.current_select_title {
+	width: 93px;
+	height: 30px;
+	float: left;
+	border-right: 1px solid #d1702c;
+	border-left: 1px solid #d1702c;
+	border-top: 2px solid #d1702c;
+	line-height: 29px;
+	text-align: center;
+	color: #656565;
+	margin-right: 3px;
+	background-color: #fdfdfd;
+}
+
+.not_select_title {
+	width: 93px;
+	height: 30px;
+	float: left;
+	line-height: 29px;
+	text-align: center;
+	color: #656565;
+	margin-right: 3px;
+	background-color: #fdfdfd;
+	cursor: pointer;
+}
+
+#faverateFoods li {
+	height: 30px;
+	width: 145px;
+	float: left;
+}
+
+#user_detail_info tr {
+	margin-top: 10px;
+}
+
+/* 点好了按钮样式 */
+.userInfo_save_common {
+	width: 91px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	color: #FFFFFF;
+	font-size: 14px;
+	background: url("../../images/images_index/buttonChange.png") no-repeat
+		scroll -99px -628px transparent;
+}
+
+.userInfo_save_hove {
+	width: 90px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	background: url("../../images/images_index/buttonChange.png") no-repeat
+		scroll -99px -660px transparent;
+	color: #FFFFFF;
+	font-size: 14px;
+}
+
+.btn_w116 {
+	background: url("../../images/image_index/aui_w116.png") no-repeat
+		scroll 0 -137px transparent;
+	border: 0 none;
+	color: #333333;
+	cursor: pointer;
+	font-size: 12px;
+	height: 30px;
+	padding: 0 0 3px;
+	text-align: center;
+	width: 116px;
+}
+
+.btn_w116:hover {
+	background-position: 0 -185px;
+}
+
+.btn_w116_diseable {
+	background-position: 0 -233px;
+}
+
+/*用户中心基本信息结束*/ /*用户常用地址信息开始*/
+.addressTitle {
+	height: 30px;
+	border-bottom: 1px solid #CCC;
+}
+
+.addressBody {
+	margin-left: 10px;
+}
+
+.addressOne {
+	border: 1px solid #CCC;
+	margin-bottom: 30px;
+}
+
+.onepro {
+	line-height: 25px;
+}
+
+
+.onePro_title {
+	display: block;
+	float: left;
+	width: 60px;
+	text-align: right;
+}
+
+.onePro_content {
+	display: block;
+	float: left;
+	width: 350px;
+}
+
+.address_index {
+	font-weight: bold;
+	font-size: 14px;
+	float: left;
+	width: 100px;
+	height: 30px;
+	vertical-align: middle;
+	line-height: 30px;
+}
+
+.address_opterate {
+	font-weight: bold;
+	float: right;
+	width: 200px;
+	height: 30px;
+	vertical-align: middle;
+	line-height: 30px;
+	font-weight: normal;
+	text-align: right;
+}
+
+.operateButton {
+	margin-bottom:10px;
+	height: 32px;
+	line-height: 32px;
+	text-align: center;
+	width: 92px;
+	cursor: pointer;
+	color: white;
+	font-weight: bold;
+	background: url("../../images/images_index/buttonChange.png") no-repeat
+		scroll -99px -628px transparent; ");
+}
+/*用户常用地址信息结束*/

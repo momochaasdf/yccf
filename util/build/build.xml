@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="${project.name}" basedir="." default="release">
+
+	<property file="../../util/build/build.properties" />
+	
+	<!-- import template -->
+	<import file="./build-template.xml" />
+	
+	<target name="self" depends="copyRemain" >
+		<delete dir="${build.classes.dir}/sources" includes="url.properties,jdbc.properties" />
+		<copy todir="${build.classes.dir}/sources" encoding="${build.encoding}">
+			<fileset dir="${conf.dir}"  includes="url.properties,jdbc.properties" />
+		</copy>	
+	</target>	
+
+</project>

@@ -1,0 +1,142 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="z" uri="/z-tags"%>
+<%@ taglib prefix="d" uri="/deying-tags"%>
+<%
+	String path = request.getContextPath();
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+	<head>
+	<link rel="stylesheet" href="<%=path%>/common/css/shopBase.css"
+			type="text/css" />
+	<link rel="stylesheet" href="<%=path%>/common/css/paging.css"
+	type="text/css" />
+	<script type="text/javascript">
+	function doDel(id,name) {
+		$.messager.confirm('删除确认','你确认删除用户"' + name + '"吗?', function(bt){
+			$("#id").val(id);
+			if (bt){doAction('userForm','ComD_del','')};
+		});
+	}
+	function confRole(userId,name) {
+		$('#roletree').tree({
+			animate:true,
+			checkbox: true,
+			url: jsCtx+'/core/role/ComJ_loadRoleAll.do?userId='+userId+'&s='+Math.random()
+		});
+		$('#roleTree').window({'title':'给用户"' + name + '"配置角色'});
+		$('#roleTree').window('open');
+		$('#userId').val(userId);
+	}
+	$(document).ready(function(){
+		$("input.btOk").click(function(){
+			var nodes = $('#roleTree').tree('getChecked');
+			var s = '';
+			for(var i=0; i<nodes.length; i++){
+				if (s == undefined)continue;
+				if (s != '') s += ',';
+				s += nodes[i].id;
+			}
+			$.ajax({
+				url: '<%=request.getContextPath()%>/core/user/ComJ_saveUserRole.do', 
+				data: {userId:$("#userId").val(), roles: s},
+				dataType:'json',
+				type: 'post',
+				success: function(data){
+					var result = eval(data);
+					$('#roleTree').window('close');
+					$.messager.alert("提示", "用户角色维护成功");
+				},
+				error:function(a,b,c){
+					$.messager.alert("提示", "用户角色维护失败");
+				}
+			});
+		});
+		if( "${msg}" != "" ){
+	       $.colorbox.alert("${msg}");
+	     }
+	});
+	
+	</script>
+	</head>
+	<body>
+		<div class="right">
+			<div class="o-mt">
+				<h2 style="margin-top: 0;">
+					<a style="color:#cc0000" href="<%=path %>/core/user/ComM_list.do">用户管理</a>
+				</h2>
+			</div>
+		</div>
+		<form action="#" method="post" id="userForm" style="clear: both;">
+		<fieldset class="navSearch">
+			<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
+			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
+				<tr>
+					<th style="width: 20%">登录账号</th>
+					<td style="width: 30%"><input type="text" name="info.loginId" value="${inUser.loginId}"/></td>
+					<th style="width: 20%">姓名</th>
+					<td style="width: 30%"><input type="text" name="info.userName" value="${inUser.userName}"/></td>
+				</tr><tr>
+					<th style="width: 20%">状态</th>
+					<td style="width: 30%"><s:radio list="#{'0':'可用','9':'禁用'}" name="info.status"/></td>
+					<th style="width: 20%"></th>
+					<td style="width: 30%"></td>
+				</tr>
+			</table>
+		</fieldset>
+		<div class="msg"><s:actionmessage/><s:fielderror/><s:actionerror/></div>
+		<div class="navButton">
+		<input type="button" value="检索" class="btSearch" onclick="doAction('userForm','ComM_list','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
+		<input type="button" value="新增" class="btAdd" onclick="doAction('userForm','ComC_add','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
+		</div>
+		<input type="hidden" name="_ns" id="_ns" value="/core/user/"/>
+		<input type="hidden" name="id" id="id"/>
+		<input type="hidden" name=_query id="_query" value="_query"/>
+		</form>
+		<table cellpadding="0" cellspacing="0" align="center" class="listTable">
+			<thead>
+			<tr>
+				<th style="width: 5%">序号</th>
+				<th>登录账号</th>
+				<th>姓名</th>
+				<th>状态</th>
+				<th style="width: 20%">操作</th>
+			</tr>
+			</thead>
+			<tbody>
+			<s:iterator value="dataPage.data" status="st">
+			<tr <s:if test="!#st.odd">class="trodd"</s:if>>
+				<td align="center"><s:property value="%{dataPage.start+#st.index + 1}"/></td>
+				<td><s:property value="loginId"/></td>
+				<td><s:property value="userName"/></td>
+				<td align="center"><s:if test="status==0">可用</s:if><s:elseif test="status==9">禁用</s:elseif><s:else>&nbsp;</s:else></td>
+				<td align="center">
+					
+					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?id=<s:property value="userId"/>">修改</a>&nbsp;
+					<s:if test="userId!=#session['_COM_FRAMEWORK_USER_KEY'].userId"><a href="javascript:doDel('<s:property value="userId"/>','<s:property value="userName"/>');">删除</a></s:if>&nbsp;
+					<a href="<%=request.getContextPath()%>/core/user/ComR_load.do?id=<s:property value="userId"/>">查看</a>&nbsp;
+					<a href="<%=request.getContextPath()%>/core/user/ComU_reset.do?id=<s:property value="userId"/>">重置</a>&nbsp;
+					<a href="javascript:confRole('<s:property value="userId"/>','<s:property value="userName"/>');">关联角色</a>
+				</td>
+			</tr>
+			</s:iterator>
+			</tbody>
+		</table>
+		<d:pages currentPage="%{currentPage}" showPageNumber="3"
+				totalPage="%{totalPage}" url="ComM_list.do" cssClass="pagnation">
+				<s:param name="info.loginId">${info.loginId}</s:param>
+				<s:param name="info.userName">${info.userName}</s:param>
+				<s:param name="info.status">${info.status}</s:param>
+		</d:pages>
+		<div id="roleTree" class="easyui-window" closed="true" modal="true" resizable="false" collapsible="false" minimizable="false" maximizable="false" title="配置角色" style="width:300px;height:400px;">
+			<table style="height: 95%; width: 95%">
+				<tr><td height="90%" valign="top"><ul id="roletree"></ul></td> </tr>
+				<tr><td height="10%" align="center">
+				<input type="button" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" class="btOk" value="确定" />
+				</td> </tr>
+			</table>
+			<input type="hidden" name="userId" id="userId"/>
+		</div>
+	</body>
+</html>

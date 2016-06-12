@@ -1,0 +1,171 @@
+.qo {
+    bottom: 14px;
+    left: 14px;
+    position: absolute;
+    z-index: 200;
+    height: 50px;
+    width: 50px;
+}
+.mI {
+    bottom: -6px;
+    cursor: pointer;
+    height: 52px;
+    left: -9px;
+    outline: 0 none;
+    position: absolute;
+    width: 52px;
+}
+.mI:link {
+    bottom: -6px;
+    cursor: pointer;
+    height: 52px;
+    left: -9px;
+    outline: 0 none;
+    position: absolute;
+    width: 52px;
+}
+.mI:visited{}
+.ps {
+    background-color: rgba(248,141,1, 0.7);
+    border-radius: 32px 32px 32px 32px;
+    bottom: 9px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    height: 32px;
+    left: 9px;
+    position: absolute;
+    width: 32px;
+    z-index: 20;
+}
+.mI:hover .ps {
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+.mI:hover .lc, .lc {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    border-color: #FFFFFF;
+    border-image: none;
+    border-radius: 0 0 32px 32px;
+    border-style: solid;
+    border-width: 0 2px 2px;
+    bottom: 6px;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.5);
+    height: 30px;
+    left: 9px;
+    width: 32px;
+}
+.mI:active{}
+
+
+
+.start_hove {
+    bottom: 6px;
+    height: 32px;
+  	left: 9px;
+    position: absolute;
+    width: 32px;
+    z-index: 20;
+	background: url("../../images/image_index/switchshop_global.png") no-repeat scroll -3px -81px transparent;
+}
+.qo .nui-ico-option, 
+.qo .nui-ico-dockMax, 
+.qo .nui-ico-dockMin, 
+.qo .nui-ico-uArr, 
+.qo .nui-ico-dArr, 
+.qo .nui-ico-lArr, 
+.qo .nui-ico-rArr,
+.ua-ie .ps, 
+.ua-ie8 .ps, 
+.ua-ie7 .ps, 
+.ua-ie6 .ps {
+    background: url("../../images/image_index/switchshop_global.png") repeat scroll 0 0 transparent;
+}
+.nm {
+    background-color: #8CDE90;
+    border: 1px solid #8CDE90;
+    font-size: 0;
+    height: 4px;
+    left: 9px;
+    line-height: 0;
+    position: absolute;
+    top: 9px;
+    width: 4px;
+}
+.kY {
+    background-color: #F6CA60;
+    border-color: #F6CA60;
+    left: 17px;
+}
+.kZ {
+    background: none repeat scroll 0 0 transparent !important;
+    border-color: #5FBFEA;
+    top: 17px;
+}
+.la {
+    background-color: #E89C9F;
+    border-color: #E89C9F;
+    left: 17px;
+    top: 17px;
+}
+.oN {
+    background-color: rgba(254,247,237, 0.8);
+    border: 2px solid #FFFFFF;
+    border-radius: 5px 5px 5px 5px;
+    bottom: 30px;
+    left: -2px;
+    position: absolute;
+    z-index: 15;
+    height: 400px;
+}
+.ua-ie .oN {
+/* background-image:url(../../images/image_index/switchshop_bg.png);
+BACKGROUND-REPEAT: repeat */
+}
+.le {
+    overflow: hidden;
+    position: relative;
+}
+.hg {
+    border-bottom: 0 none;
+    border-bottom-left-radius: 0;
+    width: 189px;
+}
+.jA {
+    border-bottom: 2px solid #FFFFFF;
+    font-size: 0;
+    height: 0;
+    line-height: 0;
+    position: absolute;
+}
+.jB {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+    height: 100%;
+    position: absolute;
+    width: 100%;
+}
+.hg .hh {
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.3);
+    height: 5px;
+    left: 0;
+    top: -2px;
+}
+.hg .hi {
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+    height: 101%;
+    left: -2px;
+    top: 0;
+    width: 5px;
+}
+.hg .hj {
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.3);
+    right: -2px;
+    top: 0;
+    width: 5px;
+}
+.hg .jA {
+    bottom: 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    right: 0;
+    width: 157px;
+}

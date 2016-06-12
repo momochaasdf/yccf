@@ -20,6 +20,7 @@ public abstract class BaseComUser  implements Serializable {
 	public static String REF = "ComUser";
 	public static String PROP_STATUS = "status";
 	public static String PROP_CRT_TIME = "crtTime";
+	public static String PROP_COMPANY_ID = "companyId";
 	public static String PROP_UPD_UID = "updUid";
 	public static String PROP_LOGIN_ID = "loginId";
 	public static String PROP_PASSWORD = "password";
@@ -54,6 +55,7 @@ public abstract class BaseComUser  implements Serializable {
 	// fields
 	private java.lang.String loginId;
 	private java.lang.String userName;
+	private java.lang.String companyId;
 	private java.lang.String password;
 	private java.lang.String status;
 	private java.lang.String crtUid;
@@ -120,6 +122,14 @@ public abstract class BaseComUser  implements Serializable {
 	}
 
 
+
+	public java.lang.String getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(java.lang.String companyId) {
+		this.companyId = companyId;
+	}
 
 	/**
 	 * Return the value associated with the column: PASSWORD
