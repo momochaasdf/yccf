@@ -99,7 +99,7 @@
 					onfocus="WdatePicker({doubleCalendar:true,dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
 			<tr>
-				<th>电话号码</th>
+				<th>联系电话</th>
 				<td><input type="text" name="customer.telephone"
 					value="${customer.telephone}" /></td>
 			</tr>

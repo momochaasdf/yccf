@@ -79,7 +79,7 @@
 							name="info.cardId" value="${info.cardId}" /></td>
 					</tr>
 					<tr>
-						<th style="width: 20%">手机号码</th>
+						<th style="width: 20%">联系电话</th>
 						<td style="width: 30%"><input type="text"
 							name="info.telephone" value="${info.telephone}" /></td>
 						<th style="width: 20%"></th>
@@ -109,11 +109,12 @@
 			<table cellspacing="0" class="table_list" style="width: 100%">
 				<tr style="background: none" class="table_tr_title title_qingse">
 					<td style="border-left: 2px solid #F5F5F5; width: 5%">序号</td>
-					<th>名称</th>
-					<th>头像</th>
-					<th>手机号</th>
-					<th>证件号码</th>
-					<th>住址</th>
+					<td>名称</td>
+					<td>头像</td>
+					<td>联系电话</td>
+					<td>证件号码</td>
+					<td>所属单位</td>
+					<td>住址</td>
 					<td style="width: 20%">操作</td>
 				</tr>
 				<s:iterator value="dataPage.data" status="st">
@@ -128,6 +129,7 @@
 							src='<s:property value="picUrl"/>'></img>&nbsp;</td>
 						<td><s:property value="telephone" />&nbsp;</td>
 						<td><s:property value="cardId" />&nbsp;</td>
+						<td><s:property value="industry" />&nbsp;</td>
 						<td><s:property value="address" />&nbsp;</td>
 						<td align="center"><a
 							href="<%=request.getContextPath()%>/customer/loan/edit.do?id=<s:property value="customerId"/>">修改</a>
@@ -143,8 +145,9 @@
 		<div>
 			<d:pages currentPage="%{currentPage}" showPageNumber="3"
 				totalPage="%{totalPage}" url="list.do" cssClass="pagnation">
-				<s:param name="info.title">${info.title}</s:param>
-				<s:param name="info.status">${info.status}</s:param>
+				<s:param name="info.customerName">${info.customerName}</s:param>
+				<s:param name="info.cardId">${info.cardId}</s:param>
+				<s:param name="info.telephone">${info.telephone}</s:param>
 			</d:pages>
 		</div>
 	</div>

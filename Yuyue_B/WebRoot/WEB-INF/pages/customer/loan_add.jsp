@@ -52,19 +52,19 @@
 					value="${customer.customerName}" /></td>
 			</tr>
 			<tr>
-				<th>所属单位</th>
-				<td><input type="text" name="customer.industry"
-					value="${customer.industry}" /></td>
-			</tr>
-			<tr>
 				<th>证件号码</th>
 				<td><input type="text" name="customer.cardId"
 					value="${customer.cardId}" /></td>
 			</tr>
 			<tr>
-				<th>电话号码</th>
+				<th>联系电话</th>
 				<td><input type="text" name="customer.telephone"
 					value="${customer.telephone}" /></td>
+			</tr>
+			<tr>
+				<th>所属单位</th>
+				<td><input type="text" name="customer.industry"
+					value="${customer.industry}" /></td>
 			</tr>
 			<tr>
 				<th>住址</th>

@@ -14,9 +14,9 @@
 	<div class="right">
 		<div class="o-mt">
 			<h2 style="margin-top: 0;">
-				<a href="<%=path%>/customer/loan/list.do"
-					style="color: #cc0000">借款客户管理</a> &nbsp;&gt;&gt;&nbsp; <a
-					style="color: #cc0000" href="javascript:void(0);">借款客户详情</a>
+				<a href="<%=path%>/customer/loan/list.do" style="color: #cc0000">借款客户管理</a>
+				&nbsp;&gt;&gt;&nbsp; <a style="color: #cc0000"
+					href="javascript:void(0);">借款客户详情</a>
 			</h2>
 		</div>
 	</div>
@@ -38,19 +38,19 @@
 					value="${customer.customerName}" readonly="readonly" /></td>
 			</tr>
 			<tr>
-				<th>所属单位</th>
-				<td><input type="text" name="customer.industry"
-					value="${customer.industry}" readonly="readonly" /></td>
-			</tr>
-			<tr>
 				<th>证件号码</th>
 				<td><input type="text" name="customer.cardId"
 					value="${customer.cardId}" readonly="readonly" /></td>
 			</tr>
 			<tr>
-				<th>电话号码</th>
+				<th>联系电话</th>
 				<td><input type="text" name="customer.telephone"
 					value="${customer.telephone}" readonly="readonly" /></td>
+			</tr>
+			<tr>
+				<th>所属单位</th>
+				<td><input type="text" name="customer.industry"
+					value="${customer.industry}" readonly="readonly" /></td>
 			</tr>
 			<tr>
 				<th>住址</th>
@@ -58,8 +58,9 @@
 					value="${customer.address}" readonly="readonly" /></td>
 			</tr>
 			<tr>
-				<th style="height:40px;">头像</th>
-				<td style="height:40px;"><img src="${customer.picUrl}" width="40px" height="40px"/></td>
+				<th style="height: 40px;">头像</th>
+				<td style="height: 40px;"><img src="${customer.picUrl}"
+					width="40px" height="40px" /></td>
 			</tr>
 		</table>
 		<div class="navButton">

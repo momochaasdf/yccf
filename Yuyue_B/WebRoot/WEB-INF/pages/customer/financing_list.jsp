@@ -10,11 +10,12 @@
 <html>
 <head>
 <link rel="stylesheet" href="<%=path%>/common/css/tablelist_new.css"
-		type="text/css" />
-	<link rel="stylesheet" href="<%=path%>/common/css/paging.css"
 	type="text/css" />
-	<link rel="stylesheet" href="<%=path%>/common/css/shopBase.css" type="text/css" />
-	
+<link rel="stylesheet" href="<%=path%>/common/css/paging.css"
+	type="text/css" />
+<link rel="stylesheet" href="<%=path%>/common/css/shopBase.css"
+	type="text/css" />
+
 <script type="text/javascript">
 	function doDel(id, name) {
 		$.messager.confirm('删除确认', '你确认删除吗?', function(bt) {
@@ -59,9 +60,9 @@
 	<div class='right'>
 		<div class="o-mt">
 			<h2 style="margin-top: 0;">
-				<a href="javascript:void(0);" style="color: #cc0000">借款客户管理</a>&nbsp;>>&nbsp;
+				<a href="javascript:void(0);" style="color: #cc0000">理财客户管理</a>&nbsp;>>&nbsp;
 				<a style="color: #cc0000"
-					href="<%=path%>/customer/financing/list.do">借款客户列表</a>
+					href="<%=path%>/customer/financing/list.do">理财客户列表</a>
 			</h2>
 		</div>
 		<form action="#" method="post" id="customerForm" style="clear: both;">
@@ -75,14 +76,6 @@
 						<th style="width: 20%">姓名</th>
 						<td style="width: 30%"><input type="text"
 							name="info.customerName" value="${info.customerName}" /></td>
-						<th style="width: 20%">身份证号</th>
-						<td style="width: 30%"><input type="text" name="info.cardId"
-							value="${info.cardId}" /></td>
-					</tr>
-					<tr>
-						<th style="width: 20%">手机号码</th>
-						<td style="width: 30%"><input type="text"
-							name="info.telephone" value="${info.telephone}" /></td>
 						<th style="width: 20%">证件类型</th>
 						<td style="width: 30%"><select name="info.cardType">
 								<option value="">全部</option>
@@ -95,6 +88,14 @@
 											value="#cardTypeSelected.value" /></option>
 								</s:iterator>
 						</select></td>
+					</tr>
+					<tr>
+						<th style="width: 20%">证件号码</th>
+						<td style="width: 30%"><input type="text" name="info.cardId"
+							value="${info.cardId}" /></td>
+						<th style="width: 20%">联系电话</th>
+						<td style="width: 30%"><input type="text"
+							name="info.telephone" value="${info.telephone}" /></td>
 					</tr>
 				</table>
 				<br />
@@ -112,21 +113,20 @@
 					onclick="doAction('customerForm','add','')"
 					style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
 			</div>
-			<input type="hidden" name="_ns" id="_ns"
-				value="/customer/financing/" /> <input type="hidden" name="id"
-				id="id" /> <input type="hidden" name=_query id="_query"
-				value="_query" />
+			<input type="hidden" name="_ns" id="_ns" value="/customer/financing/" />
+			<input type="hidden" name="id" id="id" /> <input type="hidden"
+				name=_query id="_query" value="_query" />
 		</form>
 		<div>
 			<table cellspacing="0" class="table_list" style="width: 100%">
 				<tr style="background: none" class="table_tr_title title_qingse">
 					<td style="border-left: 2px solid #F5F5F5; width: 5%">序号</td>
-					<th>名称</th>
-					<th>证件类型</th>
-					<th>证件号码</th>
-					<th>生日</th>
-					<th>手机号</th>
-					<th>住址</th>
+					<td>名称</td>
+					<td>证件类型</td>
+					<td>证件号码</td>
+					<td>生日</td>
+					<td>联系电话</td>
+					<td>住址</td>
 					<td style="width: 20%">操作</td>
 				</tr>
 				<s:iterator value="dataPage.data" status="st">
@@ -144,7 +144,7 @@
 								</s:if>
 							</s:iterator> &nbsp;</td>
 						<td><s:property value="cardId" />&nbsp;</td>
-						<td><s:date format="yyyy-MM-dd" name="customer.birthday" /></td>
+						<td><s:date format="yyyy-MM-dd" name="birthday" /></td>
 						<td><s:property value="telephone" />&nbsp;</td>
 
 						<td><s:property value="address" />&nbsp;</td>
@@ -162,8 +162,10 @@
 		<div>
 			<d:pages currentPage="%{currentPage}" showPageNumber="3"
 				totalPage="%{totalPage}" url="list.do" cssClass="pagnation">
-				<s:param name="info.title">${info.title}</s:param>
-				<s:param name="info.status">${info.status}</s:param>
+				<s:param name="info.customerName">${info.customerName}</s:param>
+				<s:param name="info.cardId">${info.cardId}</s:param>
+				<s:param name="info.cardType">${info.cardType}</s:param>
+				<s:param name="info.telephone">${info.telephone}</s:param>
 			</d:pages>
 		</div>
 	</div>
