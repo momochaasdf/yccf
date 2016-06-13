@@ -92,6 +92,55 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	}
 	
 	/**
+	 * 返回当天开始的时间
+	 * 如：当前时间为 2013-07-09 15:33:50 将返回
+	 * @return 2013-07-09 00:00:00
+	 */
+	public static Date getCurrentDay0(){
+		Calendar begin = new GregorianCalendar(); 
+		
+		begin.set(Calendar.HOUR_OF_DAY, 0);
+		begin.set(Calendar.MINUTE, 0);
+		begin.set(Calendar.SECOND, 0);
+		
+		return begin.getTime();
+	}
+	
+	/**
+	 * 返回昨天开始的时间
+	 * 如：当前时间为 2013-07-09 15:33:50 将返回
+	 * @return 2013-07-08 00:00:00
+	 */
+	public static Date getYesterdayDay0(){
+		Calendar begin = new GregorianCalendar(); 
+		
+		begin.add( Calendar.DATE,  -1 );
+		
+		begin.set(Calendar.HOUR_OF_DAY, 0);
+		begin.set(Calendar.MINUTE, 0);
+		begin.set(Calendar.SECOND, 0);
+		
+		return begin.getTime();
+	}
+	
+	/**
+	 * 返回接下来一个月开始的时间
+	 * 如：当前时间为 2013-07-09 15:33:50 将返回
+	 * @return 2013-08-09 00:00:00
+	 */
+	public static Date getNextMonthDay0(){
+		Calendar begin = new GregorianCalendar(); 
+		
+		begin.add( Calendar.MONTH,  1 );
+		
+		begin.set(Calendar.HOUR_OF_DAY, 0);
+		begin.set(Calendar.MINUTE, 0);
+		begin.set(Calendar.SECOND, 0);
+		
+		return begin.getTime();
+	}
+	
+	/**
 	 * 返回当天开始和结束的时间
 	 * 如：当前时间为 2013-07-09 15:33:50 将返回
 	 * @return 2013-07-09 00:0:00   ，  2013-07-09 23:59:59 
@@ -274,10 +323,41 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 		return DateUtils.parse(strD, "yyyy-MM-dd HH:mm:ss");
 	}
     
+    /**
+     * 取得两个日期之间相差的天数
+     * @param begin_date
+     * @param end_date
+     * @return
+     */
+    public static Long getTwoDay(Date begin_date, Date end_date) {
+    	Long day = new Long(0);
+    	try {
+	    	SimpleDateFormat format = new SimpleDateFormat(DATE_STR);
+	    	String sdate = format.format(Calendar.getInstance().getTime());
+	
+	    	if (begin_date == null) {
+	    		begin_date = format.parse(sdate);
+	    	} else {
+	    		String begin_date_str = format(begin_date, DATE_STR);
+	    		begin_date = parse(begin_date_str, DATE_STR);
+	    	}
+	    	if (end_date == null) {
+	    		end_date = format.parse(sdate);
+	    	} else {
+	    		String end_date_str = format(begin_date, DATE_STR);
+	    		end_date = parse(end_date_str, DATE_STR);
+	    	}
+	    	day = (end_date.getTime() - begin_date.getTime()) / (24 * 60 * 60 * 1000);
+    	} catch (Exception e) {
+    	 return new Long(-1);
+    	}
+    	return day;
+	}
+    
     public static void main(String[] args) {
-    	Date data = parse("2014-03-27 13:00:00");
-    	Date data2 = parse("2014-03-27 13:06:00");
-		System.out.println(addAndCompare(data, data2, Calendar.MINUTE, 5));
+    	Date data = parse("2014-03-28 13:00:00");
+    	Date data2 = parse("2014-03-29 13:06:00");
+		System.out.println(getTwoDay(data,data2));
 	}
 
 }

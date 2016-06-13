@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="holidayRemind" extends="struts" namespace="/holidayRemind">
+		<action name="holidayRemind_*" class="com.deying.core.action.HolidayRemindAction" method="{1}">
+			<result name="input">/WEB-INF/pages/holidayRemind/holidayRemind_list.jsp</result>
+		</action>
+	</package>
+	<package name="holidayRemindJ" extends="json" namespace="/holidayRemind">
+		<action name="holidayRemindJ_*" class="com.deying.core.action.HolidayRemindAction" method="{1}" />
+	</package>
+</struts>

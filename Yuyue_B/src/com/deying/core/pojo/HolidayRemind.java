@@ -11,20 +11,21 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 
 import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "tbl_holiday")
-public class Holiday implements java.io.Serializable {
+@Table(name = "tbl_holiday_remind")
+public class HolidayRemind implements java.io.Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(generator = "uuid")
 	@GenericGenerator(name = "uuid", strategy = "uuid")
-	@Column(name = "HOLIDAY_ID", unique = true, nullable = false, length = 128)
-	private String holidayId;
+	@Column(name = "HOLIDAY_REMIND_ID", unique = true, nullable = false, length = 128)
+	private String holidayRemindId;
 	@Column(name = "NAME", nullable = false, length = 100)
 	private String name;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -37,6 +38,8 @@ public class Holiday implements java.io.Serializable {
 	private Integer days;
 	@Column(name = "INFO", length = 200)
 	private String info;
+	@Column(name = "STATUS", nullable = false, length = 2)
+	private String status;
 	@Column(name = "CRT_UID", length = 128)
 	private String crtUid;
 	@Temporal(TemporalType.TIMESTAMP)
@@ -47,11 +50,13 @@ public class Holiday implements java.io.Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(name = "UPD_TIME", length = 0)
 	private Date updTime;
-	public String getHolidayId() {
-		return holidayId;
+	@Transient
+	private Long intervalDays;
+	public String getHolidayRemindId() {
+		return holidayRemindId;
 	}
-	public void setHolidayId(String holidayId) {
-		this.holidayId = holidayId;
+	public void setHolidayRemindId(String holidayRemindId) {
+		this.holidayRemindId = holidayRemindId;
 	}
 	public String getName() {
 		return name;
@@ -83,6 +88,14 @@ public class Holiday implements java.io.Serializable {
 	public void setInfo(String info) {
 		this.info = info;
 	}
+
+	public String getStatus() {
+		return this.status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public String getCrtUid() {
 		return crtUid;
 	}
@@ -106,6 +119,12 @@ public class Holiday implements java.io.Serializable {
 	}
 	public void setUpdTime(Date updTime) {
 		this.updTime = updTime;
+	}
+	public Long getIntervalDays() {
+		return intervalDays;
+	}
+	public void setIntervalDays(Long intervalDays) {
+		this.intervalDays = intervalDays;
 	}
 
 }

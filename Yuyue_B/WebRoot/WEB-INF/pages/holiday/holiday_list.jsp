@@ -68,7 +68,7 @@
 		<div class='right'>
 			<div class="o-mt">
 					<h2 style="margin-top: 0;">
-						<a href="javascript:void(0);" style="color:#cc0000">节假日提醒管理</a>&nbsp;>>&nbsp;
+						<a href="javascript:void(0);" style="color:#cc0000">节假日管理</a>&nbsp;>>&nbsp;
 						<a  style="color:#cc0000" href="<%=path %>/holiday/holiday_list.do">节假日列表</a>
 					</h2>
 			</div>
@@ -167,6 +167,9 @@
 			<div>
 				<d:pages currentPage="%{currentPage}" showPageNumber="3"
 						totalPage="%{totalPage}" url="holiday_list.do" cssClass="pagnation">
+					<s:param name="info.name">${info.name}</s:param>
+					<s:param name="info.minStartTime">${info.minStartTime}</s:param>
+					<s:param name="info.maxStartTime">${info.maxStartTime}</s:param>
 				</d:pages>
 			</div>
 		</div>

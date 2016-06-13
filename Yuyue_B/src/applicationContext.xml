@@ -210,29 +210,30 @@
 		<property name="cronExpression">
 			<value>0 0/30 * * * ?</value>
 		</property>
-	</bean>
+	</bean> -->
 	
-	<bean id="extractCashTimer" class="com.deying.timer.ExtractCashTimer" />
-	<bean id="extractCashTimerJob"
+	<!-- 提醒定时器（1，节假日提醒，） -->
+	<bean id="remindTimer" class="com.deying.util.timer.RemindTimer" />
+	<bean id="remindTimerJob"
 		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
-		调用的类
+		<!-- 调用的类 -->
 		<property name="targetObject">
-			<ref bean="extractCashTimer" />
+			<ref bean="remindTimer" />
 		</property>
-		调用类中的方法
+		<!-- 调用类中的方法 -->
 		<property name="targetMethod">
 			<value>execute</value>
 		</property>
 	</bean>
-	<bean id="extractCashTimerTrigger" lazy-init="false"
+	<bean id="remindTimerTrigger" lazy-init="false"
 		class="org.springframework.scheduling.quartz.CronTriggerBean">
 		<property name="jobDetail">
-			<ref bean="extractCashTimerJob" />
+			<ref bean="remindTimerJob" />
 		</property>
 		<property name="cronExpression">
-			<value>0 20 0 ? * 3</value> 每周二 00:20:00 执行 ，次定时起必须在 InitOrderTimer 之后执行 0 20 0 ? * 3
+			<value>0 20 0 * * ?</value><!-- 每天 00:20:00 执行  -->
 		</property>
-	</bean> -->
+	</bean>
 	
 	<!-- 数据库备份定时器，每天 23:45:00 执行 -->
 	<bean id="databaseBackupTimer" class="com.deying.util.timer.DatabaseBackupTimer" />
@@ -262,8 +263,8 @@
 		class="org.springframework.scheduling.quartz.SchedulerFactoryBean">
 		<property name="triggers">
 			<list>
-				<!-- <ref bean="processOrderTimerTrigger" />
-				<ref bean="extractCashTimerTrigger" /> -->
+				<!-- <ref bean="processOrderTimerTrigger" /> -->
+				<ref bean="remindTimerTrigger" />
 				<ref bean="databaseBackupTimerTrigger" />
 			</list>
 		</property>
