@@ -42,7 +42,8 @@
 		<s:fielderror />
 		<s:actionerror />
 	</div>
-	<form action="#" method="post" id="customerForm" enctype="multipart/form-data">
+	<form action="#" method="post" id="customerForm"
+		enctype="multipart/form-data">
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -56,37 +57,36 @@
 					value="${customer.customerName}" /></td>
 			</tr>
 			<tr>
-				<th>所属单位</th>
-				<td><input type="text" name="customer.industry"
-					value="${customer.industry}" /></td>
-			</tr>
-			<tr>
 				<th>证件号码</th>
 				<td><input type="text" name="customer.cardId"
 					value="${customer.cardId}" /></td>
 			</tr>
 			<tr>
-				<th>电话号码</th>
+				<th>联系电话</th>
 				<td><input type="text" name="customer.telephone"
 					value="${customer.telephone}" /></td>
 			</tr>
 			<tr>
-				<th>住址</th>
-				<td><input type="text" name="customer.address"
-					value="${customer.address}"/></td>
+				<th>所属单位</th>
+				<td><input type="text" name="customer.industry"
+					value="${customer.industry}" /></td>
 			</tr>
 			<tr>
-				<th style="height:40px;">头像</th>
-				<td style="height:40px;"><img src="${customer.picUrl}" width="40px" height="40px"/></td>
-				<td style="height:40px;"><input type="file" name="fileUpload"></input></td>
+				<th>住址</th>
+				<td><input type="text" name="customer.address"
+					value="${customer.address}" /></td>
+			</tr>
+			<tr>
+				<th style="height: 40px;">头像</th>
+				<td style="height: 40px;"><img src="${customer.picUrl}"
+					width="40px" height="40px" /></td>
+				<td style="height: 40px;"><input type="file" name="fileUpload"></input></td>
 			</tr>
 		</table>
 		<input type="hidden" name="customer.customerId"
-			value="${customer.customerId}" />
-			<input type="hidden" name="customer.picUrl"
-			value="${customer.picUrl}" />
-			<input type="hidden" name="_ns" id="_ns"
-			value="/customer/loan/" />
+			value="${customer.customerId}" /> <input type="hidden"
+			name="customer.picUrl" value="${customer.picUrl}" /> <input
+			type="hidden" name="_ns" id="_ns" value="/customer/loan/" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
