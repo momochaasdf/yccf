@@ -344,7 +344,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	    	if (end_date == null) {
 	    		end_date = format.parse(sdate);
 	    	} else {
-	    		String end_date_str = format(begin_date, DATE_STR);
+	    		String end_date_str = format(end_date, DATE_STR);
 	    		end_date = parse(end_date_str, DATE_STR);
 	    	}
 	    	day = (end_date.getTime() - begin_date.getTime()) / (24 * 60 * 60 * 1000);
