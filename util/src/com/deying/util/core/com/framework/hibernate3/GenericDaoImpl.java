@@ -398,7 +398,9 @@ public class GenericDaoImpl<T extends Serializable, PK extends Serializable> imp
 			e.printStackTrace();
 		}
 		try {
-			this.getSession().update(entity);
+		    // 更新的时候 报错 [update 改为merge]
+		    this.getSession().merge(entity);
+			//this.getSession().update(entity);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

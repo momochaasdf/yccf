@@ -144,4 +144,34 @@
 			<result name="input" type="redirect" >/cooperation_loadCooperationShop.action?msg=${msg}</result>
 		</action>
 	</package>
+	<!-- 理财产品类型 -->
+	<package name="core.financing" extends="struts" namespace="/core/financing">
+		<action name="ComM_*" class="com.deying.core.action.FinancingAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/financing_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/financing_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.FinancingAction" method="{1}">
+			<result name="add">/WEB-INF/pages/core/financing_add.jsp</result>
+			<result name="list">/WEB-INF/pages/core/financing_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/financing_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.FinancingAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/core/financing_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/core/financing_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/financing_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.FinancingAction" method="{1}">
+			<result name="list">/WEB-INF/pages/core/financing_list.jsp</result>
+			<result name="input">/WEB-INF/pages/core/financing_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.FinancingAction" method="{1}">
+			<result name="load">/WEB-INF/pages/core/financing_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/core/financing_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.financing.json" extends="json" namespace="/core/financing">
+		<action name="ComJ_*" class="com.deying.core.action.FinancingAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
 </struts>
