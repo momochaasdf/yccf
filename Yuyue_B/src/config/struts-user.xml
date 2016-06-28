@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	 
+	
+	<package name="core.userSalary" extends="struts" namespace="/core/userSalary">
+		<action name="ComM_*" class="com.deying.core.action.UserSalaryAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/user_salary_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/user_salary_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.UserSalaryAction" method="{1}">
+			<result name="add">/WEB-INF/pages/user/user_salary_add.jsp</result>
+			<result name="list">/WEB-INF/pages/user/user_salary_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/user_salary_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.UserSalaryAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/user/user_salary_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/user/user_salary_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/user_salary_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.UserSalaryAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/user_salary_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/user_salary_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.UserSalaryAction" method="{1}">
+			<result name="load">/WEB-INF/pages/user/user_salary_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/user_salary_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.userSalary.json" extends="json" namespace="/core/userSalary">
+		<action name="ComJ_*" class="com.deying.core.action.UserSalaryAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+</struts>
