@@ -34,4 +34,64 @@
 			<result type="json"/>
 		</action>
 	</package>
+	
+	<package name="core.punished" extends="struts" namespace="/core/punished">
+		<action name="ComM_*" class="com.deying.core.action.PunishedAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/punish_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/punish_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.PunishedAction" method="{1}">
+			<result name="add">/WEB-INF/pages/user/punish_add.jsp</result>
+			<result name="list">/WEB-INF/pages/user/punish_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/punish_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.PunishedAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/user/punish_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/user/punish_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/punish_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.PunishedAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/punish_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/punish_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.PunishedAction" method="{1}">
+			<result name="load">/WEB-INF/pages/user/punish_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/punish_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.punish.json" extends="json" namespace="/core/punished">
+		<action name="ComJ_*" class="com.deying.core.action.PunishedAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+	
+	<package name="core.reward" extends="struts" namespace="/core/reward">
+		<action name="ComM_*" class="com.deying.core.action.RewardAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/reward_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/reward_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.RewardAction" method="{1}">
+			<result name="add">/WEB-INF/pages/user/reward_add.jsp</result>
+			<result name="list">/WEB-INF/pages/user/reward_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/reward_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.RewardAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/user/reward_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/user/reward_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/reward_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.RewardAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/reward_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/reward_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.RewardAction" method="{1}">
+			<result name="load">/WEB-INF/pages/user/reward_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/reward_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.reward.json" extends="json" namespace="/core/reward">
+		<action name="ComJ_*" class="com.deying.core.action.RewardAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
 </struts>
