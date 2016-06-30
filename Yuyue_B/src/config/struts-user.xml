@@ -94,4 +94,95 @@
 			<result type="json"/>
 		</action>
 	</package>
+	
+	<package name="core.leaveApply" extends="struts" namespace="/core/leaveApply">
+		<action name="ComM_*" class="com.deying.core.action.LeaveApplyAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/leave_apply_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/leave_apply_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.LeaveApplyAction" method="{1}">
+			<result name="add">/WEB-INF/pages/user/leave_apply_add.jsp</result>
+			<result name="list">/WEB-INF/pages/user/leave_apply_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/leave_apply_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.LeaveApplyAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/user/leave_apply_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/user/leave_apply_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/leave_apply_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.LeaveApplyAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/leave_apply_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/leave_apply_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.LeaveApplyAction" method="{1}">
+			<result name="load">/WEB-INF/pages/user/leave_apply_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/leave_apply_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.leaveApply.json" extends="json" namespace="/core/leaveApply">
+		<action name="ComJ_*" class="com.deying.core.action.LeaveApplyAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+	
+	<package name="core.outApply" extends="struts" namespace="/core/outApply">
+		<action name="ComM_*" class="com.deying.core.action.OutApplyAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/out_apply_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/out_apply_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.OutApplyAction" method="{1}">
+			<result name="add">/WEB-INF/pages/user/out_apply_add.jsp</result>
+			<result name="list">/WEB-INF/pages/user/out_apply_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/out_apply_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.OutApplyAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/user/out_apply_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/user/out_apply_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/out_apply_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.OutApplyAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/out_apply_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/out_apply_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.OutApplyAction" method="{1}">
+			<result name="load">/WEB-INF/pages/user/out_apply_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/out_apply_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.outApply.json" extends="json" namespace="/core/outApply">
+		<action name="ComJ_*" class="com.deying.core.action.OutApplyAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+	
+	
+		<package name="core.punchApply" extends="struts" namespace="/core/punchApply">
+		<action name="ComM_*" class="com.deying.core.action.PunchApplyAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/punch_apply_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/punch_apply_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.PunchApplyAction" method="{1}">
+			<result name="add">/WEB-INF/pages/user/punch_apply_add.jsp</result>
+			<result name="list">/WEB-INF/pages/user/punch_apply_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/punch_apply_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.PunchApplyAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/user/punch_apply_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/user/punch_apply_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/punch_apply_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.PunchApplyAction" method="{1}">
+			<result name="list">/WEB-INF/pages/user/punch_apply_list.jsp</result>
+			<result name="input">/WEB-INF/pages/user/punch_apply_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.PunchApplyAction" method="{1}">
+			<result name="load">/WEB-INF/pages/user/punch_apply_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/user/punch_apply_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.punchApply.json" extends="json" namespace="/core/punchApply">
+		<action name="ComJ_*" class="com.deying.core.action.PunchApplyAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
 </struts>
