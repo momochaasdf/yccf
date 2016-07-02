@@ -34,4 +34,64 @@
 			<result type="json"/>
 		</action>
 	</package>
+	
+	<package name="core.goodsUsed" extends="struts" namespace="/core/goodsUsed">
+		<action name="ComM_*" class="com.deying.core.action.GoodsUsedAction" method="{1}">
+			<result name="list">/WEB-INF/pages/administration/ih/goods_used_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/administration/ih/goods_used_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.GoodsUsedAction" method="{1}">
+			<result name="add">/WEB-INF/pages/administration/ih/goods_used_add.jsp</result>
+			<result name="list">/WEB-INF/pages/administration/ih/goods_used_list.jsp</result>
+			<result name="input">/WEB-INF/pages/administration/ih/goods_used_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.GoodsUsedAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/administration/ih/goods_used_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/administration/ih/goods_used_list.jsp</result>
+			<result name="input">/WEB-INF/pages/administration/ih/goods_used_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.GoodsUsedAction" method="{1}">
+			<result name="list">/WEB-INF/pages/administration/ih/goods_used_list.jsp</result>
+			<result name="input">/WEB-INF/pages/administration/ih/goods_used_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.GoodsUsedAction" method="{1}">
+			<result name="load">/WEB-INF/pages/administration/ih/goods_used_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/administration/ih/goods_used_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.goodsUsed.json" extends="json" namespace="/core/goodsUsed">
+		<action name="ComJ_*" class="com.deying.core.action.GoodsUsedAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+	
+	<package name="core.goodsPurchase" extends="struts" namespace="/core/goodsPurchase">
+		<action name="ComM_*" class="com.deying.core.action.GoodsPurchaseAction" method="{1}">
+			<result name="list">/WEB-INF/pages/administration/ih/goods_purchase_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/administration/ih/goods_purchase_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.GoodsPurchaseAction" method="{1}">
+			<result name="add">/WEB-INF/pages/administration/ih/goods_purchase_add.jsp</result>
+			<result name="list">/WEB-INF/pages/administration/ih/goods_purchase_list.jsp</result>
+			<result name="input">/WEB-INF/pages/administration/ih/goods_purchase_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.GoodsPurchaseAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/administration/ih/goods_purchase_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/administration/ih/goods_purchase_list.jsp</result>
+			<result name="input">/WEB-INF/pages/administration/ih/goods_purchase_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.GoodsPurchaseAction" method="{1}">
+			<result name="list">/WEB-INF/pages/administration/ih/goods_purchase_list.jsp</result>
+			<result name="input">/WEB-INF/pages/administration/ih/goods_purchase_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.GoodsPurchaseAction" method="{1}">
+			<result name="load">/WEB-INF/pages/administration/ih/goods_purchase_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/administration/ih/goods_purchase_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.goodsPurchase.json" extends="json" namespace="/core/goodsPurchase">
+		<action name="ComJ_*" class="com.deying.core.action.GoodsPurchaseAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
 </struts>
