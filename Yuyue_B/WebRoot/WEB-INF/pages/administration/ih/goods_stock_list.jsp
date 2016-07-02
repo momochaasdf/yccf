@@ -36,7 +36,7 @@
 			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 				<tr>
 	<th style="width: 20%">物品名称</th>
-	<td style="width: 30%"><input type="text" name="igoodsStock.userName" value="${igoodsStock.userName}"/></td>
+	<td style="width: 30%"><input type="text" name="igoodsStock.goodsName" value="${igoodsStock.goodsName}"/></td>
      </tr> 
 			</table>
 		</fieldset>
@@ -53,7 +53,7 @@
 			<tr>
 				<th style="width: 5%">序号</th>
 				<th>物品名称</th>
-				<th>单价</th>
+				<th>单价(元)</th>
 				<th>总数量</th>
 				<th>原数量</th>
 				<th>现数量</th>
@@ -66,13 +66,13 @@
 			<s:iterator value="dataPage.data" status="st">
 			<tr <s:if test="!#st.odd">class="trodd"</s:if>>
 				<td align="center"><s:property value="%{dataPage.start+#st.index + 1}"/></td>
-				<td><s:property value="userName"/>&nbsp;</td>
-				<td><s:property value="theMonthLevel"/>&nbsp;</td>
-				<td><s:property value="secondMonthLevel"/>&nbsp;</td>
-				<td><s:property value="attendanceRecords"/>% &nbsp;</td>
-				<td><s:property value="baseSalary"/>&nbsp;</td>
-				<td><s:property value="realBaseSalary"/>&nbsp;</td>
-				<td><s:property value="realSalary"/>&nbsp;</td>
+				<td><s:property value="goodsName"/>&nbsp;</td>
+				<td><s:property value="price"/>&nbsp;</td>
+				<td><s:property value="numsAll"/>&nbsp;</td>
+				<td><s:property value="numsSource"/>&nbsp;</td>
+				<td><s:property value="numsNow"/>&nbsp;</td>
+				<td><s:property value="numsWarning"/>&nbsp;</td>
+				<td><z:dict  type="goods_stock_status" code="%{status}" />&nbsp;</td>
 				<td align="center">
 					<a href="<%=request.getContextPath()%>/core/goodsStock/ComU_edit.do?id=<s:property value="goodsId"/>">修改</a> 
 					<a href="javascript:doDel('<s:property value="goodsId"/>','');">删除</a>

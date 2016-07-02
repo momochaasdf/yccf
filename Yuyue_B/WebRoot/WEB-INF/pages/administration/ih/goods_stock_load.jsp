@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="z" uri="/z-tags"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -14,118 +15,57 @@
 		<div class="right">
 			<div class="o-mt">
 				<h2 style="margin-top: 0;">
-					<a href="<%=path %>/core/userSalary/ComM_list.do" style="color:#cc0000">理财产品管理</a>
+					<a href="<%=path %>/core/goodsStock/ComM_list.do" style="color:#cc0000">物品管理</a>
 					&nbsp;&gt;&gt;&nbsp;
-					<a style="color:#cc0000" href="javascript:void(0);">理财产品详情</a>
+					<a style="color:#cc0000" href="javascript:void(0);">物品详情</a>
 				</h2>
 			</div>
 		</div>
 		<div class="msg" style="clear: both;"><s:actionmessage/></div>
-		<form action="#" method="post" id="userSalaryForm">
+		<form action="#" method="post" id="goodsStockForm">
 		<div class="navButton">
-		<input type="button" value="返回" class="btBack" onclick="doAction('userSalaryForm','ComM_list','');" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
+		<input type="button" value="返回" class="btBack" onclick="doAction('goodsStockForm','ComM_list','');" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
-			 <tr>
-				<th>用户</th>
-				<td>
-				<select type="text" name="userSalary.userName">
-				<option value="1_test">test</option>
-				</select>
-				<%-- <select type="text" name="userSalary.userName">
-						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
-						</s:iterator>
-				</select> --%></td>
+			  <tr>
+				<th>物品名称</th>
+				<td><input type="text" name="goodsStock.goodsName"
+					value="${goodsStock.goodsName}" readonly/></td>
 			</tr>
 			<tr>
-				<th>月份</th>
-				<td><input type="text" name="userSalary.month"
-					value="<s:date format="yyyy/MM" name="userSalary.month" />"
-					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy/MM'})" readOnly/></td>
+				<th>单价</th>
+				<td><input type="text" name="goodsStock.price"
+					value="${goodsStock.price}" readonly/></td>
 			</tr>
 			<tr>
-				<th>当月级别</th>
-				<td><input type="text" name="userSalary.theMonthLevel"
-					value="${userSalary.theMonthLevel}" readOnly/></td>
+				<th>总数量</th>
+				<td><input type="number" name="goodsStock.numsAll"
+					value="${goodsStock.numsAll}" readonly/></td>
 			</tr>
 			<tr>
-				<th>次月级别</th>
-				<td><input type="text" name="userSalary.secondMonthLevel"
-					value="${userSalary.secondMonthLevel}" readOnly/></td>
+				<th>原数量</th>
+				<td><input type="number"  name="goodsStock.numsSource"
+					value="${goodsStock.numsSource}" readonly/></td>
 			</tr>
 			<tr>
-				<th>出勤天数</th>
-				<td><input type="number" name="userSalary.attendanceRecords"
-					value="${userSalary.attendanceRecords}" readOnly /></td>
+				<th>现数量</th>
+				<td><input type="number"  name="goodsStock.numsNow"
+					value="${goodsStock.numsNow}" readonly/></td>
 			</tr>
 			<tr>
-				<th>基本工资</th>
-				<td><input type="text" name="userSalary.baseSalary"
-					value="${userSalary.baseSalary}" readOnly/></td>
+				<th>预警值</th>
+				<td><input type="number" name="goodsStock.numsWarning"
+					value="${goodsStock.numsWarning}" readonly/></td>
 			</tr>
 			<tr>
-				<th>五险</th>
-				<td><input type="text" name="userSalary.fiveInsurance"
-					value="${userSalary.fiveInsurance}" readOnly/></td>
-			</tr>
-			<tr>
-				<th>公积金</th>
-				<td><input type="text" name="userSalary.accumulationFund"
-					value="${userSalary.accumulationFund}" readOnly/></td>
-			</tr>
-			<tr>
-				<th>事病假</th>
-				<td><input type="text" name="userSalary.sickLeave"
-					value="${userSalary.sickLeave}" readOnly/></td>
-			</tr>
-			<tr>
-				<th>迟到违纪</th>
-				<td><input type="text" name="userSalary.latePrinciple"
-					value="${userSalary.latePrinciple}" readOnly/></td>
-			</tr>
-			<tr>
-				<th>实发基本工资</th>
-				<td><input type="text" name="userSalary.realBaseSalary"
-					value="${userSalary.realBaseSalary}" readOnly /></td>
-			</tr>
-			<tr>
-				<th>绩效</th>
-				<td><input type="text" name="userSalary.performance"
-					value="${userSalary.performance}" readOnly/></td>
-			</tr>
-			<tr>
-				<th>提成</th>
-				<td><input type="text" name="userSalary.percentage"
-					value="${userSalary.percentage}" readOnly/></td>
-			</tr>
-			<tr>
-				<th>提成奖金小计</th>
-				<td><input type="text" name="userSalary.subtotal"
-					value="${userSalary.subtotal}" readOnly/></td>
-			</tr>
-			<tr>
-				<th>实发工资</th>
-				<td><input type="text" name="userSalary.realSalary"
-					value="${userSalary.realSalary}" readOnly/></td>
-			</tr>
-			<tr>
-				<th>备注</th>
-				<td><input type="text" name="userSalary.info"
-					value="${userSalary.info}" readOnly/></td>
-			</tr>
-			<tr>
-				<th>工资发放状态</th>
-				<td><select type="text" name="userSalary.status" readOnly>
-						<option value="0">未发放</option>
-						<option value="1">已发放</option>
-				</select></td>
+				<th>预警状态</th>
+				<td><z:dict  type="goods_stock_status" code="%{goodsStock.status}" /></td>
 			</tr>
 		</table>
 		<div class="navButton">
-		<input type="button" value="返回" class="btBack" onclick="doAction('userSalaryForm','ComM_list','');" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
+		<input type="button" value="返回" class="btBack" onclick="doAction('goodsStockForm','ComM_list','');" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
 		</div>
-		<input type="hidden" name="_ns" id="_ns" value="/core/userSalary/"/>
+		<input type="hidden" name="_ns" id="_ns" value="/core/goodsStock/"/>
 		</form>
 	</body>
 </html>
