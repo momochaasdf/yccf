@@ -29,4 +29,16 @@
 			</result>
 		</action>
 	</package>
+	
+	<package name="collection.loan" extends="struts"
+		namespace="/collection/loan">
+		<action name="*" class="com.deying.core.action.CollectionLoanAction"
+			method="{1}">
+			<result name="list">/WEB-INF/pages/collection/loan_list.jsp</result>
+			<result name="load">/WEB-INF/pages/collection/loan_load.jsp</result>
+			<result name="add">/WEB-INF/pages/collection/loan_add.jsp</result>
+			<result name="edit">/WEB-INF/pages/collection/loan_edit.jsp</result>
+			<result name="input">/WEB-INF/pages/collection/loan_list.jsp</result>
+		</action>
+	</package>
 </struts>
