@@ -18,4 +18,6 @@
 	<include file="config/struts-holidayRemind.xml" />
 	<include file="config/struts-user.xml" />
 	<include file="config/struts-in-house.xml" />
+	<include file="config/struts-loan.xml" />
+	<include file="config/struts-operation.xml" />
 </struts>
