@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="financingRemind" extends="struts" namespace="/financingRemind">
+		<action name="financingRemind_*" class="com.deying.core.action.FinancingRemindAction" method="{1}">
+			<result name="input">/WEB-INF/pages/financingRemind/financing_remind_list.jsp</result>
+		</action>
+	</package>
+	<package name="financingRemindJ" extends="json" namespace="/financingRemind">
+		<action name="financingRemindJ_*" class="com.deying.core.action.FinancingRemindAction" method="{1}" />
+	</package>
+</struts>
