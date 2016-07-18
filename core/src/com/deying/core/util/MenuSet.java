@@ -38,6 +38,7 @@ public class MenuSet {
 	private static UserRoleServiceImpl userRoleService = null;
 	private StringBuffer sid = null;
 	private LinkedHashMap<String,String> topMenus = new LinkedHashMap<String,String>();
+	private LinkedHashMap<String,String> buttons = new LinkedHashMap<String,String>();
 	private String selectMenuId = null;
 	
 	static {
@@ -60,6 +61,7 @@ public class MenuSet {
 		HttpSession session = ServletActionContext.getRequest().getSession();
 		session.setAttribute(Constants.MENU_KEY, sb.toString());
 		session.setAttribute(FileConstants.TOP_MENU_KEY, topMenus);
+		session.setAttribute("button", buttons);
 		//把默认已选中菜单存cookie
 		HttpUtil.addCookie(FileConstants.TOP_MENU_ID_COOKIE, selectMenuId, ServletActionContext.getResponse());
 	}
@@ -121,12 +123,14 @@ public class MenuSet {
 					data.append("<ul class='group'>");
 					data.append(loadFunsByUser(r.getFunctionId(), map));
 					data.append("</ul></div>");
-				}else{
+				}else if("%".equals(r.getUrl())) {
+				    buttons.put(r.getTreeCode(), r.getTreeCode());
+                }else{
 					data.append("<li id=\"").append(r.getFunctionId()).append("\">");
 					data.append("<span>");
-					if ("#".equals(r.getUrl())) {
-						data.append(r.getFunctionName());
-					} else {
+					if ("%".equals(r.getUrl())) {
+                        buttons.put(r.getTreeCode(), r.getTreeCode());
+                    } else {
 						data.append("<a href=\"").append(ServletActionContext.getRequest().getContextPath()).append(r.getUrl()).append("\">").append(r.getFunctionName()).append("</a>");
 					}
 					data.append("</span>");
