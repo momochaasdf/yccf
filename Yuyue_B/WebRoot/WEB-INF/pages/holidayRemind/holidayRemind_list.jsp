@@ -15,7 +15,7 @@
 		type="text/css" />
 			<link rel="stylesheet" href="<%=path%>/common/css/shopBase.css" type="text/css" />
 		<script type="text/javascript">
-			function changeCurrentTr(obj,type){
+			function changeCurrentTr(obj,type){s
 				if(type==1){
 					$(obj).attr('oldbg',$(obj).css('background-color'));
 					$(obj).attr('oldc',$(obj).css('color'));
@@ -43,7 +43,7 @@
 		<div class='right'>
 			<div class="o-mt">
 					<h2 style="margin-top: 0;">
-						<a href="javascript:void(0);" style="color:#cc0000">节假日提醒管理</a>&nbsp;>>&nbsp;
+						<a href="javascript:void(0);" style="color:#cc0000">收益提醒管理</a>&nbsp;>>&nbsp;
 						<a  style="color:#cc0000" href="<%=path %>/holidayRemind/holidayRemind_list.do">节假日列表</a>
 					</h2>
 			</div>

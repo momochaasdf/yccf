@@ -3,6 +3,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
 <%@ taglib prefix="d" uri="/deying-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -46,6 +48,7 @@
 	</head>
 
 	<body>
+	 <s:set name="button" value="#session.button"/>
 		<div class='right'>
 			<div class="o-mt">
 					<h2 style="margin-top: 0;">
@@ -73,7 +76,7 @@
 				<div class="msg"><s:actionmessage/><s:fielderror/><s:actionerror/></div>
 				<div class="navButton">
 					<input type="button" value="检索" class="btSearch" onclick="doAction('noticeForm','notice_list','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
-					<s:if test="#session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('总经理')>=0 || #session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('行政总监')>=0 || #session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('人事助理')>=0">
+					<s:if test="#session.button.notice_add.indexOf('notice_add')>=0 && type ==0">
 					<input class="btAdd"  value="新增"  onclick="doAction('noticeForm','notice_add','')" style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path %>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
 					</s:if>
 				</div>
@@ -120,11 +123,15 @@
 								<s:else>&nbsp;</s:else>
 							</td>
 							<td align="center">
-								<s:if test="#session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('总经理')>=0 || #session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('行政总监')>=0 || #session._COM_FRAMEWORK_USER_KEY.roleNames.indexOf('人事助理')>=0">
-								<a href="<%=path %>/notice/notice_edit.do?id=<s:property value="noticeId"/>">修改</a> 
-								<a href="javascript:doDel('<s:property value="noticeId"/>','');">删除</a>
-								</s:if>
-								<a href="<%=path %>/notice/notice_load.do?id=<s:property value="noticeId"/>">查看</a>
+                                 <s:if test="#session.button.notice_edit.indexOf('notice_edit')>=0 && type ==0">								
+                                 <a href="<%=path %>/notice/notice_edit.do?id=<s:property value="noticeId"/>">修改</a> 
+                                 </s:if>
+                                 <s:if test="#session.button.notice_del.indexOf('notice_del')>=0 && type ==0">	
+								 <a href="javascript:doDel('<s:property value="noticeId"/>','');">删除</a>
+								 </s:if>
+								 <s:if test="(#session.button.notice_load.indexOf('notice_load')>=0 && type ==0) || (#session.button.notice_list.indexOf('notice_list')>=0 && type ==1)  ">	
+								 <a href="<%=path %>/notice/notice_load.do?id=<s:property value="noticeId"/>">查看</a>
+								 </s:if>
 							</td>
 						</tr>
 					</s:iterator>

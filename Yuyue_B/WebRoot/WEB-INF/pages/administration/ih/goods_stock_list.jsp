@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -24,6 +26,7 @@
 	</script>
 	</head>
 	<body>
+	    <s:set name="button" value="#session.button"/>
 		<div class="right" style="background:#FFF;">
 		<div class="o-mt">
 				<h2 style="margin-top: 0;">
@@ -42,7 +45,9 @@
 		</fieldset>
 		<div class="navButton" >
 		<input class="btSearch" value="检索"  onclick="doAction('goodsStockForm','ComM_list','')"  style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path %>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+		 <c:if test="${fn:contains(button, 'goods_stock_add') && type ==1}">
 		<input class="btAdd"  value="新增"  onclick="doAction('goodsStockForm','ComC_add','')" style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path %>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+		 </c:if>
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/goodsStock/"/>
 		<input type="hidden" name="id" id="id"/>
@@ -74,9 +79,15 @@
 				<td><s:property value="numsWarning"/>&nbsp;</td>
 				<td><z:dict  type="goods_stock_status" code="%{status}" />&nbsp;</td>
 				<td align="center">
+				    <c:if test="${fn:contains(button, 'goods_stock_edit')}">
 					<a href="<%=request.getContextPath()%>/core/goodsStock/ComU_edit.do?id=<s:property value="goodsId"/>">修改</a> 
+					</c:if>
+					<c:if test="${fn:contains(button, 'goods_stock_del')}">
 					<a href="javascript:doDel('<s:property value="goodsId"/>','');">删除</a>
+					</c:if>
+					<c:if test="${fn:contains(button, 'goods_stock_load')}">
 					<a href="<%=request.getContextPath()%>/core/goodsStock/ComR_load.do?id=<s:property value="goodsId"/>">查看</a>
+					</c:if>
 				</td>
 			</tr>
 			</s:iterator>

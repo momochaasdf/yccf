@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -35,6 +37,7 @@
 	</script>
 	</head>
 	<body>
+	     <s:set name="button" value="#session.button"/>
 		<div class="right">
 			<div class="o-mt">
 				<h2 style="margin-top: 0;">
@@ -44,7 +47,9 @@
 		</div>
 		<form action="#" method="post" id="functionForm" style="clear: both;">
 		<div class="navButton">
+		<c:if test="${fn:contains(button, 'function_add')}">
 		<input type="button" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;" value="新增" class="btAdd" onclick="doAction('functionForm','ComC_add','')" />
+		</c:if>
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/function/"/>
 		<input type="hidden" name="id" id="id" value="<s:property value="id"/>"/>
@@ -76,9 +81,15 @@
 <td><s:property value="url"/>&nbsp;</td>
 <td align="center"><s:property value="sortNo"/></td>
 				<td align="center">
+				    <c:if test="${fn:contains(button, 'function_edit')}">
 					<a href="<%=request.getContextPath()%>/core/function/ComU_edit.do?id=<s:property value="functionId"/>">修改</a> 
+					</c:if>
+					<c:if test="${fn:contains(button, 'function_del')}">
 					<a href="javascript:doDel('<s:property value="functionId"/>','<s:property value="functionName"/>');">删除</a>
+					</c:if>
+					<c:if test="${fn:contains(button, 'function_load')}">
 					<a href="<%=request.getContextPath()%>/core/function/ComR_load.do?id=<s:property value="functionId"/>">查看</a>
+					</c:if>
 				</td>
 			</tr>
 			</s:iterator>

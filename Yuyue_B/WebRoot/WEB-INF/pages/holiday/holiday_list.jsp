@@ -3,6 +3,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
 <%@ taglib prefix="d" uri="/deying-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -65,6 +67,7 @@
 	</head>
 
 	<body>
+	     <s:set name="button" value="#session.button"/>
 		<div class='right'>
 			<div class="o-mt">
 					<h2 style="margin-top: 0;">
@@ -73,7 +76,9 @@
 					</h2>
 			</div>
 			<form action="#" method="post" id="holidayForm" style="clear: both;" enctype="multipart/form-data">
+			    <c:if test="${fn:contains(button, 'holiday_import')}">
 				<fieldset class="navSearch">
+				    
 					<legend><span>导入数据<span id="updown" target="targetTable">[隐藏]</span></span></legend>
 					<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 						<tr>
@@ -87,6 +92,7 @@
 					</table>
 					<br />
 				</fieldset>
+				</c:if>
 				<fieldset class="navSearch">
 					<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
 					<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
@@ -137,6 +143,7 @@
 							备注
 						</td>
 					</tr>
+					<s:property value="%{session.button}" />
 					<s:iterator value="dataPage.data" status="st">
 						<tr class="table_tr_content"
 							<s:if test="#st.index%2==0">style='background-color:#E6FDF1'</s:if>
@@ -146,7 +153,7 @@
 								<s:property value="%{dataPage.start+#st.index + 1}" />
 							</td>
 							<td>
-								<s:property value="name" />
+								<s:property value="%{session.button}" />
 							</td>
 							<td>
 								<s:date name="%{startTime}" format="yyyy-MM-dd"/>

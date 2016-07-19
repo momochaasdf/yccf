@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
     String path = request.getContextPath();
 %>
@@ -28,6 +30,7 @@
 </script>
 </head>
 <body>
+     <s:set name="button" value="#session.button"/>
 	<div class="right" style="background: #FFF;">
 		<div class="o-mt">
 			<h2 style="margin-top: 0;">
@@ -62,9 +65,11 @@
 			<input class="btSearch" value="检索"
 				onclick="doAction('outApplyForm','ComM_list','')"
 				style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+			<c:if test="${fn:contains(button, 'out_apply_add') && type ==1}">
 			<input class="btAdd" value="新增"
 				onclick="doAction('outApplyForm','ComC_add','')"
 				style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+		    </c:if>
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/outApply/" /> <input
 			type="hidden" name="id" id="id" /> <input type="hidden" name=_query
@@ -98,11 +103,26 @@
 					<td><s:property value="reviewPerson" />&nbsp;</td>
 					<td><z:dict  type="out_apply_status" code="%{status}" />&nbsp;</td>
 					<td><s:date name="%{reviewTime}" format="yyyy-MM-dd"/> &nbsp;</td>
-					<td align="center"><a
-						href="<%=request.getContextPath()%>/core/outApply/ComU_edit.do?id=<s:property value="outApplyId"/>">修改</a>
+					<td align="center">
+					     <c:choose> 
+					       <c:when test="${fn:contains(button, 'out_apply_edit') && type ==1}">
+					    <a href="<%=request.getContextPath()%>/core/outApply/ComU_edit.do?id=<s:property value="outApplyId"/>">修改</a>
+						</c:when>
+						<c:when test="${fn:contains(button, 'out_edit') && type ==2}">
+					    <a href="<%=request.getContextPath()%>/core/outApply/ComU_edit.do?id=<s:property value="outApplyId"/>">审核</a>
+						</c:when>
+						</c:choose>
+						<c:if test="${fn:contains(button, 'out_apply_del') && type ==1}">
 						<a href="javascript:doDel('<s:property value="outApplyId"/>','');">删除</a>
-						<a
-						href="<%=request.getContextPath()%>/core/outApply/ComR_load.do?id=<s:property value="outApplyId"/>">查看</a>
+						</c:if>
+						 <c:choose> 
+					       <c:when test="${fn:contains(button, 'out_apply_load') && type ==1}">
+						<a href="<%=request.getContextPath()%>/core/outApply/ComR_load.do?id=<s:property value="outApplyId"/>">查看</a>
+						</c:when>
+						 <c:when test="${fn:contains(button, 'out_load') && type ==2}">
+						<a href="<%=request.getContextPath()%>/core/outApply/ComR_load.do?id=<s:property value="outApplyId"/>">查看</a>
+						</c:when>
+						</c:choose>
 					</td>
 				</tr>
 			</s:iterator>

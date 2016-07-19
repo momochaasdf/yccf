@@ -3,6 +3,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
 <%@ taglib prefix="d" uri="/deying-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -48,6 +50,7 @@
 	</head>
 
 	<body>
+	     <s:set name="button" value="#session.button"/>
 		<div class='right'>
 			<div class="o-mt">
 					<h2 style="margin-top: 0;">
@@ -55,10 +58,12 @@
 						<a  style="color:#cc0000" href="<%=path %>/backup/backup_list.do">备份列表</a>
 					</h2>
 			</div>
+			<c:if test="${fn:contains(button, 'backup_data')}">
 			<div style="margin-left: 30px; height:34px;">
 				<span class="addfood" onclick="javascript:do_backup();">备份数据</span>
 				<div style=" clear:left"></div>
 			</div>
+			</c:if>
 			<div>
 				<table cellspacing="0" class="table_list" style="width: 100%">
 					<tr style="background: none" class="table_tr_title title_qingse">
@@ -102,7 +107,9 @@
 								<s:property value="backupName" />
 							</td>
 							<td align="center">
+							    <c:if test="${fn:contains(button, 'backup_recovery')}">
 								<a href="javascript:reset('<s:property value="backupId"/>','<s:property value="backupName"/>');">数据恢复</a>
+							    </c:if>
 							</td>
 						</tr>
 					</s:iterator>

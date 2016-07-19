@@ -32,7 +32,8 @@ public class BaseMgrAction extends BaseAction {
 	
 	protected ContextCore ctx = new ContextCoreImpl();
 	private InputStream excelStream=null;
-
+    
+	public String type ="0";
 	public UserContext getCtxUser() {
 		this.coreUser = (UserContext)this.ctx.getSessionAttr(Constants.USER_KEY);
 		if (this.coreUser == null) {
@@ -53,7 +54,7 @@ public class BaseMgrAction extends BaseAction {
         byte[] filesize = baos.toByteArray();
         excelStream = new ByteArrayInputStream(filesize, 0, filesize.length);
         baos.close();
- }
+   }
 
 	public InputStream getExcelStream() {
 		return excelStream;
@@ -62,16 +63,15 @@ public class BaseMgrAction extends BaseAction {
 	public void setExcelStream(InputStream excelStream) {
 		this.excelStream = excelStream;
 	}
+
+    public String getType()
+    {
+        return type;
+    }
+
+    public void setType(String type)
+    {
+        this.type = type;
+    }
 	
-	/*public HttpSession getSession() {
-		return ServletActionContext.getRequest().getSession();
-	}
-
-	public HttpServletRequest getRequest() {
-		return ServletActionContext.getRequest();
-	}
-
-	public HttpServletResponse getResponse() {
-		return ServletActionContext.getResponse();
-	}*/
 }

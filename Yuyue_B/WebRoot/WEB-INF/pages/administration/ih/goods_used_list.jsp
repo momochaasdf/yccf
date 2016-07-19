@@ -2,6 +2,8 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
     String path = request.getContextPath();
 %>
@@ -28,6 +30,7 @@
 </script>
 </head>
 <body>
+     <s:set name="button" value="#session.button"/>
 	<div class="right" style="background: #FFF;">
 		<div class="o-mt">
 			<h2 style="margin-top: 0;">
@@ -57,9 +60,11 @@
 			<input class="btSearch" value="检索"
 				onclick="doAction('goodsUsedForm','ComM_list','')"
 				style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+			<c:if test="${fn:contains(button, 'goods_used_add') && type ==1}">
 			<input class="btAdd" value="新增"
 				onclick="doAction('goodsUsedForm','ComC_add','')"
 				style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+		    </c:if>
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/goodsUsed/" />
 		<input type="hidden" name="id" id="id" /> <input type="hidden"
@@ -85,11 +90,22 @@
 					<td><s:property value="userName" />&nbsp;</td>
 					<td><s:property value="nums" />&nbsp;</td>
 					<td><z:dict type="goods_used_status" code="%{status}" />&nbsp;</td>
-					<td align="center"><a
-						href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?id=<s:property value="goodsUsedId"/>">修改</a>
+					<td align="center">
+					<c:choose> 
+					    <c:when test="${fn:contains(button, 'goods_used_edit') && type ==1}">
+					    <a href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?id=<s:property value="goodsUsedId"/>">修改</a>
+					    </c:when>
+					    <c:when test="${fn:contains(button, 'goods_used_check') && type ==2}">
+					    <a href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?id=<s:property value="goodsUsedId"/>">审核</a>
+					    </c:when>
+					 </c:choose>
+					 <c:if test="${fn:contains(button, 'goods_used_del') && type ==1}">
 						<a href="javascript:doDel('<s:property value="goodsUsedId"/>','');">删除</a>
-						<a
-						href="<%=request.getContextPath()%>/core/goodsUsed/ComR_load.do?id=<s:property value="goodsUsedId"/>">查看</a>
+					 </c:if>   	
+					<c:if test="${fn:contains(button, 'goods_used_load') && type ==1}">	
+						<a href="<%=request.getContextPath()%>/core/goodsUsed/ComR_load.do?id=<s:property value="goodsUsedId"/>">查看</a>
+				    </c:if> 		
+						
 					</td>
 				</tr>
 			</s:iterator>

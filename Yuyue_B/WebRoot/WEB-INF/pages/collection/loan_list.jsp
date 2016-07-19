@@ -3,6 +3,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
 <%@ taglib prefix="d" uri="/deying-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -56,6 +58,8 @@
 </head>
 
 <body>
+    <s:set name="button" value="#session.button"/>
+    <s:set name="button_type" value="type"/>
 	<div class='right'>
 		<div class="o-mt">
 			<h2 style="margin-top: 0;">
@@ -87,9 +91,18 @@
 				<input class="btSearch" value="检索"
 					onclick="doAction('collectionForm','list','')"
 					style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+				<c:choose> 
+				<c:when test="${fn:contains(button, 'loan_back_add') && button_type ==1}">
 				<input class="btAdd" value="新增"
 					onclick="doAction('collectionForm','add','')"
 					style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+			    </c:when>
+			    <c:when test="${fn:contains(button, 'loan_collection_add') && button_type ==2}">
+				<input class="btAdd" value="新增"
+					onclick="doAction('collectionForm','add','')"
+					style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+			    </c:when>
+			    </c:choose>
 			</div>
 			<input type="hidden" name="_ns" id="_ns" value="/collection/loan/" />
 			<input type="hidden" name="id" id="id" /> <input type="hidden"
@@ -124,12 +137,32 @@
 						<td><z:dict  type="collection_loan_prepayment" code="%{isPrepayment}"  />&nbsp;</td>
 						<td><z:dict  type="collection_loan_overdue" code="%{isOverdue}"  />&nbsp;</td>
 						<td><z:dict  type="collection_loan_status" code="%{status}"  />&nbsp;</td>
-						<td align="center"><a
-							href="<%=request.getContextPath()%>/collection/loan/edit.do?id=<s:property value="loanCollectionId"/>">修改</a>
-							<a
-							href="javascript:doDel('<s:property value="loanCollectionId"/>','');">删除</a>
-							<a
-							href="<%=request.getContextPath()%>/collection/loan/load.do?id=<s:property value="loanCollectionId"/>">查看</a>
+						<td align="center">
+						   <c:choose> 
+						    <c:when test="${fn:contains(button, 'loan_collection_edit') && button_type==1}">
+						    <a href="<%=request.getContextPath()%>/collection/loan/edit.do?id=<s:property value="loanCollectionId"/>">修改</a>
+							</c:when>
+							 <c:when test="${fn:contains(button, 'loan_back_edit') && button_type==2}">
+						    <a href="<%=request.getContextPath()%>/collection/loan/edit.do?id=<s:property value="loanCollectionId"/>">修改</a>
+							</c:when>
+							</c:choose>
+							<c:choose>
+							<c:when test="${fn:contains(button, 'loan_collection_del') && button_type==1}">
+							<a href="javascript:doDel('<s:property value="loanCollectionId"/>','');">删除</a>
+							</c:when>
+							<c:when test="${fn:contains(button, 'loan_back_del') && button_type==2}">
+							<a href="javascript:doDel('<s:property value="loanCollectionId"/>','');">删除</a>
+							</c:when>
+							</c:choose>
+							<c:choose>
+							<c:when test="${fn:contains(button, 'loan_collection_load') && button_type ==1}">
+							<a href="<%=request.getContextPath()%>/collection/loan/load.do?id=<s:property value="loanCollectionId"/>">查看</a>
+							</c:when>
+							<c:when test="${fn:contains(button, 'loan_back_load') && button_type ==2}">
+							<a href="<%=request.getContextPath()%>/collection/loan/load.do?id=<s:property value="loanCollectionId"/>">查看</a>
+							</c:when>
+							</c:choose>
+							
 						</td>
 					</tr>
 				</s:iterator>

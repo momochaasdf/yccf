@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -71,6 +73,7 @@
 	</script>
 	</head>
 	<body>
+	    <s:set name="button" value="#session.button"/>
 		<div class="right">
 			<div class="o-mt">
 				<h2 style="margin-top: 0;">
@@ -93,7 +96,9 @@
 		<div class="msg"><s:actionmessage/><s:fielderror/><s:actionerror/></div>
 		<div class="navButton">
 		<input type="button" value="检索" class="btSearch" onclick="doAction('roleForm','ComM_list','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
+		<c:if test="${fn:contains(button, 'role_add')}">
 		<input type="button" value="新增" class="btAdd" onclick="doAction('roleForm','ComC_add','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
+		</c:if>
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/role/"/>
 		<input type="hidden" name="id" id="id"/>
@@ -119,10 +124,18 @@
 				<td align="center"><s:if test="%{isSysRole==\"1\"}">是</s:if><s:else>否</s:else></td>
 				<td><s:property value="info" escape="false"/>&nbsp;</td>
 				<td align="center">
+				    <c:if test="${fn:contains(button, 'role_edit')}">
 					<a href="<%=request.getContextPath()%>/core/role/ComU_edit.do?id=<s:property value="roleId"/>">修改</a> 
+					</c:if>
+					<c:if test="${fn:contains(button, 'role_del')}">
 					<s:if test="%{isSysRole!=\"1\"}"><a href="javascript:doDel('<s:property value="roleId"/>','<s:property value="roleName"/>');">删除</a></s:if>
+					</c:if>
+					 <c:if test="${fn:contains(button, 'role_load')}">
 					<a href="<%=request.getContextPath()%>/core/role/ComR_load.do?id=<s:property value="roleId"/>">查看</a>
+					</c:if>
+					 <c:if test="${fn:contains(button, 'role_authority')}">
 					<a href="javascript:doAuthorized('<s:property value="roleId"/>','<s:property value="roleName"/>');">授权</a>
+					</c:if>
 				</td>
 			</tr>
 			</s:iterator>
