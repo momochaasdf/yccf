@@ -130,7 +130,7 @@
 			<tr>
 				<th>请假结束时间</th>
 				<td><input type="text" name="leaveApply.applyEndTime"  id="d4322"
-					value="<s:date format="yyyy-MM-dd" name="leaveApply.applyEndTime />"
+					value="<s:date format="yyyy-MM-dd" name="leaveApply.applyEndTime" />"
 					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',dateFmt:'yyyy-MM-dd'})" onchange="changeDays()"/></td>
 			</tr>
 			<tr>
