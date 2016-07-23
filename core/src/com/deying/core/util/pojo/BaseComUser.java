@@ -28,6 +28,11 @@ public abstract class BaseComUser  implements Serializable {
 	public static String PROP_USER_ID = "userId";
 	public static String PROP_UPD_TIME = "updTime";
 	public static String PROP_CRT_UID = "crtUid";
+	public static String PROP_QQ= "qq";
+	public static String PROP_EMAIL= "email";
+	public static String PROP_ADDRESS= "address";
+	public static String PROP_TELEPHONE= "telephone";
+	public static String PROP_BIRTHDAY= "birthday";
 
 
 	// constructors
@@ -58,6 +63,11 @@ public abstract class BaseComUser  implements Serializable {
 	private java.lang.String companyId;
 	private java.lang.String password;
 	private java.lang.String status;
+	private java.lang.String telephone;
+	private java.lang.String email;
+	private java.lang.String address;
+	private java.util.Date birthday;
+	private java.lang.String qq;
 	private java.lang.String crtUid;
 	private java.util.Date crtTime;
 	private java.lang.String updUid;
@@ -163,10 +173,60 @@ public abstract class BaseComUser  implements Serializable {
 		this.status = status;
 	}
 
+   
 
 
+	public java.lang.String getTelephone()
+    {
+        return telephone;
+    }
 
-	/**
+    public void setTelephone(java.lang.String telephone)
+    {
+        this.telephone = telephone;
+    }
+
+    public java.lang.String getEmail()
+    {
+        return email;
+    }
+
+    public void setEmail(java.lang.String email)
+    {
+        this.email = email;
+    }
+
+    public java.lang.String getAddress()
+    {
+        return address;
+    }
+
+    public void setAddress(java.lang.String address)
+    {
+        this.address = address;
+    }
+
+    public java.util.Date getBirthday()
+    {
+        return birthday;
+    }
+
+    public void setBirthday(java.util.Date birthday)
+    {
+        this.birthday = birthday;
+    }
+
+    public java.lang.String getQq()
+    {
+        return qq;
+    }
+
+    public void setQq(java.lang.String qq)
+    {
+        this.qq = qq;
+    }
+
+    /**
 	 * Return the value associated with the column: CRT_UID
 	 */
 	public java.lang.String getCrtUid () {
