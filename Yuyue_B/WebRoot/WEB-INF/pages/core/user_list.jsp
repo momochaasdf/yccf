@@ -67,7 +67,8 @@
 		<div class="right">
 			<div class="o-mt">
 				<h2 style="margin-top: 0;">
-					<a style="color:#cc0000" href="<%=path %>/core/user/ComM_list.do">用户管理</a>
+					<a style="color:#cc0000" href="<%=path %>/core/user/ComM_list.do"><c:if test="${type==0}">用户管理</c:if>
+					<c:if test="${type==1}">个人资料管理</c:if><c:if test="${type==2}">员工资料管理</c:if></a>
 				</h2>
 			</div>
 		</div>
@@ -91,7 +92,10 @@
 		<div class="msg"><s:actionmessage/><s:fielderror/><s:actionerror/></div>
 		<div class="navButton">
 		<input type="button" value="检索" class="btSearch" onclick="doAction('userForm','ComM_list','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
-		<c:if test="${fn:contains(button, 'user_add')}">
+		<c:if test="${fn:contains(button, 'user_add') && type ==0}">
+		<input type="button" value="新增" class="btAdd" onclick="doAction('userForm','ComC_add','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
+		</c:if>
+		<c:if test="${fn:contains(button, 'hr_add') && type ==2}">
 		<input type="button" value="新增" class="btAdd" onclick="doAction('userForm','ComC_add','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
 		</c:if>
 		</div>
@@ -117,19 +121,34 @@
 				<td><s:property value="userName"/></td>
 				<td align="center"><s:if test="status==1">可用</s:if><s:elseif test="status==0">禁用</s:elseif><s:else>&nbsp;</s:else></td>
 				<td align="center">
-					<c:if test="${fn:contains(button, 'user_edit')}">
+					<c:if test="${fn:contains(button, 'user_edit') && type ==0}">
 					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?id=<s:property value="userId"/>">修改</a>&nbsp;
 					</c:if>
-					<c:if test="${fn:contains(button, 'user_del')}">
+					<c:if test="${fn:contains(button, 'employee_edit') && type ==1}">
+					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?id=<s:property value="userId"/>">修改</a>&nbsp;
+					</c:if>
+					<c:if test="${fn:contains(button, 'hr_edit') && type ==2}">
+					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?id=<s:property value="userId"/>">修改</a>&nbsp;
+					</c:if>
+					<c:if test="${fn:contains(button, 'user_del') && type ==0}">
 					<s:if test="userId!=#session['_COM_FRAMEWORK_USER_KEY'].userId"><a href="javascript:doDel('<s:property value="userId"/>','<s:property value="userName"/>');">删除</a></s:if>&nbsp;
 					</c:if>
-					<c:if test="${fn:contains(button, 'user_load')}">
+					<c:if test="${fn:contains(button, 'hr_del') && type ==2}">
+					<s:if test="userId!=#session['_COM_FRAMEWORK_USER_KEY'].userId"><a href="javascript:doDel('<s:property value="userId"/>','<s:property value="userName"/>');">删除</a></s:if>&nbsp;
+					</c:if>
+					<c:if test="${fn:contains(button, 'user_load') && type ==0}">
 					<a href="<%=request.getContextPath()%>/core/user/ComR_load.do?id=<s:property value="userId"/>">查看</a>&nbsp;
 					</c:if>
-					<c:if test="${fn:contains(button, 'user_reset_pwd')}">
+					<c:if test="${fn:contains(button, 'employee_load') && type ==1}">
+					<a href="<%=request.getContextPath()%>/core/user/ComR_load.do?id=<s:property value="userId"/>">查看</a>&nbsp;
+					</c:if>
+					<c:if test="${fn:contains(button, 'hr_load') && type ==2}">
+					<a href="<%=request.getContextPath()%>/core/user/ComR_load.do?id=<s:property value="userId"/>">查看</a>&nbsp;
+					</c:if>
+					<c:if test="${fn:contains(button, 'user_reset_pwd') && type==0}">
 					<a href="<%=request.getContextPath()%>/core/user/ComU_reset.do?id=<s:property value="userId"/>">重置</a>&nbsp;
 					</c:if>
-					<c:if test="${fn:contains(button, 'user_role_rel')}">
+					<c:if test="${fn:contains(button, 'user_role_rel') && type==0}">
 					<a href="javascript:confRole('<s:property value="userId"/>','<s:property value="userName"/>');">关联角色</a>
 					</c:if>
 				</td>

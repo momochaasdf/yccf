@@ -41,7 +41,6 @@ public class UserAction extends BaseMgrAction {
 		String loginId = obtionInfoVal("loginId", String.class);
 		String userName = obtionInfoVal("userName", String.class);
 		Integer status = obtionInfoVal("status", Integer.class);
-		
 		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.desc("crtTime");
