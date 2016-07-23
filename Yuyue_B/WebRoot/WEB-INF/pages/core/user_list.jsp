@@ -82,7 +82,7 @@
 					<td style="width: 30%"><input type="text" name="info.userName" value="${inUser.userName}"/></td>
 				</tr><tr>
 					<th style="width: 20%">状态</th>
-					<td style="width: 30%"><s:radio list="#{'0':'可用','9':'禁用'}" name="info.status"/></td>
+					<td style="width: 30%"><s:radio list="#{'1':'可用','0':'禁用'}" name="info.status"/></td>
 					<th style="width: 20%"></th>
 					<td style="width: 30%"></td>
 				</tr>
@@ -115,7 +115,7 @@
 				<td align="center"><s:property value="%{dataPage.start+#st.index + 1}"/></td>
 				<td><s:property value="loginId"/></td>
 				<td><s:property value="userName"/></td>
-				<td align="center"><s:if test="status==0">可用</s:if><s:elseif test="status==9">禁用</s:elseif><s:else>&nbsp;</s:else></td>
+				<td align="center"><s:if test="status==1">可用</s:if><s:elseif test="status==0">禁用</s:elseif><s:else>&nbsp;</s:else></td>
 				<td align="center">
 					<c:if test="${fn:contains(button, 'user_edit')}">
 					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?id=<s:property value="userId"/>">修改</a>&nbsp;

@@ -49,8 +49,20 @@
 				<th><span style="color:red">*</span>姓名</th>
 				<td><input type="text" name="user.userName" value="${user.userName}" /></td>
 			</tr><tr>
+				<th><span style="color:red">*</span>生日</th>
+				<td><input type="date" name="user.birthday" value="${user.birthday}" /></td>
+			</tr><tr>
+				<th><span style="color:red">*</span>住址</th>
+				<td><input type="text" name="user.address" value="${user.address}" /></td>
+			</tr><tr>
+				<th><span style="color:red">*</span>E-MAIL</th>
+				<td><input type="text" name="user.email" value="${user.email}" /></td>
+			</tr><tr>
+				<th><span style="color:red">*</span>QQ</th>
+				<td><input type="number" name="user.qq" value="${user.qq}" /></td>
+			</tr><tr>
 				<th><span style="color:red">*</span>状态</th>
-				<td><s:radio list="#{'0':'可用','1':'禁用'}" name="user.status"/></td>
+				<td><s:radio list="#{'1':'可用','0':'禁用'}" name="user.status"/></td>
 			</tr>
 		</table>
 		<div class="navButton">

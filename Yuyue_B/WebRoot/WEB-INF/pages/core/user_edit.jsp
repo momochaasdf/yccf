@@ -51,14 +51,22 @@
 				<th>登录账号</th>
 				<td><input type="text" name="user.loginId" readonly="readonly" value="${user.loginId}" /></td>
 			</tr>
-			<!-- <tr>
-				<th>登录密码</th>
-				<td><input type="password"   name="user.password"  value="${user.password}" /></td>
-			</tr>
 			<tr>
 				<th><span style="color:red">*</span>姓名</th>
 				<td><input type="text" name="user.userName" value="${user.userName}" /></td>
-			</tr> -->
+			</tr><tr>
+				<th><span style="color:red">*</span>生日</th>
+				<td><input type="date" name="user.birthday" value="<s:date format="yyyy-MM-dd" name="user.birthday" />" /></td>
+			</tr><tr>
+				<th><span style="color:red">*</span>住址</th>
+				<td><input type="text" name="user.address" value="${user.address}" /></td>
+			</tr><tr>
+				<th><span style="color:red">*</span>E-MAIL</th>
+				<td><input type="text" name="user.email" value="${user.email}" /></td>
+			</tr><tr>
+				<th><span style="color:red">*</span>QQ</th>
+				<td><input type="number" name="user.qq" value="${user.qq}" /></td>
+			</tr>
 			<tr>
 				<th><span style="color:red">*</span>状态</th>
 				<td><s:radio list="#{'1':'可用','0':'禁用'}" name="user.status"/></td>

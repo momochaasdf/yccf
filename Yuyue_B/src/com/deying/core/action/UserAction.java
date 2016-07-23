@@ -3,6 +3,7 @@ package com.deying.core.action;
 import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.deying.core.pojo.user.ComUser;
@@ -10,6 +11,7 @@ import com.deying.core.service.user.impl.UserRoleServiceImpl;
 import com.deying.core.service.user.impl.UserServiceImpl;
 import com.deying.util.core.com.framework.struts2.BaseMgrAction;
 import com.deying.util.datawrapper.CriteriaWrapper;
+import com.deying.util.security.SecurityUtils;
 import com.deying.util.sql.SqlGrammar;
 public class UserAction extends BaseMgrAction {
 
@@ -98,22 +100,19 @@ public class UserAction extends BaseMgrAction {
 		 * 从数据库中查出最大的businessId，加1后赋给新注册的用户
 		 */
 
-		String sql = "select max(SHOP_ID) as shopid  from com_user" ;
-		String businessId = null;
+		String sql = "select max(LOGIN_ID) as login  from com_user" ;
 		List list = this.userService.listBySQL(sql);
-		for(int i =0;i< list.size();i++){
-			businessId = list.get(0).toString();
-		}
-		Long bId = Long.parseLong(businessId)+1;
+		 
 		if (user != null) {
 			user.setPassword(DigestUtils.md5Hex("00000000"));
-//			user.setShopId(bId);
+            user.setCompanyId(getCtxUser().getCompanyId());
 			this.userService.save(user);
 			this.addActionMessage(this.getText("do.success.back"));
 		}
 		return list();
 	}
 	public boolean validateSave() {
+	    
 		if(hasErrors()) {
 			return true;
 		}
@@ -137,6 +136,12 @@ public class UserAction extends BaseMgrAction {
 		if (user != null) {
 			ComUser u = this.userService.get(this.user.getUserId());
 			u.setStatus(this.user.getStatus());
+			u.setAddress(this.user.getAddress());
+			u.setBirthday(this.user.getBirthday());
+			u.setQq(this.user.getQq());
+			u.setEmail(this.user.getEmail());
+			u.setTelephone(this.user.getTelephone());
+			u.setUserName(this.user.getUserName());
 			this.user = this.userService.update(u);
 			this.addActionMessage(this.getText("do.success.back"));
 		}
