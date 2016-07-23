@@ -93,10 +93,14 @@
 					value="${customer.cardId}" /></td>
 			</tr>
 			<tr>
+			    <th>生日类型</th>
+			    <td><s:radio list="#{'0':'阳历','1':'农历'}" name="customer.birthdayType"/></td>
+			</tr>
+			<tr>
 				<th>生日</th>
 				<td><input type="text" name="customer.birthday"
 					value="<s:date format="yyyy-MM-dd" name="customer.birthday" />"
-					onfocus="WdatePicker({doubleCalendar:true,dateFmt:'yyyy-MM-dd'})" /></td>
+					onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
 			<tr>
 				<th>联系电话</th>

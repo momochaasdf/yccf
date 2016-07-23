@@ -56,6 +56,10 @@
 					value="${customer.cardId}" readonly="readonly" /></td>
 			</tr>
 			<tr>
+			    <th>生日类型</th>
+			    <td><input   name="customer.birthdayType" value="<s:if test="customer.birthdayType==1">农历</s:if><s:elseif test="customer.birthdayType==0">阳历</s:elseif><s:else>&nbsp;</s:else>"   readonly="readonly"  /></td>
+			</tr>
+			<tr>
 				<th>生日</th>
 				<td><input type="text" name="customer.birthday"
 					value="<s:date format="yyyy-MM-dd" name="customer.birthday" />" readonly="readonly" /></td>

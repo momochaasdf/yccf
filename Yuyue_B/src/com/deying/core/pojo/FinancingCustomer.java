@@ -25,7 +25,7 @@ public class FinancingCustomer implements java.io.Serializable {
 	private String customerId;
 	private String customerName;
 	private Date birthday;
-	private Integer birthdayType;
+	private String birthdayType;
 	private String cardType;
 	private String cardId;
 	private String telephone;
@@ -49,7 +49,7 @@ public class FinancingCustomer implements java.io.Serializable {
 	}
 
 	public FinancingCustomer(String customerId, String customerName,
-			Date birthday,Integer birthdayType, String cardType, String cardId, String telephone,
+			Date birthday,String birthdayType, String cardType, String cardId, String telephone,
 			String address, String companyId, String crtUid, Date crtTime,
 			String updUid, Date updTime) {
 		this.customerId = customerId;
@@ -144,12 +144,12 @@ public class FinancingCustomer implements java.io.Serializable {
 	}
 	
 	@Column(name = "BIRTHDAY_TYPE", length = 1)
-	public Integer getBirthdayType()
+	public String getBirthdayType()
     {
         return birthdayType;
     }
 
-    public void setBirthdayType(Integer birthdayType)
+    public void setBirthdayType(String birthdayType)
     {
         this.birthdayType = birthdayType;
     }
