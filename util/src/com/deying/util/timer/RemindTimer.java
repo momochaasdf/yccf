@@ -76,20 +76,33 @@ public class RemindTimer implements Timer
         {
             String year = Integer.valueOf(nowDate.getYear()).toString();
             // 1.计算每个月业绩
+            Map<Integer, String> month = new HashMap<Integer, String>();
+            month.put(1, "一月份");
+            month.put(2, "二月份");
+            month.put(3, "三月份");
+            month.put(4, "四月份");
+            month.put(5, "五月份");
+            month.put(6, "六月份");
+            month.put(7, "七月份");
+            month.put(8, "八月份");
+            month.put(9, "九月份");
+            month.put(10, "十月份");
+            month.put(11, "十一月份");
+            month.put(12, "十二月份");
             CriteriaWrapper c1 = CriteriaWrapper.newInstance();
             c1.ge("financingStartTime", monthStart);
             c1.le("financingStartTime", monthEnd);
-            String time1 = Integer.valueOf(nowDate.getMonth()).toString();
+            String time1 = month.get(monthEnd.getMonth());
             // 周期[月]
             String timeRange1 = "1";
             saveStatistic(c1, time1, year, timeRange1);
             
             // 2.按季度计算业绩
             Map<Integer, String> quarters = new HashMap<Integer, String>();
-            quarters.put(3, "1");
-            quarters.put(6, "2");
-            quarters.put(9, "3");
-            quarters.put(12, "4");
+            quarters.put(3, "第一季度");
+            quarters.put(6, "第二季度");
+            quarters.put(9, "第三季度");
+            quarters.put(12, "第四季度");
             if (quarters.containsKey(monthEnd.getMonth()))
             {
                 CriteriaWrapper c2 = CriteriaWrapper.newInstance();
@@ -119,7 +132,7 @@ public class RemindTimer implements Timer
             
             // 4,一年业绩统计
             Map<Integer, String> allYear = new HashMap<Integer, String>();
-            allYear.put(12, "全年");
+            allYear.put(12, year + "年");
             
             if (halfYear.containsKey(monthEnd.getMonth()))
             {
