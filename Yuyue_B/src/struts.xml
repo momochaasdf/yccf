@@ -21,4 +21,5 @@
 	<include file="config/struts-loan.xml" />
 	<include file="config/struts-operation.xml" />
 	<include file="config/struts-financingRemind.xml" />
+	<include file="config/struts-attendance.xml" />
 </struts>

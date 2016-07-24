@@ -10,5 +10,16 @@
 	</package>
 	<package name="financingRemindJ" extends="json" namespace="/financingRemind">
 		<action name="financingRemindJ_*" class="com.deying.core.action.FinancingRemindAction" method="{1}" />
+		
+	</package>
+	
+	<package name="financingNnhDetail" extends="struts" namespace="/financingNnhDetail">
+		<action name="financingNnhDetail_*" class="com.deying.core.action.FinancingNnhDetailAction" method="{1}">
+			<result name="input">/WEB-INF/pages/financingNnhDetail/financing_nnhDetail_list.jsp</result>
+		</action>
+	</package>
+	<package name="financingNnhDetailJ" extends="json" namespace="/financingNnhDetail">
+		<action name="financingNnhDetailJ_*" class="com.deying.core.action.FinancingNnhDetailAction" method="{1}" />
+		
 	</package>
 </struts>

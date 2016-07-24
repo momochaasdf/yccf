@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="attendance" extends="struts" namespace="/attendance">
+		<action name="attendance_*" class="com.deying.core.action.AttendanceAction" method="{1}">
+			<result name="input">/WEB-INF/pages/administration/hr/attendance_list.jsp</result>
+		</action>
+	</package>
+	<package name="attendanceJ" extends="json" namespace="/attendance">
+		<action name="attendanceJ_*" class="com.deying.core.action.AttendanceAction" method="{1}" />
+	</package>
+</struts>

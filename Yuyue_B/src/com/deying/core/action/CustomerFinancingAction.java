@@ -175,6 +175,7 @@ public class CustomerFinancingAction extends BaseMgrAction {
 			FinancingCustomer existCustomer = this.financingCustomerService.get(customer
 					.getCustomerId());
 			existCustomer.setCustomerName(customer.getCustomerName());
+			existCustomer.setBirthdayType(customer.getBirthdayType());
 			existCustomer.setCardId(customer.getCardId());
 			existCustomer.setCardType(customer.getCardType());
 			existCustomer.setTelephone(customer.getTelephone());

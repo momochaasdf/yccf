@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workBook>
+	<sheet name="考勤汇总表">
+		<!-- 
+			columnName  列名
+			columnWidth 列宽 
+			fieldName	字段名
+			fieldType	字段类型	(暂时不用)		
+				数据库字段类型		:		excel格式
+		     	String			:		文本格式
+			 	Integer			:		数值格式
+			 	Date			:		日期格式
+		-->
+		<row>
+			<cell columnName="员工号" columnWidth="20" fieldName="userId" ></cell>
+			<cell columnName="姓名" columnWidth="25" fieldName="userName" ></cell>
+			<cell columnName="所属部门" columnWidth="25" fieldName="companyId" ></cell>
+			 
+		</row>
+	</sheet>
+</workBook>
