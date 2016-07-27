@@ -19,7 +19,7 @@ public class CollectionLoanAction extends BaseMgrAction
     private static final Logger log = LoggerFactory.getLogger(CollectionLoanAction.class);
     
     private static final long serialVersionUID = 1L;
-    
+     
     @Autowired
     private LoanCollectionService loanCollectionService = null;
     
