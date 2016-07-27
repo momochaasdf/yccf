@@ -110,6 +110,7 @@ public class GoodsStockAction extends BaseMgrAction
         
         if (goodsStock != null)
         {
+            goodsStock.setCompanyId(this.getCtxUser().getCompanyId());
             this.goodsStockService.save(goodsStock);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -149,6 +150,7 @@ public class GoodsStockAction extends BaseMgrAction
         LOG.debug("--------------------GoodsStockAction -> upd----------------");
         if (goodsStock != null)
         {
+            goodsStock.setCompanyId(this.getCtxUser().getCompanyId());
             this.goodsStock = this.goodsStockService.update(goodsStock);
             this.addActionMessage(this.getText("do.success.back"));
         }

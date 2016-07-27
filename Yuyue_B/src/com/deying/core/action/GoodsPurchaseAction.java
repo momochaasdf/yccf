@@ -111,6 +111,7 @@ public class GoodsPurchaseAction extends BaseMgrAction
             String goodsName = goodsPurchase.getGoodsName().split("_")[1];
             goodsPurchase.setGoodsId(goodsId);
             goodsPurchase.setGoodsName(goodsName);
+            goodsPurchase.setCompanyId(this.getCtxUser().getCompanyId());
             this.goodsPurchaseService.save(goodsPurchase);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -154,6 +155,7 @@ public class GoodsPurchaseAction extends BaseMgrAction
             String goodsName = goodsPurchase.getGoodsName().split("_")[1];
             goodsPurchase.setGoodsId(goodsId);
             goodsPurchase.setGoodsName(goodsName);
+            goodsPurchase.setCompanyId(this.getCtxUser().getCompanyId());
             this.goodsPurchase = this.goodsPurchaseService.update(goodsPurchase);
             this.addActionMessage(this.getText("do.success.back"));
         }

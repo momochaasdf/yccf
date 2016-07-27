@@ -20,6 +20,7 @@ import com.deying.core.pojo.FinancingRemind;
 import com.deying.core.pojo.FinancingStatistic;
 import com.deying.core.pojo.Holiday;
 import com.deying.core.pojo.HolidayRemind;
+import com.deying.core.pojo.LoanApply;
 import com.deying.util.annotation.AnnIService;
 import com.deying.util.data.DateUtils;
 import com.deying.util.datawrapper.CriteriaWrapper;
@@ -338,7 +339,12 @@ public class RemindTimer implements Timer
     private void loanCollectionRemind()
         throws Exception
     {
-        // TODO Auto-generated method stub
+        // 获取当天的日期
+        Date nowDate = DateUtils.format2Date(new Date(), DateUtils.DATE_STR);
+        CriteriaWrapper c3 = CriteriaWrapper.newInstance();
+        c3.eq("LOAN_START_TIME", nowDate);
+        List<LoanApply> loanList = commonService.find(c3, LoanApply.class);
+        
         
     }
     

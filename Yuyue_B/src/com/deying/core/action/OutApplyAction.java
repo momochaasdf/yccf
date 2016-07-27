@@ -126,6 +126,8 @@ public class OutApplyAction extends BaseMgrAction
             String departmentName = outApply.getDepartmentId().split("_")[1];
             outApply.setDepartmentId(departmentId);
             outApply.setDepartmentName(departmentName);
+            
+            outApply.setCompanyId(this.getCtxUser().getCompanyId());
             this.outApplyService.save(outApply);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -179,6 +181,9 @@ public class OutApplyAction extends BaseMgrAction
             String departmentName = outApply.getDepartmentId().split("_")[1];
             outApply.setDepartmentId(departmentId);
             outApply.setDepartmentName(departmentName);
+            
+            outApply.setCompanyId(this.getCtxUser().getCompanyId());
+
             this.outApply = this.outApplyService.update(outApply);
             this.addActionMessage(this.getText("do.success.back"));
         }

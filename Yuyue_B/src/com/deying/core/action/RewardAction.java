@@ -126,6 +126,8 @@ public class RewardAction extends BaseMgrAction
             String departmentName = reward.getDepartmentId().split("_")[1];
             reward.setDepartmentId(departmentId);
             reward.setDepartmentName(departmentName);
+            
+            reward.setCompanyId(this.getCtxUser().getCompanyId());
             this.rewardService.save(reward);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -178,6 +180,9 @@ public class RewardAction extends BaseMgrAction
             String departmentName = reward.getDepartmentId().split("_")[1];
             reward.setDepartmentId(departmentId);
             reward.setDepartmentName(departmentName);
+            
+            reward.setCompanyId(this.getCtxUser().getCompanyId());
+
             this.reward = this.rewardService.update(reward);
             this.addActionMessage(this.getText("do.success.back"));
         }

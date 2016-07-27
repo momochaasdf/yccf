@@ -71,6 +71,7 @@ public class FinancingAction extends BaseMgrAction
         LOG.debug("--------------------FinancingAction -> save----------------");
         if (financing != null)
         {
+            financing.setCompanyId(this.getCtxUser().getCompanyId());
             this.financingService.save(financing);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -117,6 +118,7 @@ public class FinancingAction extends BaseMgrAction
         LOG.debug("--------------------FinancingAction -> upd----------------");
         if (financing != null)
         {
+            financing.setCompanyId(this.getCtxUser().getCompanyId());
             this.financing = this.financingService.update(financing);
             this.addActionMessage(this.getText("do.success.back"));
         }

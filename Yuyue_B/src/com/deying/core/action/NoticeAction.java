@@ -66,6 +66,7 @@ public class NoticeAction extends BaseMgrAction {
 	public String save() throws Exception {
 		LOG.debug("--------------------NoticeAction -> save----------------");
 		if (data != null) {
+		    data.setCompanyId(this.getCtxUser().getCompanyId());
 			this.noticeService.save(data);
 			this.addActionMessage(this.getText("do.success.back"));
 		}

@@ -123,6 +123,8 @@ public class UserSalaryAction extends BaseMgrAction
             String userName = userSalary.getUserName().split("_")[1];
             userSalary.setUserId(userId);
             userSalary.setUserName(userName);
+            
+            userSalary.setCompanyId(this.getCtxUser().getCompanyId());
             this.userSalaryService.save(userSalary);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -167,6 +169,8 @@ public class UserSalaryAction extends BaseMgrAction
             String userName = userSalary.getUserName().split("_")[1];
             userSalary.setUserId(userId);
             userSalary.setUserName(userName);
+            
+            userSalary.setCompanyId(this.getCtxUser().getCompanyId());
             this.userSalary = this.userSalaryService.update(userSalary);
             this.addActionMessage(this.getText("do.success.back"));
         }

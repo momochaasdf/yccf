@@ -126,6 +126,8 @@ public class PunishedAction extends BaseMgrAction
             String departmentName = punished.getDepartmentId().split("_")[1];
             punished.setDepartmentId(departmentId);
             punished.setDepartmentName(departmentName);
+            
+            punished.setCompanyId(this.getCtxUser().getCompanyId());
             this.punishedService.save(punished);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -178,6 +180,8 @@ public class PunishedAction extends BaseMgrAction
             String departmentName = punished.getDepartmentId().split("_")[1];
             punished.setDepartmentId(departmentId);
             punished.setDepartmentName(departmentName);
+            
+            punished.setCompanyId(this.getCtxUser().getCompanyId());
             this.punished = this.punishedService.update(punished);
             this.addActionMessage(this.getText("do.success.back"));
         }

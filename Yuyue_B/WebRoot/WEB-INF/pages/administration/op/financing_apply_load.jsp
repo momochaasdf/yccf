@@ -14,7 +14,7 @@
 		<div class="right">
 			<div class="o-mt">
 				<h2 style="margin-top: 0;">
-					<a href="<%=path %>/core/financingApply/ComM_list.do" style="color:#cc0000">理财产品管理</a>
+					<a href="<%=path %>/core/financingApply/ComM_list.do?type=${type}" style="color:#cc0000">理财产品管理</a>
 					&nbsp;&gt;&gt;&nbsp;
 					<a style="color:#cc0000" href="javascript:void(0);">理财产品详情</a>
 				</h2>
@@ -22,6 +22,7 @@
 		</div>
 		<div class="msg" style="clear: both;"><s:actionmessage/></div>
 		<form action="#" method="post" id="financingApplyForm">
+		<input type="hidden" name="type" value="${type }"/>
 		<div class="navButton">
 		<input type="button" value="返回" class="btBack" onclick="doAction('financingApplyForm','ComM_list','');" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
 		</div>

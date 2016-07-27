@@ -126,6 +126,8 @@ public class LeaveApplyAction extends BaseMgrAction
             String departmentName = leaveApply.getDepartmentId().split("_")[1];
             leaveApply.setDepartmentId(departmentId);
             leaveApply.setDepartmentName(departmentName);
+            
+            leaveApply.setCompanyId(this.getCtxUser().getCompanyId());
             this.leaveApplyService.save(leaveApply);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -179,6 +181,8 @@ public class LeaveApplyAction extends BaseMgrAction
             String departmentName = leaveApply.getDepartmentId().split("_")[1];
             leaveApply.setDepartmentId(departmentId);
             leaveApply.setDepartmentName(departmentName);
+            
+            leaveApply.setCompanyId(this.getCtxUser().getCompanyId());
             this.leaveApply = this.leaveApplyService.update(leaveApply);
             this.addActionMessage(this.getText("do.success.back"));
         }

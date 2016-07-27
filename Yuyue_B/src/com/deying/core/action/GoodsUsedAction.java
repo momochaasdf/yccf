@@ -119,6 +119,7 @@ public class GoodsUsedAction extends BaseMgrAction
             String goodsName = goodsUsed.getGoodsName().split("_")[1];
             goodsUsed.setGoodsId(goodsId);
             goodsUsed.setGoodsName(goodsName);
+            goodsUsed.setCompanyId(this.getCtxUser().getCompanyId());
             this.goodsUsedService.save(goodsUsed);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -167,6 +168,7 @@ public class GoodsUsedAction extends BaseMgrAction
             String goodsName = goodsUsed.getGoodsName().split("_")[1];
             goodsUsed.setGoodsId(goodsId);
             goodsUsed.setGoodsName(goodsName);
+            goodsUsed.setCompanyId(this.getCtxUser().getCompanyId());
             this.goodsUsed = this.goodsUsedService.update(goodsUsed);
             this.addActionMessage(this.getText("do.success.back"));
         }

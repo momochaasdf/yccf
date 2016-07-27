@@ -27,6 +27,7 @@
 	</head>
 	<body>
 	     <s:set name="button" value="#session.button"/>
+	     <s:set name="buttonType" value="type"/>
 		<div class="right" style="background:#FFF;">
 		<div class="o-mt">
 				<h2 style="margin-top: 0;">
@@ -74,22 +75,24 @@
 			<tr <s:if test="!#st.odd">class="trodd"</s:if>>
 				<td align="center"><s:property value="%{dataPage.start+#st.index + 1}"/></td>
 				<td><s:property value="customerName"/>&nbsp;</td>
-				<td><s:property value="type"/>&nbsp;</td>
+				<td><z:dict  type="financing_type" code="%{type}"/>&nbsp;</td>
 				<td><s:property value="annualizedRate"/>&nbsp;</td>
 				<td><s:property value="money"/>&nbsp;</td>
-				<td><s:property value="financingStartTime"/> &nbsp;</td>
-				<td><s:property value="financingEndTime"/>&nbsp;</td>
-				<td><s:property value="status"/>&nbsp;</td>
+				<td><s:date name="%{financingStartTime}" format="yyyy-MM-dd"/> &nbsp;</td>
+				<td><s:date name="%{financingEndTime}"  format="yyyy-MM-dd"/>&nbsp;</td>
+				<td>
+				 <z:dict  type="financing_remind_status" code="%{status}" />
+				</td>
 				<td align="center">
-				   <c:if test="${fn:contains(button, 'financing_apply_edit')}">
-					<a href="<%=request.getContextPath()%>/core/financingApply/ComU_edit.do?id=<s:property value="financingApplyId"/>">修改</a> 
+				   <c:if test="${fn:contains(button, 'financing_apply_edit') && buttonType ==0}">
+					<a href="<%=request.getContextPath()%>/core/financingApply/ComU_edit.do?id=<s:property value="financingApplyId"/>&type=<s:property value="buttonType"/>">修改</a> 
 					</c:if>
-					<c:if test="${fn:contains(button, 'financing_apply_del')}">
+					<c:if test="${fn:contains(button, 'financing_apply_del') && buttonType ==0}">
 					
 					<a href="javascript:doDel('<s:property value="financingApplyId"/>','');">删除</a>
 					</c:if>
 					<c:if test="${fn:contains(button, 'financing_apply_load')}">
-					<a href="<%=request.getContextPath()%>/core/financingApply/ComR_load.do?id=<s:property value="financingApplyId"/>">查看</a>
+					<a href="<%=request.getContextPath()%>/core/financingApply/ComR_load.do?id=<s:property value="financingApplyId"/>&type=<s:property value="buttonType"/>">查看</a>
 				    </c:if>
 				</td>
 			</tr>

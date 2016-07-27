@@ -119,6 +119,7 @@ public class LoanApplyAction extends BaseMgrAction
             String EmployeeName = loanApply.getEmployeeName().split("_")[1];
             loanApply.setEmployeeId(EmployeeId);
             loanApply.setEmployeeName(EmployeeName);
+            loanApply.setCompanyId(this.getCtxUser().getCompanyId());
             this.loanApplyService.save(loanApply);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -172,6 +173,9 @@ public class LoanApplyAction extends BaseMgrAction
             String EmployeeName = loanApply.getEmployeeName().split("_")[1];
             loanApply.setEmployeeId(EmployeeId);
             loanApply.setEmployeeName(EmployeeName);
+            
+            loanApply.setCompanyId(this.getCtxUser().getCompanyId());
+
             this.loanApply = this.loanApplyService.update(loanApply);
             this.addActionMessage(this.getText("do.success.back"));
         }

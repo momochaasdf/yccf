@@ -41,6 +41,9 @@ public class FinancingApplyAction extends BaseMgrAction
                 c.eq("type", ifinancingApply.getType().trim());
             }
         }
+        if(type.equals("4")){
+            c.eq("type", type); 
+        }
         dataPage = commonService.find(c, FinancingApply.class, currentPage, pageSize);
         setTotalPage(dataPage.getTotalPageCount());
         return LIST;

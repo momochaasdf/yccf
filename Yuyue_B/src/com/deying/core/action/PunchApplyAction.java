@@ -26,7 +26,7 @@ public class PunchApplyAction extends BaseMgrAction
     
     private ComUser user = null;
     
-    private PunchApply PunchApply = null;
+    private PunchApply punch = null;
     
     private PunchApply iPunchApply = null;
     
@@ -115,18 +115,21 @@ public class PunchApplyAction extends BaseMgrAction
     {
         LOG.debug("--------------------PunchApplyAction -> save----------------");
         
-        if (PunchApply != null)
+        if (punch != null)
         {
-            String userId = PunchApply.getUserName().split("_")[0];
-            String userName = PunchApply.getUserName().split("_")[1];
-            PunchApply.setUserId(userId);
-            PunchApply.setUserName(userName);
+            String userId = punch.getUserName().split("_")[0];
+            String userName = punch.getUserName().split("_")[1];
+            punch.setUserId(userId);
+            punch.setUserName(userName);
             
-            String departmentId = PunchApply.getDepartmentId().split("_")[0];
-            String departmentName = PunchApply.getDepartmentId().split("_")[1];
-            PunchApply.setDepartmentId(departmentId);
-            PunchApply.setDepartmentName(departmentName);
-            this.PunchApplyService.save(PunchApply);
+            String departmentId = punch.getDepartmentId().split("_")[0];
+            String departmentName = punch.getDepartmentId().split("_")[1];
+            punch.setDepartmentId(departmentId);
+            punch.setDepartmentName(departmentName);
+            
+            punch.setCompanyId(this.getCtxUser().getCompanyId());
+
+            this.PunchApplyService.save(punch);
             this.addActionMessage(this.getText("do.success.back"));
         }
         return list();
@@ -151,7 +154,7 @@ public class PunchApplyAction extends BaseMgrAction
     {
         LOG.debug("--------------------PunchApplyAction -> edit----------------");
         this.user = this.userService.get(id);
-        this.PunchApply = this.PunchApplyService.get(id);
+        this.punch = this.PunchApplyService.get(id);
         
         CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
         dicParam.eq("dictTypeCode", "department_code");
@@ -168,18 +171,20 @@ public class PunchApplyAction extends BaseMgrAction
         throws Exception
     {
         LOG.debug("--------------------PunchApplyAction -> upd----------------");
-        if (PunchApply != null)
+        if (punch != null)
         {
-            String userId = PunchApply.getUserName().split("_")[0];
-            String userName = PunchApply.getUserName().split("_")[1];
-            PunchApply.setUserId(userId);
-            PunchApply.setUserName(userName);
+            String userId = punch.getUserName().split("_")[0];
+            String userName = punch.getUserName().split("_")[1];
+            punch.setUserId(userId);
+            punch.setUserName(userName);
             
-            String departmentId = PunchApply.getDepartmentId().split("_")[0];
-            String departmentName = PunchApply.getDepartmentId().split("_")[1];
-            PunchApply.setDepartmentId(departmentId);
-            PunchApply.setDepartmentName(departmentName);
-            this.PunchApply = this.PunchApplyService.update(PunchApply);
+            String departmentId = punch.getDepartmentId().split("_")[0];
+            String departmentName = punch.getDepartmentId().split("_")[1];
+            punch.setDepartmentId(departmentId);
+            punch.setDepartmentName(departmentName);
+            
+            punch.setCompanyId(this.getCtxUser().getCompanyId());
+            this.punch = this.PunchApplyService.update(punch);
             this.addActionMessage(this.getText("do.success.back"));
         }
         return list();
@@ -191,7 +196,7 @@ public class PunchApplyAction extends BaseMgrAction
         {
             return true;
         }
-        PunchApply r = this.PunchApplyService.get(this.PunchApply.getPunchApplyId());
+        PunchApply r = this.PunchApplyService.get(this.punch.getPunchApplyId());
         if (r == null)
         {
             this.addActionError(this.getText("err.no.entity"));
@@ -247,7 +252,7 @@ public class PunchApplyAction extends BaseMgrAction
         throws Exception
     {
         LOG.debug("--------------------PunchApplyAction -> load----------------");
-        this.PunchApply = this.PunchApplyService.get(id);
+        this.punch = this.PunchApplyService.get(id);
         return LOAD;
     }
     
@@ -283,12 +288,12 @@ public class PunchApplyAction extends BaseMgrAction
     
     public PunchApply getPunchApply()
     {
-        return PunchApply;
+        return punch;
     }
     
     public void setPunchApply(PunchApply PunchApply)
     {
-        this.PunchApply = PunchApply;
+        this.punch = PunchApply;
     }
     
     public PunchApply getIPunchApply()

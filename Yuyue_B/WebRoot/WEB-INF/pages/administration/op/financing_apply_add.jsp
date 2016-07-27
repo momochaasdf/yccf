@@ -76,7 +76,7 @@
 		<div class="right">
 			<div class="o-mt">
 				<h2 style="margin-top: 0;">
-					<a href="<%=path %>/core/financingApply/ComM_list.do" style="color:#cc0000">理财协议管理</a>
+					<a href="<%=path %>/core/financingApply/ComM_list.do?type=${type}" style="color:#cc0000">理财协议管理</a>
 					&nbsp;&gt;&gt;&nbsp;
 					<a style="color:#cc0000" href="javascript:void(0);">新增理财协议</a>
 				</h2>
