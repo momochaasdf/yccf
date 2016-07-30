@@ -26,6 +26,7 @@
 		<s:actionmessage />
 	</div>
 	<form action="#" method="post" id="punchApplyForm">
+	     <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="返回" class="btBack"
 				onclick="doAction('punchApplyForm','ComM_list','');"
@@ -51,20 +52,21 @@
 			</tr>
 				<tr>
 				<th>上下班</th>
-				<td> <s:radio list="#{'1':'上班','2':'下班'}" name="punchApply.inOrOut"/> </td>
+				<td><s:if test="%{punchApply.inOrOut==2}">
+				    <c:out value="下班"></c:out>
+					</s:if> <s:else>
+					<c:out value="上班"></c:out>
+					</s:else></td>
 			</tr>
 			<tr>
 				<th>忘记打卡时间</th>
 				<td><input type="text" name="punchApply.applyPunchTime"    disabled
 					value="<s:date format="yyyy-MM-dd" name="punchApply.applyPunchTime" />"
-					onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" /></td>
+					onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></td>
 			</tr>
 			<tr>
 				<th>审核状态</th>
-				<td><select name="punchApply.status">
-						<option value="0">待审批</option>
-						<option value="1">已审批</option>
-				</select></td>
+				<td><z:dict  type="out_apply_status" code="%{punchApply.status}" /></td>
 			</tr>
 			<tr>
 				<th>审核人</th>

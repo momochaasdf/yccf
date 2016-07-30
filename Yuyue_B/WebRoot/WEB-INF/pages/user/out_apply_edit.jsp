@@ -113,8 +113,8 @@
 			<tr>
 				<th>审核状态</th>
 				<td><select name="outApply.status">
-						<option value="0" <s:if test="%{leaveApply.status==0}">selected =selected</s:if>>待审批</option>
-						<option value="1" <s:if test="%{leaveApply.status==1}">selected =selected</s:if>>已审批</option>
+						<option value="0" <s:if test="%{outApply.status==0}">selected =selected</s:if>>待审批</option>
+						<option value="1" <s:if test="%{outApply.status==1}">selected =selected</s:if>>已审批</option>
 				</select></td>
 			</tr>
 			<tr>

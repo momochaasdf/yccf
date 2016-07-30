@@ -48,6 +48,7 @@
 		<s:actionerror />
 	</div>
 	<form action="#" method="post" id="punchApplyForm">
+	     <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -65,17 +66,6 @@
 				</select></td>
 			</tr>
 			<tr>
-
-				<th>用户</th>
-				<td><select type="text" name="punchApply.userName">
-						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="punchApply.userName">
-						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
-						</s:iterator>
-				</select> --%></td>
-			</tr>
-			<tr>
 				<th>忘记打卡原因</th>
 				<td><input type="text" name="punchApply.reason"
 					value="${punchApply.reason }" /></td>
@@ -89,24 +79,6 @@
 				<td><input type="text" name="punchApply.applyPunchTime"  
 					value="<s:date format="yyyy-MM-dd" name="punchApply.applyPunchTime" />"
 					onfocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></td>
-			</tr>
-			<tr>
-				<th>审核状态</th>
-				<td><select name="punchApply.status">
-						<option value="0">待审批</option>
-						<option value="1">已审批</option>
-				</select></td>
-			</tr>
-			<tr>
-				<th>审核人</th>
-				<td><input type="text" name="punchApply.reviewPerson"
-					value="${punchApply.reviewPerson}" /></td>
-			</tr>
-			<tr>
-				<th>审核时间</th>
-				<td><input type="text" name="punchApply.reviewTime"
-					value="<s:date format="yyyy-MM-dd" name="punchApply.reviewTime" />"
-					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
 		</table>
 		<div class="navButton">
