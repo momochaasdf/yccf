@@ -67,13 +67,14 @@
 				style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
 			<c:if test="${fn:contains(button, 'leave_apply_add') && type ==1}">
 			<input class="btAdd" value="新增"
-				onclick="doAction('leaveApplyForm','ComC_add','')"
+				onclick="doAction('leaveApplyForm','ComC_add','type=1')"
 				style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
 		     </c:if>
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/leaveApply/" /> <input
 			type="hidden" name="id" id="id" /> <input type="hidden" name=_query
-			id="_query" value="_query" />
+			id="_query" value="_query" /> <input type="hidden" name="type"
+			id="type" value="${type}" />
 	</form>
 	<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 		<thead>
@@ -108,10 +109,10 @@
 					<td align="center">
 					    <c:choose> 
 					       <c:when test="${fn:contains(button, 'leave_apply_edit') && type ==1}">
-					       <a href="<%=request.getContextPath()%>/core/leaveApply/ComU_edit.do?id=<s:property value="leaveApplyId"/>">修改</a>
+					       <a href="<%=request.getContextPath()%>/core/leaveApply/ComU_edit.do?type=${type}&id=<s:property value="leaveApplyId"/>">修改</a>
 					       </c:when>
 					       <c:when test="${fn:contains(button, 'leave_edit') && type ==2}">
-					       <a href="<%=request.getContextPath()%>/core/leaveApply/ComU_edit.do?id=<s:property value="leaveApplyId"/>">审核</a>
+					       <a href="<%=request.getContextPath()%>/core/leaveApply/ComU_edit.do?type=${type}&id=<s:property value="leaveApplyId"/>">审核</a>
 					       </c:when>
 					    </c:choose>
 						<c:if test="${fn:contains(button, 'leave_apply_del') && type ==1}">
@@ -120,10 +121,10 @@
 						
 						 <c:choose> 
 					       <c:when test="${fn:contains(button, 'leave_apply_load') && type ==1}">
-						<a href="<%=request.getContextPath()%>/core/leaveApply/ComR_load.do?id=<s:property value="leaveApplyId"/>">查看</a>
+						<a href="<%=request.getContextPath()%>/core/leaveApply/ComR_load.do?type=${type}&id=<s:property value="leaveApplyId"/>">查看</a>
 					       </c:when>
 					       <c:when test="${fn:contains(button, 'leave_load') && type ==2}">
-						<a href="<%=request.getContextPath()%>/core/leaveApply/ComR_load.do?id=<s:property value="leaveApplyId"/>">查看</a>
+						<a href="<%=request.getContextPath()%>/core/leaveApply/ComR_load.do?type=${type}&id=<s:property value="leaveApplyId"/>">查看</a>
 					       </c:when>
 					    </c:choose>
 					</td>

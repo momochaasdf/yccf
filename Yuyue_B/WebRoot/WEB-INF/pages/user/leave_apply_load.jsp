@@ -26,6 +26,7 @@
 		<s:actionmessage />
 	</div>
 	<form action="#" method="post" id="leaveApplyForm">
+	     <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="返回" class="btBack"
 				onclick="doAction('leaveApplyForm','ComM_list','');"
@@ -68,10 +69,7 @@
 			</tr>
 			<tr>
 				<th>审核状态</th>
-				<td><select name="leaveApply.status">
-						<option value="0">待审批</option>
-						<option value="1">已审批</option>
-				</select></td>
+				<td><z:dict  type="leave_apply_status" code="%{leaveApply.status}" /></td>
 			</tr>
 			<tr>
 				<th>审核人</th>

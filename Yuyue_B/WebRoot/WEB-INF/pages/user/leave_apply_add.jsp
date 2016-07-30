@@ -89,6 +89,7 @@
 		<s:actionerror />
 	</div>
 	<form action="#" method="post" id="leaveApplyForm">
+	     <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -104,17 +105,6 @@
 							<option value="${dictCode}_${dictName}">${dictName}</option>
 						</s:iterator>
 				</select></td>
-			</tr>
-			<tr>
-
-				<th>用户</th>
-				<td><select type="text" name="leaveApply.userName">
-						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="leaveApply.userName">
-						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
-						</s:iterator>
-				</select> --%></td>
 			</tr>
 			<tr>
 				<th>请假原因</th>
@@ -137,24 +127,6 @@
 				<th>请假天数</th>
 				<td><input type="text" name="leaveApply.days" id ="days"
 					value="${leaveApply.days}" readonly/></td>
-			</tr>
-			<tr>
-				<th>审核状态</th>
-				<td><select name="leaveApply.status">
-						<option value="0">待审批</option>
-						<option value="1">已审批</option>
-				</select></td>
-			</tr>
-			<tr>
-				<th>审核人</th>
-				<td><input type="text" name="leaveApply.reviewPerson"
-					value="${leaveApply.reviewPerson}" /></td>
-			</tr>
-			<tr>
-				<th>审核时间</th>
-				<td><input type="text" name="leaveApply.reviewTime"
-					value="<s:date format="yyyy-MM-dd" name="leaveApply.reviewTime" />"
-					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
 		</table>
 		<div class="navButton">
