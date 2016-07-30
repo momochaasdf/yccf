@@ -45,52 +45,33 @@ public class LeaveApplyAction extends BaseMgrAction
     {
         LOG.debug("--------------------leaveApplyAction -> list----------------");
         String companyId = this.getCtxUser().getCompanyId();
-        String loginId = obtionInfoVal("loginId", String.class);
-        String userName = obtionInfoVal("userName", String.class);
-        Integer status = obtionInfoVal("status", Integer.class);
-        
+        String userId = this.getCtxUser().getUserId();
+        String userName = this.getCtxUser().getUserName();
+        String userRoleNames = this.getCtxUser().getRoleNames();
         this.currentPage = this.currentPage == null ? 1 : this.currentPage;
         CriteriaWrapper c = CriteriaWrapper.newInstance();
-        CriteriaWrapper leaveApplyParams = CriteriaWrapper.newInstance();
         c.desc("crtTime");
-        if (loginId != null)
+        if (userId != null)
         {
-            c.like("loginId", loginId);
+        	if(!userRoleNames.contains("总经理") && type.equals("1"))
+        		c.like("userId", userId);
         }
         if (userName != null)
         {
+        	if(!userRoleNames.contains("总经理") && type.equals("1"))
             c.like("userName", userName);
-        }
-        if (status != null && status != 2)
-        {
-            c.eq("status", status.toString());
         }
         if (companyId != null)
         {
-            c.eq("companyId", companyId);
+        	if(!userRoleNames.contains("总经理")){
+    			 c.eq("companyId", companyId);
+    		}
         }
-        if (status == null)
-        {
-            info.put("status", "2");
-        }
-        /*
-         * dataPage = commonService.find(c , ComUser.class, currentPage, pageSize);
-         */
-        if (null != ileaveApply)
-        {
-            if (StringUtils.isNotBlank(ileaveApply.getUserName()))
-            {
-                leaveApplyParams.like("userName", ileaveApply.getUserName().trim());
-            }
-            if (StringUtils.isNotBlank(ileaveApply.getDepartmentId()))
-            {
-                leaveApplyParams.like("departmentId", ileaveApply.getDepartmentId());
-            }
-        }
+        
         CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
         dicParam.eq("dictTypeCode", "department_code");
         dicList = commonService.find(dicParam, ComDict.class);
-        dataPage = commonService.find(leaveApplyParams, LeaveApply.class, currentPage, pageSize);
+        dataPage = commonService.find(c, LeaveApply.class, currentPage, pageSize);
         setTotalPage(dataPage.getTotalPageCount());
         return LIST;
     }
