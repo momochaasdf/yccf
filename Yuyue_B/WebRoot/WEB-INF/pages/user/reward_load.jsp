@@ -26,6 +26,7 @@
 		<s:actionmessage />
 	</div>
 	<form action="#" method="post" id="rewardForm">
+	    <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="返回" class="btBack"
 				onclick="doAction('rewardForm','ComM_list','');"

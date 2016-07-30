@@ -73,7 +73,7 @@
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/reward/" /> <input
 			type="hidden" name="id" id="id" /> <input type="hidden" name=_query
-			id="_query" value="_query" />
+			id="_query" value="_query" /> <input type="hidden" name="type" id="type" value="${type}" />
 	</form>
 	<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 		<thead>
@@ -98,7 +98,7 @@
 					<td><s:property value="departmentName" />&nbsp;</td>
 					<td><s:property value="userName" />&nbsp;</td>
 					<td><s:property value="money" />&nbsp;</td>
-					<td><s:property value="reason" />% &nbsp;</td>
+					<td><s:property value="reason" />  &nbsp;</td>
 					<td><s:date name="%{rewardTime}" format="yyyy-MM-dd" />&nbsp;</td>
 					<td><s:property value="reviewPerson" />&nbsp;</td>
 					<td><z:dict  type="punish_status" code="%{status}" />&nbsp;</td>
@@ -106,8 +106,11 @@
 					<td align="center">
 					 <c:choose> 
 					       <c:when test="${fn:contains(button, 'reward_edit') && type ==0}">
-					    <a href="<%=request.getContextPath()%>/core/reward/ComU_edit.do?id=<s:property value="rewardId"/>">修改</a>
-					    </c:when>
+					        <a href="<%=request.getContextPath()%>/core/reward/ComU_edit.do?type=${type}&id=<s:property value="rewardId"/>">修改</a>
+					       </c:when>
+					        <c:when test="${fn:contains(button, 'reward_check') && type ==2}">
+					        <a href="<%=request.getContextPath()%>/core/reward/ComU_edit.do?type=${type}&id=<s:property value="rewardId"/>">审核</a>
+					       </c:when>
 					   </c:choose>
 					   <c:if test="${fn:contains(button, 'reward_del') && type ==0}">
 						<a href="javascript:doDel('<s:property value="rewardId"/>','');">删除</a>
@@ -115,10 +118,13 @@
 						
 						<c:choose> 
 					       <c:when test="${fn:contains(button, 'reward_apply_load') && type ==1}">
-						<a href="<%=request.getContextPath()%>/core/reward/ComR_load.do?id=<s:property value="rewardId"/>">查看</a>
+						<a href="<%=request.getContextPath()%>/core/reward/ComR_load.do?type=${type}&id=<s:property value="rewardId"/>">查看</a>
 						</c:when>
 						 <c:when test="${fn:contains(button, 'reward_load') && type ==0}">
-						<a href="<%=request.getContextPath()%>/core/reward/ComR_load.do?id=<s:property value="rewardId"/>">查看</a>
+						<a href="<%=request.getContextPath()%>/core/reward/ComR_load.do?type=${type}&id=<s:property value="rewardId"/>">查看</a>
+						</c:when>
+						 <c:when test="${fn:contains(button, 'reward_check_load') && type ==2}">
+						<a href="<%=request.getContextPath()%>/core/reward/ComR_load.do?type=${type}&id=<s:property value="rewardId"/>">查看</a>
 						</c:when>
 						</c:choose>
 					</td>

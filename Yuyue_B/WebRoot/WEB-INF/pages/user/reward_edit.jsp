@@ -30,6 +30,13 @@
 		});
 
 	});
+	$(function(){
+		var type =${type};
+		if(type ==2){
+		$(".editReadonly").attr("readonly","readonly");
+		$("#rewardTime").attr("onfocus","");
+		}
+	})
 </script>
 </head>
 <body>
@@ -48,6 +55,7 @@
 		<s:actionerror />
 	</div>
 	<form action="#" method="post" id="rewardForm">
+	     <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -55,54 +63,66 @@
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
-			<tr>
-
-				<th>部门名称</th>
-				<td><select type="text" name="reward.departmentId">
+			<s:if test="%{type==0}">
+			 <tr>
+				<th>部门</th>
+				<td><select type="text" name="reward.departmentId" id="departmentName" >
 						<s:iterator value="dicList" status="st">
-							<option value="${dictCode}_${dictName}">${dictName}</option>
+						<option value="${dictCode}_${dictName}" <s:if test="%{reward.departmentId ==dictCode}">selected = selected</s:if>>${dictName}</option>
 						</s:iterator>
 				</select></td>
 			</tr>
-			<tr>
-
+			 <tr>
 				<th>用户</th>
-				<td><select type="text" name="reward.userName">
-						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="reward.userName">
+				<td><select type="text" name="reward.userName" id="userName" >
 						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
+							<option value="${userId}_${userName}" <s:if test="%{reward.userId ==userId}">selected = selected</s:if>>${userName}</option>
 						</s:iterator>
-				</select> --%></td>
+				</select></td>
+			</tr>
+			</s:if>
+			<s:else>
+			<tr>
+			   <th>部门</th>
+				<td><input  type="text" 
+					value="${reward.departmentName}" readonly/></td>
 			</tr>
 			<tr>
+			   <th>用户</th>
+				<td><input  type="text" 
+					value="${reward.userName}" readonly/></td>
+			</tr>
+			</s:else>
+			<tr>
 				<th>奖励原因</th>
-				<td><input type="text" name="reward.reason"
+				<td><input type="text" name="reward.reason" class="editReadonly"
 					value="${reward.reason }" /></td>
 			</tr>
 			<tr>
 				<th>奖励金额</th>
-				<td><input type="text" name="reward.money"
+				<td><input type="number" name="reward.money" class="editReadonly"
 					value="${reward.money}" /></td>
 			</tr>
 			<tr>
 				<th>奖励时间</th>
-				<td><input type="text" name="reward.rewardTime"
+				<td><input type="text" name="reward.rewardTime" class="editReadonly" id="rewardTime"
 					value="<s:date format="yyyy-MM-dd" name="reward.rewardTime" />"
 					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
+			<s:if  test="%{type==1 || type ==0}">	
+			<tr>
+				<th>审核状态</th>
+				<td><z:dict  type="reward_apply_status" code="%{reward.status}" /></td>
+		    </tr>
+			</s:if>
+			<s:else>
 			<tr>
 				<th>审核状态</th>
 				<td><select name="reward.status">
-						<option value="0">待审批</option>
-						<option value="1">已审批</option>
-						<option value="2">已奖励</option>
+						<option value="0"  <s:if test="%{reward.status==0}">selected =selected</s:if> >待审批</option>
+						<option value="1"  <s:if test="%{reward.status==1}">selected =selected</s:if> >已审批</option>
+						<option value="2"   <s:if test="%{reward.status==2}">selected =selected</s:if>>已奖励</option>
 				</select></td>
-			</tr>
-			<tr>
-				<th>审核人</th>
-				<td><input type="text" name="reward.reviewPerson"
-					value="${reward.reviewPerson}" /></td>
 			</tr>
 			<tr>
 				<th>审核时间</th>
@@ -110,6 +130,8 @@
 					value="<s:date format="yyyy-MM-dd" name="reward.reviewTime" />"
 					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
+			</s:else>
+			
 		</table>
 	    <input type="hidden" name="reward.rewardId" value="${reward.rewardId}"/>
 		<input type="hidden" name="id" value="${id}"/>
