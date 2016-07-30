@@ -26,6 +26,7 @@
 		<s:actionmessage />
 	</div>
 	<form action="#" method="post" id="punishedForm">
+	    <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="返回" class="btBack"
 				onclick="doAction('punishedForm','ComM_list','');"

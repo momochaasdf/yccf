@@ -48,6 +48,7 @@
 		<s:actionerror />
 	</div>
 	<form action="#" method="post" id="punishedForm">
+	      <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -56,24 +57,20 @@
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
-
-				<th>部门名称</th>
-				<td><select type="text" name="punished.departmentId">
+				<th>部门</th>
+				<td><select type="text" name="punished.departmentId" id="departmentName" >
 						<s:iterator value="dicList" status="st">
-							<option value="${dictCode}_${dictName}">${dictName}</option>
+						<option value="${dictCode}_${dictName}" <s:if test="%{punished.departmentId ==dictCode}">selected = selected</s:if>>${dictName}</option>
 						</s:iterator>
 				</select></td>
 			</tr>
-			<tr>
-
+			 <tr>
 				<th>用户</th>
-				<td><select type="text" name="punished.userName">
-						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="punished.userName">
+				<td><select type="text" name="punished.userName" id="userName" >
 						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
+							<option value="${userId}_${userName}" <s:if test="%{punished.userId ==userId}">selected = selected</s:if>>${userName}</option>
 						</s:iterator>
-				</select> --%></td>
+				</select></td>
 			</tr>
 			<tr>
 				<th>惩罚原因</th>
@@ -82,32 +79,13 @@
 			</tr>
 			<tr>
 				<th>惩罚金额</th>
-				<td><input type="text" name="punished.money"
+				<td><input type="number" name="punished.money"
 					value="${punished.money}" /></td>
 			</tr>
 			<tr>
 				<th>惩罚时间</th>
 				<td><input type="text" name="punished.punishedTime"
 					value="<s:date format="yyyy-MM-dd" name="punished.punishedTime" />"
-					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
-			</tr>
-			<tr>
-				<th>审核状态</th>
-				<td><select name="punished.status">
-						<option value="0">待审批</option>
-						<option value="1">已审批</option>
-						<option value="2">已罚款</option>
-				</select></td>
-			</tr>
-			<tr>
-				<th>审核人</th>
-				<td><input type="text" name="punished.reviewPerson"
-					value="${punished.reviewPerson}" /></td>
-			</tr>
-			<tr>
-				<th>审核时间</th>
-				<td><input type="text" name="punished.reviewTime"
-					value="<s:date format="yyyy-MM-dd" name="punished.reviewTime" />"
 					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
 		</table>
