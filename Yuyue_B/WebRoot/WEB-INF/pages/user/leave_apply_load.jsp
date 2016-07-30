@@ -79,8 +79,7 @@
 			<tr>
 				<th>审核时间</th>
 				<td><input type="text" name="leaveApply.reviewTime" disabled
-					value="<s:date format="yyyy-MM-dd" name="leaveApply.reviewTime" />"
-					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
+					value="<s:date format="yyyy-MM-dd" name="leaveApply.reviewTime" />"  /></td>
 			</tr>
 		</table>
 		<div class="navButton">

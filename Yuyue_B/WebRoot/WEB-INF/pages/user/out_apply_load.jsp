@@ -26,6 +26,7 @@
 		<s:actionmessage />
 	</div>
 	<form action="#" method="post" id="outApplyForm">
+	   <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="返回" class="btBack"
 				onclick="doAction('outApplyForm','ComM_list','');"
@@ -63,10 +64,7 @@
 			</tr>
 			<tr>
 				<th>审核状态</th>
-				<td><select name="outApply.status">
-						<option value="0">待审批</option>
-						<option value="1">已审批</option>
-				</select></td>
+				<td><z:dict  type="out_apply_status" code="%{outApply.status}" /></td>
 			</tr>
 			<tr>
 				<th>审核人</th>
@@ -76,8 +74,7 @@
 			<tr>
 				<th>审核时间</th>
 				<td><input type="text" name="outApply.reviewTime" disabled
-					value="<s:date format="yyyy-MM-dd" name="outApply.reviewTime" />"
-					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
+					value="<s:date format="yyyy-MM-dd" name="outApply.reviewTime" />" /></td>
 			</tr>
 		</table>
 		<div class="navButton">

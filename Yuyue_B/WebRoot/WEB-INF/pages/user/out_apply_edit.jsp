@@ -30,7 +30,16 @@
 		});
 
 	});
-	 
+	$(function () {
+		var type =${type};
+		if(type ==1){
+			
+		}else {
+			$("#reason").attr("readonly","readonly")
+			$("#d4311").attr("readonly","readonly").attr("onfocus","");
+			$("#d4322").attr("readonly","readonly").attr("onfocus","");
+		}
+	})    
 </script>
 </head>
 <body>
@@ -49,6 +58,7 @@
 		<s:actionerror />
 	</div>
 	<form action="#" method="post" id="outApplyForm">
+	    <input type="hidden" id="opreateType" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -59,26 +69,25 @@
 			<tr>
 
 				<th>部门名称</th>
+				<s:if test="%{type==1 }">
 				<td><select type="text" name="outApply.departmentId">
 						<s:iterator value="dicList" status="st">
 							<option value="${dictCode}_${dictName}">${dictName}</option>
 						</s:iterator>
 				</select></td>
+				</s:if>
+				<s:else>
+				<td><input  type="text"   value="${outApply.departmentName}" readonly/></td>
+				</s:else>
 			</tr>
 			<tr>
-
 				<th>用户</th>
-				<td><select type="text" name="outApply.userName">
-						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="outApply.userName">
-						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
-						</s:iterator>
-				</select> --%></td>
+				<td><input  type="text" name="outApply.userName" id="userName"
+					value="${outApply.userName}" readonly/></td>
 			</tr>
 			<tr>
 				<th>外出原因</th>
-				<td><input type="text" name="outApply.reason"
+				<td><input type="text" name="outApply.reason" id="reason"
 					value="${outApply.reason }" /></td>
 			</tr>
 			<tr>
@@ -93,17 +102,20 @@
 					value="<s:date format="yyyy-MM-dd" name="outApply.applyEndTime" />"
 					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',dateFmt:'yyyy-MM-dd'})"  /></td>
 			</tr>
+			
+			<s:if  test="%{type==1}">	
+			<tr>
+				<th>审核状态</th>
+				<td><z:dict  type="out_apply_status" code="%{outApply.status}" /></td>
+		    </tr>
+			</s:if>
+			<s:else>
 			<tr>
 				<th>审核状态</th>
 				<td><select name="outApply.status">
-						<option value="0">待审批</option>
-						<option value="1">已审批</option>
+						<option value="0" <s:if test="%{leaveApply.status==0}">selected =selected</s:if>>待审批</option>
+						<option value="1" <s:if test="%{leaveApply.status==1}">selected =selected</s:if>>已审批</option>
 				</select></td>
-			</tr>
-			<tr>
-				<th>审核人</th>
-				<td><input type="text" name="outApply.reviewPerson"
-					value="${outApply.reviewPerson}" /></td>
 			</tr>
 			<tr>
 				<th>审核时间</th>
@@ -111,6 +123,7 @@
 					value="<s:date format="yyyy-MM-dd" name="outApply.reviewTime" />"
 					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
+			</s:else>
 		</table>
 	    <input type="hidden" name="outApply.outApplyId" value="${outApply.outApplyId}"/>
 		<input type="hidden" name="id" value="${id}"/>

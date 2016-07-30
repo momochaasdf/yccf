@@ -61,7 +61,18 @@ public class LeaveApplyAction extends BaseMgrAction {
 				c.eq("companyId", companyId);
 			}
 		}
-
+		  if (null != leaveApply)
+	        {
+	            if (StringUtils.isNotBlank(leaveApply.getUserName()))
+	            {
+	                c.like("userName", leaveApply.getUserName().trim());
+	            }
+	            if (StringUtils.isNotBlank(leaveApply.getDepartmentId()))
+	            {
+	                c.like("departmentId", leaveApply.getDepartmentId());
+	            }
+	        }
+		
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "department_code");
 		dicList = commonService.find(dicParam, ComDict.class);

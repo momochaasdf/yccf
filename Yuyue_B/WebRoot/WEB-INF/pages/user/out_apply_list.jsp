@@ -73,7 +73,8 @@
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/outApply/" /> <input
 			type="hidden" name="id" id="id" /> <input type="hidden" name=_query
-			id="_query" value="_query" />
+			id="_query" value="_query" /> <input type="hidden" name="type"
+			id="type" value="${type}" />
 	</form>
 	<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 		<thead>
@@ -106,10 +107,10 @@
 					<td align="center">
 					     <c:choose> 
 					       <c:when test="${fn:contains(button, 'out_apply_edit') && type ==1}">
-					    <a href="<%=request.getContextPath()%>/core/outApply/ComU_edit.do?id=<s:property value="outApplyId"/>">修改</a>
+					    <a href="<%=request.getContextPath()%>/core/outApply/ComU_edit.do?type=${type}&id=<s:property value="outApplyId"/>">修改</a>
 						</c:when>
 						<c:when test="${fn:contains(button, 'out_edit') && type ==2}">
-					    <a href="<%=request.getContextPath()%>/core/outApply/ComU_edit.do?id=<s:property value="outApplyId"/>">审核</a>
+					    <a href="<%=request.getContextPath()%>/core/outApply/ComU_edit.do?type=${type}&id=<s:property value="outApplyId"/>">审核</a>
 						</c:when>
 						</c:choose>
 						<c:if test="${fn:contains(button, 'out_apply_del') && type ==1}">
@@ -117,10 +118,10 @@
 						</c:if>
 						 <c:choose> 
 					       <c:when test="${fn:contains(button, 'out_apply_load') && type ==1}">
-						<a href="<%=request.getContextPath()%>/core/outApply/ComR_load.do?id=<s:property value="outApplyId"/>">查看</a>
+						<a href="<%=request.getContextPath()%>/core/outApply/ComR_load.do?type=${type}&id=<s:property value="outApplyId"/>">查看</a>
 						</c:when>
 						 <c:when test="${fn:contains(button, 'out_load') && type ==2}">
-						<a href="<%=request.getContextPath()%>/core/outApply/ComR_load.do?id=<s:property value="outApplyId"/>">查看</a>
+						<a href="<%=request.getContextPath()%>/core/outApply/ComR_load.do?type=${type}&id=<s:property value="outApplyId"/>">查看</a>
 						</c:when>
 						</c:choose>
 					</td>

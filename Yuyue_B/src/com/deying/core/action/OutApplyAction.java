@@ -45,46 +45,37 @@ public class OutApplyAction extends BaseMgrAction
     {
         LOG.debug("--------------------outApplyAction -> list----------------");
         String companyId = this.getCtxUser().getCompanyId();
-        String loginId = obtionInfoVal("loginId", String.class);
-        String userName = obtionInfoVal("userName", String.class);
-        Integer status = obtionInfoVal("status", Integer.class);
+		String userId = this.getCtxUser().getUserId();
+		String userName = this.getCtxUser().getUserName();
+		String userRoleNames = this.getCtxUser().getRoleNames();
         
         this.currentPage = this.currentPage == null ? 1 : this.currentPage;
         CriteriaWrapper c = CriteriaWrapper.newInstance();
         CriteriaWrapper outApplyParams = CriteriaWrapper.newInstance();
         c.desc("crtTime");
-        if (loginId != null)
-        {
-            c.like("loginId", loginId);
-        }
-        if (userName != null)
-        {
-            c.like("userName", userName);
-        }
-        if (status != null && status != 2)
-        {
-            c.eq("status", status.toString());
-        }
-        if (companyId != null)
-        {
-            c.eq("companyId", companyId);
-        }
-        if (status == null)
-        {
-            info.put("status", "2");
-        }
-        /*
-         * dataPage = commonService.find(c , ComUser.class, currentPage, pageSize);
-         */
+        if (userId != null) {
+			if (!userRoleNames.contains("总经理") && type.equals("1"))
+				c.like("userId", userId);
+		}
+		if (userName != null) {
+			if (!userRoleNames.contains("总经理") && type.equals("1"))
+				c.like("userName", userName);
+		}
+		if (companyId != null) {
+			if (!userRoleNames.contains("总经理")) {
+				c.eq("companyId", companyId);
+			}
+		}
+        
         if (null != ioutApply)
         {
             if (StringUtils.isNotBlank(ioutApply.getUserName()))
             {
-                outApplyParams.like("userName", ioutApply.getUserName().trim());
+                c.like("userName", ioutApply.getUserName().trim());
             }
             if (StringUtils.isNotBlank(ioutApply.getDepartmentId()))
             {
-                outApplyParams.like("departmentId", ioutApply.getDepartmentId());
+                c.like("departmentId", ioutApply.getDepartmentId());
             }
         }
         CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
@@ -117,17 +108,16 @@ public class OutApplyAction extends BaseMgrAction
         
         if (outApply != null)
         {
-            String userId = outApply.getUserName().split("_")[0];
-            String userName = outApply.getUserName().split("_")[1];
-            outApply.setUserId(userId);
-            outApply.setUserName(userName);
-            
-            String departmentId = outApply.getDepartmentId().split("_")[0];
-            String departmentName = outApply.getDepartmentId().split("_")[1];
-            outApply.setDepartmentId(departmentId);
-            outApply.setDepartmentName(departmentName);
-            
-            outApply.setCompanyId(this.getCtxUser().getCompanyId());
+        	outApply.setUserId(this.getCtxUser().getUserId());
+			outApply.setUserName(this.getCtxUser().getUserName());
+
+			String departmentId = outApply.getDepartmentId().split("_")[0];
+			String departmentName = outApply.getDepartmentId().split("_")[1];
+			outApply.setDepartmentId(departmentId);
+			outApply.setDepartmentName(departmentName);
+
+			outApply.setCompanyId(this.getCtxUser().getCompanyId());
+			outApply.setStatus("0");
             this.outApplyService.save(outApply);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -172,19 +162,22 @@ public class OutApplyAction extends BaseMgrAction
         LOG.debug("--------------------outApplyAction -> upd----------------");
         if (outApply != null)
         {
-            String userId = outApply.getUserName().split("_")[0];
-            String userName = outApply.getUserName().split("_")[1];
-            outApply.setUserId(userId);
-            outApply.setUserName(userName);
-            
-            String departmentId = outApply.getDepartmentId().split("_")[0];
-            String departmentName = outApply.getDepartmentId().split("_")[1];
-            outApply.setDepartmentId(departmentId);
-            outApply.setDepartmentName(departmentName);
-            
-            outApply.setCompanyId(this.getCtxUser().getCompanyId());
-
-            this.outApply = this.outApplyService.update(outApply);
+        	OutApply r = this.outApplyService.get(this.outApply.getOutApplyId());
+        	if (type.equals("1")) {
+				String departmentId = outApply.getDepartmentId().split("_")[0];
+				String departmentName = outApply.getDepartmentId().split("_")[1];
+				r.setDepartmentId(departmentId);
+				r.setDepartmentName(departmentName);
+				r.setApplyStartTime(outApply.getApplyStartTime());
+				r.setApplyEndTime(outApply.getApplyEndTime());
+				r.setReason(outApply.getReason());
+			} else if (type.equals("2")) {
+				r.setReviewPerson(this.getCtxUser().getUserName());
+				r.setReviewTime(outApply.getReviewTime());
+				r.setStatus(outApply.getStatus());
+			}
+ 
+            this.outApply = this.outApplyService.update(r);
             this.addActionMessage(this.getText("do.success.back"));
         }
         return list();
