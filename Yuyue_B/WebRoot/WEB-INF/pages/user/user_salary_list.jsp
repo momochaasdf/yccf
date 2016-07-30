@@ -52,6 +52,7 @@
 		<input type="hidden" name="_ns" id="_ns" value="/core/userSalary/"/>
 		<input type="hidden" name="id" id="id"/>
 		<input type="hidden" name=_query id="_query" value="_query"/>
+		<input type="hidden" name="type" id="type" value="${type}" />
 		</form>
 		<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 			<thead>
@@ -81,10 +82,10 @@
 				<td align="center">
 				     <c:choose> 
 					       <c:when test="${fn:contains(button, 'salary_edit') && type==0}">
-					<a href="<%=request.getContextPath()%>/core/userSalary/ComU_edit.do?id=<s:property value="salaryId"/>">修改</a> 
+					<a href="<%=request.getContextPath()%>/core/userSalary/ComU_edit.do?type=${type}&id=<s:property value="salaryId"/>">修改</a> 
 					       </c:when>
 					        <c:when test="${fn:contains(button, 'salary_check') && type ==2}">
-					<a href="<%=request.getContextPath()%>/core/userSalary/ComU_edit.do?id=<s:property value="salaryId"/>">审核</a> 
+					<a href="<%=request.getContextPath()%>/core/userSalary/ComU_edit.do?type=${type}&id=<s:property value="salaryId"/>">审核</a> 
 					       </c:when>
 					</c:choose>
 					<c:if test="${fn:contains(button, 'salary_del') && type ==0}">
@@ -93,13 +94,13 @@
 					
 					 <c:choose> 
 					       <c:when test="${fn:contains(button, 'salary_load')  && type ==0}">
-					<a href="<%=request.getContextPath()%>/core/userSalary/ComR_load.do?id=<s:property value="salaryId"/>">查看</a>
+					<a href="<%=request.getContextPath()%>/core/userSalary/ComR_load.do?type=${type}&id=<s:property value="salaryId"/>">查看</a>
 					       </c:when>
 					        <c:when test="${fn:contains(button, 'user_salary_load')  && type ==1}">
-					<a href="<%=request.getContextPath()%>/core/userSalary/ComR_load.do?id=<s:property value="salaryId"/>">查看</a>
+					<a href="<%=request.getContextPath()%>/core/userSalary/ComR_load.do?type=${type}&id=<s:property value="salaryId"/>">查看</a>
 					       </c:when>
 					       <c:when test="${fn:contains(button, 'salary_load_check') && type ==2}">
-					<a href="<%=request.getContextPath()%>/core/userSalary/ComR_load.do?id=<s:property value="salaryId"/>">查看</a>
+					<a href="<%=request.getContextPath()%>/core/userSalary/ComR_load.do?type=${type}&id=<s:property value="salaryId"/>">查看</a>
 					       </c:when>
 					  </c:choose>     
 				</td>

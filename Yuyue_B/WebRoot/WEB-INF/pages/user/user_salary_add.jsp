@@ -47,6 +47,7 @@
 		<s:actionerror />
 	</div>
 	<form action="#" method="post" id="userSalaryForm">
+	    <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -56,16 +57,11 @@
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
 				<th>用户</th>
-				<td>
-				<select type="text" name="userSalary.userName">
-				<option value="1_test">test</option>
-				</select>
-				
-				<%-- <select type="text" name="userSalary.userName">
+				<td><select type="text" name="userSalary.userName">
 						<s:iterator value="userList" status="st">
 							<option value="${userId}_${userName}">${userName}</option>
 						</s:iterator>
-				</select> --%></td>
+				</select></td>
 			</tr>
 			<tr>
 				<th>月份</th>
@@ -90,7 +86,7 @@
 			</tr>
 			<tr>
 				<th>基本工资</th>
-				<td><input type="text" name="userSalary.baseSalary"
+				<td><input type="number" name="userSalary.baseSalary"
 					value="${userSalary.baseSalary}" /></td>
 			</tr>
 			<tr>
@@ -115,7 +111,7 @@
 			</tr>
 			<tr>
 				<th>实发基本工资</th>
-				<td><input type="text" name="userSalary.realBaseSalary"
+				<td><input type="number" name="userSalary.realBaseSalary"
 					value="${userSalary.realBaseSalary}" /></td>
 			</tr>
 			<tr>
@@ -135,20 +131,13 @@
 			</tr>
 			<tr>
 				<th>实发工资</th>
-				<td><input type="text" name="userSalary.realSalary"
+				<td><input type="number" name="userSalary.realSalary"
 					value="${userSalary.realSalary}" /></td>
 			</tr>
 			<tr>
 				<th>备注</th>
 				<td><input type="text" name="userSalary.info"
 					value="${userSalary.info}" /></td>
-			</tr>
-			<tr>
-				<th>工资发放状态</th>
-				<td><select type="text" name="userSalary.status">
-						<option value="0">未发放</option>
-						<option value="1">已发放</option>
-				</select></td>
 			</tr>
 		</table>
 		<div class="navButton">

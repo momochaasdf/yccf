@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="z" uri="/z-tags"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -22,27 +23,21 @@
 		</div>
 		<div class="msg" style="clear: both;"><s:actionmessage/></div>
 		<form action="#" method="post" id="userSalaryForm">
+		<input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 		<input type="button" value="返回" class="btBack" onclick="doAction('userSalaryForm','ComM_list','');" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			 <tr>
 				<th>用户</th>
-				<td>
-				<select type="text" name="userSalary.userName">
-				<option value="1_test">test</option>
-				</select>
-				<%-- <select type="text" name="userSalary.userName">
-						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
-						</s:iterator>
-				</select> --%></td>
+				<td><input  type="text" 
+					value="${userSalary.userName}" readonly/></td>
 			</tr>
 			<tr>
 				<th>月份</th>
 				<td><input type="text" name="userSalary.month"
-					value="<s:date format="yyyy/MM" name="userSalary.month" />"
-					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy/MM'})" readOnly/></td>
+					value="${userSalary.month}"  
+					  readOnly/></td>
 			</tr>
 			<tr>
 				<th>当月级别</th>
@@ -116,11 +111,8 @@
 			</tr>
 			<tr>
 				<th>工资发放状态</th>
-				<td><select type="text" name="userSalary.status" readOnly>
-						<option value="0">未发放</option>
-						<option value="1">已发放</option>
-				</select></td>
-			</tr>
+				<td><z:dict  type="user_salary_status" code="%{userSalary.status}" /></td>
+		    </tr>
 		</table>
 		<div class="navButton">
 		<input type="button" value="返回" class="btBack" onclick="doAction('userSalaryForm','ComM_list','');" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
