@@ -52,6 +52,7 @@
 		<input type="hidden" name="_ns" id="_ns" value="/core/goodsPurchase/"/>
 		<input type="hidden" name="id" id="id"/>
 		<input type="hidden" name=_query id="_query" value="_query"/>
+		<input type="hidden" name="type" id="type" value="${type}" />
 		</form>
 		<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 			<thead>
@@ -76,22 +77,22 @@
 				<td><s:property value="nums"/>&nbsp;</td>
 				<td><s:property value="totalPrice"/>&nbsp;</td>
 				<td><s:property value="reviewPerson"/>&nbsp;</td>
-				<td><s:property value="reviewTime"/>&nbsp;</td>
+				<td><s:date name="%{reviewTime}" format="yyyy-MM-dd" />&nbsp;</td>
 				<td><z:dict  type="goods_purchase_status" code="%{status}" />&nbsp;</td>
 				<td align="center">
 				 <c:choose> 
 					       <c:when test="${fn:contains(button, 'goods_purchase_edit') && type ==1}">
-					<a href="<%=request.getContextPath()%>/core/goodsPurchase/ComU_edit.do?id=<s:property value="goodsPurchaseId"/>">修改</a> 
+					<a href="<%=request.getContextPath()%>/core/goodsPurchase/ComU_edit.do?type=${type}&id=<s:property value="goodsPurchaseId"/>">修改</a> 
 					        </c:when>
 					          <c:when test="${fn:contains(button, 'goods_purchase_check') && type ==2}">
-					<a href="<%=request.getContextPath()%>/core/goodsPurchase/ComU_edit.do?id=<s:property value="goodsPurchaseId"/>">审核</a> 
+					<a href="<%=request.getContextPath()%>/core/goodsPurchase/ComU_edit.do?type=${type}&id=<s:property value="goodsPurchaseId"/>">审核</a> 
 					        </c:when>
 			     </c:choose>		
 			     <c:if test="${fn:contains(button, 'goods_purchase_del') && type ==1}"> 
 					<a href="javascript:doDel('<s:property value="goodsPurchaseId"/>','');">删除</a>
 					</c:if>    
 					<c:if test="${fn:contains(button, 'goods_purchase_load') && type ==1}">    
-					<a href="<%=request.getContextPath()%>/core/goodsPurchase/ComR_load.do?id=<s:property value="goodsPurchaseId"/>">查看</a>
+					<a href="<%=request.getContextPath()%>/core/goodsPurchase/ComR_load.do?type=${type}&id=<s:property value="goodsPurchaseId"/>">查看</a>
 				    </c:if>
 				</td>
 			</tr>
