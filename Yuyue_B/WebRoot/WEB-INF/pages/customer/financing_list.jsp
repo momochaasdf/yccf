@@ -120,7 +120,7 @@
 			</div>
 			<input type="hidden" name="_ns" id="_ns" value="/customer/financing/" />
 			<input type="hidden" name="id" id="id" /> <input type="hidden"
-				name=_query id="_query" value="_query" />
+				name=_query id="_query" value="_query" /> <input type="hidden" name="type"  value="${type}" />
 		</form>
 		<div>
 			<table cellspacing="0" class="table_list" style="width: 100%">
@@ -155,17 +155,17 @@
 						<td><s:property value="address" />&nbsp;</td>
 						<td align="center">
 						    <c:if test="${fn:contains(button, 'financing_customer_edit') && type ==0}">
-						    <a href="<%=request.getContextPath()%>/customer/financing/edit.do?id=<s:property value="customerId"/>">修改</a>
+						    <a href="<%=request.getContextPath()%>/customer/financing/edit.do?type=${type}&id=<s:property value="customerId"/>">修改</a>
 							</c:if>
 							<c:if test="${fn:contains(button, 'financing_customer_del') && type ==0}">
 							<a href="javascript:doDel('<s:property value="customerId"/>','');">删除</a>
 							</c:if>
 							<c:choose>
 							<c:when test="${fn:contains(button, 'financing_customer_load') && type ==0}">
-							<a href="<%=request.getContextPath()%>/customer/financing/load.do?id=<s:property value="customerId"/>">查看</a>
+							<a href="<%=request.getContextPath()%>/customer/financing/load.do?type=${type}&id=<s:property value="customerId"/>">查看</a>
 							</c:when>
 							<c:when test="${fn:contains(button, 'financing_customer_list')&& type ==2}">
-							<a href="<%=request.getContextPath()%>/customer/financing/load.do?id=<s:property value="customerId"/>">查看客户资料</a>
+							<a href="<%=request.getContextPath()%>/customer/financing/load.do?type=${type}&id=<s:property value="customerId"/>">查看客户资料</a>
 							</c:when>
 							</c:choose>
 						</td>
