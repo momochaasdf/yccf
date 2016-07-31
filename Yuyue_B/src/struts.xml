@@ -16,6 +16,7 @@
 	<include file="config/struts-backup.xml" />
 	<include file="config/struts-holiday.xml" />
 	<include file="config/struts-holidayRemind.xml" />
+	<include file="config/struts-BirthdayRemind.xml" />
 	<include file="config/struts-user.xml" />
 	<include file="config/struts-in-house.xml" />
 	<include file="config/struts-loan.xml" />

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="birthdayRemind" extends="struts" namespace="/birthdayRemind">
+		<action name="birthdayRemind_*" class="com.deying.core.action.BirthdayRemindAction" method="{1}">
+			<result name="input">/WEB-INF/pages/birthdayRemind/birthdayRemind_list.jsp</result>
+		</action>
+	</package>
+	<package name="birthdayRemindJ" extends="json" namespace="/birthdayRemind">
+		<action name="birthdayRemindJ_*" class="com.deying.core.action.BirthdayRemindAction" method="{1}" />
+	</package>
+</struts>
