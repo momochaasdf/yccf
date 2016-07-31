@@ -71,6 +71,13 @@
 		}
 		return parseInt((eTime.getTime() - sTime.getTime()) / parseInt(divNum));
 	}
+	    
+	$(function(){
+		var type =${type};
+		if(type ==2){
+		$(".editReadonly").attr("readonly","readonly");
+		}
+	})
 </script>
 </head>
 <body>
@@ -89,6 +96,7 @@
 		<s:actionerror />
 	</div>
 	<form action="#" method="post" id="loanApplyForm">
+	<input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -97,181 +105,182 @@
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			 <tr>
-
 				<th>客户名称</th>
-				<td><select type="text" name="loanApply.customerName">
-						<s:iterator value="dicList" status="st">
-							<option value="${dictCode}_${dictName}">${dictName}</option>
-						</s:iterator>
-				</select></td>
+				<td><input type="text" name="loanApply.customerName" value="${loanApply.customerName}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>出借人名字</th>
 				<td><input type="text" name="loanApply.lenderName"
-					value="${loanApply.lenderName}" /></td>
+					value="${loanApply.lenderName}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>出借人身份证号</th>
 				<td><input type="text" name="loanApply.lenderCardId"
-					value="${loanApply.lenderCardId}" /></td>
+					value="${loanApply.lenderCardId}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>出借人现住地址</th>
 				<td><input type="text" name="loanApply.lenderAddress"
-					value="${loanApply.lenderAddress}" /></td>
+					value="${loanApply.lenderAddress}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>还款户名1</th>
 				<td><input type="text" name="loanApply.repaymentName1"
-					value="${loanApply.repaymentName1}" /></td>
+					value="${loanApply.repaymentName1}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>还款开户银行1（精确到支行）</th>
 				<td><input type="text" name="loanApply.repaymentDepositBank1"
-					value="${loanApply.repaymentDepositBank1}" /></td>
+					value="${loanApply.repaymentDepositBank1}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>还款卡号1</th>
 				<td><input type="number" name="loanApply.repaymentBankCardId1"
-					value="${loanApply.repaymentBankCardId1}" /></td>
+					value="${loanApply.repaymentBankCardId1}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>还款户名2</th>
 				<td><input type="text" name="loanApply.repaymentName2"
-					value="${loanApply.repaymentName2}" /></td>
+					value="${loanApply.repaymentName2}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>还款开户银行2（精确到支行）</th>
 				<td><input type="text" name="loanApply.repaymentDepositBank2"
-					value="${loanApply.repaymentDepositBank2}" /></td>
+					value="${loanApply.repaymentDepositBank2}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>还款卡号2</th>
 				<td><input type="number" name="loanApply.repaymentBankCardId2"
-					value="${loanApply.repaymentBankCardId2}" /></td>
+					value="${loanApply.repaymentBankCardId2}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>还款户名3</th>
 				<td><input type="text" name="loanApply.repaymentName3"
-					value="${loanApply.repaymentName3}" /></td>
+					value="${loanApply.repaymentName3}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>还款开户银行3（精确到支行）</th>
 				<td><input type="text" name="loanApply.repaymentDepositBank3"
-					value="${loanApply.repaymentDepositBank3}" /></td>
+					value="${loanApply.repaymentDepositBank3}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>还款卡号3</th>
 				<td><input type="number" name="loanApply.repaymentBankCardId3"
-					value="${loanApply.repaymentBankCardId3}" /></td>
+					value="${loanApply.repaymentBankCardId3}" class="editReadonly"/></td>
 			</tr>
 			
 			<tr>
 				<th>付款方式</th>
-				<td><select name="loanApply.repaymentType">
-						<option value="1">网银汇款</option>
-						<option value="2">银行汇款</option>
-						<option value="3">现金</option>
+				<td><select name="loanApply.repaymentType" class="editReadonly">
+						<option value="1"  <s:if test="%{loanApply.repaymentType==1}">selected =selected</s:if>>网银汇款</option>
+						<option value="2"  <s:if test="%{loanApply.repaymentType==2}">selected =selected</s:if>>银行汇款</option>
+						<option value="3"  <s:if test="%{loanApply.repaymentType==3}">selected =selected</s:if>>现金</option>
 				</select></td>
 			</tr>
 			<tr>
 				<th>合同</th>
 				<td><select type="text" name="loanApply.contractUrl">
 						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="loanApply.userName">
-						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
-						</s:iterator>
-				</select> --%></td>
+				</select></td>
 			</tr>
 			<tr>
 				<th>业务员</th>
-				<td><select type="text" name="loanApply.employeeName">
-						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="loanApply.userName">
+				<td><select type="text" name="loanApply.employeeName" class="editReadonly">
 						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
+							<option value="${userId}_${userName}" <s:if test="%{loanApply.employeeId ==userId}" >selected=selected </s:if> >${userName}</option>
 						</s:iterator>
-				</select> --%></td>
+				</select</td>
 			</tr>
 			<tr>
 				<th>借款开始时间</th>
-				<td><input type="text" name="loanApply.loanStartTime" id="d4311"
+				<td><input type="text" name="loanApply.loanStartTime" id="d4311" class="editReadonly"
 					value="<s:date format="yyyy-MM-dd" name="loanApply.loanStartTime" />"
 					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4322\')}',dateFmt:'yyyy-MM-dd'})" onchange="changeDays()"/></td>
 			</tr>
 			<tr>
 				<th>借款结束时间</th>
-				<td><input type="text" name="loanApply.loanEndTime"  id="d4322"
+				<td><input type="text" name="loanApply.loanEndTime"  id="d4322" class="editReadonly"
 					value="<s:date format="yyyy-MM-dd" name="loanApply.loanEndTime" />"
 					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',dateFmt:'yyyy-MM-dd'})" onchange="changeDays()"/></td>
 			</tr>
 			<tr>
 				<th>借款多少个月</th>
-				<td><input type="number" name="loanApply.months"
+				<td><input type="number" name="loanApply.months" class="editReadonly"
 					value="${loanApply.months}" /></td>
 			</tr>
 			<tr>
 				<th>利率</th>
-				<td><input type="number" name="loanApply.rate"
+				<td><input type="number" name="loanApply.rate" class="editReadonly"
 					value="${loanApply.rate}" /></td>
 			</tr>
 			<tr>
 				<th>借款金额</th>
-				<td><input type="number" name="loanApply.applyMoney"
+				<td><input type="number" name="loanApply.applyMoney" class="editReadonly"
 					value="${loanApply.applyMoney}" /></td>
 			</tr>
 			<tr>
 				<th>借款用途</th>
-				<td><input type="text" name="loanApply.loanReason"
+				<td><input type="text" name="loanApply.loanReason" class="editReadonly"
 					value="${loanApply.loanReason}" /></td>
 			</tr>
 			<tr>
 				<th>还款类型</th>
-				<td><select name="loanApply.type">
-						<option value="1">本息同还</option>
-						<option value="2">先息后本</option>
+				<td><select name="loanApply.type" class="editReadonly">
+						<option value="1" <s:if test="%{loanApply.type==1}">selected =selected</s:if>>本息同还</option>
+						<option value="2" <s:if test="%{loanApply.type==2}">selected =selected</s:if>>先息后本</option>
 				</select></td>
 			</tr>
 			<tr>
 				<th>还款状态</th>
-				<td><select name="loanApply.repaymentStatus">
-						<option value="1">还款中</option>
-						<option value="2">已还清</option>
+				<td><select name="loanApply.repaymentStatus" class="editReadonly">
+						<option value="1" <s:if test="%{loanApply.repaymentStatus==1}">selected =selected</s:if>>还款中</option>
+						<option value="2" <s:if test="%{loanApply.repaymentStatus==2}">selected =selected</s:if>>已还清</option>
 				</select></td>
 			</tr>
 			<tr>
 				<th>逾期次数</th>
-				<td><input type="number" name="loanApply.overdueNums"
+				<td><input type="number" name="loanApply.overdueNums" class="editReadonly"
 					value="${loanApply.overdueNums}" /></td>
 			</tr>
 			<tr>
 				<th>批准金额</th>
-				<td><input type="number" name="loanApply.agreeMoney"
+				<td><input type="number" name="loanApply.agreeMoney"  
 					value="${loanApply.agreeMoney}" /></td>
 			</tr>
 			<tr>
 				<th>大写金额</th>
-				<td><input type="text" name="loanApply.upperMoney"
+				<td><input type="text" name="loanApply.upperMoney" class="editReadonly"
 					value="${loanApply.upperMoney}" /></td>
 			</tr>
 			<tr>
 				<th>月偿还本息数额</th>
-				<td><input type="number" name="loanApply.permonthMoney"
+				<td><input type="number" name="loanApply.permonthMoney" class="editReadonly"
 					value="${loanApply.permonthMoney}" /></td>
 			</tr>
 			<tr>
 				<th>大写月偿还本息数额</th>
-				<td><input type="text" name="loanApply.upperPermonthMoney"
+				<td><input type="text" name="loanApply.upperPermonthMoney" class="editReadonly"
 					value="${loanApply.upperPermonthMoney}" /></td>
 			</tr>
+			<s:if test="%{type==1}">
+			<tr>
+				<th>审核状态</th>
+				<td> <z:dict  type="loan_apply_status" code="%{loanApply.status}" /></td>
+			</tr>
+			<tr>
+				<th>拒绝理由</th>
+				<td><input type="text" name="loanApply.refuseReason"
+					value="${loanApply.refuseReason}" readonly/></td>
+			</tr>
+			</s:if>
+			<s:else>
 			<tr>
 				<th>审核状态</th>
 				<td><select name="loanApply.status">
-						<option value="0">待审批</option>
-						<option value="1">审核中</option>
-						<option value="2">通过</option>
-						<option value="3">拒绝</option>
+						<option value="0"  <s:if test="%{loanApply.status==0}">selected =selected</s:if>>待审批</option>
+						<option value="1"  <s:if test="%{loanApply.status==1}">selected =selected</s:if>>审核中</option>
+						<option value="2"  <s:if test="%{loanApply.status==2}">selected =selected</s:if>>通过</option>
+						<option value="3"  <s:if test="%{loanApply.status==3}">selected =selected</s:if>>拒绝</option>
 				</select></td>
 			</tr>
 			<tr>
@@ -290,6 +299,7 @@
 					value="<s:date format="yyyy-MM-dd" name="loanApply.reviewTime" />"
 					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
+			</s:else>
 		</table>
 	    <input type="hidden" name="loanApply.loanApplyId" value="${loanApply.loanApplyId}"/>
 		<input type="hidden" name="id" value="${id}"/>

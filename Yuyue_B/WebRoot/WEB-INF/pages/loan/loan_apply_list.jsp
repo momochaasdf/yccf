@@ -48,17 +48,9 @@
 			<table cellpadding="0" cellspacing="0" class="navSearch"
 				id="targetTable">
 				<tr>
-					<th style="width: 20%">用户名称</th>
+					<th style="width: 20%">客户名称</th>
 					<td style="width: 30%"><input type="text"
-						name="iloanApply.userName" value="${iloanApply.userName}" /></td>
-					<th style="width: 20%">部门名称</th>
-					<td style="width: 30%"><select type="text"
-						name="iloanApply.departmentId">
-							<option value="">所有部门</option>
-							<s:iterator value="dicList" status="st">
-								<option value="${dictCode}">${dictName}</option>
-							</s:iterator>
-					</select></td>
+						name="iloanApply.customerName" value="${iloanApply.customerName}" /></td>
 				</tr>
 			</table>
 		</fieldset>
@@ -80,7 +72,7 @@
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/loanApply/" /> <input
 			type="hidden" name="id" id="id" /> <input type="hidden" name=_query
-			id="_query" value="_query" />
+			id="_query" value="_query" /> <input type="hidden" name="type" id="type" value="${type}" />
 	</form>
 	<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 		<thead>
@@ -117,13 +109,13 @@
 					<td align="center">
 					   <c:choose> 
 					    <c:when test="${fn:contains(button, 'loan_edit') && button_type ==1}">
-					    <a href="<%=request.getContextPath()%>/core/loanApply/ComU_edit.do?id=<s:property value="loanApplyId"/>">修改</a>
+					    <a href="<%=request.getContextPath()%>/core/loanApply/ComU_edit.do?type=${button_type}&id=<s:property value="loanApplyId"/>">修改</a>
 						</c:when>
 						<c:when test="${fn:contains(button, 'loan_apply_edit') && button_type ==0}">
-					    <a href="<%=request.getContextPath()%>/core/loanApply/ComU_edit.do?id=<s:property value="loanApplyId"/>">修改</a>
+					    <a href="<%=request.getContextPath()%>/core/loanApply/ComU_edit.do?type=${button_type}&id=<s:property value="loanApplyId"/>">修改</a>
 						</c:when>
 						<c:when test="${fn:contains(button, 'loan_apply_check')  && button_type ==2}">
-					    <a href="<%=request.getContextPath()%>/core/loanApply/ComU_edit.do?id=<s:property value="loanApplyId"/>">审核</a>
+					    <a href="<%=request.getContextPath()%>/core/loanApply/ComU_edit.do?type=${button_type}&id=<s:property value="loanApplyId"/>">审核</a>
 						</c:when>
 						</c:choose> 
 						<c:choose> 
@@ -136,10 +128,10 @@
 						</c:choose>
 						<c:choose> 
 						<c:when test="${fn:contains(button, 'loan_apply_load') && button_type ==0}">
-						<a href="<%=request.getContextPath()%>/core/loanApply/ComR_load.do?id=<s:property value="loanApplyId"/>">查看</a>
+						<a href="<%=request.getContextPath()%>/core/loanApply/ComR_load.do?type=${button_type}&id=<s:property value="loanApplyId"/>">查看</a>
 						</c:when>
 						<c:when test="${fn:contains(button, 'loan_load') && button_type ==1}">
-						<a href="<%=request.getContextPath()%>/core/loanApply/ComR_load.do?id=<s:property value="loanApplyId"/>">查看</a>
+						<a href="<%=request.getContextPath()%>/core/loanApply/ComR_load.do?type=${button_type}&id=<s:property value="loanApplyId"/>">查看</a>
 						</c:when>
 						</c:choose>
 					</td>

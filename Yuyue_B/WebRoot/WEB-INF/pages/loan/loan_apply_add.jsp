@@ -96,6 +96,7 @@
 		<s:actionerror />
 	</div>
 	<form action="#" method="post" id="loanApplyForm">
+	<input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -104,13 +105,8 @@
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
-
 				<th>客户名称</th>
-				<td><select type="text" name="loanApply.customerName">
-						<s:iterator value="dicList" status="st">
-							<option value="${dictCode}_${dictName}">${dictName}</option>
-						</s:iterator>
-				</select></td>
+				<td><input type="text" name="loanApply.customerName" value="${loanApply.customerName}" /></td>
 			</tr>
 			<tr>
 				<th>出借人名字</th>
@@ -185,21 +181,15 @@
 				<th>合同</th>
 				<td><select type="text" name="loanApply.contractUrl">
 						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="loanApply.userName">
-						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
-						</s:iterator>
-				</select> --%></td>
+				</select> </td>
 			</tr>
 			<tr>
 				<th>业务员</th>
 				<td><select type="text" name="loanApply.employeeName">
-						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="loanApply.userName">
 						<s:iterator value="userList" status="st">
 							<option value="${userId}_${userName}">${userName}</option>
 						</s:iterator>
-				</select> --%></td>
+				</select></td>
 			</tr>
 			<tr>
 				<th>借款开始时间</th>
@@ -271,31 +261,6 @@
 				<th>大写月偿还本息数额</th>
 				<td><input type="text" name="loanApply.upperPermonthMoney"
 					value="${loanApply.upperPermonthMoney}" /></td>
-			</tr>
-			<tr>
-				<th>审核状态</th>
-				<td><select name="loanApply.status">
-						<option value="0">待审批</option>
-						<option value="1">审核中</option>
-						<option value="2">通过</option>
-						<option value="3">拒绝</option>
-				</select></td>
-			</tr>
-			<tr>
-				<th>拒绝理由</th>
-				<td><input type="text" name="loanApply.refuseReason"
-					value="${loanApply.refuseReason}" /></td>
-			</tr>
-			<tr>
-				<th>审核人</th>
-				<td><input type="text" name="loanApply.reviewPerson"
-					value="${loanApply.reviewPerson}" /></td>
-			</tr>
-			<tr>
-				<th>审核时间</th>
-				<td><input type="text" name="loanApply.reviewTime"
-					value="<s:date format="yyyy-MM-dd" name="loanApply.reviewTime" />"
-					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
 		</table>
 		<div class="navButton">
