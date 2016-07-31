@@ -29,15 +29,11 @@
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			  <tr>
 				<th>物品名称</th>
-				<td><select type="text" name="goodsUsed.goodsName">
-				<option value="1_test">test</option>
-				</select></td>
+				<td><input type="text" name="goodsUsed.goodsName"  value="${goodsUsed.goodsName}" readonly/></td>
 			</tr>
 			<tr>
 				<th>领取人</th>
-				<td><select type="text" name="goodsUsed.userName">
-				<option value="1_test">test</option>
-				</select></td>
+				<td><input type="text" name="goodsUsed.userName" value="${goodsUsed.userName }" readonly/></td>
 			</tr>
 			<tr>
 				<th>领取数量</th>
@@ -47,6 +43,11 @@
 			<tr>
 				<th>申请状态</th>
 				<td><z:dict type="goods_used_status" code="%{goodsUsed.status}" /></td>
+			</tr>
+			<tr>
+				<th>审核时间</th>
+				<td><input type="text" name="goodsUsed.reviewTime"
+					value="<s:date format="yyyy-MM-dd" name="goodsUsed.reviewTime" />" readonly /></td>
 			</tr>
 		</table>
 		<div class="navButton">

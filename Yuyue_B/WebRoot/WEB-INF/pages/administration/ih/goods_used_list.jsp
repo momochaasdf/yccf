@@ -68,7 +68,7 @@
 		</div>
 		<input type="hidden" name="_ns" id="_ns" value="/core/goodsUsed/" />
 		<input type="hidden" name="id" id="id" /> <input type="hidden"
-			name=_query id="_query" value="_query" />
+			name=_query id="_query" value="_query" /> <input type="hidden" name="type" id="type" value="${type}" />
 	</form>
 	<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 		<thead>
@@ -93,17 +93,17 @@
 					<td align="center">
 					<c:choose> 
 					    <c:when test="${fn:contains(button, 'goods_used_edit') && type ==1}">
-					    <a href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?id=<s:property value="goodsUsedId"/>">修改</a>
+					    <a href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?type=${type}&id=<s:property value="goodsUsedId"/>">修改</a>
 					    </c:when>
 					    <c:when test="${fn:contains(button, 'goods_used_check') && type ==2}">
-					    <a href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?id=<s:property value="goodsUsedId"/>">审核</a>
+					    <a href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?type=${type}&id=<s:property value="goodsUsedId"/>">审核</a>
 					    </c:when>
 					 </c:choose>
 					 <c:if test="${fn:contains(button, 'goods_used_del') && type ==1}">
 						<a href="javascript:doDel('<s:property value="goodsUsedId"/>','');">删除</a>
 					 </c:if>   	
 					<c:if test="${fn:contains(button, 'goods_used_load') && type ==1}">	
-						<a href="<%=request.getContextPath()%>/core/goodsUsed/ComR_load.do?id=<s:property value="goodsUsedId"/>">查看</a>
+						<a href="<%=request.getContextPath()%>/core/goodsUsed/ComR_load.do?type=${type}&id=<s:property value="goodsUsedId"/>">查看</a>
 				    </c:if> 		
 						
 					</td>

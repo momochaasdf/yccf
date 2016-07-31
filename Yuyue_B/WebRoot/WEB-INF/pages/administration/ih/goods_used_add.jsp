@@ -47,6 +47,7 @@
 		<s:actionerror />
 	</div>
 	<form action="#" method="post" id="goodsUsedForm">
+	     <input type="hidden" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -56,27 +57,21 @@
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
 				<th>物品名称</th>
-				<td><select type="text" name="goodsUsed.goodsName">
-				<option value="1_test">test</option>
-				</select></td>
+				<td><input type="text" name="goodsUsed.goodsName"
+					value="${goodsUsed.goodsName}" /></td>
 			</tr>
 			<tr>
 				<th>领取人</th>
 				<td><select type="text" name="goodsUsed.userName">
-				<option value="1_test">test</option>
+						<s:iterator value="userList" status="st">
+							<option value="${userId}_${userName}">${userName}</option>
+						</s:iterator>
 				</select></td>
 			</tr>
 			<tr>
 				<th>领取数量</th>
 				<td><input type="number" name="goodsUsed.nums"
 					value="${goodsUsed.nums}" /></td>
-			</tr>
-			<tr>
-				<th>申请状态</th>
-				<td><select type="text" name="goodsUsed.status">
-						<option value="1">申请中</option>
-						<option value="2">申请成功</option>
-				</select></td>
 			</tr>
 		</table>
 		<div class="navButton">

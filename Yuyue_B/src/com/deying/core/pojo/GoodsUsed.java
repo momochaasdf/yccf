@@ -29,6 +29,8 @@ public class GoodsUsed implements java.io.Serializable {
 	private int nums;
 	private String userId;
 	private String userName;
+	private String reviewPerson;
+	private Date reviewTime;
 	private String status;
 	private String companyId;
 	private String crtUid;
@@ -51,7 +53,7 @@ public class GoodsUsed implements java.io.Serializable {
 	}
 
 	public GoodsUsed(String goodsUsedId, String goodsId, String goodsName,
-			int nums, String userId, String userName, String status,
+			int nums, String userId, String userName, String status, String reviewPerson, Date reviewTime,
 			String companyId, String crtUid, Date crtTime, String updUid,
 			Date updTime) {
 		this.goodsUsedId = goodsUsedId;
@@ -61,6 +63,8 @@ public class GoodsUsed implements java.io.Serializable {
 		this.userId = userId;
 		this.userName = userName;
 		this.status = status;
+		this.reviewPerson = reviewPerson;
+		this.reviewTime = reviewTime;
 		this.companyId = companyId;
 		this.crtUid = crtUid;
 		this.crtTime = crtTime;
@@ -180,5 +184,23 @@ public class GoodsUsed implements java.io.Serializable {
 	public void setUpdTime(Date updTime) {
 		this.updTime = updTime;
 	}
+    
+	@Column(name = "REVIEW_PERSON", length = 100)
+	public String getReviewPerson() {
+		return this.reviewPerson;
+	}
 
+	public void setReviewPerson(String reviewPerson) {
+		this.reviewPerson = reviewPerson;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "REVIEW_TIME", length = 0)
+	public Date getReviewTime() {
+		return this.reviewTime;
+	}
+
+	public void setReviewTime(Date reviewTime) {
+		this.reviewTime = reviewTime;
+	}
 }
