@@ -91,7 +91,7 @@
 					
 					<a href="javascript:doDel('<s:property value="financingApplyId"/>','');">删除</a>
 					</c:if>
-					<c:if test="${fn:contains(button, 'financing_apply_load')}">
+					<c:if test="${fn:contains(button, 'financing_apply_load')&& buttonType ==0}">
 					<a href="<%=request.getContextPath()%>/core/financingApply/ComR_load.do?id=<s:property value="financingApplyId"/>&type=<s:property value="buttonType"/>">查看</a>
 				    </c:if>
 				</td>
