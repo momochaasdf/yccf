@@ -82,6 +82,9 @@ public class UserSalaryAction extends BaseMgrAction {
 			if (StringUtils.isNotBlank(iuserSalary.getUserName())) {
 				c.like("userName", iuserSalary.getUserName().trim());
 			}
+			if (StringUtils.isNotBlank(iuserSalary.getMonth())) {
+				c.eq("month", iuserSalary.getMonth());
+			}
 		}
 		dataPage = commonService.find(c, UserSalary.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());

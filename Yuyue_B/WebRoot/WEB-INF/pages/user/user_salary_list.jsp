@@ -38,9 +38,14 @@
 			<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
 			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 				<tr>
-	<th style="width: 20%">用户名称</th>
-	<td style="width: 30%"><input type="text" name="iuserSalary.userName" value="${iuserSalary.userName}"/></td>
-     </tr> 
+				<th style="width: 20%">用户名称</th>
+				<td style="width: 30%"><input type="text" name="iuserSalary.userName" value="${iuserSalary.userName}"/></td>
+				<th style="width: 10%">月份</th>
+				<td style="width: 50%">
+					<input type="text" name="iuserSalary.month"  value="${userSalary.month}" 
+					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM'})" />
+				</td>
+			     </tr> 
 			</table>
 		</fieldset>
 		<div class="navButton" >
@@ -65,6 +70,7 @@
 				<th>基本工资</th>
 				<th>实发基本工资</th>
 				<th>实发工资</th>
+				<th>月份</th>
 				<th style="width: 20%">操作</th>
 			</tr>
 			</thead>
@@ -79,6 +85,7 @@
 				<td><s:property value="baseSalary"/>&nbsp;</td>
 				<td><s:property value="realBaseSalary"/>&nbsp;</td>
 				<td><s:property value="realSalary"/>&nbsp;</td>
+				<td><s:property value="month"/>&nbsp;</td>
 				<td align="center">
 				     <c:choose> 
 					       <c:when test="${fn:contains(button, 'salary_edit') && type==0}">
