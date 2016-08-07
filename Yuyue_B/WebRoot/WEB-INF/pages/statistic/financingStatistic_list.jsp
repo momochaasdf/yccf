@@ -3,6 +3,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
 <%@ taglib prefix="d" uri="/deying-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -44,9 +46,26 @@
 			<div class="o-mt">
 					<h2 style="margin-top: 0;">
 						<a href="javascript:void(0);" style="color:#cc0000">理财业绩管理</a>&nbsp;>>&nbsp;
-						<a  style="color:#cc0000" href="<%=path %>/holidayRemind/holidayRemind_list.do">理财业绩统计列表</a>
+						<a  style="color:#cc0000" href="<%=path %>/financingStatistic/financingStatistic_list.do">理财业绩统计列表</a>
 					</h2>
 			</div>
+			<form action="#" method="post" id="financingApplyForm" style="clear: both;">
+		<fieldset class="navSearch" >
+			<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
+			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
+				<tr>
+	<th style="width: 20%">理财经理名称</th>
+	<td style="width: 30%"><input type="text" name="statistic.employeeName" value="${statistic.employeeName}"/></td>
+     </tr> 
+			</table>
+		</fieldset>
+		<div class="navButton" >
+		<input class="btSearch" value="检索"  onclick="doAction('financingApplyForm','financingStatistic_list','')"  style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path %>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+		</div>
+		<input type="hidden" name="_ns" id="_ns" value="/financingStatistic/"/>
+		<input type="hidden" name="id" id="id"/>
+		<input type="hidden" name=_query id="_query" value="_query"/>
+		</form>
 			<div>
 				<table cellspacing="0" class="table_list" style="width: 100%">
 					<tr style="background: none" class="table_tr_title title_qingse">
@@ -110,7 +129,7 @@
 			</div>
 			<div>
 				<d:pages currentPage="%{currentPage}" showPageNumber="3"
-						totalPage="%{totalPage}" url="holidayRemind_list.do" cssClass="pagnation">
+						totalPage="%{totalPage}" url="financingStatistic_list.do" cssClass="pagnation">
 				</d:pages>
 			</div>
 		</div>
