@@ -192,7 +192,7 @@ font-weight: bold;font-size: 14px;line-height: 0;">(&nbsp;${sessionScope._COM_FR
 		</div>
 	</div>
 	
-	<div id="popWin" style="display:none;position:relative;cursor: pointer;float: right;z-index: 3;border:1px solid red;" >
+	<%-- <div id="popWin" style="display:none;position:relative;cursor: pointer;float: right;z-index: 3;border:1px solid red;" >
 		<div  id="imgCart"  >
 		<!-- 购物车 -->
 		 <div id="headCart" class="rhsyyhqDIV">
@@ -204,9 +204,9 @@ font-weight: bold;font-size: 14px;line-height: 0;">(&nbsp;${sessionScope._COM_FR
 			</div>
 		</div> 
 		</div>
-	</div>
+	</div> --%>
 	
-	<div style="width: 200px;height: 140px;position: fixed;right: 10px;bottom: 10px;border:1px solid #00B5DA;">
+	<%-- <div style="width: 200px;height: 140px;position: fixed;right: 10px;bottom: 10px;border:1px solid #00B5DA;">
 		<div id="dvDockAppLsit" class="le" style="height: 410px;">
 			<ul>
 				<li style="height: 30px;width: 98%;margin:0px auto 0px auto;line-height:30px;padding-left: 4px;background-color: #00B5DA;color: white;">切换以下餐馆<br></li>
@@ -217,7 +217,7 @@ font-weight: bold;font-size: 14px;line-height: 0;">(&nbsp;${sessionScope._COM_FR
 				</s:iterator>
 			</ul>
 		</div>
-	</div>
+	</div> --%>
 	
 	<div
 		style="width:100%; height:auto;margin-top:10px; border-top:2px solid #ff7d23;float: left;">
