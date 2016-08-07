@@ -71,8 +71,8 @@
 		<div class='right'>
 			<div class="o-mt">
 					<h2 style="margin-top: 0;">
-						<a href="javascript:void(0);" style="color:#cc0000">节假日管理</a>&nbsp;>>&nbsp;
-						<a  style="color:#cc0000" href="<%=path %>/attendance/attendance_list.do">节假日列表</a>
+						<a href="javascript:void(0);" style="color:#cc0000">考勤管理</a>&nbsp;>>&nbsp;
+						<a  style="color:#cc0000" href="<%=path %>/attendance/attendance_list.do">考勤列表</a>
 					</h2>
 			</div>
 			<form action="#" method="post" id="attendanceForm" style="clear: both;" enctype="multipart/form-data">
@@ -86,7 +86,7 @@
 								<input type='file' id="excelFile" name="excelFile" style="width:200px;" />
 							</td>
 							<td>
-								<span class="addfood" onclick="javascript:importFun();">导入节假日</span>
+								<span class="addfood" onclick="javascript:importFun();">导入考勤</span>
 							</td>
 						</tr>
 					</table>
@@ -97,17 +97,8 @@
 					<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
 					<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 						<tr>
-							<th style="width: 10%">节假日名称</th>
-							<td style="width: 30%"><input type="text" name="info.name" value="${info.name}"/></td>
-							<th style="width: 10%">节假日开始时间</th>
-							<td style="width: 50%">
-								<div style="float:left;width:60px;padding-top:6px;">从&nbsp;</div><div class="text_input" style="background-color: transparent; border: none; float: left;">
-								<input id="startTime" name="info.minStartTime" size="12" style="background-color: transparent;text-indent:2; border: none;"
-									type="text" onclick="WdatePicker()" value='${info.minStartTime}' /></div>
-								<div style="float:left;width:20px;padding-top:6px;">到&nbsp;</div><div class="text_input" style="background-color: transparent; border: none; float: left;">
-								<input id="endTime" value='${info.maxStartTime}' name="info.maxStartTime"
-									size="10" type="text" size="12" style="background-color: transparent;text-indent:2; border: none;" onclick="WdatePicker()" /></div>
-							</td>
+							<th style="width: 10%">员工名称</th>
+							<td style="width: 30%"><input type="text" name="info.userName" value="${info.userName}"/></td>
 						</tr>
 					</table>
 					<br />
@@ -128,7 +119,7 @@
 							序号
 						</td>
 						<td>
-							节假日名称
+							员工名称
 						</td>
 						<td>
 							开始时间
@@ -137,7 +128,7 @@
 							终了时间
 						</td>
 						<td>
-							节假日天数
+							出勤天数
 						</td>
 						<td style="width: 30%">
 							备注
@@ -153,7 +144,7 @@
 								<s:property value="%{dataPage.start+#st.index + 1}" />
 							</td>
 							<td>
-								<s:property value="%{session.button}" />
+								<s:property value="%{userName}" />
 							</td>
 							<td>
 								<s:date name="%{startTime}" format="yyyy-MM-dd"/>
@@ -162,7 +153,7 @@
 								<s:date name="%{endTime}" format="yyyy-MM-dd"/>
 							</td>
 							<td>
-								<s:property value="days" />
+								<s:property value="%{attendanceDays}" />
 							</td>
 							<td align="left">
 								<s:property value="info" />
