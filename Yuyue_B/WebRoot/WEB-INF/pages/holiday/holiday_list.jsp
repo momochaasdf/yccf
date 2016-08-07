@@ -153,7 +153,7 @@
 								<s:property value="%{dataPage.start+#st.index + 1}" />
 							</td>
 							<td>
-								<s:property value="%{session.button}" />
+								<s:property value="%{name}" />
 							</td>
 							<td>
 								<s:date name="%{startTime}" format="yyyy-MM-dd"/>
