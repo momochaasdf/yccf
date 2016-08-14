@@ -51,7 +51,6 @@ public class OutApplyAction extends BaseMgrAction
         
         this.currentPage = this.currentPage == null ? 1 : this.currentPage;
         CriteriaWrapper c = CriteriaWrapper.newInstance();
-        CriteriaWrapper outApplyParams = CriteriaWrapper.newInstance();
         c.desc("crtTime");
         if (userId != null) {
 			if (!userRoleNames.contains("总经理") && type.equals("1"))
@@ -81,7 +80,7 @@ public class OutApplyAction extends BaseMgrAction
         CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
         dicParam.eq("dictTypeCode", "department_code");
         dicList = commonService.find(dicParam, ComDict.class);
-        dataPage = commonService.find(outApplyParams, OutApply.class, currentPage, pageSize);
+        dataPage = commonService.find(c, OutApply.class, currentPage, pageSize);
         setTotalPage(dataPage.getTotalPageCount());
         return LIST;
     }
