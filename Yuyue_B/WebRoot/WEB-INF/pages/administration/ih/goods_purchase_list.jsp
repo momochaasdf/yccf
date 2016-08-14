@@ -88,7 +88,7 @@
 					<a href="<%=request.getContextPath()%>/core/goodsPurchase/ComU_edit.do?type=${type}&id=<s:property value="goodsPurchaseId"/>">审核</a> 
 					        </c:when>
 			     </c:choose>		
-			     <c:if test="${fn:contains(button, 'goods_purchase_del') && type ==1}"> 
+			     <c:if test="${fn:contains(button, 'goods_purchase_del') && type ==1 && status==1}"> 
 					<a href="javascript:doDel('<s:property value="goodsPurchaseId"/>','');">删除</a>
 					</c:if>    
 					<c:if test="${fn:contains(button, 'goods_purchase_load') && type ==1}">    
