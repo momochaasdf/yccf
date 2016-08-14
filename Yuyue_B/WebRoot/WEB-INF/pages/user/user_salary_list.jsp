@@ -71,6 +71,7 @@
 				<th>实发基本工资</th>
 				<th>实发工资</th>
 				<th>月份</th>
+				<th>状态</th>
 				<th style="width: 20%">操作</th>
 			</tr>
 			</thead>
@@ -86,6 +87,7 @@
 				<td><s:property value="realBaseSalary"/>&nbsp;</td>
 				<td><s:property value="realSalary"/>&nbsp;</td>
 				<td><s:property value="month"/>&nbsp;</td>
+				<td><z:dict  type="user_salary_status" code="%{status}" />&nbsp;</td>
 				<td align="center">
 				     <c:choose> 
 					       <c:when test="${fn:contains(button, 'salary_edit') && type==0}">
