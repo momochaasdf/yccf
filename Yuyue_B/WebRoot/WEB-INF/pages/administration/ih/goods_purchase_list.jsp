@@ -81,10 +81,10 @@
 				<td><z:dict  type="goods_purchase_status" code="%{status}" />&nbsp;</td>
 				<td align="center">
 				 <c:choose> 
-					       <c:when test="${fn:contains(button, 'goods_purchase_edit') && type ==1}">
+					       <c:when test="${fn:contains(button, 'goods_purchase_edit') && type ==1 && (status==1 ||status ==2)}">
 					<a href="<%=request.getContextPath()%>/core/goodsPurchase/ComU_edit.do?type=${type}&id=<s:property value="goodsPurchaseId"/>">修改</a> 
 					        </c:when>
-					          <c:when test="${fn:contains(button, 'goods_purchase_check') && type ==2}">
+					          <c:when test="${fn:contains(button, 'goods_purchase_check') && type ==2 && status==1}">
 					<a href="<%=request.getContextPath()%>/core/goodsPurchase/ComU_edit.do?type=${type}&id=<s:property value="goodsPurchaseId"/>">审核</a> 
 					        </c:when>
 			     </c:choose>		

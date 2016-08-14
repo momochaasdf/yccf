@@ -25,6 +25,16 @@
 			doAction('goodsPurchaseForm','ComM_list','');
 		});
 	});
+	$(function(){
+		var type =${type};
+		var status=${goodsPurchase.status}
+		if(status !==1 ){
+		    $(".editReadonly").attr("readonly","readonly");
+		}
+		if(type ==2){
+			 $(".editReadonly").attr("readonly","readonly");
+		}
+	})
 	</script>
 	</head>
 	<body>
@@ -48,22 +58,22 @@
 			<tr>
 				<th>物品名称</th>
 				<td><input type="text" name="goodsPurchase.goodsName"
-					value="${goodsPurchase.goodsName}" /></td>
+					value="${goodsPurchase.goodsName}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>单价</th>
 				<td><input type="text" name="goodsPurchase.price"
-					value="${goodsPurchase.price}" /></td>
+					value="${goodsPurchase.price}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>数量</th>
 				<td><input type="number" name="goodsPurchase.nums"
-					value="${goodsPurchase.nums}" /></td>
+					value="${goodsPurchase.nums}" class="editReadonly"/></td>
 			</tr>
 			<tr>
 				<th>总价</th>
 				<td><input type="number"  name="goodsPurchase.totalPrice"
-					value="${goodsPurchase.totalPrice}" /></td>
+					value="${goodsPurchase.totalPrice}" class="editReadonly"/></td>
 			</tr>
 			<s:if  test="%{type==1}">	
 			<tr>
