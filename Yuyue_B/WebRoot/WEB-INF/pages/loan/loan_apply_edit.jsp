@@ -281,6 +281,7 @@
 						<option value="1"  <s:if test="%{loanApply.status==1}">selected =selected</s:if>>审核中</option>
 						<option value="2"  <s:if test="%{loanApply.status==2}">selected =selected</s:if>>通过</option>
 						<option value="3"  <s:if test="%{loanApply.status==3}">selected =selected</s:if>>拒绝</option>
+						<option value="4"  <s:if test="%{loanApply.status==4}">selected =selected</s:if>>金额待修改</option>
 				</select></td>
 			</tr>
 			<tr>
