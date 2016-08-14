@@ -39,10 +39,10 @@
 			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 				<tr>
 				<th style="width: 20%">用户名称</th>
-				<td style="width: 30%"><input type="text" name="iuserSalary.userName" value="${iuserSalary.userName}"/></td>
+				<td style="width: 30%"><input type="text" name="info.userName" value="${iuserSalary.userName}"/></td>
 				<th style="width: 10%">月份</th>
 				<td style="width: 50%">
-					<input type="text" name="iuserSalary.month"  value="${userSalary.month}" 
+					<input type="text" name="info.month"  value="${userSalary.month}" 
 					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM'})" />
 				</td>
 			     </tr> 

@@ -78,14 +78,16 @@ public class UserSalaryAction extends BaseMgrAction {
 				c.eq("companyId", companyId);
 			}
 		}
-		if (null != iuserSalary) {
-			if (StringUtils.isNotBlank(iuserSalary.getUserName())) {
-				c.like("userName", iuserSalary.getUserName().trim());
-			}
-			if (StringUtils.isNotBlank(iuserSalary.getMonth())) {
-				c.eq("month", iuserSalary.getMonth());
-			}
+		String userNameSearch = obtionInfoVal("userName", String.class);
+		String month = obtionInfoVal("month", String.class);
+		 
+		if (StringUtils.isNotBlank(userNameSearch)) {
+			c.like("userName", userNameSearch.trim());
 		}
+		if (StringUtils.isNotBlank(month)) {
+			c.eq("month", month);
+		}
+		 
 		dataPage = commonService.find(c, UserSalary.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
 		return LIST;
