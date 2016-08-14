@@ -71,7 +71,7 @@
 					<c:if test="${type==1}">个人资料管理</c:if><c:if test="${type==2}">员工资料管理</c:if></a>
 				</h2>
 			</div>
-		</div>
+		</div>   
 		<form action="#" method="post" id="userForm" style="clear: both;">
 		<fieldset class="navSearch">
 			<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
