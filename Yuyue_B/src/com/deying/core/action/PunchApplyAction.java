@@ -64,13 +64,14 @@ public class PunchApplyAction extends BaseMgrAction {
 			}
 		}
 
-		if (null != iPunchApply) {
-			if (StringUtils.isNotBlank(iPunchApply.getUserName())) {
-				c.like("userName", iPunchApply.getUserName().trim());
-			}
-			if (StringUtils.isNotBlank(iPunchApply.getDepartmentId())) {
-				c.like("departmentId", iPunchApply.getDepartmentId());
-			}
+		String userNameSearch = obtionInfoVal("userName", String.class);
+		String departmentId = obtionInfoVal("departmentId", String.class);  
+		 
+		if (StringUtils.isNotBlank(userNameSearch)) {
+			c.like("userName", userNameSearch.trim());
+		}
+		if (StringUtils.isNotBlank(departmentId)) {
+			c.eq("departmentId", departmentId);
 		}
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "department_code");
