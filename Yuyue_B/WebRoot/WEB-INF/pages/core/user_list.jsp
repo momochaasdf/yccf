@@ -20,7 +20,7 @@
 			$("#id").val(id);
 			if (bt){doAction('userForm','ComD_del','')};
 		});
-	}
+	} 
 	function confRole(userId,name) {
 		$('#roletree').tree({
 			animate:true,
