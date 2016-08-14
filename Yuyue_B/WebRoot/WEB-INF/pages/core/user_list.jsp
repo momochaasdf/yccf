@@ -125,13 +125,13 @@
 				<td align="center"><s:if test="status==1">可用</s:if><s:elseif test="status==0">禁用</s:elseif><s:else>&nbsp;</s:else></td>
 				<td align="center">
 					<c:if test="${fn:contains(button, 'user_edit') && type ==0}">
-					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?id=<s:property value="userId"/>">修改</a>&nbsp;
+					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?type=${type}&id=<s:property value="userId"/>">修改</a>&nbsp;
 					</c:if>
 					<c:if test="${fn:contains(button, 'employee_edit') && type ==1}">
-					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?id=<s:property value="userId"/>">修改</a>&nbsp;
+					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?type=${type}&id=<s:property value="userId"/>">修改</a>&nbsp;
 					</c:if>
 					<c:if test="${fn:contains(button, 'hr_edit') && type ==2}">
-					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?id=<s:property value="userId"/>">修改</a>&nbsp;
+					<a href="<%=request.getContextPath()%>/core/user/ComU_edit.do?type=${type}&id=<s:property value="userId"/>">修改</a>&nbsp;
 					</c:if>
 					<c:if test="${fn:contains(button, 'user_del') && type ==0}">
 					<s:if test="userId!=#session['_COM_FRAMEWORK_USER_KEY'].userId"><a href="javascript:doDel('<s:property value="userId"/>','<s:property value="userName"/>');">删除</a></s:if>&nbsp;
@@ -140,16 +140,16 @@
 					<s:if test="userId!=#session['_COM_FRAMEWORK_USER_KEY'].userId"><a href="javascript:doDel('<s:property value="userId"/>','<s:property value="userName"/>');">删除</a></s:if>&nbsp;
 					</c:if>
 					<c:if test="${fn:contains(button, 'user_load') && type ==0}">
-					<a href="<%=request.getContextPath()%>/core/user/ComR_load.do?id=<s:property value="userId"/>">查看</a>&nbsp;
+					<a href="<%=request.getContextPath()%>/core/user/ComR_load.do?type=${type}&id=<s:property value="userId"/>">查看</a>&nbsp;
 					</c:if>
 					<c:if test="${fn:contains(button, 'employee_load') && type ==1}">
-					<a href="<%=request.getContextPath()%>/core/user/ComR_load.do?id=<s:property value="userId"/>">查看</a>&nbsp;
+					<a href="<%=request.getContextPath()%>/core/user/ComR_load.do?type=${type}&id=<s:property value="userId"/>">查看</a>&nbsp;
 					</c:if>
 					<c:if test="${fn:contains(button, 'hr_load') && type ==2}">
-					<a href="<%=request.getContextPath()%>/core/user/ComR_load.do?id=<s:property value="userId"/>">查看</a>&nbsp;
+					<a href="<%=request.getContextPath()%>/core/user/ComR_load.do?type=${type}&id=<s:property value="userId"/>">查看</a>&nbsp;
 					</c:if>
 					<c:if test="${fn:contains(button, 'user_reset_pwd') && type==0}">
-					<a href="<%=request.getContextPath()%>/core/user/ComU_reset.do?id=<s:property value="userId"/>">重置</a>&nbsp;
+					<a href="<%=request.getContextPath()%>/core/user/ComU_reset.do?type=${type}&id=<s:property value="userId"/>">重置</a>&nbsp;
 					</c:if>
 					<c:if test="${fn:contains(button, 'user_role_rel') && type==0}">
 					<a href="javascript:confRole('<s:property value="userId"/>','<s:property value="userName"/>');">关联角色</a>

@@ -24,6 +24,7 @@
 		<s:actionmessage />
 	</div>
 	<form action="#" method="post" id="userForm">
+	<input type="hidden" id="opreateType" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"
