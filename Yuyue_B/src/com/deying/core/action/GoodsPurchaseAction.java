@@ -43,14 +43,6 @@ public class GoodsPurchaseAction extends BaseMgrAction {
 		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.desc("crtTime");
-		if (userId != null) {
-			if (!userRoleNames.contains("总经理") && type.equals("1"))
-				c.like("userId", userId);
-		}
-		if (userName != null) {
-			if (!userRoleNames.contains("总经理") && type.equals("1"))
-				c.like("userName", userName);
-		}
 		if (companyId != null) {
 			if (!userRoleNames.contains("总经理")) {
 				c.eq("companyId", companyId);
