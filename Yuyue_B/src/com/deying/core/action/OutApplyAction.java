@@ -15,7 +15,7 @@ import com.deying.util.datawrapper.CriteriaWrapper;
 
 public class OutApplyAction extends BaseMgrAction
 {
-    
+     
     private static final long serialVersionUID = 1L;
     
     @Autowired
