@@ -31,7 +31,7 @@ public class CollectionLoanAction extends BaseMgrAction
         throws Exception
     {
         LOG.debug("--------------------collectionAction -> list----------------");
-        String collectionName = obtionInfoVal("collectionName", String.class);
+        String customerName = obtionInfoVal("customerName", String.class);
         String cardId = obtionInfoVal("cardId", String.class);
         String telephone = obtionInfoVal("telephone", String.class);
         
@@ -39,9 +39,9 @@ public class CollectionLoanAction extends BaseMgrAction
         
         CriteriaWrapper c = CriteriaWrapper.newInstance();
         c.desc("crtTime");
-        if (collectionName != null)
+        if (customerName != null)
         {
-            c.like("collectionName", collectionName);
+            c.like("customerName", customerName);
         }
         if (cardId != null)
         {

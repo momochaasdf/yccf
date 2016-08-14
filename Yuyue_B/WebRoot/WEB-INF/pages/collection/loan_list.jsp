@@ -75,7 +75,7 @@
 				<table cellpadding="0" cellspacing="0" class="navSearch"
 					id="targetTable">
 					<tr>
-						<th style="width: 20%">姓名</th>
+						<th style="width: 20%">客户姓名</th>
 						<td style="width: 30%"><input type="text"
 							name="info.customerName" value="${info.customerName}" /></td>
 					</tr>
