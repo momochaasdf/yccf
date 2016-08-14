@@ -66,17 +66,15 @@ public class OutApplyAction extends BaseMgrAction
 			}
 		}
         
-        if (null != ioutApply)
-        {
-            if (StringUtils.isNotBlank(ioutApply.getUserName()))
-            {
-                c.like("userName", ioutApply.getUserName().trim());
-            }
-            if (StringUtils.isNotBlank(ioutApply.getDepartmentId()))
-            {
-                c.like("departmentId", ioutApply.getDepartmentId());
-            }
-        }
+		String userNameSearch = obtionInfoVal("userName", String.class);
+		String departmentId = obtionInfoVal("departmentId", String.class);  
+		 
+		if (StringUtils.isNotBlank(userNameSearch)) {
+			c.like("userName", userNameSearch.trim());
+		}
+		if (StringUtils.isNotBlank(departmentId)) {
+			c.eq("departmentId", departmentId);
+		}
         CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
         dicParam.eq("dictTypeCode", "department_code");
         dicList = commonService.find(dicParam, ComDict.class);

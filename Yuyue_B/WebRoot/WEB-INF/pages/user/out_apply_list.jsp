@@ -49,10 +49,10 @@
 				<tr>
 					<th style="width: 20%">用户名称</th>
 					<td style="width: 30%"><input type="text"
-						name="ioutApply.userName" value="${ioutApply.userName}" /></td>
+						name="info.userName" value="${info.userName}" /></td>
 					<th style="width: 20%">部门名称</th>
 					<td style="width: 30%"><select type="text"
-						name="ioutApply.departmentId">
+						name="info.departmentId">
 							<option value="">所有部门</option>
 							<s:iterator value="dicList" status="st">
 								<option value="${dictCode}">${dictName}</option>
