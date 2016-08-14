@@ -55,6 +55,7 @@
 		<input type="hidden" name="_ns" id="_ns" value="/core/financingApply/"/>
 		<input type="hidden" name="id" id="id"/>
 		<input type="hidden" name=_query id="_query" value="_query"/>
+		 <input type="hidden" name="type" id="type" value="${type}" />
 		</form>
 		<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 			<thead>
