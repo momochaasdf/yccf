@@ -35,6 +35,8 @@ public class UserAction extends BaseMgrAction {
 	private String loginId;
 	private String userName;
 	
+	private String userRoleNames;
+	
 	public String list() throws Exception {
 		LOG.debug("--------------------UserAction -> list----------------");
 		String companyId = this.getCtxUser().getCompanyId();
@@ -73,6 +75,7 @@ public class UserAction extends BaseMgrAction {
 		if (status == null) {
 			info.put("status", "2");
 		}
+		this.userRoleNames = userRoleNames;
 		dataPage = commonService.find(c
 				, ComUser.class,  currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
@@ -373,5 +376,12 @@ public class UserAction extends BaseMgrAction {
 		this.rePassword = rePassword;
 	}
 
-	
+	public String getUserRoleNames() {
+		return userRoleNames;
+	}
+
+	public void setUserRoleNames(String userRoleNames) {
+		this.userRoleNames = userRoleNames;
+	}
+    
 }

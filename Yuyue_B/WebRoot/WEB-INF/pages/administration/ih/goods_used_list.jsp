@@ -92,7 +92,7 @@
 					<td><z:dict type="goods_used_status" code="%{status}" />&nbsp;</td>
 					<td align="center">
 					<c:choose> 
-					    <c:when test="${fn:contains(button, 'goods_used_edit') && type ==1}">
+					    <c:when test="${fn:contains(button, 'goods_used_edit') && type ==1 && status ==1}">
 					    <a href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?type=${type}&id=<s:property value="goodsUsedId"/>">修改</a>
 					    </c:when>
 					    <c:when test="${fn:contains(button, 'goods_used_check') && type ==2}">
