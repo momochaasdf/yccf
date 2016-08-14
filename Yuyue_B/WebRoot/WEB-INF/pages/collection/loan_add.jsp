@@ -54,6 +54,7 @@
 	</div>
 	<form action="#" method="post" id="collectionForm"
 		enctype="multipart/form-data">
+		  <input type="hidden" id="opreateType" name="type"  value="${type}" />
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />

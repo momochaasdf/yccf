@@ -106,7 +106,8 @@
 			</div>
 			<input type="hidden" name="_ns" id="_ns" value="/collection/loan/" />
 			<input type="hidden" name="id" id="id" /> <input type="hidden"
-				name=_query id="_query" value="_query" />
+				name=_query id="_query" value="_query" /> <input type="hidden" name="type"
+			id="type" value="${type}" />
 		</form>
 		<div>
 			<table cellspacing="0" class="table_list" style="width: 100%">
@@ -140,10 +141,10 @@
 						<td align="center">
 						   <c:choose> 
 						    <c:when test="${fn:contains(button, 'loan_collection_edit') && button_type==1}">
-						    <a href="<%=request.getContextPath()%>/collection/loan/edit.do?id=<s:property value="loanCollectionId"/>">修改</a>
+						    <a href="<%=request.getContextPath()%>/collection/loan/edit.do?type=${button_type}&id=<s:property value="loanCollectionId"/>">修改</a>
 							</c:when>
 							 <c:when test="${fn:contains(button, 'loan_back_edit') && button_type==2}">
-						    <a href="<%=request.getContextPath()%>/collection/loan/edit.do?id=<s:property value="loanCollectionId"/>">修改</a>
+						    <a href="<%=request.getContextPath()%>/collection/loan/edit.do?type=${button_type}&id=<s:property value="loanCollectionId"/>">修改</a>
 							</c:when>
 							</c:choose>
 							<c:choose>
@@ -156,10 +157,10 @@
 							</c:choose>
 							<c:choose>
 							<c:when test="${fn:contains(button, 'loan_collection_load') && button_type ==1}">
-							<a href="<%=request.getContextPath()%>/collection/loan/load.do?id=<s:property value="loanCollectionId"/>">查看</a>
+							<a href="<%=request.getContextPath()%>/collection/loan/load.do?type=${button_type}&id=<s:property value="loanCollectionId"/>">查看</a>
 							</c:when>
 							<c:when test="${fn:contains(button, 'loan_back_load') && button_type ==2}">
-							<a href="<%=request.getContextPath()%>/collection/loan/load.do?id=<s:property value="loanCollectionId"/>">查看</a>
+							<a href="<%=request.getContextPath()%>/collection/loan/load.do?type=${button_type}&id=<s:property value="loanCollectionId"/>">查看</a>
 							</c:when>
 							</c:choose>
 							
