@@ -21,7 +21,7 @@ public class OutApplyAction extends BaseMgrAction
     @Autowired
     private UserServiceImpl userService = null;
     
-    @Autowired
+    @Autowired 
     private OutApplyService outApplyService = null;
     
     private ComUser user = null;
