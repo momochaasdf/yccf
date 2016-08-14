@@ -108,7 +108,7 @@
 					<td><s:date name="%{reviewTime}" format="yyyy-MM-dd"/> &nbsp;</td>
 					<td align="center">
 					    <c:choose> 
-					       <c:when test="${fn:contains(button, 'leave_apply_edit') && type ==1}">
+					       <c:when test="${fn:contains(button, 'leave_apply_edit') && type ==1 && status==0}">
 					       <a href="<%=request.getContextPath()%>/core/leaveApply/ComU_edit.do?type=${type}&id=<s:property value="leaveApplyId"/>">修改</a>
 					       </c:when>
 					       <c:when test="${fn:contains(button, 'leave_edit') && type ==2}">
