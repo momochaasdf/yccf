@@ -78,9 +78,9 @@
 			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 				<tr>
 					<th style="width: 20%">登录账号</th>
-					<td style="width: 30%"><input type="text" name="info.loginId" value="${inUser.loginId}"/></td>
+					<td style="width: 30%"><input type="text" name="info.loginId" value="${info.loginId}"/></td>
 					<th style="width: 20%">姓名</th>
-					<td style="width: 30%"><input type="text" name="info.userName" value="${inUser.userName}"/></td>
+					<td style="width: 30%"><input type="text" name="info.userName" value="${info.userName}"/></td>
 				</tr><tr>
 					<th style="width: 20%">状态</th>
 					<td style="width: 30%"><s:radio list="#{'1':'可用','0':'禁用'}" name="info.status"/></td>
