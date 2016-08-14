@@ -61,17 +61,15 @@ public class LeaveApplyAction extends BaseMgrAction {
 				c.eq("companyId", companyId);
 			}
 		}
-		  if (null != leaveApply)
-	        {
-	            if (StringUtils.isNotBlank(leaveApply.getUserName()))
-	            {
-	                c.like("userName", leaveApply.getUserName().trim());
-	            }
-	            if (StringUtils.isNotBlank(leaveApply.getDepartmentId()))
-	            {
-	                c.like("departmentId", leaveApply.getDepartmentId());
-	            }
-	        }
+		String userNameSearch = obtionInfoVal("userName", String.class);
+		String departmentId = obtionInfoVal("departmentId", String.class);  
+		 
+		if (StringUtils.isNotBlank(userNameSearch)) {
+			c.like("userName", userNameSearch.trim());
+		}
+		if (StringUtils.isNotBlank(departmentId)) {
+			c.eq("departmentId", departmentId);
+		}
 		
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "department_code");
