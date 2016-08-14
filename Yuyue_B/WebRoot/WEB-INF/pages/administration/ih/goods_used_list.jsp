@@ -90,7 +90,7 @@
 					<td><s:property value="userName" />&nbsp;</td>
 					<td><s:property value="nums" />&nbsp;</td>
 					<td><z:dict type="goods_used_status" code="%{status}" />&nbsp;</td>
-					<td align="center">
+					<td align="center"> 
 					<c:choose> 
 					    <c:when test="${fn:contains(button, 'goods_used_edit') && type ==1 && status ==1}">
 					    <a href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?type=${type}&id=<s:property value="goodsUsedId"/>">修改</a>
