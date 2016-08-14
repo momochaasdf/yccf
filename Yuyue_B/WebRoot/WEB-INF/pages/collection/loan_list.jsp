@@ -72,7 +72,7 @@
 				<legend>
 					<span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span>
 				</legend>
-				<table cellpadding="0" cellspacing="0" class="navSearch"
+	 			<table cellpadding="0" cellspacing="0" class="navSearch"
 					id="targetTable">
 					<tr>
 						<th style="width: 20%">客户姓名</th>
