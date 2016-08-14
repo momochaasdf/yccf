@@ -21,6 +21,7 @@
 		</div>
 		<div class="msg" style="clear: both;"><s:actionmessage/></div>
 		<form action="#" method="post" id="noticeForm">
+		<input type="hidden" id="opreateType" name="type"  value="${type}" />
 		<div class="navButton">
 		<input type="button" value="返回" class="btBack" onclick="doAction('noticeForm','notice_list','');" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
 		</div>

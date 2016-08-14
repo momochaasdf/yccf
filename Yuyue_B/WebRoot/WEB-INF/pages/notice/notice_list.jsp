@@ -83,6 +83,7 @@
 				<input type="hidden" name="_ns" id="_ns" value="/notice/"/>
 				<input type="hidden" name="id" id="id"/>
 				<input type="hidden" name=_query id="_query" value="_query"/>
+				<input type="hidden" name="type" id="type" value="${type}" />
 			</form>
 			<div>
 				<table cellspacing="0" class="table_list" style="width: 100%">
@@ -124,13 +125,13 @@
 							</td>
 							<td align="center">
                                  <s:if test="#session.button.notice_edit.indexOf('notice_edit')>=0 && type ==0">								
-                                 <a href="<%=path %>/notice/notice_edit.do?id=<s:property value="noticeId"/>">修改</a> 
+                                 <a href="<%=path %>/notice/notice_edit.do?type=${type}&id=<s:property value="noticeId"/>">修改</a> 
                                  </s:if>
                                  <s:if test="#session.button.notice_del.indexOf('notice_del')>=0 && type ==0">	
 								 <a href="javascript:doDel('<s:property value="noticeId"/>','');">删除</a>
 								 </s:if>
 								 <s:if test="(#session.button.notice_load.indexOf('notice_load')>=0 && type ==0) || (#session.button.notice_list.indexOf('notice_list')>=0 && type ==1)  ">	
-								 <a href="<%=path %>/notice/notice_load.do?id=<s:property value="noticeId"/>">查看</a>
+								 <a href="<%=path %>/notice/notice_load.do?type=${type}&id=<s:property value="noticeId"/>">查看</a>
 								 </s:if>
 							</td>
 						</tr>
