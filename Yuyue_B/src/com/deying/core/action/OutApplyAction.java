@@ -18,7 +18,7 @@ public class OutApplyAction extends BaseMgrAction
      
     private static final long serialVersionUID = 1L;
     
-    @Autowired
+    @Autowired 
     private UserServiceImpl userService = null;
     
     @Autowired
