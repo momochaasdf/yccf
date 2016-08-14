@@ -41,9 +41,26 @@ public class UserAction extends BaseMgrAction {
 		String loginId = obtionInfoVal("loginId", String.class);
 		String userName = obtionInfoVal("userName", String.class);
 		Integer status = obtionInfoVal("status", Integer.class);
+		
+		String userId = this.getCtxUser().getUserId();
+		String userNames = this.getCtxUser().getUserName();
+		String userRoleNames = this.getCtxUser().getRoleNames();
 		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.desc("crtTime");
+		if (userId != null) {
+			if (!userRoleNames.contains("总经理") && type.equals("1"))
+				c.eq("userId", userId);
+		}
+		if (userNames != null) {
+			if (!userRoleNames.contains("总经理") && type.equals("1"))
+				c.eq("userName", userNames);
+		}
+		if (companyId != null) {
+			if (!userRoleNames.contains("总经理")) {
+				c.eq("companyId", companyId);
+			}
+		}
 		if(loginId != null){
 			c.like("loginId", loginId);
 		}
@@ -52,9 +69,6 @@ public class UserAction extends BaseMgrAction {
 		}
 		if(status != null && status != 2){
 			c.eq("status", status.toString());
-		}
-		if(companyId != null){
-			c.eq("companyId", companyId);
 		}
 		if (status == null) {
 			info.put("status", "2");
