@@ -65,13 +65,14 @@ public class PunishedAction extends BaseMgrAction {
 				c.eq("companyId", companyId);
 			}
 		}
-		if (null != punished) {
-			if (StringUtils.isNotBlank(punished.getUserName())) {
-				c.like("userName", punished.getUserName().trim());
-			}
-			if (StringUtils.isNotBlank(punished.getDepartmentId())) {
-				c.like("departmentId", punished.getDepartmentId());
-			}
+		String userNameSearch = obtionInfoVal("userName", String.class);
+		String departmentId = obtionInfoVal("departmentId", String.class);  
+		 
+		if (StringUtils.isNotBlank(userNameSearch)) {
+			c.like("userName", userNameSearch.trim());
+		}
+		if (StringUtils.isNotBlank(departmentId)) {
+			c.eq("departmentId", departmentId);
 		}
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "department_code");
