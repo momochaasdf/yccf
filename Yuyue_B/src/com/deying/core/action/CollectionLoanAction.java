@@ -116,6 +116,9 @@ public class CollectionLoanAction extends BaseMgrAction
         if (collection != null)
         {
             LoanCollection existCollection = this.loanCollectionService.get(collection.getLoanCollectionId());
+            existCollection.setStatus(collection.getStatus());
+            existCollection.setIsOverdue(collection.getIsOverdue());
+            existCollection.setIsPrepayment(collection.getIsPrepayment());
             this.collection = this.loanCollectionService.update(existCollection);
             this.addActionMessage(this.getText("do.success.back"));
         }

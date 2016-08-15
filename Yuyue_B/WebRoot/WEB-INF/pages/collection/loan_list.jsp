@@ -97,11 +97,6 @@
 					onclick="doAction('collectionForm','add','')"
 					style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
 			    </c:when>
-			    <c:when test="${fn:contains(button, 'loan_collection_add') && button_type ==2}">
-				<input class="btAdd" value="新增"
-					onclick="doAction('collectionForm','add','')"
-					style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
-			    </c:when>
 			    </c:choose>
 			</div>
 			<input type="hidden" name="_ns" id="_ns" value="/collection/loan/" />
@@ -145,14 +140,6 @@
 							</c:when>
 							 <c:when test="${fn:contains(button, 'loan_back_edit') && button_type==2}">
 						    <a href="<%=request.getContextPath()%>/collection/loan/edit.do?type=${button_type}&id=<s:property value="loanCollectionId"/>">修改</a>
-							</c:when>
-							</c:choose>
-							<c:choose>
-							<c:when test="${fn:contains(button, 'loan_collection_del') && button_type==1}">
-							<a href="javascript:doDel('<s:property value="loanCollectionId"/>','');">删除</a>
-							</c:when>
-							<c:when test="${fn:contains(button, 'loan_back_del') && button_type==2}">
-							<a href="javascript:doDel('<s:property value="loanCollectionId"/>','');">删除</a>
 							</c:when>
 							</c:choose>
 							<c:choose>

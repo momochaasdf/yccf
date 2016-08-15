@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -54,75 +55,75 @@
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
 				<th>借款申请ID</th>
-				<td><input type="text" name="collection.loanApplyId"
+				<td><input type="text" name="collection.loanApplyId" readonly
 					value="${collection.loanApplyId}" /></td>
 			</tr>
 			<tr>
 				<th>客户名</th>
-				<td><input type="text" name="collection.customerName"
+				<td><input type="text" name="collection.customerName" readonly
 					value="${collection.customerName}" /></td>
 			</tr>
 			<tr>
 				<th>还款类型</th>
-				<td><select name="collection.type">
-						<option value="1">本息同还</option>
-						<option value="2">先息后本</option>
+				<td><select name="collection.type" disabled="disabled">
+						<option value="1" <s:if test="%{collection.type==1}">selected =selected</s:if>>本息同还</option>
+						<option value="2" <s:if test="%{collection.type==2}">selected =selected</s:if>>先息后本</option>
 				</select></td>
 			</tr>
 			<tr>
 				<th>借款总金额</th>
 				<td><input type="number" name="collection.money"
-					value="${collection.money}" /></td>
+					value="${collection.money}"readonly /></td>
 			</tr>
 			<tr>
 				<th>已还多少月</th>
 				<td><input type="number" name="collection.repaymentMonths"
-					value="${collection.repaymentMonths}" /></td>
+					value="${collection.repaymentMonths}" readonly/></td>
 			</tr>
 			<tr>
 				<th>已还本息</th>
 				<td><input type="number" name="collection.givenMoney"
-					value="${collection.givenMoney}" /></td>
+					value="${collection.givenMoney}" readonly/></td>
 			</tr>
 			<tr>
 				<th>剩余本息</th>
 				<td><input type="number" name="collection.surplusMoney"
-					value="${collection.surplusMoney}" /></td>
+					value="${collection.surplusMoney}" readonly/></td>
 			</tr>
 			<tr>
 				<th>每月应还金额</th>
 				<td><input type="number" name="collection.permonthGivenMoney"
-					value="${collection.permonthGivenMoney}" /></td>
-			</tr>
-			<tr>
-				<th>是否提前还清</th>
-				<td><input type="radio" name="collection.isPrepayment"
-					value="0">未提前</input><input type="radio"
-					name="collection.isPrepayment" value="1">已提前还清</input></td>
+					value="${collection.permonthGivenMoney}" readonly/></td>
 			</tr>
 			<tr>
 				<th>电话</th>
 				<td><input type="number" name="collection.telephone"
-					value="${collection.telephone}" /></td>
+					value="${collection.telephone}" readonly/></td>
 			</tr>
 			<tr>
 				<th>债权卡密码</th>
 				<td><input type="number" name="collection.cardPassword"
-					value="${collection.cardPassword}" /></td>
+					value="${collection.cardPassword}" readonly/></td>
+			</tr>
+			<tr>
+				<th>是否提前还清</th>
+				<td><input type="radio" name="collection.isPrepayment"  <s:if test="%{collection.isPrepayment==0}">checked="checked" </s:if>
+					value="0">未提前</input><input type="radio"
+					name="collection.isPrepayment" value="1" <s:if test="%{collection.isPrepayment==1}">checked="checked" </s:if>>已提前还清</input></td>
 			</tr>
 			<tr>
 				<th>是否逾期</th>
 				<td><input type="radio" name="collection.isOverdue"
-					value="0">未逾期</input><input type="radio"
-					name="collection.isOverdue" value="1">逾期</input></td>
+					value="0" <s:if test="%{collection.isOverdue==0}">checked="checked" </s:if>>未逾期</input><input type="radio"
+					name="collection.isOverdue" value="1" <s:if test="%{collection.isOverdue==1}">checked="checked" </s:if>>逾期</input></td>
 			</tr>
 			<tr>
 				<th>催收状态</th>
 				<td><input type="radio" name="collection.status"
-					value="0">未催收</input><input type="radio"
-					name="collection.status" value="1">已催收</input>
+					value="0"  <s:if test="%{collection.status==0}">checked="checked" </s:if>>未催收</input><input type="radio"
+					name="collection.status" value="1" <s:if test="%{collection.status==1}">checked="checked" </s:if>>已催收</input>
 					<input type="radio"
-					name="collection.status" value="2">已还本月</input></td>
+					name="collection.status" value="2" <s:if test="%{collection.status==2}">checked="checked" </s:if>>已还本月</input></td>
 			</tr>
 		</table>
 		<input type="hidden" name="collection.loanCollectionId"
