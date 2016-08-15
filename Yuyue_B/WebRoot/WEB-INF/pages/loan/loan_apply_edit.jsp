@@ -249,7 +249,7 @@
 			</tr>
 			<tr>
 				<th>大写金额</th>
-				<td><input type="text" name="loanApply.upperMoney" class="editReadonly"
+				<td><input type="text" name="loanApply.upperMoney"  
 					value="${loanApply.upperMoney}" /></td>
 			</tr>
 			<tr>
