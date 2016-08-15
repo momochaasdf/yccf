@@ -44,18 +44,38 @@ public class RemindTimer implements Timer {
 		try {
 			// 1，节假日提醒
 			holidayRemind();
+		} catch (Exception e) {
+			LOG.error("节假日提醒 -定时任务失败.", e);
+		}
+		try {
 			// 2, 生日提醒 [提前一天 发短信&送蛋糕]
 			birthdayRemind();
+		} catch (Exception e) {
+			LOG.error(" 生日提醒-定时任务失败.", e);
+		}
+		try {
 			// 3, 借款催收提醒
 			loanCollectionRemind();
+		} catch (Exception e) {
+			LOG.error("借款催收提醒-定时任务失败.", e);
+		}
+		try {
 			// 4, 理财到期提醒
 			normalRemind();
+		} catch (Exception e) {
+			LOG.error("理财到期提醒-定时任务失败.", e);
+		}
+		try {
 			// 5, 年年红提醒
 			nnhRemind();
+		} catch (Exception e) {
+			LOG.error("年年红提醒-定时任务失败.", e);
+		}
+		try {
 			// 6, 理财统计
 			financingStatistics();
 		} catch (Exception e) {
-			LOG.error("定时任务失败.", e);
+			LOG.error("理财统计-定时任务失败.", e);
 		}
 		LOG.info("=====定时任务结束=====");
 	}
@@ -356,7 +376,7 @@ public class RemindTimer implements Timer {
 					remind.setStatus("1");
 					StringBuffer sb = new StringBuffer();
 					sb.append(customer.getCustomerName()).append(" 生日马上要到了 ！ 日期:")
-					.append(DateUtils.format(customer.getBirthday(), DateUtils.DATE_STR));
+							.append(DateUtils.format(customer.getBirthday(), DateUtils.DATE_STR));
 					if ("0".equals(customer.getBirthdayType())) {
 						sb.append("【阳历生日】");
 					} else {
@@ -379,7 +399,7 @@ public class RemindTimer implements Timer {
 					commonService.save("BirthdayRemind", remind);
 				}
 			}
-			}
+		}
 
 		// 获取即将过期的生日提醒
 		CriteriaWrapper c3 = CriteriaWrapper.newInstance();
