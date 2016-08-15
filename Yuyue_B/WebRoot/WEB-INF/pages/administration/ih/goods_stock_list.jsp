@@ -38,14 +38,16 @@
 			<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
 			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 				<tr>
-	<th style="width: 20%">物品名称</th>
-	<td style="width: 30%"><input type="text" name="igoodsStock.goodsName" value="${igoodsStock.goodsName}"/></td>
-     </tr> 
+				<th style="width: 20%">物品名称</th>
+				<td style="width: 30%"><input type="text" name="info.goodsName" value="${info.goodsName}"/></td>
+				<th style="width: 20%">预警状态</th>
+				<td style="width: 30%"><s:radio list="#{'1':'正常','2':'预警'}" name="info.status"/></td>
+			     </tr> 
 			</table>
 		</fieldset>
 		<div class="navButton" >
 		<input class="btSearch" value="检索"  onclick="doAction('goodsStockForm','ComM_list','')"  style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path %>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
-		 <c:if test="${fn:contains(button, 'goods_stock_add') && type ==1}">
+		 <c:if test="${fn:contains(button, 'goods_stock_add')}">
 		<input class="btAdd"  value="新增"  onclick="doAction('goodsStockForm','ComC_add','')" style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path %>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
 		 </c:if>
 		</div>
