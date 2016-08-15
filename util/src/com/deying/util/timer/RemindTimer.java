@@ -23,6 +23,8 @@ import com.deying.core.pojo.FinancingStatistic;
 import com.deying.core.pojo.Holiday;
 import com.deying.core.pojo.HolidayRemind;
 import com.deying.core.pojo.LoanApply;
+import com.deying.core.pojo.LoanCollection;
+import com.deying.core.pojo.LoanCustomer;
 import com.deying.util.annotation.AnnIService;
 import com.deying.util.data.DateUtils;
 import com.deying.util.datawrapper.CriteriaWrapper;
@@ -319,6 +321,10 @@ public class RemindTimer implements Timer {
 
 	}
 
+	public static void main(String[] args) {
+		System.out.println(DateUtils.getMonthEnd());
+	}
+
 	/**
 	 * 借款催收提醒
 	 * 
@@ -326,10 +332,42 @@ public class RemindTimer implements Timer {
 	 */
 	private void loanCollectionRemind() throws Exception {
 		// 获取当天的日期
-		Date nowDate = DateUtils.format2Date(new Date(), DateUtils.DATE_STR);
+		String nowDate = DateUtils.format(new Date(), "dd");
+
 		CriteriaWrapper c3 = CriteriaWrapper.newInstance();
-		c3.eq("LOAN_START_TIME", nowDate);
 		List<LoanApply> loanList = commonService.find(c3, LoanApply.class);
+
+		for (LoanApply apply : loanList) {
+			Date endDate = apply.getLoanEndTime();
+			Date startDate = apply.getLoanStartTime();
+			if (apply.getRepaymentType().equals("1")) {
+				String day = DateUtils.format(startDate, "dd");
+				if (day.equals(nowDate)) {
+					CriteriaWrapper c = CriteriaWrapper.newInstance();
+					c.eq("customerId", apply.getCustomerId());
+					List<LoanCustomer> customerList = commonService.find(c, LoanCustomer.class);
+					
+                   LoanCollection collection = new LoanCollection();
+                   //collection.setCardPassword(apply.get);
+                   collection.setCompanyId(apply.getCompanyId());
+                   collection.setCustomerName(apply.getCustomerName());
+                   //collection.setGivenMoney(givenMoney);
+                   collection.setIsOverdue("0");
+                   collection.setIsPrepayment("0");
+                   collection.setLoanApplyId(apply.getLoanApplyId());
+                   collection.setMoney(apply.getAgreeMoney());
+                   collection.setStatus("0");
+                   collection.setType(apply.getType());
+                   if(!customerList.isEmpty()){
+                	   LoanCustomer customer =  customerList.get(0);
+                	   collection.setTelephone(customer.getTelephone());
+                   }else {
+                	   collection.setTelephone("12345678901");
+                   }
+                   commonService.save("loanCollection", collection);
+				}
+			}
+		}
 
 	}
 
