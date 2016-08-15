@@ -51,7 +51,7 @@ public class CollectionLoanAction extends BaseMgrAction
         {
             c.like("telephone", telephone);
         }
-        
+        c.ne("status", "2");
         dataPage = commonService.find(c, LoanCollection.class, currentPage, pageSize);
         setTotalPage(dataPage.getTotalPageCount());
         return LIST;
