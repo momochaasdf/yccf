@@ -36,6 +36,7 @@ public class FinancingRemindAction extends BaseMgrAction
         else
         {
             c.ne("type", "4");
+          
         }
         if (StringUtils.isNotBlank(dayType))
         {
@@ -48,6 +49,33 @@ public class FinancingRemindAction extends BaseMgrAction
         setTotalPage(dataPage.getTotalPageCount());
         return INPUT;
     }
+    
+    /**
+	 * 删除
+	 * 
+	 * @return
+	 */
+	public String del() throws Exception {
+		LOG.debug("--------------------GoodsStockAction -> del----------------");
+		if (this.id != null) {
+			CriteriaWrapper c = CriteriaWrapper.newInstance();
+			c.eq("financingRemindId", this.id);
+			List<FinancingRemind> remind = commonService.findList(c, FinancingRemind.class, currentPage,pageSize );
+			if(!remind.isEmpty()){
+				for(FinancingRemind r:remind){
+					if("1".equals(r.getStatus())){
+						r.setStatus("0");
+					}
+					else if("0".equals(r.getStatus())){
+						r.setStatus("2");
+					}
+					commonService.update("rinancingRemind", r);
+				}
+			}
+		}
+		msg = "更新状态操作成功!";
+		return list();
+	}
     
     public String getId()
     {

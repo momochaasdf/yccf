@@ -7,11 +7,16 @@
 		<action name="financingRemind_*" class="com.deying.core.action.FinancingRemindAction" method="{1}">
 			<result name="input">/WEB-INF/pages/financingRemind/financing_remind_list.jsp</result>
 		</action>
+		<action name="ComD_*" class="com.deying.core.action.FinancingRemindAction" method="{1}">
+			<result name="list">/WEB-INF/pages/financingRemind/financing_remind_list.jsp</result>
+			<result name="input">/WEB-INF/pages/financingRemind/financing_remind_list.jsp</result>
+		</action>
 	</package>
 	<package name="financingRemindJ" extends="json" namespace="/financingRemind">
 		<action name="financingRemindJ_*" class="com.deying.core.action.FinancingRemindAction" method="{1}" />
 		
 	</package>
+	
 	
 	<package name="financingNnhDetail" extends="struts" namespace="/financingNnhDetail">
 		<action name="financingNnhDetail_*" class="com.deying.core.action.FinancingNnhDetailAction" method="{1}">

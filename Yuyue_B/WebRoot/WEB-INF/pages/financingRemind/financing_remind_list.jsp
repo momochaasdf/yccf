@@ -29,6 +29,13 @@
 			     $.colorbox.alert("${msg}");
 			  }
 			});
+			
+			function doDel(id,name) {
+				$.messager.confirm('状态修改确认','你确认修改吗?', function(bt){
+					$("#id").val(id);
+					if (bt){doAction('financingRemindForm','ComD_del','')};
+				});
+			}
   </script>
   <style type="text/css">
   	#backupForm table input[type='text']{
@@ -47,6 +54,13 @@
 						<a  style="color:#cc0000" href="<%=path %>/financingRemind/financingRemind_list.do">理财收益列表</a>
 					</h2>
 			</div>
+			<form action="#" method="post" id="financingRemindForm" style="clear: both;">
+			<input type="hidden" name="_ns" id="_ns" value="/financingRemind/"/>
+				<input type="hidden" name="id" id="id"/>
+				<input type="hidden" name=_query id="_query" value="_query"/>
+				<input type="hidden" name="type" id="type" value="${type}" />
+				<input type="hidden" name="dayType" id="dayType" value="${dayType}" />
+			</form>
 			<div>
 				<table cellspacing="0" class="table_list" style="width: 100%">
 					<tr style="background: none" class="table_tr_title title_qingse">
@@ -70,6 +84,9 @@
 						</td>
 						<td>
 							提醒状态
+						</td>
+						<td>
+							更新状态
 						</td>
 					</tr>
 					<s:iterator value="dataPage.data" status="st">
@@ -98,6 +115,9 @@
 							<td>
 								<z:dict  type="financing_remind_status" code="%{status}" />
 							</td>
+							<td align="center">
+								 <a href="javascript:doDel('<s:property value="financingRemindId"/>','');">更新状态</a>
+							</td
 						</tr>
 					</s:iterator>
 				</table>
