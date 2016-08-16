@@ -18,6 +18,12 @@
 			if (bt){doAction('financingApplyForm','ComD_del','')};
 		});
 	}
+	function doExport(id,name) {
+		$.messager.confirm('导出确认','你确认导出吗?', function(bt){
+			$("#id").val(id);
+			if (bt){doAction('financingApplyForm','ComE_excWord','')};
+		});
+	}
 	$(function(){
 	 if("${msg}" != ""){ 
 	  $.colorbox.alert("${msg}");
@@ -95,6 +101,7 @@
 					<c:if test="${fn:contains(button, 'financing_apply_load')&& buttonType ==0}">
 					<a href="<%=request.getContextPath()%>/core/financingApply/ComR_load.do?id=<s:property value="financingApplyId"/>&type=<s:property value="buttonType"/>">查看</a>
 				    </c:if>
+				    <a href="javascript:doExport('<s:property value="financingApplyId"/>','');">导出借款协议</a>
 				</td>
 			</tr>
 			</s:iterator>
