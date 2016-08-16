@@ -1,17 +1,33 @@
 package com.deying.core.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.deying.core.pojo.FinancingApply;
+import com.deying.core.pojo.FinancingCustomer;
 import com.deying.core.pojo.LoanApply;
+import com.deying.core.pojo.LoanCustomer;
 import com.deying.core.pojo.user.ComDict;
 import com.deying.core.pojo.user.ComUser;
 import com.deying.core.service.LoanApplyService;
+import com.deying.core.service.LoanCustomerService;
 import com.deying.core.service.user.impl.UserServiceImpl;
 import com.deying.util.core.com.framework.struts2.BaseMgrAction;
 import com.deying.util.datawrapper.CriteriaWrapper;
+import com.deying.util.excel.TempltUtil;
 
 public class LoanApplyAction extends BaseMgrAction {
 
@@ -22,6 +38,9 @@ public class LoanApplyAction extends BaseMgrAction {
 
 	@Autowired
 	private LoanApplyService loanApplyService = null;
+
+	@Autowired
+	private LoanCustomerService loanCustomerService = null;
 
 	private ComUser user = null;
 
@@ -154,20 +173,20 @@ public class LoanApplyAction extends BaseMgrAction {
 		LOG.debug("--------------------loanApplyAction -> upd----------------");
 		if (loanApply != null) {
 			LoanApply r = this.loanApplyService.get(this.loanApply.getLoanApplyId());
-			if(type.equals("1")){
-			String customerId = loanApply.getCustomerName();
-			String customerName = loanApply.getCustomerName();
-			loanApply.setCustomerId(customerId);
-			loanApply.setCustomerName(customerName);
+			if (type.equals("1")) {
+				String customerId = loanApply.getCustomerName();
+				String customerName = loanApply.getCustomerName();
+				loanApply.setCustomerId(customerId);
+				loanApply.setCustomerName(customerName);
 
-			String EmployeeId = loanApply.getEmployeeName().split("_")[0];
-			String EmployeeName = loanApply.getEmployeeName().split("_")[1];
-			loanApply.setEmployeeId(EmployeeId);
-			loanApply.setEmployeeName(EmployeeName);
-			loanApply.setStatus(r.getStatus());
-			loanApply.setRefuseReason(r.getRefuseReason());
-			loanApply.setReviewTime(r.getReviewTime());
-			this.loanApply = this.loanApplyService.update(loanApply);
+				String EmployeeId = loanApply.getEmployeeName().split("_")[0];
+				String EmployeeName = loanApply.getEmployeeName().split("_")[1];
+				loanApply.setEmployeeId(EmployeeId);
+				loanApply.setEmployeeName(EmployeeName);
+				loanApply.setStatus(r.getStatus());
+				loanApply.setRefuseReason(r.getRefuseReason());
+				loanApply.setReviewTime(r.getReviewTime());
+				this.loanApply = this.loanApplyService.update(loanApply);
 			} else {
 				r.setStatus(loanApply.getStatus());
 				r.setReviewPerson(this.getCtxUser().getUserName());
@@ -231,6 +250,179 @@ public class LoanApplyAction extends BaseMgrAction {
 		LOG.debug("--------------------loanApplyAction -> load----------------");
 		this.loanApply = this.loanApplyService.get(id);
 		return LOAD;
+	}
+
+	@SuppressWarnings({ "unchecked", "unchecked" })
+	private boolean getData(HttpServletResponse response, HttpServletRequest request, Map dataMap, String id) {
+		LoanApply r = this.loanApplyService.get(id);
+		if (null != r) {
+			try {
+				Calendar startTime = Calendar.getInstance();// 定义日期实例
+				Calendar endTime = Calendar.getInstance();// 定义日期实例
+				LoanCustomer existCustomer = this.loanCustomerService.get(r.getCustomerId());
+				dataMap.put("customerName", existCustomer.getCustomerName());
+				dataMap.put("address", existCustomer.getAddress());
+				dataMap.put("telephone", existCustomer.getTelephone());
+				dataMap.put("cardId", existCustomer.getCardId());
+
+				dataMap.put("lenderName", r.getLenderName());
+				dataMap.put("lenderCardId", r.getLenderCardId());
+				dataMap.put("lenderAddress", r.getLenderAddress());
+				String pre = r.getRepaymentType();
+				Date loanStartTime = r.getLoanStartTime();
+				Date loanEndTime = r.getLoanEndTime();
+				startTime.setTime(loanStartTime);
+				endTime.setTime(loanEndTime);
+				if (StringUtils.isNotBlank(pre)) {
+					if (pre.equals("1")) {
+						dataMap.put("typeWy", "●");
+					} else {
+						dataMap.put("typeWy", "○");
+					}
+					if (pre.equals("2")) {
+						dataMap.put("typeYh", "●");
+					} else {
+						dataMap.put("typeYh", "○");
+					}
+					if (pre.equals("3")) {
+						dataMap.put("typeXj", "●");
+
+					} else {
+						dataMap.put("typeXj", "○");
+					}
+				}
+				dataMap.put("loanReason", r.getLoanReason());
+				dataMap.put("applyMoney", r.getApplyMoney());
+				dataMap.put("permonthMoney", r.getPermonthMoney());
+				dataMap.put("repaymentName1", r.getRepaymentName1());
+				dataMap.put("repaymentName2", r.getRepaymentName2());
+				dataMap.put("repaymentName3", r.getRepaymentName3());
+				dataMap.put("repaymentBankCardId1", r.getRepaymentBankCardId1());
+				dataMap.put("repaymentBankCardId2", r.getRepaymentBankCardId2());
+				dataMap.put("repaymentBankCardId3", r.getRepaymentBankCardId3());
+				dataMap.put("repaymentDepositBank1", r.getRepaymentDepositBank1());
+				dataMap.put("repaymentDepositBank2", r.getRepaymentDepositBank2());
+				dataMap.put("repaymentDepositBank3", r.getRepaymentDepositBank3());
+				dataMap.put("startYear", String.valueOf(startTime.get(Calendar.YEAR)));
+				dataMap.put("startMonth", startTime.get(Calendar.MONTH) + 1);
+				dataMap.put("startDay", startTime.get(Calendar.DATE));
+				dataMap.put("endYear", String.valueOf(endTime.get(Calendar.YEAR)));
+				dataMap.put("endMonth", endTime.get(Calendar.MONTH) + 1);
+				dataMap.put("endDay", endTime.get(Calendar.DATE));
+				dataMap.put("months", r.getMonths());
+
+				String upperMoney = r.getUpperMoney();
+				String upperPayMoney = r.getUpperPermonthMoney();
+
+				if (StringUtils.isNotBlank(upperMoney)) {
+					if (upperMoney.contains("万")) {
+						String state = upperMoney.substring(0, upperMoney.indexOf("万"));
+						dataMap.put("applyWan", state);
+					} else {
+						dataMap.put("applyWan", "0");
+					}
+					if (upperMoney.contains("万") && upperMoney.contains("仟")) {
+						String state1 = upperMoney.substring(upperMoney.lastIndexOf("万") + 1,
+								upperMoney.lastIndexOf("仟"));
+						dataMap.put("applyQian", state1);
+					} else {
+						dataMap.put("applyQian", 0);
+					}
+					if (upperMoney.contains("佰") && upperMoney.contains("仟")) {
+						String state2 = upperMoney.substring(upperMoney.lastIndexOf("仟") + 1,
+								upperMoney.lastIndexOf("佰"));
+						dataMap.put("applyBai", state2);
+					} else {
+						dataMap.put("applyBai", "0");
+					}
+					if (upperMoney.contains("佰") && upperMoney.contains("拾")) {
+						String state3 = upperMoney.substring(upperMoney.lastIndexOf("佰") + 1,
+								upperMoney.lastIndexOf("拾"));
+						dataMap.put("applyShi", state3);
+					} else {
+						dataMap.put("applyShi", "0");
+					}
+					if (upperMoney.contains("拾") && upperMoney.contains("元")) {
+						String state4 = upperMoney.substring(upperMoney.lastIndexOf("拾") + 1, upperMoney.indexOf("元"));
+						dataMap.put("applyYuan", state4);
+					} else {
+						dataMap.put("applyYuan", "0");
+					}
+				} else {
+					dataMap.put("applyWan", "0");
+					dataMap.put("applyQian", "0");
+					dataMap.put("applyBai", "0");
+					dataMap.put("applyShi", "0");
+					dataMap.put("applyYuan", "0");
+				}
+
+				if (StringUtils.isNotBlank(upperPayMoney)) {
+					if (upperPayMoney.contains("万") && upperPayMoney.contains("仟")) {
+						String state1 = upperPayMoney.substring(upperPayMoney.lastIndexOf("万") + 1,
+								upperPayMoney.lastIndexOf("仟"));
+						dataMap.put("backQian", state1);
+					} else {
+						dataMap.put("backQian", 0);
+					}
+					if (upperPayMoney.contains("佰") && upperPayMoney.contains("仟")) {
+						String state2 = upperPayMoney.substring(upperPayMoney.lastIndexOf("仟") + 1,
+								upperPayMoney.lastIndexOf("佰"));
+						dataMap.put("backBai", state2);
+					} else {
+						dataMap.put("backBai", "0");
+					}
+					if (upperPayMoney.contains("佰") && upperPayMoney.contains("拾")) {
+						String state3 = upperPayMoney.substring(upperPayMoney.lastIndexOf("佰") + 1,
+								upperPayMoney.lastIndexOf("拾"));
+						dataMap.put("backShi", state3);
+					} else {
+						dataMap.put("backShi", "0");
+					}
+					if (upperPayMoney.contains("拾") && upperPayMoney.contains("元")) {
+						String state4 = upperPayMoney.substring(upperPayMoney.lastIndexOf("拾") + 1,
+								upperPayMoney.indexOf("元"));
+						dataMap.put("backYuan", state4);
+					} else {
+						dataMap.put("backYuan", "0");
+					}
+				} else {
+					dataMap.put("backQian", "0");
+					dataMap.put("backBai", "0");
+					dataMap.put("backShi", "0");
+					dataMap.put("backYuan", "0");
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		TempltUtil.toPreview(request, "loan.ftl", dataMap);
+		return true;
+
+	}
+
+	public void excWord() throws IOException {
+
+		try {
+			Map dataMap = new HashMap();
+			if (getData(response, request, dataMap, this.id)) {
+				File previewFile = new File(
+						request.getSession().getServletContext().getRealPath(TempltUtil.PREVIEW_DOC));
+				InputStream is = new FileInputStream(previewFile);
+				response.reset();
+				response.setContentType("application/vnd.ms-word;charset=UTF-8");
+				response.addHeader("Content-Disposition", "attachment; filename=\"" + "LoanAgreement.doc" + "\"");
+				byte[] b = new byte[1024];
+				int len;
+				while ((len = is.read(b)) > 0) {
+					response.getOutputStream().write(b, 0, len);
+				}
+				is.close();
+				response.getOutputStream().flush();
+				response.getOutputStream().close();
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public UserServiceImpl getUserService() {
@@ -319,6 +511,14 @@ public class LoanApplyAction extends BaseMgrAction {
 
 	public void setUserList(List<ComUser> userList) {
 		this.userList = userList;
+	}
+
+	public LoanCustomerService getLoanCustomerService() {
+		return loanCustomerService;
+	}
+
+	public void setLoanCustomerService(LoanCustomerService loanCustomerService) {
+		this.loanCustomerService = loanCustomerService;
 	}
 
 }

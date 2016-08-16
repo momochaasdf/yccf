@@ -323,7 +323,7 @@ public class FinancingApplyAction extends BaseMgrAction {
 				InputStream is = new FileInputStream(previewFile);
 				response.reset();
 				response.setContentType("application/vnd.ms-word;charset=UTF-8");
-				response.addHeader("Content-Disposition", "attachment; filename=\"" + "LoanAgreement.doc" + "\"");
+				response.addHeader("Content-Disposition", "attachment; filename=\"" + "FinancingAgreement.doc" + "\"");
 				byte[] b = new byte[1024];
 				int len;
 				while ((len = is.read(b)) > 0) {

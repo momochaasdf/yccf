@@ -28,6 +28,11 @@
 			<result name="load">/WEB-INF/pages/loan/loan_apply_{1}.jsp</result>
 			<result name="input">/WEB-INF/pages/loan/loan_apply_load.jsp</result>
 		</action>
+		
+		<action name="ComE_*" class="com.deying.core.action.LoanApplyAction" method="{1}">
+			<result name="list">/WEB-INF/pages/loan/loan_apply_list.jsp</result>
+			<result name="input">/WEB-INF/pages/loan/loan_apply_list.jsp</result>
+		</action>
 	</package>
 	<package name="core.loanApply.json" extends="json" namespace="/core/loanApply">
 		<action name="ComJ_*" class="com.deying.core.action.LoanApplyAction" method="{1}">

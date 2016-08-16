@@ -101,7 +101,7 @@
 					<c:if test="${fn:contains(button, 'financing_apply_load')&& buttonType ==0}">
 					<a href="<%=request.getContextPath()%>/core/financingApply/ComR_load.do?id=<s:property value="financingApplyId"/>&type=<s:property value="buttonType"/>">查看</a>
 				    </c:if>
-				    <a href="javascript:doExport('<s:property value="financingApplyId"/>','');">导出借款协议</a>
+				    <a href="javascript:doExport('<s:property value="financingApplyId"/>','');">导出理财协议</a>
 				</td>
 			</tr>
 			</s:iterator>
