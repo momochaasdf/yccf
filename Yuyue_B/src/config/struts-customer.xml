@@ -41,4 +41,13 @@
 			<result name="input">/WEB-INF/pages/collection/loan_list.jsp</result>
 		</action>
 	</package>
+	
+	
+		<package name="back.loan" extends="struts"
+		namespace="/back/loan">
+		<action name="*" class="com.deying.core.action.BackLoanAction"
+			method="{1}">
+			<result name="list">/WEB-INF/pages/collection/loan_back_list.jsp</result>
+		</action>
+	</package>
 </struts>
