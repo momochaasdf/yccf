@@ -75,6 +75,8 @@
 		var type =${type};
 		if(type ==1){
 			
+		}else if(type ==5){
+			
 		}else {
 			$("#reason").attr("readonly","readonly")
 			$("#days").attr("readonly","readonly")
