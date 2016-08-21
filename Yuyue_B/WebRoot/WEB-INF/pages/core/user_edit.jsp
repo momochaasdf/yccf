@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -51,6 +52,15 @@
 			<tr>
 				<th>登录账号</th>
 				<td><input type="text" name="user.loginId" readonly="readonly" value="${user.loginId}" /></td>
+			</tr>
+			<tr>
+
+				<th>部门名称</th>
+				<td><select type="text" name="user.departmentId">
+						<s:iterator value="dicList" status="st">
+							<option value="${dictCode}_${dictName}" <s:if test="%{user.departmentId ==dictCode}">selected=selected</s:if> >${dictName}</option>
+						</s:iterator>
+				</select></td>
 			</tr>
 			<tr>
 				<th><span style="color:red">*</span>姓名</th>

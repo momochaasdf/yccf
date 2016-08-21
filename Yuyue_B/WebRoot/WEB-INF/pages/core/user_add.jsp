@@ -46,7 +46,16 @@
 			<tr>
 				<th><span style="color:red">*</span>登录账号</th>
 				<td><input type="text" name="user.loginId" value="${user.loginId}" /></td>
-			</tr><tr>
+			</tr>
+			<tr>
+				<th>部门名称</th>
+				<td><select type="text" name="user.departmentId">
+						<s:iterator value="dicList" status="st">
+							<option value="${dictCode}_${dictName}">${dictName}</option>
+						</s:iterator>
+				</select></td>
+			</tr>
+			<tr>
 				<th><span style="color:red">*</span>姓名</th>
 				<td><input type="text" name="user.userName" value="${user.userName}" /></td>
 			</tr><tr>

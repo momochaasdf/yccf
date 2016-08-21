@@ -110,6 +110,7 @@
 				<th style="width: 5%">序号</th>
 				<th>登录账号</th>
 				<th>姓名</th>
+				<th>部门</th>
 				<th>角色</th>
 				<th>状态</th>
 				<th style="width: 20%">操作</th>
@@ -121,6 +122,7 @@
 				<td align="center"><s:property value="%{dataPage.start+#st.index + 1}"/></td>
 				<td><s:property value="loginId"/></td>
 				<td><s:property value="userName"/></td>
+				<td><s:property value="departmentName"/></td>
 				<td><s:iterator value="comUserRoles" status="ss"> 
 				      <s:property value="comRole.roleName"/>
 				     </s:iterator> </td>

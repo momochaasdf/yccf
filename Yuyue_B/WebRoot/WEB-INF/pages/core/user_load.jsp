@@ -38,6 +38,11 @@
 					value="${user.loginId}" readonly="readonly" /></td>
 			</tr>
 			<tr>
+				<th>部门名称</th>
+				<td><input type="text" name="user.departmentName"
+					value="${user.departmentName}" readonly="readonly" /></td>
+			</tr>
+			<tr>
 				<th>姓名</th>
 				<td><input type="text" name="user.userName"
 					value="${user.userName}" readonly="readonly" /></td>

@@ -6,6 +6,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.deying.core.pojo.user.ComDict;
 import com.deying.core.pojo.user.ComUser;
 import com.deying.core.service.user.impl.UserRoleServiceImpl;
 import com.deying.core.service.user.impl.UserServiceImpl;
@@ -13,6 +14,7 @@ import com.deying.util.core.com.framework.struts2.BaseMgrAction;
 import com.deying.util.datawrapper.CriteriaWrapper;
 import com.deying.util.security.SecurityUtils;
 import com.deying.util.sql.SqlGrammar;
+
 public class UserAction extends BaseMgrAction {
 
 	private static final long serialVersionUID = 1L;
@@ -23,27 +25,27 @@ public class UserAction extends BaseMgrAction {
 	private UserRoleServiceImpl userRoleService = null;
 
 	private ComUser user = null;
-	
+
 	private String id;
 	private String userId;
 	private String roles;
-	
+
 	private String oldPassword;
 	private String newPassword;
 	private String rePassword;
-	
+
 	private String loginId;
 	private String userName;
-	
-	private String userRoleNames;
-	
+
+	private List<ComDict> dicList = null;
+
 	public String list() throws Exception {
 		LOG.debug("--------------------UserAction -> list----------------");
 		String companyId = this.getCtxUser().getCompanyId();
 		String loginId = obtionInfoVal("loginId", String.class);
 		String userName = obtionInfoVal("userName", String.class);
 		Integer status = obtionInfoVal("status", Integer.class);
-		
+
 		String userId = this.getCtxUser().getUserId();
 		String userNames = this.getCtxUser().getUserName();
 		String userRoleNames = this.getCtxUser().getRoleNames();
@@ -63,87 +65,96 @@ public class UserAction extends BaseMgrAction {
 				c.eq("companyId", companyId);
 			}
 		}
-		if(loginId != null){
+		if (loginId != null) {
 			c.like("loginId", loginId);
 		}
-		if(userName != null){
+		if (userName != null) {
 			c.like("userName", userName);
 		}
-		if(status != null && status != 2){
+		if (status != null && status != 2) {
 			c.eq("status", status.toString());
 		}
 		if (status == null) {
 			info.put("status", "2");
 		}
-		dataPage = commonService.find(c
-				, ComUser.class,  currentPage, pageSize);
+		dataPage = commonService.find(c, ComUser.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
 		return LIST;
 	}
-	
+
 	/**
 	 * 重置密码
 	 */
 	public String reset() throws Exception {
 		LOG.debug("----------------UserAction -> reset------------------");
-//		String userId = this.getCtxUser().getUserType();
+		// String userId = this.getCtxUser().getUserType();
 		try {
 			ComUser u = this.userService.get(this.id);
 			u.setPassword(DigestUtils.md5Hex("00000000"));
-	        this.userService.update(u);
-			msg="密码重置成功";
+			this.userService.update(u);
+			msg = "密码重置成功";
 		} catch (Exception e) {
 			e.printStackTrace();
-			msg="密码重置失败";
+			msg = "密码重置失败";
 		}
 		return list();
 	}
-	
-	
-	
+
 	/**
 	 * 新增对象保存
+	 * 
 	 * @return
 	 */
 	public String add() throws Exception {
 		LOG.debug("--------------------UserAction -> add----------------");
+		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
+		dicParam.eq("dictTypeCode", "department_code");
+		dicList = commonService.find(dicParam, ComDict.class);
 		return ADD;
 	}
-	public String save() throws Exception  {
-		LOG.debug("--------------------UserAction -> save----------------");
-		/*
-		 * 从数据库中查出最大的businessId，加1后赋给新注册的用户
-		 */
 
-		String sql = "select max(LOGIN_ID) as login  from com_user" ;
-		List list = this.userService.listBySQL(sql);
-		 
+	public String save() throws Exception {
+		LOG.debug("--------------------UserAction -> save----------------");
+	 
+
 		if (user != null) {
 			user.setPassword(DigestUtils.md5Hex("00000000"));
-            user.setCompanyId(getCtxUser().getCompanyId());
+			user.setCompanyId(getCtxUser().getCompanyId());
+			String departmentId = user.getDepartmentId().split("_")[0];
+			String departmentName = user.getDepartmentId().split("_")[1];
+			user.setDepartmentId(departmentId);
+			user.setDepartmentName(departmentName);
 			this.userService.save(user);
 			this.addActionMessage(this.getText("do.success.back"));
 		}
 		return list();
 	}
+
 	public boolean validateSave() {
-	    
-		if(hasErrors()) {
+
+		if (hasErrors()) {
 			return true;
 		}
 		return false;
 	}
+
 	/**
 	 * 编辑对象加载
+	 * 
 	 * @return
 	 */
 	public String edit() throws Exception {
 		LOG.debug("--------------------UserAction -> edit----------------");
 		this.user = this.userService.get(id);
+		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
+		dicParam.eq("dictTypeCode", "department_code");
+		dicList = commonService.find(dicParam, ComDict.class);
 		return EDIT;
 	}
+
 	/**
 	 * 编辑对象保存
+	 * 
 	 * @return
 	 */
 	public String upd() throws Exception {
@@ -157,54 +168,64 @@ public class UserAction extends BaseMgrAction {
 			u.setEmail(this.user.getEmail());
 			u.setTelephone(this.user.getTelephone());
 			u.setUserName(this.user.getUserName());
+			
+			
+			String departmentId = user.getDepartmentId().split("_")[0];
+			String departmentName = user.getDepartmentId().split("_")[1];
+			u.setDepartmentId(departmentId);
+			u.setDepartmentName(departmentName);
+
 			this.user = this.userService.update(u);
 			this.addActionMessage(this.getText("do.success.back"));
 		}
 		return list();
 	}
+
 	public boolean validateUpd() {
-		if(hasErrors()) {
+		if (hasErrors()) {
 			return true;
 		}
 		ComUser r = this.userService.get(this.user.getUserId());
 		if (r == null) {
 			this.addActionError(this.getText("err.no.entity"));
 		}
-		if(hasErrors()) {
+		if (hasErrors()) {
 			return true;
 		}
 		return false;
 	}
+
 	/**
 	 * 删除
+	 * 
 	 * @return
 	 */
 	public String del() throws Exception {
 		LOG.debug("--------------------UserAction -> del----------------");
 		if (this.id != null) {
-			commonService.update(SqlGrammar.newInstance()
-					.update("status", "2")
-					.eq("id", this.id)
-					, ComUser.class);
+			commonService.update(SqlGrammar.newInstance().update("status", "2").eq("id", this.id), ComUser.class);
 		}
-		msg="删除操作成功!";
+		msg = "删除操作成功!";
 		return list();
 	}
+
 	public boolean validateDel() {
-		if(hasErrors()) {
+		if (hasErrors()) {
 			return true;
 		}
 		ComUser r = this.userService.get(this.id);
 		if (r == null || this.id == null) {
 			this.addActionError(this.getText("err.no.entity"));
 		}
-		if(hasErrors()) {
+		if (hasErrors()) {
 			return true;
 		}
 		return false;
 	}
+
 	/**
 	 * 查看对象
+	 * 
 	 * @return
 	 */
 	public String load() throws Exception {
@@ -212,7 +233,7 @@ public class UserAction extends BaseMgrAction {
 		this.user = this.userService.get(id);
 		return LOAD;
 	}
-	
+
 	/**
 	 * 给用户赋予角色
 	 */
@@ -229,20 +250,21 @@ public class UserAction extends BaseMgrAction {
 	}
 
 	public void loadMenu() {
-		//权限初始化
+		// 权限初始化
 		String out = null;
 		out = this.userService.loadFunsByUser(this.getCtxUser().getUserId());
 		System.out.println(out);
 		outResponseJson(out);
-		
+
 	}
-	
-    /**密码修改**/
+
+	/** 密码修改 **/
 	public String changePwd() throws Exception {
 		return SUCCESS;
 	}
-	/**修改密码保存**/
-	public String upPwd()throws Exception{
+
+	/** 修改密码保存 **/
+	public String upPwd() throws Exception {
 		if (oldPassword.equalsIgnoreCase("")) {
 			this.addActionMessage(this.getText("旧密码不能为空，请输入"));
 			return INPUT;
@@ -261,34 +283,34 @@ public class UserAction extends BaseMgrAction {
 			this.addActionMessage(this.getText("旧密码不正确，请重新输入"));
 			this.oldPassword = "";
 			this.newPassword = "";
-			this.rePassword = "" ;
+			this.rePassword = "";
 			return INPUT;
 		}
-		if(oldPassword.equals(newPassword)){
+		if (oldPassword.equals(newPassword)) {
 			this.addActionMessage(this.getText("新旧密码不能相同，请重新输入"));
 			this.oldPassword = "";
 			this.newPassword = "";
-			this.rePassword = "" ;
+			this.rePassword = "";
 			return INPUT;
 		}
-		if(!newPassword.equals(rePassword)){
+		if (!newPassword.equals(rePassword)) {
 			this.addActionMessage(this.getText("新密码与确认密码不相同，请重新输入"));
 			this.oldPassword = "";
 			this.newPassword = "";
-			this.rePassword = "" ;
+			this.rePassword = "";
 			return INPUT;
 		}
 		u.setPassword(DigestUtils.md5Hex(rePassword));
 		this.userService.update(u);
-		msg ="修改密码成功";
+		msg = "修改密码成功";
 		this.oldPassword = "";
 		this.newPassword = "";
 		this.rePassword = "";
 		return SUCCESS;
 	}
 
-//	--------------------------getter-and--setter------------------------------------
-	
+	// --------------------------getter-and--setter------------------------------------
+
 	public UserServiceImpl getUserService() {
 		return userService;
 	}
@@ -320,9 +342,11 @@ public class UserAction extends BaseMgrAction {
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public ComUser getUser() {
 		return user;
 	}
+
 	public void setUser(ComUser user) {
 		this.user = user;
 	}
@@ -375,12 +399,12 @@ public class UserAction extends BaseMgrAction {
 		this.rePassword = rePassword;
 	}
 
-	public String getUserRoleNames() {
-		return userRoleNames;
+	public List<ComDict> getDicList() {
+		return dicList;
 	}
 
-	public void setUserRoleNames(String userRoleNames) {
-		this.userRoleNames = userRoleNames;
+	public void setDicList(List<ComDict> dicList) {
+		this.dicList = dicList;
 	}
-    
+
 }
