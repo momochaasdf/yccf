@@ -115,7 +115,7 @@
 					       <a href="<%=request.getContextPath()%>/core/leaveApply/ComU_edit.do?type=${type}&id=<s:property value="leaveApplyId"/>">审核</a>
 					       </c:when>
 					    </c:choose>
-						<c:if test="${fn:contains(button, 'leave_apply_del') && type ==1}">
+						<c:if test="${fn:contains(button, 'leave_apply_del') && type ==1  && status==0}">
 						<a href="javascript:doDel('<s:property value="leaveApplyId"/>','');">删除</a>
 						</c:if>
 						

@@ -113,7 +113,7 @@
 					    <a href="<%=request.getContextPath()%>/core/outApply/ComU_edit.do?type=${type}&id=<s:property value="outApplyId"/>">审核</a>
 						</c:when>
 						</c:choose>
-						<c:if test="${fn:contains(button, 'out_apply_del') && type ==1}">
+						<c:if test="${fn:contains(button, 'out_apply_del') && type ==1  && status==0}">
 						<a href="javascript:doDel('<s:property value="outApplyId"/>','');">删除</a>
 						</c:if>
 						 <c:choose> 
