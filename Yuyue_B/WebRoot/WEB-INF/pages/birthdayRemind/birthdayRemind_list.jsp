@@ -44,7 +44,7 @@
 			<div class="o-mt">
 					<h2 style="margin-top: 0;">
 						<a href="javascript:void(0);" style="color:#cc0000">客户生日提醒管理</a>&nbsp;>>&nbsp;
-						<a  style="color:#cc0000" href="<%=path %>/holidayRemind/holidayRemind_list.do">客户生日提醒列表</a>
+						<a  style="color:#cc0000" href="<%=path %>/birthdayRemind/birthdayRemind_list.do">客户生日提醒列表</a>
 					</h2>
 			</div>
 			<div>
@@ -86,7 +86,7 @@
 			</div>
 			<div>
 				<d:pages currentPage="%{currentPage}" showPageNumber="3"
-						totalPage="%{totalPage}" url="holidayRemind_list.do" cssClass="pagnation">
+						totalPage="%{totalPage}" url="birthdayRemind_list.do" cssClass="pagnation">
 				</d:pages>
 			</div>
 		</div>
