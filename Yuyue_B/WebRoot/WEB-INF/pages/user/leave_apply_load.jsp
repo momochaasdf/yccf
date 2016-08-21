@@ -34,7 +34,6 @@
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
-
 				<th>部门名称</th>
 				<td><input type="text" name="leaveApply.departmentName"
 					value="${leaveApply.departmentName}" readOnly /></td>

@@ -71,7 +71,8 @@ public class LoginAction extends BaseMgrAction {
 		uc.setUserName(user.getUserName());
 		uc.setLoginId(user.getLoginId());
 		uc.setCompanyId(user.getCompanyId());
-		
+		uc.setDepartmentId(user.getDepartmentId());
+		uc.setDepartmentName(user.getDepartmentName());
 		//取得公司名称
 		ComDict dict = (ComDict) this.dictService.findUniqueByProperty("dictCode", user.getCompanyId());
 		uc.setCompanyName(dict.getDictName());

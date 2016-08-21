@@ -99,10 +99,9 @@ public class LeaveApplyAction extends BaseMgrAction {
 			leaveApply.setUserId(this.getCtxUser().getUserId());
 			leaveApply.setUserName(this.getCtxUser().getUserName());
 
-			String departmentId = leaveApply.getDepartmentId().split("_")[0];
-			String departmentName = leaveApply.getDepartmentId().split("_")[1];
-			leaveApply.setDepartmentId(departmentId);
-			leaveApply.setDepartmentName(departmentName);
+			 
+			leaveApply.setDepartmentId(this.getCtxUser().getDepartmentId());
+			leaveApply.setDepartmentName(this.getCtxUser().getDepartmentName());
 
 			leaveApply.setCompanyId(this.getCtxUser().getCompanyId());
 			leaveApply.setStatus("0");
@@ -145,10 +144,6 @@ public class LeaveApplyAction extends BaseMgrAction {
 		if (leaveApply != null) {
 			LeaveApply r = this.leaveApplyService.get(this.id);
 			if (type.equals("1")) {
-				String departmentId = leaveApply.getDepartmentId().split("_")[0];
-				String departmentName = leaveApply.getDepartmentId().split("_")[1];
-				r.setDepartmentId(departmentId);
-				r.setDepartmentName(departmentName);
 				r.setApplyStartTime(leaveApply.getApplyStartTime());
 				r.setApplyEndTime(leaveApply.getApplyEndTime());
 				r.setReason(leaveApply.getReason());

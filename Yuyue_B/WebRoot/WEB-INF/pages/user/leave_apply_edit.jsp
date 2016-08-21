@@ -109,20 +109,6 @@
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
-                 
-				<th>部门名称</th>
-				<s:if test="%{type==1 }">
-				<td><select type="text" name="leaveApply.departmentId">
-						<s:iterator value="dicList" status="st">
-							<option value="${dictCode}_${dictName}">${dictName}</option>
-						</s:iterator>
-				</select></td>
-				</s:if>
-				<s:else>
-				<td><input  type="text"   value="${leaveApply.departmentName}" readonly/></td>
-				</s:else>
-			</tr>
-			<tr>
 				<th>用户</th>
 				<td><input  type="text" name="leaveApply.userName" id="userName"
 					value="${leaveApply.userName}" readonly/></td>
