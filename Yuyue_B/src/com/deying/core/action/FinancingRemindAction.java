@@ -27,7 +27,7 @@ public class FinancingRemindAction extends BaseMgrAction
         
         this.currentPage = this.currentPage == null ? 1 : this.currentPage;
         CriteriaWrapper c = CriteriaWrapper.newInstance();
-        c.eq("status", "1");
+        c.ne("status", "2");
         c.desc("crtTime");
         if (StringUtils.isNotBlank(type))
         {
@@ -63,12 +63,7 @@ public class FinancingRemindAction extends BaseMgrAction
 			List<FinancingRemind> remind = commonService.findList(c, FinancingRemind.class, currentPage,pageSize );
 			if(!remind.isEmpty()){
 				for(FinancingRemind r:remind){
-					if("1".equals(r.getStatus())){
-						r.setStatus("0");
-					}
-					else if("0".equals(r.getStatus())){
-						r.setStatus("2");
-					}
+					r.setStatus("2");
 					commonService.update("rinancingRemind", r);
 				}
 			}
@@ -77,6 +72,28 @@ public class FinancingRemindAction extends BaseMgrAction
 		return list();
 	}
     
+	 /**
+		 * 删除
+		 * 
+		 * @return
+		 */
+		public String remind() throws Exception {
+			LOG.debug("--------------------GoodsStockAction -> del----------------");
+			if (this.id != null) {
+				CriteriaWrapper c = CriteriaWrapper.newInstance();
+				c.eq("financingRemindId", this.id);
+				List<FinancingRemind> remind = commonService.findList(c, FinancingRemind.class, currentPage,pageSize );
+				if(!remind.isEmpty()){
+					for(FinancingRemind r:remind){
+						r.setStatus("0");
+						commonService.update("rinancingRemind", r);
+					}
+				}
+			}
+			msg = "更新状态操作成功!";
+			return list();
+		}
+	
     public String getId()
     {
         return id;

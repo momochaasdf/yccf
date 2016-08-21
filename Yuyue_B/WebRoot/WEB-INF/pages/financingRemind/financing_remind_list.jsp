@@ -30,10 +30,16 @@
 			  }
 			});
 			
-			function doDel(id,name) {
-				$.messager.confirm('状态修改确认','你确认修改吗?', function(bt){
+			function doTake(id,name) {
+				$.messager.confirm('状态修改确认','确认更新状态吗?', function(bt){
 					$("#id").val(id);
 					if (bt){doAction('financingRemindForm','ComD_del','')};
+				});
+			}
+			function doRemind(id,name) {
+				$.messager.confirm('状态修改确认','确认更新状态吗?', function(bt){
+					$("#id").val(id);
+					if (bt){doAction('financingRemindForm','ComD_remind','')};
 				});
 			}
   </script>
@@ -122,7 +128,8 @@
 								<z:dict  type="financing_remind_status" code="%{status}" />
 							</td>
 							<td align="center">
-								 <a href="javascript:doDel('<s:property value="financingRemindId"/>','');">更新状态</a>
+								 <a href="javascript:doRemind('<s:property value="financingRemindId"/>','');">提醒</a>
+								 <a href="javascript:doTake('<s:property value="financingRemindId"/>','');">已取</a>
 							</td
 						</tr>
 					</s:iterator>
