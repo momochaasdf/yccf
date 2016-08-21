@@ -143,6 +143,7 @@
 						totalPage="%{totalPage}" url="notice_list.do" cssClass="pagnation">
 					<s:param name="info.title">${info.title}</s:param>
 					<s:param name="info.status">${info.status}</s:param>
+					<s:param name="type">${type}</s:param>
 				</d:pages>
 			</div>
 		</div>
