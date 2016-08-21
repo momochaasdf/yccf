@@ -33,8 +33,8 @@
 		<div class="o-mt">
 			<h2 style="margin-top: 0;">
 				<a href="<%=path%>/collection/loan/ComM_list.do"
-					style="color: #cc0000">借款客户管理</a> &nbsp;&gt;&gt;&nbsp; <a
-					style="color: #cc0000" href="javascript:void(0);">借款客户编辑</a>
+					style="color: #cc0000">借款催收管理</a> &nbsp;&gt;&gt;&nbsp; <a
+					style="color: #cc0000" href="javascript:void(0);">借款催收编辑</a>
 			</h2>
 		</div>
 	</div>
