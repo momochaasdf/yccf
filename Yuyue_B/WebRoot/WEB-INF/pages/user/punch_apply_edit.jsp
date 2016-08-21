@@ -36,7 +36,7 @@
 			
 		}else {
 			$("#reason").attr("readonly","readonly");
-			$("#inOrOut").attr("readonly","readonly");
+			$("#inOrOut").attr("disabled","disabled");
 			$("#applyPunchTime").attr("readonly","readonly").attr("onfocus","");
 		}
 	})     
@@ -47,8 +47,8 @@
 		<div class="o-mt">
 			<h2 style="margin-top: 0;">
 				<a href="<%=path%>/core/punchApply/ComM_list.do"
-					style="color: #cc0000">奖励管理</a> &nbsp;&gt;&gt;&nbsp; <a
-					style="color: #cc0000" href="javascript:void(0);">修改奖励</a>
+					style="color: #cc0000">忘打卡管理</a> &nbsp;&gt;&gt;&nbsp; <a
+					style="color: #cc0000" href="javascript:void(0);">忘打卡管理</a>
 			</h2>
 		</div>
 	</div>
@@ -67,15 +67,6 @@
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
-
-				<th>部门名称</th>
-				<td><select type="text" name="punchApply.departmentId">
-						<s:iterator value="dicList" status="st">
-							<option value="${dictCode}_${dictName}">${dictName}</option>
-						</s:iterator>
-				</select></td>
-			</tr>
-			<tr>
 				<th>用户</th>
 				<td><input  type="text" name="punchApply.userName" id="userName"
 					value="${punchApply.userName}" readonly/></td>
@@ -86,10 +77,6 @@
 					value="${punchApply.reason }" /></td>
 			</tr>
 			<tr>
-				<th>上下班</th>
-				<td> <s:radio list="#{'1':'上班','2':'下班'}" name="punchApply.inOrOut" id="inOrOut"/> </td>
-			</tr>
-			<tr>
 				<th>忘记打卡开始时间</th>
 				<td><input type="text" name="punchApply.applyPunchTime"  id="applyPunchTime"
 					value="<s:date format="yyyy-MM-dd HH:mm:ss" name="punchApply.applyPunchTime" />"
@@ -97,11 +84,19 @@
 			</tr>
 			<s:if  test="%{type==1}">	
 			<tr>
+				<th>上下班</th>
+				<td> <s:radio list="#{'1':'上班','2':'下班'}" name="punchApply.inOrOut" id="inOrOut"/> </td>
+			</tr>
+			<tr>
 				<th>审核状态</th>
 				<td><z:dict  type="out_apply_status" code="%{punchApply.status}" /></td>
 		    </tr>
 			</s:if>
 			<s:else>
+			<tr>
+				<th>上下班</th>
+				<td> <z:dict  type="punch_apply_type" code="%{punchApply.inOrOut}" /> </td>
+			</tr>
 			<tr>
 				<th>审核状态</th>
 				<td><select name="punchApply.status">

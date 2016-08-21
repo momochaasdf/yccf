@@ -57,15 +57,6 @@
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
-
-				<th>部门名称</th>
-				<td><select type="text" name="punchApply.departmentId">
-						<s:iterator value="dicList" status="st">
-							<option value="${dictCode}_${dictName}">${dictName}</option>
-						</s:iterator>
-				</select></td>
-			</tr>
-			<tr>
 				<th>忘记打卡原因</th>
 				<td><input type="text" name="punchApply.reason"
 					value="${punchApply.reason }" /></td>

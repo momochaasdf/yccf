@@ -48,14 +48,13 @@ public class PunchApplyAction extends BaseMgrAction {
 
 		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
-		CriteriaWrapper PunchApplyParams = CriteriaWrapper.newInstance();
 		c.desc("crtTime");
 		if (userId != null) {
-			if (!userRoleNames.contains("总经理") && type.equals("1"))
+			if (type.equals("1"))
 				c.like("userId", userId);
 		}
 		if (userName != null) {
-			if (!userRoleNames.contains("总经理") && type.equals("1"))
+			if (type.equals("1"))
 				c.like("userName", userName);
 		}
 		if (companyId != null) {
@@ -100,10 +99,9 @@ public class PunchApplyAction extends BaseMgrAction {
 		if (punch != null) {
 			punch.setUserId(this.getCtxUser().getUserId());
 			punch.setUserName(this.getCtxUser().getUserName());
-			String departmentId = punch.getDepartmentId().split("_")[0];
-			String departmentName = punch.getDepartmentId().split("_")[1];
-			punch.setDepartmentId(departmentId);
-			punch.setDepartmentName(departmentName);
+			 
+			punch.setDepartmentId(this.getCtxUser().getDepartmentId());
+			punch.setDepartmentName(this.getCtxUser().getDepartmentName());
 			punch.setCompanyId(this.getCtxUser().getCompanyId());
 			punch.setStatus("0");
 
@@ -146,10 +144,6 @@ public class PunchApplyAction extends BaseMgrAction {
 		if (punch != null) {
 			PunchApply r = this.PunchApplyService.get(this.punch.getPunchApplyId());
 			if (type.equals("1")) {
-				String departmentId = punch.getDepartmentId().split("_")[0];
-				String departmentName = punch.getDepartmentId().split("_")[1];
-				r.setDepartmentId(departmentId);
-				r.setDepartmentName(departmentName);
 				r.setApplyPunchTime(punch.getApplyPunchTime());
 				r.setInOrOut(punch.getInOrOut());
 				r.setReason(punch.getReason());
