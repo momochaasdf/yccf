@@ -38,9 +38,21 @@ public class AttendanceAction extends BaseMgrAction {
 
 	public String list() throws Exception {
 		LOG.debug("--------------------BackupAction -> list----------------");
+		String userName = obtionInfoVal("userName", String.class);
+		Date minStartTime = obtionInfoVal("minStartTime", Date.class);
+		Date maxStartTime = obtionInfoVal("maxStartTime", Date.class);
 		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.desc("crtTime");
+		if(StringUtils.isNotBlank(userName)){
+			c.like("userName", userName);
+		}
+		if(minStartTime != null){
+			c.ge("startTime", minStartTime);
+		}
+		if(maxStartTime != null){
+			c.le("startTime", maxStartTime);
+		}
 		dataPage = commonService.find(c, Attendance.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
 		return INPUT;

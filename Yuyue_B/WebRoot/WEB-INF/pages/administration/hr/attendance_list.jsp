@@ -99,6 +99,15 @@
 						<tr>
 							<th style="width: 10%">员工名称</th>
 							<td style="width: 30%"><input type="text" name="info.userName" value="${info.userName}"/></td>
+							<th style="width: 10%">考勤开始时间</th>
+							<td style="width: 50%">
+								<div style="float:left;width:60px;padding-top:6px;">从&nbsp;</div><div class="text_input" style="background-color: transparent; border: none; float: left;">
+								<input id="startTime" name="info.minStartTime" size="12" style="background-color: transparent;text-indent:2; border: none;"
+									type="text" onclick="WdatePicker()" value='${info.minStartTime}' /></div>
+								<div style="float:left;width:20px;padding-top:6px;">到&nbsp;</div><div class="text_input" style="background-color: transparent; border: none; float: left;">
+								<input id="endTime" value='${info.maxStartTime}' name="info.maxStartTime"
+									size="10" type="text" size="12" style="background-color: transparent;text-indent:2; border: none;" onclick="WdatePicker()" /></div>
+							</td>
 						</tr>
 					</table>
 					<br />
@@ -106,7 +115,6 @@
 				<div class="msg"><s:actionmessage/><s:fielderror/><s:actionerror/></div>
 				<div class="navButton">
 					<input type="button" value="检索" class="btSearch" onclick="doAction('attendanceForm','attendance_list','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
-					<input type="button" value="导出" class="btSearch" onclick="doAction('attendanceForm','attendance_exportAttendanceExcel','')" style="color: #FFF; border-style: none; width: 49px; height: 25px; padding: 0; background: url(<%=path %>/common/images/blue_bg.png) no-repeat scroll 0px 0px transparent;margin-left: 5px;"/>
 				</div>
 				<input type="hidden" name="_ns" id="_ns" value="/attendance/"/>
 				<input type="hidden" name="id" id="id"/>
@@ -130,9 +138,6 @@
 						<td>
 							出勤天数
 						</td>
-						<td style="width: 30%">
-							备注
-						</td>
 					</tr>
 					<s:property value="%{session.button}" />
 					<s:iterator value="dataPage.data" status="st">
@@ -154,9 +159,6 @@
 							</td>
 							<td>
 								<s:property value="%{attendanceDays}" />
-							</td>
-							<td align="left">
-								<s:property value="info" />
 							</td>
 						</tr>
 					</s:iterator>
