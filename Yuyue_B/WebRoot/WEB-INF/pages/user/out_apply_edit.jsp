@@ -34,6 +34,8 @@
 		var type =${type};
 		if(type ==1){
 			
+		}else if(type ==5){
+			
 		}else {
 			$("#reason").attr("readonly","readonly")
 			$("#d4311").attr("readonly","readonly").attr("onfocus","");

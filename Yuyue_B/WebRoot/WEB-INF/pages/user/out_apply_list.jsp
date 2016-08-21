@@ -112,8 +112,14 @@
 						<c:when test="${fn:contains(button, 'out_edit') && type ==2}">
 					    <a href="<%=request.getContextPath()%>/core/outApply/ComU_edit.do?type=${type}&id=<s:property value="outApplyId"/>">审核</a>
 						</c:when>
+						 <c:when test="${fn:contains(button, 'out_zong_edit') && type ==5}">
+					    <a href="<%=request.getContextPath()%>/core/outApply/ComU_edit.do?type=${type}&id=<s:property value="outApplyId"/>">修改</a>
+						</c:when>
 						</c:choose>
 						<c:if test="${fn:contains(button, 'out_apply_del') && type ==1  && status==0}">
+						<a href="javascript:doDel('<s:property value="outApplyId"/>','');">删除</a>
+						</c:if>
+						<c:if test="${fn:contains(button, 'out_zong_del') && type ==5}">
 						<a href="javascript:doDel('<s:property value="outApplyId"/>','');">删除</a>
 						</c:if>
 						 <c:choose> 
@@ -121,6 +127,9 @@
 						<a href="<%=request.getContextPath()%>/core/outApply/ComR_load.do?type=${type}&id=<s:property value="outApplyId"/>">查看</a>
 						</c:when>
 						 <c:when test="${fn:contains(button, 'out_load') && type ==2}">
+						<a href="<%=request.getContextPath()%>/core/outApply/ComR_load.do?type=${type}&id=<s:property value="outApplyId"/>">查看</a>
+						</c:when>
+						 <c:when test="${fn:contains(button, 'out_zong_load') && type ==5}">
 						<a href="<%=request.getContextPath()%>/core/outApply/ComR_load.do?type=${type}&id=<s:property value="outApplyId"/>">查看</a>
 						</c:when>
 						</c:choose>
