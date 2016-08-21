@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="z" uri="/z-tags"%>
 <%
 	String path = request.getContextPath();
 %>
@@ -29,11 +30,7 @@
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			 <tr>
 				<th>产品类型</th>
-				<td><select type="text" name="financingApply.type"   >
-				 <s:iterator value="dicList" status="st">
-				   <option value="${dictCode}">${dictName}</option>
-				   </s:iterator>
-				</select></td>
+				<td><z:dict  type="financing_type" code="%{financingApply.type}"/>&nbsp;</td>
 			</tr>
 			<tr>
 				<th>客户</th>
