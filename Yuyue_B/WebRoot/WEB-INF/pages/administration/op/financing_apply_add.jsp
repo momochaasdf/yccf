@@ -14,9 +14,7 @@
 		var _validator=$("#financingApplyForm").validate({
 		onsubmit: true,
 		rules: {
-			'financingApply.annualizedRate':{required: true,maxbytelen:100},
-			'financingApply.months':{min:1,number:true,required: true},
-			'financingApply.startUp':{min:5,max:100,number:true,required: true}
+			 
 		}});
 		$("input.btOk").click(function(){
 			if(_validator.form()){doAction('financingApplyForm','ComC_save','');}
