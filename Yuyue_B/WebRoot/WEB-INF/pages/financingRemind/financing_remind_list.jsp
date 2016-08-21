@@ -71,6 +71,9 @@
 							客户名称
 						</td>
 						<td>
+							联系电话
+						</td>
+						<td>
 							理财收益时间
 						</td>
 						<td>
@@ -99,6 +102,9 @@
 							</td>
 							<td>
 								<s:property value="customerName" />
+							</td>
+							<td>
+								<s:property value="telephone" />
 							</td>
 							<td>
 								<s:date name="%{startTime}" format="yyyy-MM-dd"/>
