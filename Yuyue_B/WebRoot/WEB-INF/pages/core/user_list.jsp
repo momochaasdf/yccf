@@ -121,7 +121,9 @@
 				<td align="center"><s:property value="%{dataPage.start+#st.index + 1}"/></td>
 				<td><s:property value="loginId"/></td>
 				<td><s:property value="userName"/></td>
-				<td><s:property value="userRoleNames"/></td>
+				<td><s:iterator value="comUserRoles" status="ss"> 
+				      <s:property value="comRole.roleName"/>
+				     </s:iterator> </td>
 				<td align="center"><s:if test="status==1">可用</s:if><s:elseif test="status==0">禁用</s:elseif><s:else>&nbsp;</s:else></td>
 				<td align="center">
 					<c:if test="${fn:contains(button, 'user_edit') && type ==0}">

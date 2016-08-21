@@ -51,11 +51,11 @@ public class UserAction extends BaseMgrAction {
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.desc("crtTime");
 		if (userId != null) {
-			if (!userRoleNames.contains("总经理") && type.equals("1"))
+			if (type.equals("1"))
 				c.eq("userId", userId);
 		}
 		if (userNames != null) {
-			if (!userRoleNames.contains("总经理") && type.equals("1"))
+			if (type.equals("1"))
 				c.eq("userName", userNames);
 		}
 		if (companyId != null) {
@@ -75,7 +75,6 @@ public class UserAction extends BaseMgrAction {
 		if (status == null) {
 			info.put("status", "2");
 		}
-		this.userRoleNames = userRoleNames;
 		dataPage = commonService.find(c
 				, ComUser.class,  currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
