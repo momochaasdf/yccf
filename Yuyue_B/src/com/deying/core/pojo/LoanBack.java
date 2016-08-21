@@ -112,7 +112,7 @@ public class LoanBack implements java.io.Serializable {
 		this.loanApplyId = loanApplyId;
 	}
 
-	@Column(name = "CUSTOMER_NAME", nullable = false, length = 100)
+	@Column(name = "CUSTOMER_NAME",  length = 100)
 	public String getCustomerName() {
 		return this.customerName;
 	}
@@ -121,7 +121,7 @@ public class LoanBack implements java.io.Serializable {
 		this.customerName = customerName;
 	}
 
-	@Column(name = "TYPE", nullable = false, length = 2)
+	@Column(name = "TYPE",  length = 2)
 	public String getType() {
 		return this.type;
 	}
@@ -130,7 +130,7 @@ public class LoanBack implements java.io.Serializable {
 		this.type = type;
 	}
 
-	@Column(name = "MONEY", nullable = false, precision = 10, scale = 0)
+	@Column(name = "MONEY",  precision = 10, scale = 0)
 	public long getMoney() {
 		return this.money;
 	}
@@ -148,7 +148,7 @@ public class LoanBack implements java.io.Serializable {
 		this.repaymentMonths = repaymentMonths;
 	}
 
-	@Column(name = "GIVEN_MONEY", nullable = false, precision = 10, scale = 0)
+	@Column(name = "GIVEN_MONEY",  precision = 10, scale = 0)
 	public long getGivenMoney() {
 		return this.givenMoney;
 	}
@@ -157,7 +157,7 @@ public class LoanBack implements java.io.Serializable {
 		this.givenMoney = givenMoney;
 	}
 
-	@Column(name = "SURPLUS_MONEY", nullable = false, precision = 10, scale = 0)
+	@Column(name = "SURPLUS_MONEY",  precision = 10, scale = 0)
 	public long getSurplusMoney() {
 		return this.surplusMoney;
 	}
@@ -166,7 +166,7 @@ public class LoanBack implements java.io.Serializable {
 		this.surplusMoney = surplusMoney;
 	}
 
-	@Column(name = "PERMONTH_GIVEN_MONEY", nullable = false, precision = 10, scale = 0)
+	@Column(name = "PERMONTH_GIVEN_MONEY",  precision = 10, scale = 0)
 	public long getPermonthGivenMoney() {
 		return this.permonthGivenMoney;
 	}
@@ -175,7 +175,7 @@ public class LoanBack implements java.io.Serializable {
 		this.permonthGivenMoney = permonthGivenMoney;
 	}
 
-	@Column(name = "IS_PREPAYMENT", nullable = false, length = 2)
+	@Column(name = "IS_PREPAYMENT",  length = 2)
 	public String getIsPrepayment() {
 		return this.isPrepayment;
 	}
@@ -184,7 +184,7 @@ public class LoanBack implements java.io.Serializable {
 		this.isPrepayment = isPrepayment;
 	}
 
-	@Column(name = "TELEPHONE", nullable = false, length = 20)
+	@Column(name = "TELEPHONE",  length = 20)
 	public String getTelephone() {
 		return this.telephone;
 	}
@@ -211,7 +211,7 @@ public class LoanBack implements java.io.Serializable {
 		this.isOverdue = isOverdue;
 	}
 
-	@Column(name = "STATUS", nullable = false, length = 2)
+	@Column(name = "STATUS",  length = 2)
 	public String getStatus() {
 		return this.status;
 	}
