@@ -52,6 +52,12 @@
         <property name="updTime" type="java.util.Date">
             <column name="UPD_TIME" length="7" />
         </property>
+         <property name="departmentId" type="java.lang.String">
+            <column name="DEPARTMENT_ID" length="128" />
+        </property>
+         <property name="departmentName" type="java.lang.String">
+            <column name="DEPARTMENT_NAME" length="128" />
+        </property>
         <set name="comUserRoles" inverse="true" cascade="all-delete-orphan">
             <key>
                 <column name="USER_ID" length="32" not-null="true" />

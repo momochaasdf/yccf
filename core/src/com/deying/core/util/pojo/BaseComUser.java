@@ -33,6 +33,8 @@ public abstract class BaseComUser  implements Serializable {
 	public static String PROP_ADDRESS= "address";
 	public static String PROP_TELEPHONE= "telephone";
 	public static String PROP_BIRTHDAY= "birthday";
+	public static String PROP_DEPARTMENT_NAME= "departmentName";
+	public static String PROP_DEPARTMENT_ID= "departmentId";
 
 
 	// constructors
@@ -72,6 +74,8 @@ public abstract class BaseComUser  implements Serializable {
 	private java.util.Date crtTime;
 	private java.lang.String updUid;
 	private java.util.Date updTime;
+	private java.lang.String departmentId;
+	private java.lang.String departmentName;
 
 
 	// collections
@@ -225,7 +229,26 @@ public abstract class BaseComUser  implements Serializable {
     {
         this.qq = qq;
     }
+    
+    public java.lang.String getDepartmentId()
+    {
+        return departmentId;
+    }
 
+    public void setDepartmentId(java.lang.String departmentId)
+    {
+        this.departmentId = departmentId;
+    }
+     
+    public java.lang.String getDepartmentName()
+    {
+        return departmentName;
+    }
+
+    public void setDepartmentName(java.lang.String departmentName)
+    {
+        this.departmentName = departmentName;
+    }
     /**
 	 * Return the value associated with the column: CRT_UID
 	 */
