@@ -64,6 +64,8 @@ public class FinancingApplyAction extends BaseMgrAction {
 		}
 		if (type.equals("4")) {
 			c.eq("type", type);
+		}else {
+			c.ne("type", "4");
 		}
 		dataPage = commonService.find(c, FinancingApply.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
