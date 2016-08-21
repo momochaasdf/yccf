@@ -112,8 +112,14 @@
 						   <c:when test="${fn:contains(button, 'punch_edit') && type ==2}">
 					         <a href="<%=request.getContextPath()%>/core/punchApply/ComU_edit.do?type=${type}&id=<s:property value="punchApplyId"/>">审核</a>
 						   </c:when>
+						    <c:when test="${fn:contains(button, 'punch_zong_edit') && type ==5}">
+					         <a href="<%=request.getContextPath()%>/core/punchApply/ComU_edit.do?type=${type}&id=<s:property value="punchApplyId"/>">修改</a>
+						   </c:when>
 						 </c:choose>
 						<c:if test="${fn:contains(button, 'punch_apply_del') && type ==1  && status==0}">  
+						<a href="javascript:doDel('<s:property value="punchApplyId"/>','');">删除</a>
+						</c:if>
+						<c:if test="${fn:contains(button, 'punch_zong_del') && type ==5}">  
 						<a href="javascript:doDel('<s:property value="punchApplyId"/>','');">删除</a>
 						</c:if>
 						 <c:choose> 
@@ -121,6 +127,9 @@
 						    <a href="<%=request.getContextPath()%>/core/punchApply/ComR_load.do?type=${type}&id=<s:property value="punchApplyId"/>">查看</a>
 					       </c:when>
 					       <c:when test="${fn:contains(button, 'punch_load') && type ==2}">
+						    <a href="<%=request.getContextPath()%>/core/punchApply/ComR_load.do?type=${type}&id=<s:property value="punchApplyId"/>">查看</a>
+					       </c:when>
+					       <c:when test="${fn:contains(button, 'punch_zong_load') && type ==5}">
 						    <a href="<%=request.getContextPath()%>/core/punchApply/ComR_load.do?type=${type}&id=<s:property value="punchApplyId"/>">查看</a>
 					       </c:when>
 					     </c:choose>  
