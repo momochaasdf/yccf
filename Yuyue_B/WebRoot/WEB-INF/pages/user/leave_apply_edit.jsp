@@ -69,7 +69,7 @@
 		default:
 			break;
 		}
-		return parseInt((eTime.getTime() - sTime.getTime()) / parseInt(divNum));
+		return parseInt((eTime.getTime() - sTime.getTime()) / parseInt(divNum))+1;
 	}
 	$(function () {
 		var type =${type};
