@@ -164,6 +164,7 @@
 				<s:param name="info.loginId">${info.loginId}</s:param>
 				<s:param name="info.userName">${info.userName}</s:param>
 				<s:param name="info.status">${info.status}</s:param>
+				<s:param name="type">${type}</s:param>
 		</d:pages>
 		<div id="roleTree" class="easyui-window" closed="true" modal="true" resizable="false" collapsible="false" minimizable="false" maximizable="false" title="配置角色" style="width:300px;height:400px;">
 			<table style="height: 95%; width: 95%">
