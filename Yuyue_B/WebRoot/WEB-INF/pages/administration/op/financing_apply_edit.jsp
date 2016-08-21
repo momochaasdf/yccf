@@ -50,14 +50,16 @@
 				<th>产品类型</th>
 				<td><select type="text" name="financingApply.type"   >
 				 <s:iterator value="dicList" status="st">
-				   <option value="${dictCode}">${dictName}</option>
+				   <option value="${dictCode}" <s:if test="financingApply.type ==dictCode">selected=selected</s:if> >${dictName}</option>
 				   </s:iterator>
 				</select></td>
 			</tr>
 			<tr>
 				<th>客户</th>
 				<td><select type="text" name="financingApply.customerName"   >
-						<option value="1_test">test</option>
+						<s:iterator value="customerList" status="st">
+				   <option value="${customerId}_${customerName}" <s:if test="financingApply.customerId ==customerId">selected=selected</s:if>>${customerName}</option>
+				   </s:iterator>
 				</select></td>
 			</tr>
 			<tr>
@@ -129,12 +131,10 @@
 			<tr>
 				<th>业务员</th>
 				<td><select type="text" name="financingApply.employeeName">
-						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="financingApply.userName">
 						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}">${userName}</option>
+							<option value="${userId}_${userName}" <s:if test="financingApply.employeeId ==userId">selected=selected</s:if>>${userName}</option>
 						</s:iterator>
-				</select> --%></td>
+				</select>  </td>
 			</tr>
 			<tr>
 				<th>理财状态</th>

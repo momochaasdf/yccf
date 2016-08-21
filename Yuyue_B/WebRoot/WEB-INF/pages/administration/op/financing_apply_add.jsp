@@ -100,7 +100,9 @@
 			<tr>
 				<th>客户</th>
 				<td><select type="text" name="financingApply.customerName"   >
-						<option value="1_test">test</option>
+					<s:iterator value="customerList" status="st">
+				   <option value="${customerId}_${customerName}">${customerName}</option>
+				   </s:iterator>
 				</select></td>
 			</tr>
 			<tr>
@@ -172,12 +174,10 @@
 			<tr>
 				<th>业务员</th>
 				<td><select type="text" name="financingApply.employeeName">
-						<option value="1_test">test</option>
-				</select> <%-- <select type="text" name="financingApply.userName">
 						<s:iterator value="userList" status="st">
 							<option value="${userId}_${userName}">${userName}</option>
 						</s:iterator>
-				</select> --%></td>
+				</select> </td>
 			</tr>
 			<tr>
 				<th>理财状态</th>

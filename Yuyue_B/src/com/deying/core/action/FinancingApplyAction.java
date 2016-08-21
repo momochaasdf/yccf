@@ -22,8 +22,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.deying.core.pojo.FinancingApply;
 import com.deying.core.pojo.FinancingCustomer;
 import com.deying.core.pojo.user.ComDict;
+import com.deying.core.pojo.user.ComUser;
 import com.deying.core.service.FinancingApplyService;
 import com.deying.core.service.FinancingCustomerService;
+import com.deying.util.bo.User;
 import com.deying.util.core.com.framework.struts2.BaseMgrAction;
 import com.deying.util.datawrapper.CriteriaWrapper;
 import com.deying.util.excel.TempltUtil;
@@ -43,6 +45,10 @@ public class FinancingApplyAction extends BaseMgrAction {
 	private FinancingApply ifinancingApply = null;
 
 	private List<ComDict> dicList = null;
+	
+	private List<FinancingCustomer> customerList = null;
+	
+	private List<ComUser> userList = null;
 
 	private String id;
 
@@ -74,6 +80,10 @@ public class FinancingApplyAction extends BaseMgrAction {
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "financing_type");
 		dicList = commonService.find(dicParam, ComDict.class);
+		
+		CriteriaWrapper customerParam = CriteriaWrapper.newInstance();
+		customerList = commonService.find(customerParam, FinancingCustomer.class);
+		userList = commonService.find(customerParam, ComUser.class);
 		return ADD;
 	}
 
@@ -116,6 +126,10 @@ public class FinancingApplyAction extends BaseMgrAction {
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "financing_type");
 		dicList = commonService.find(dicParam, ComDict.class);
+		
+		CriteriaWrapper customerParam = CriteriaWrapper.newInstance();
+		customerList = commonService.find(customerParam, FinancingCustomer.class);
+		userList = commonService.find(customerParam, ComUser.class);
 		this.financingApply = this.financingApplyService.get(id);
 		return EDIT;
 	}
@@ -414,4 +428,20 @@ public class FinancingApplyAction extends BaseMgrAction {
 		this.financingCustomerService = financingCustomerService;
 	}
 
+	public List<FinancingCustomer> getCustomerList() {
+		return customerList;
+	}
+
+	public void setCustomerList(List<FinancingCustomer> customerList) {
+		this.customerList = customerList;
+	}
+
+	public List<ComUser> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<ComUser> userList) {
+		this.userList = userList;
+	}
+	
 }
