@@ -106,7 +106,11 @@
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			 <tr>
 				<th>客户名称</th>
-				<td><input type="text" name="loanApply.customerName" value="${loanApply.customerName}" class="editReadonly"/></td>
+				<td> <select type="text" name="loanApply.customerName"   >
+				 <s:iterator value="customerList" status="st">
+				   <option value="${customerId}_${customerName}" <s:if test="loanApply.customerId ==customerId">selected=selected</s:if>>${customerName}</option>
+				   </s:iterator>
+				</select></td>
 			</tr>
 			<tr>
 				<th>出借人名字</th>
@@ -175,12 +179,6 @@
 						<option value="1"  <s:if test="%{loanApply.repaymentType==1}">selected =selected</s:if>>网银汇款</option>
 						<option value="2"  <s:if test="%{loanApply.repaymentType==2}">selected =selected</s:if>>银行汇款</option>
 						<option value="3"  <s:if test="%{loanApply.repaymentType==3}">selected =selected</s:if>>现金</option>
-				</select></td>
-			</tr>
-			<tr>
-				<th>合同</th>
-				<td><select type="text" name="loanApply.contractUrl">
-						<option value="1_test">test</option>
 				</select></td>
 			</tr>
 			<tr>

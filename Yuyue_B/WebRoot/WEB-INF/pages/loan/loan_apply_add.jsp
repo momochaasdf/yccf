@@ -106,7 +106,11 @@
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
 				<th>客户名称</th>
-				<td><input type="text" name="loanApply.customerName" value="${loanApply.customerName}" /></td>
+				<td> <select type="text" name="loanApply.customerName"   >
+				 <s:iterator value="customerList" status="st">
+				   <option value="${customerId}_${customerName}">${customerName}</option>
+				   </s:iterator>
+				</select></td>
 			</tr>
 			<tr>
 				<th>出借人名字</th>
@@ -176,12 +180,6 @@
 						<option value="2">银行汇款</option>
 						<option value="3">现金</option>
 				</select></td>
-			</tr>
-			<tr>
-				<th>合同</th>
-				<td><select type="text" name="loanApply.contractUrl">
-						<option value="1_test">test</option>
-				</select> </td>
 			</tr>
 			<tr>
 				<th>业务员</th>

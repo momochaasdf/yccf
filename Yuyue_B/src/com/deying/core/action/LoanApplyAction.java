@@ -60,6 +60,8 @@ public class LoanApplyAction extends BaseMgrAction {
 
 	private List<ComUser> userList = null;
 
+	private List<LoanCustomer> customerList = null;
+
 	public String list() throws Exception {
 		LOG.debug("--------------------loanApplyAction -> list----------------");
 		String companyId = this.getCtxUser().getCompanyId();
@@ -107,6 +109,7 @@ public class LoanApplyAction extends BaseMgrAction {
 		dicList = commonService.find(dicParam, ComDict.class);
 
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
+		customerList = commonService.find(c, LoanCustomer.class);
 		// 使用中的用户
 		c.eq("status", "1");
 		List<ComUser> userList = commonService.find(c, ComUser.class);
@@ -157,6 +160,8 @@ public class LoanApplyAction extends BaseMgrAction {
 		this.dicList = commonService.find(dicParam, ComDict.class);
 
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
+		customerList = commonService.find(c, LoanCustomer.class);
+		
 		// 使用中的用户
 		c.eq("status", "1");
 		List<ComUser> userList = commonService.find(c, ComUser.class);
@@ -173,9 +178,9 @@ public class LoanApplyAction extends BaseMgrAction {
 		LOG.debug("--------------------loanApplyAction -> upd----------------");
 		if (loanApply != null) {
 			LoanApply r = this.loanApplyService.get(this.loanApply.getLoanApplyId());
-			if (type.equals("1")) {
-				String customerId = loanApply.getCustomerName();
-				String customerName = loanApply.getCustomerName();
+			if (type.equals("0")) {
+				String customerId = loanApply.getCustomerName().split("_")[0];
+				String customerName = loanApply.getCustomerName().split("_")[1];
 				loanApply.setCustomerId(customerId);
 				loanApply.setCustomerName(customerName);
 
@@ -519,6 +524,14 @@ public class LoanApplyAction extends BaseMgrAction {
 
 	public void setLoanCustomerService(LoanCustomerService loanCustomerService) {
 		this.loanCustomerService = loanCustomerService;
+	}
+
+	public List<LoanCustomer> getCustomerList() {
+		return customerList;
+	}
+
+	public void setCustomerList(List<LoanCustomer> customerList) {
+		this.customerList = customerList;
 	}
 
 }

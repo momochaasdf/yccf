@@ -108,12 +108,6 @@
 				</select></td>
 			</tr>
 			<tr>
-				<th>合同</th>
-				<td><select type="text" name="loanApply.contractUrl">
-						<option value="1_test">test</option>
-				</select> </td>
-			</tr>
-			<tr>
 				<th>业务员</th>
 				<td><input type="text" name="loanApply.employeeName" value="${loanApply.employeeName}" readonly /></td>
 			</tr>
@@ -121,13 +115,13 @@
 				<th>借款开始时间</th>
 				<td><input type="text" name="loanApply.loanStartTime" id="d4311"
 					value="<s:date format="yyyy-MM-dd" name="loanApply.loanStartTime" />"
-					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4322\')}',dateFmt:'yyyy-MM-dd'})" onchange="changeDays()"/></td>
+					/></td>
 			</tr>
 			<tr>
 				<th>借款结束时间</th>
 				<td><input type="text" name="loanApply.loanEndTime"  id="d4322"
 					value="<s:date format="yyyy-MM-dd" name="loanApply.loanEndTime" />"
-					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',dateFmt:'yyyy-MM-dd'})" onchange="changeDays()"/></td>
+					/></td>
 			</tr>
 			<tr>
 				<th>借款多少个月</th>
@@ -195,7 +189,7 @@
 						<option value="1"  <s:if test="%{loanApply.status==1}">selected =selected</s:if>>审核中</option>
 						<option value="2"  <s:if test="%{loanApply.status==2}">selected =selected</s:if>>通过</option>
 						<option value="3"  <s:if test="%{loanApply.status==3}">selected =selected</s:if>>拒绝</option>
-						<option value="4"  <s:if test="%{loanApply.status==4}">selected =selected</s:if>>金额待修改</option>
+						<option value="4"  <s:if test="%{loanApply.status==4}">selected =selected</s:if>>通过(金额修改)</option>
 				</select></td>
 			</tr>
 			<tr>
