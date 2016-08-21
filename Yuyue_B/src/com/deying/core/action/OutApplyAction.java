@@ -53,11 +53,11 @@ public class OutApplyAction extends BaseMgrAction
         CriteriaWrapper c = CriteriaWrapper.newInstance();
         c.desc("crtTime");
         if (userId != null) {
-			if (!userRoleNames.contains("总经理") && type.equals("1"))
+			if (type.equals("1"))
 				c.like("userId", userId);
 		}
 		if (userName != null) {
-			if (!userRoleNames.contains("总经理") && type.equals("1"))
+			if (type.equals("1"))
 				c.like("userName", userName);
 		}
 		if (companyId != null) {
@@ -107,11 +107,9 @@ public class OutApplyAction extends BaseMgrAction
         {
         	outApply.setUserId(this.getCtxUser().getUserId());
 			outApply.setUserName(this.getCtxUser().getUserName());
-
-			String departmentId = outApply.getDepartmentId().split("_")[0];
-			String departmentName = outApply.getDepartmentId().split("_")[1];
-			outApply.setDepartmentId(departmentId);
-			outApply.setDepartmentName(departmentName);
+ 
+			outApply.setDepartmentId(this.getCtxUser().getDepartmentId());
+			outApply.setDepartmentName(this.getCtxUser().getDepartmentName());
 
 			outApply.setCompanyId(this.getCtxUser().getCompanyId());
 			outApply.setStatus("0");
@@ -161,10 +159,6 @@ public class OutApplyAction extends BaseMgrAction
         {
         	OutApply r = this.outApplyService.get(this.outApply.getOutApplyId());
         	if (type.equals("1")) {
-				String departmentId = outApply.getDepartmentId().split("_")[0];
-				String departmentName = outApply.getDepartmentId().split("_")[1];
-				r.setDepartmentId(departmentId);
-				r.setDepartmentName(departmentName);
 				r.setApplyStartTime(outApply.getApplyStartTime());
 				r.setApplyEndTime(outApply.getApplyEndTime());
 				r.setReason(outApply.getReason());

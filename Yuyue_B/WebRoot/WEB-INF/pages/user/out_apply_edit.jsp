@@ -67,20 +67,6 @@
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
-
-				<th>部门名称</th>
-				<s:if test="%{type==1 }">
-				<td><select type="text" name="outApply.departmentId">
-						<s:iterator value="dicList" status="st">
-							<option value="${dictCode}_${dictName}">${dictName}</option>
-						</s:iterator>
-				</select></td>
-				</s:if>
-				<s:else>
-				<td><input  type="text"   value="${outApply.departmentName}" readonly/></td>
-				</s:else>
-			</tr>
-			<tr>
 				<th>用户</th>
 				<td><input  type="text" name="outApply.userName" id="userName"
 					value="${outApply.userName}" readonly/></td>
@@ -93,14 +79,14 @@
 			<tr>
 				<th>外出开始时间</th>
 				<td><input type="text" name="outApply.applyStartTime" id="d4311"
-					value="<s:date format="yyyy-MM-dd" name="outApply.applyStartTime" />"
-					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4322\')}',dateFmt:'yyyy-MM-dd'})" /></td>
+					value="<s:date format="yyyy-MM-dd HH:mm:ss" name="outApply.applyStartTime" />"
+					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4322\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></td>
 			</tr>
 			<tr>
 				<th>外出结束时间</th>
 				<td><input type="text" name="outApply.applyEndTime"  id="d4322"
-					value="<s:date format="yyyy-MM-dd" name="outApply.applyEndTime" />"
-					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',dateFmt:'yyyy-MM-dd'})"  /></td>
+					value="<s:date format="yyyy-MM-dd HH:mm:ss" name="outApply.applyEndTime" />"
+					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})"  /></td>
 			</tr>
 			
 			<s:if  test="%{type==1}">	
@@ -120,7 +106,7 @@
 			<tr>
 				<th>审核时间</th>
 				<td><input type="text" name="outApply.reviewTime"
-					value="<s:date format="yyyy-MM-dd" name="outApply.reviewTime" />"
+					value="<s:date format="yyyy-MM-dd HH:mm:ss" name="outApply.reviewTime" />"
 					onfocus="WdatePicker({doubleCalendar:false,dateFmt:'yyyy-MM-dd'})" /></td>
 			</tr>
 			</s:else>

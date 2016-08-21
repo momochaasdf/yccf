@@ -53,14 +53,14 @@
 			<tr>
 				<th>外出开始时间</th>
 				<td><input type="text" name="outApply.applyStartTime" id="d4311" disabled
-					value="<s:date format="yyyy-MM-dd" name="outApply.applyStartTime" />"
-					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4322\')}',dateFmt:'yyyy-MM-dd'})"  /></td>
+					value="<s:date format="yyyy-MM-dd HH:mm:ss" name="outApply.applyStartTime" />"
+					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4322\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})"  /></td>
 			</tr>
 			<tr>
 				<th>外出结束时间</th>
 				<td><input type="text" name="outApply.applyEndTime"  id="d4322" disabled
-					value="<s:date format="yyyy-MM-dd" name="outApply.applyEndTime" />"
-					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',dateFmt:'yyyy-MM-dd'})" /></td>
+					value="<s:date format="yyyy-MM-dd HH:mm:ss" name="outApply.applyEndTime" />"
+					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',dateFmt:'yyyy-MM-dd HH:mm:ss'})" /></td>
 			</tr>
 			<tr>
 				<th>审核状态</th>

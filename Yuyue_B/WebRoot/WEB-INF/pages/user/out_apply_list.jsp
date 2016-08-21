@@ -99,8 +99,8 @@
 					<td><s:property value="departmentName" />&nbsp;</td>
 					<td><s:property value="userName" />&nbsp;</td>
 					<td><s:property value="reason" />&nbsp;</td>
-					<td><s:date name="%{applyStartTime}" format="yyyy-MM-dd" />&nbsp;</td>
-					<td><s:date name="%{applyEndTime}" format="yyyy-MM-dd" />&nbsp;</td>
+					<td><s:date name="%{applyStartTime}" format="yyyy-MM-dd HH:mm:ss" />&nbsp;</td>
+					<td><s:date name="%{applyEndTime}" format="yyyy-MM-dd HH:mm:ss" />&nbsp;</td>
 					<td><s:property value="reviewPerson" />&nbsp;</td>
 					<td><z:dict  type="out_apply_status" code="%{status}" />&nbsp;</td>
 					<td><s:date name="%{reviewTime}" format="yyyy-MM-dd"/> &nbsp;</td>
