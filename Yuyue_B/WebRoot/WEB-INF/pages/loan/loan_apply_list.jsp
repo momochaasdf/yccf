@@ -140,7 +140,9 @@
 						<a href="<%=request.getContextPath()%>/core/loanApply/ComR_load.do?type=${button_type}&id=<s:property value="loanApplyId"/>">查看</a>
 						</c:when>
 						</c:choose>
+						<c:if test="${button_type==0}">
 						 <a href="javascript:doExport('<s:property value="loanApplyId"/>','');">导出借款协议</a>
+						</c:if>
 					</td>
 				</tr>
 			</s:iterator>
