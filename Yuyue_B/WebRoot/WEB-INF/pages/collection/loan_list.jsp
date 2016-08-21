@@ -91,13 +91,6 @@
 				<input class="btSearch" value="检索"
 					onclick="doAction('collectionForm','list','')"
 					style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
-				<c:choose> 
-				<c:when test="${fn:contains(button, 'loan_back_add') && button_type ==1}">
-				<input class="btAdd" value="新增"
-					onclick="doAction('collectionForm','add','')"
-					style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
-			    </c:when>
-			    </c:choose>
 			</div>
 			<input type="hidden" name="_ns" id="_ns" value="/collection/loan/" />
 			<input type="hidden" name="id" id="id" /> <input type="hidden"
@@ -162,6 +155,7 @@
 				<s:param name="info.collectionName">${info.collectionName}</s:param>
 				<s:param name="info.cardId">${info.cardId}</s:param>
 				<s:param name="info.telephone">${info.telephone}</s:param>
+				<s:param name="type">${type}</s:param>
 			</d:pages>
 		</div>
 	</div>
