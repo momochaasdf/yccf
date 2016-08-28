@@ -158,7 +158,7 @@ public class OutApplyAction extends BaseMgrAction
         if (outApply != null)
         {
         	OutApply r = this.outApplyService.get(this.outApply.getOutApplyId());
-        	if (type.equals("1")) {
+        	if (type.equals("1") ||type.equals("5") ) {
 				r.setApplyStartTime(outApply.getApplyStartTime());
 				r.setApplyEndTime(outApply.getApplyEndTime());
 				r.setReason(outApply.getReason());

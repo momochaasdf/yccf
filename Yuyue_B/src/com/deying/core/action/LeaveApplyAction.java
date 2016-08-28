@@ -152,6 +152,11 @@ public class LeaveApplyAction extends BaseMgrAction {
 				r.setReviewPerson(this.getCtxUser().getUserName());
 				r.setReviewTime(leaveApply.getReviewTime());
 				r.setStatus(leaveApply.getStatus());
+			}else if(type.equals("5")) {
+				r.setApplyStartTime(leaveApply.getApplyStartTime());
+				r.setApplyEndTime(leaveApply.getApplyEndTime());
+				r.setReason(leaveApply.getReason());
+				r.setDays(leaveApply.getDays());
 			}
  
 			this.leaveApply = this.leaveApplyService.update(r);

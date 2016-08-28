@@ -143,7 +143,7 @@ public class PunchApplyAction extends BaseMgrAction {
 		LOG.debug("--------------------PunchApplyAction -> upd----------------");
 		if (punch != null) {
 			PunchApply r = this.PunchApplyService.get(this.punch.getPunchApplyId());
-			if (type.equals("1")) {
+			if (type.equals("1") ||type.equals("5")) {
 				r.setApplyPunchTime(punch.getApplyPunchTime());
 				r.setInOrOut(punch.getInOrOut());
 				r.setReason(punch.getReason());
