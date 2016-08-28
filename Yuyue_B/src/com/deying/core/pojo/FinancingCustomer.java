@@ -31,6 +31,8 @@ public class FinancingCustomer implements java.io.Serializable {
 	private String telephone;
 	private String address;
 	private String companyId;
+	private String employeeId;
+	private String employeeName;
 	private String crtUid;
 	private Date crtTime;
 	private String updUid;
@@ -50,7 +52,8 @@ public class FinancingCustomer implements java.io.Serializable {
 
 	public FinancingCustomer(String customerId, String customerName,
 			Date birthday,String birthdayType, String cardType, String cardId, String telephone,
-			String address, String companyId, String crtUid, Date crtTime,
+			String address, String companyId,String employeeId,
+			String employeeName, String crtUid, Date crtTime,
 			String updUid, Date updTime) {
 		this.customerId = customerId;
 		this.birthdayType = birthdayType;
@@ -65,6 +68,8 @@ public class FinancingCustomer implements java.io.Serializable {
 		this.crtTime = crtTime;
 		this.updUid = updUid;
 		this.updTime = updTime;
+		this.employeeId = employeeId;
+		this.employeeName = employeeName;
 	}
 
 	@Id
@@ -190,6 +195,24 @@ public class FinancingCustomer implements java.io.Serializable {
 
 	public void setUpdTime(Date updTime) {
 		this.updTime = updTime;
+	}
+    
+	@Column(name = "EMPLOYEE_ID", nullable = false, length = 128)
+	public String getEmployeeId() {
+		return this.employeeId;
+	}
+
+	public void setEmployeeId(String employeeId) {
+		this.employeeId = employeeId;
+	}
+
+	@Column(name = "EMPLOYEE_NAME", nullable = false, length = 100)
+	public String getEmployeeName() {
+		return this.employeeName;
+	}
+
+	public void setEmployeeName(String employeeName) {
+		this.employeeName = employeeName;
 	}
 
 }

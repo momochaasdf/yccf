@@ -77,6 +77,14 @@
 				<td style="height:40px;"><img src="${customer.picUrl}" width="40px" height="40px"/></td>
 				<td style="height:40px;"><input type="file" name="fileUpload"></input></td>
 			</tr>
+			<tr>
+				<th>业务员</th>
+				<td><select type="text" name="customer.employeeName">
+						<s:iterator value="userList" status="st">
+							<option value="${userId}_${userName}">${userName}</option>
+						</s:iterator>
+				</select> </td>
+			</tr>
 		</table>
 		<div class="navButton">
 		<input type="button" value="确定" name="btOk" class="btOk" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>

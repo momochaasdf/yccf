@@ -139,6 +139,11 @@ public class CustomerFinancingAction extends BaseMgrAction {
 		LOG.debug("--------------------FinancingCustomerAction -> save----------------");
 		if (customer != null) {
 			customer.setCompanyId(this.getCtxUser().getCompanyId());
+
+			String EmployeeId = customer.getEmployeeName().split("_")[0];
+			String EmployeeName = customer.getEmployeeName().split("_")[1];
+			customer.setEmployeeId(EmployeeId);
+			customer.setEmployeeName(EmployeeName);
 			this.financingCustomerService.save(customer);
 			this.addActionMessage(this.getText("do.success.back"));
 		}
@@ -181,7 +186,10 @@ public class CustomerFinancingAction extends BaseMgrAction {
 			existCustomer.setTelephone(customer.getTelephone());
 			existCustomer.setAddress(customer.getAddress());
 			existCustomer.setBirthday(customer.getBirthday());
-
+			String EmployeeId = customer.getEmployeeName().split("_")[0];
+			String EmployeeName = customer.getEmployeeName().split("_")[1];
+			existCustomer.setEmployeeId(EmployeeId);
+			existCustomer.setEmployeeName(EmployeeName);
 			this.customer = this.financingCustomerService.update(existCustomer);
 			this.addActionMessage(this.getText("do.success.back"));
 		}

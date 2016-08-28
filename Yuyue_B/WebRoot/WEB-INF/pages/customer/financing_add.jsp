@@ -113,6 +113,14 @@
 				<td><input type="text" name="customer.address"
 					value="${customer.address}" /></td>
 			</tr>
+			<tr>
+				<th>业务员</th>
+				<td><select type="text" name="customer.employeeName">
+						<s:iterator value="userList" status="st">
+							<option value="${userId}_${userName}">${userName}</option>
+						</s:iterator>
+				</select> </td>
+			</tr>
 		</table>
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"

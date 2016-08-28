@@ -83,6 +83,14 @@
 					width="40px" height="40px" /></td>
 				<td style="height: 40px;"><input type="file" name="fileUpload"></input></td>
 			</tr>
+			<tr>
+				<th>业务员</th>
+				<td><select type="text" name="customer.employeeName">
+						<s:iterator value="userList" status="st">
+							<option value="${userId}_${userName}" <s:if test="customer.employeeId ==userId">selected=selected</s:if>>${userName}</option>
+						</s:iterator>
+				</select>  </td>
+			</tr>
 		</table>
 		<input type="hidden" name="customer.customerId"
 			value="${customer.customerId}" /> <input type="hidden"
