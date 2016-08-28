@@ -427,8 +427,12 @@ public class RemindTimer implements Timer {
 						FinancingApply apply = applyList.get(0);
 						if ("1".equals(apply.getStatus())) {
 							sb.append("-【记得送蛋糕】");
+							//存款未提取
+							remind.setIsPay("0");
 						} else {
 							sb.append("-【记得发短信】");
+							//存款已提取
+							remind.setIsPay("1");
 						}
 					} else {
 						sb.append("-【记得发短信】");
