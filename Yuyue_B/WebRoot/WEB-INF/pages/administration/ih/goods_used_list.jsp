@@ -60,7 +60,7 @@
 			<input class="btSearch" value="检索"
 				onclick="doAction('goodsUsedForm','ComM_list','')"
 				style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
-			<c:if test="${fn:contains(button, 'goods_used_add') && type ==1}">
+			<c:if test="${(fn:contains(button, 'goods_used_add') || fn:contains(button, 'goods_use_add')) && type ==1}">
 			<input class="btAdd" value="新增"
 				onclick="doAction('goodsUsedForm','ComC_add','')"
 				style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
@@ -92,17 +92,17 @@
 					<td><z:dict type="goods_used_status" code="%{status}" />&nbsp;</td>
 					<td align="center"> 
 					<c:choose> 
-					    <c:when test="${fn:contains(button, 'goods_used_edit') && type ==1 && status ==1}">
+					    <c:when test="${(fn:contains(button, 'goods_used_edit') || fn:contains(button, 'goods_use_edit')) && type ==1 && status ==1}">
 					    <a href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?type=${type}&id=<s:property value="goodsUsedId"/>">修改</a>
 					    </c:when>
-					    <c:when test="${fn:contains(button, 'goods_used_check') && type ==2}">
+					    <c:when test="${(fn:contains(button, 'goods_used_check') || fn:contains(button, 'goods_use_check'))  && type ==2}">
 					    <a href="<%=request.getContextPath()%>/core/goodsUsed/ComU_edit.do?type=${type}&id=<s:property value="goodsUsedId"/>">审核</a>
 					    </c:when>
 					 </c:choose>
-					 <c:if test="${fn:contains(button, 'goods_used_del') && type ==1 && status ==1}">
+					 <c:if test="${(fn:contains(button, 'goods_used_del')|| fn:contains(button, 'goods_use_del') ) && type ==1 && status ==1}">
 						<a href="javascript:doDel('<s:property value="goodsUsedId"/>','');">删除</a>
 					 </c:if>   	
-					<c:if test="${fn:contains(button, 'goods_used_load') && type ==1}">	
+					<c:if test="${(fn:contains(button, 'goods_used_load')||fn:contains(button, 'goods_use_load')) && type ==1}">	
 						<a href="<%=request.getContextPath()%>/core/goodsUsed/ComR_load.do?type=${type}&id=<s:property value="goodsUsedId"/>">查看</a>
 				    </c:if> 		
 						
