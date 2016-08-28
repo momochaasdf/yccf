@@ -29,6 +29,13 @@
 			     $.colorbox.alert("${msg}");
 			  }
 			});
+			
+			function doRemind(id,name) {
+				$.messager.confirm('状态修改确认','确认更新状态吗?', function(bt){
+					$("#id").val(id);
+					if (bt){doAction('birthdayRemindForm','ComD_remind','')};
+				});
+			}
   </script>
   <style type="text/css">
   	#backupForm table input[type='text']{
@@ -47,6 +54,13 @@
 						<a  style="color:#cc0000" href="<%=path %>/birthdayRemind/birthdayRemind_list.do">客户生日提醒列表</a>
 					</h2>
 			</div>
+		    <form action="#" method="post" id="birthdayRemindForm" style="clear: both;">
+			<input type="hidden" name="_ns" id="_ns" value="/birthdayRemind/"/>
+				<input type="hidden" name="id" id="id"/>
+				<input type="hidden" name=_query id="_query" value="_query"/>
+				<input type="hidden" name="type" id="type" value="${type}" />
+				<input type="hidden" name="dayType" id="dayType" value="${dayType}" />
+			</form>
 			<div>
 				<table cellspacing="0" class="table_list" style="width: 100%">
 					<tr style="background: none" class="table_tr_title title_qingse">
@@ -59,8 +73,17 @@
 						<td>
 							生日时间
 						</td>
+						<td>
+							存款是否提取
+						</td>
+						<td>
+							提醒状态
+						</td>
 						<td style="width: 30%">
 							备注
+						</td>
+						<td style="width: 10%">
+							操作
 						</td>
 					</tr>
 					<s:iterator value="dataPage.data" status="st">
@@ -78,7 +101,22 @@
 								<s:date name="%{birthdayTime}" format="yyyy-MM-dd"/>
 							</td>
 							<td align="left">
+						        <s:if test="%{isPay==1}">
+						         已提取
+						        </s:if>
+						        <s:else>
+						         未提取	
+						        </s:else>
+								
+							</td>
+							<td align="left">
+								<z:dict  type="birthday_remind_status" code="%{status}" />&nbsp;
+							</td>
+							<td align="left">
 								<s:property value="info" />
+							</td>
+							<td>
+								 <a href="javascript:doRemind('<s:property value="birthdayRemindId"/>','');">更新状态</a>
 							</td>
 						</tr>
 					</s:iterator>

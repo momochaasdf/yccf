@@ -7,6 +7,10 @@
 		<action name="birthdayRemind_*" class="com.deying.core.action.BirthdayRemindAction" method="{1}">
 			<result name="input">/WEB-INF/pages/birthdayRemind/birthdayRemind_list.jsp</result>
 		</action>
+		<action name="ComD_*" class="com.deying.core.action.BirthdayRemindAction" method="{1}">
+			<result name="list">/WEB-INF/pages/birthdayRemind/birthdayRemind_list.jsp</result>
+			<result name="input">/WEB-INF/pages/birthdayRemind/birthdayRemind_list.jsp</result>
+		</action>
 	</package>
 	<package name="birthdayRemindJ" extends="json" namespace="/birthdayRemind">
 		<action name="birthdayRemindJ_*" class="com.deying.core.action.BirthdayRemindAction" method="{1}" />
