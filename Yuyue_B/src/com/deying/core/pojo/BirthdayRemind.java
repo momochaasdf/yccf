@@ -29,6 +29,8 @@ public class BirthdayRemind implements java.io.Serializable
     
     private String info;
     
+    private String isPay;
+    
     private String status;
     
     private String crtUid;
@@ -50,7 +52,7 @@ public class BirthdayRemind implements java.io.Serializable
         this.birthdayTime = birthdayTime;
     }
     
-    public BirthdayRemind(String birthdayRemindId, String name, Date birthdayTime, String info, String status,
+    public BirthdayRemind(String birthdayRemindId, String name, Date birthdayTime, String info, String status, String isPay,
         String crtUid, Date crtTime, String updUid, Date updTime)
     {
         this.birthdayRemindId = birthdayRemindId;
@@ -62,6 +64,7 @@ public class BirthdayRemind implements java.io.Serializable
         this.crtTime = crtTime;
         this.updUid = updUid;
         this.updTime = updTime;
+        this.isPay = isPay;
     }
     
     @Id
@@ -121,6 +124,17 @@ public class BirthdayRemind implements java.io.Serializable
     public void setStatus(String status)
     {
         this.status = status;
+    }
+    
+    @Column(name = "IS_PAY", length = 2)
+    public String getIsPay()
+    {
+        return this.isPay;
+    }
+    
+    public void setIsPay(String isPay)
+    {
+        this.isPay = isPay;
     }
     
     @Column(name = "CRT_UID", length = 128)
