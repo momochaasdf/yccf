@@ -70,7 +70,7 @@
 				style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
 		     </c:if>
 		     
-		     <c:if test="${fn:contains(button, 'loan_add') && button_type ==1}">
+		     <c:if test="${fn:contains(button, 'loan_add') && button_type ==2}">
 			<input class="btAdd" value="新增"
 				onclick="doAction('loanApplyForm','ComC_add','')"
 				style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path%>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
@@ -114,7 +114,7 @@
 					<td><s:date name="%{reviewTime}" format="yyyy-MM-dd"/> &nbsp;</td>
 					<td align="center">
 					   <c:choose> 
-					    <c:when test="${fn:contains(button, 'loan_edit') && button_type ==1}">
+					    <c:when test="${fn:contains(button, 'loan_edit') && button_type ==2}">
 					    <a href="<%=request.getContextPath()%>/core/loanApply/ComU_edit.do?type=${button_type}&id=<s:property value="loanApplyId"/>">修改</a>
 						</c:when>
 						<c:when test="${fn:contains(button, 'loan_apply_edit') && button_type ==0}">
@@ -128,7 +128,7 @@
 						<c:when test="${fn:contains(button, 'loan_apply_del') && button_type ==0}">
 						<a href="javascript:doDel('<s:property value="loanApplyId"/>','');">删除</a>
 						</c:when>
-						<c:when test="${fn:contains(button, 'loan_del') && button_type ==1}">
+						<c:when test="${fn:contains(button, 'loan_del') && button_type ==2}">
 						<a href="javascript:doDel('<s:property value="loanApplyId"/>','');">删除</a>
 						</c:when>
 						</c:choose>
