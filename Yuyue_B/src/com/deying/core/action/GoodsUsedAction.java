@@ -103,10 +103,8 @@ public class GoodsUsedAction extends BaseMgrAction {
 		LOG.debug("--------------------GoodsUsedAction -> save----------------");
 
 		if (goodsUsed != null) {
-			String userId = goodsUsed.getUserName().split("_")[0];
-			String userName = goodsUsed.getUserName().split("_")[1];
-			goodsUsed.setUserId(userId);
-			goodsUsed.setUserName(userName);
+			goodsUsed.setUserId(this.getCtxUser().getUserId());
+			goodsUsed.setUserName(this.getCtxUser().getUserName());
 
 			String goodsId = goodsUsed.getGoodsName();
 			String goodsName = goodsUsed.getGoodsName();
@@ -153,11 +151,6 @@ public class GoodsUsedAction extends BaseMgrAction {
 		if (goodsUsed != null) {
 			GoodsUsed r = this.goodsUsedService.get(this.goodsUsed.getGoodsUsedId());
 			if (type.equals("1")) {
-				String userId = goodsUsed.getUserName().split("_")[0];
-				String userName = goodsUsed.getUserName().split("_")[1];
-				r.setUserId(userId);
-				r.setUserName(userName);
-
 				String goodsId = goodsUsed.getGoodsName();
 				String goodsName = goodsUsed.getGoodsName();
 				r.setGoodsId(goodsId);
