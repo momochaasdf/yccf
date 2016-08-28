@@ -45,27 +45,39 @@ public class FinancingApplyAction extends BaseMgrAction {
 	private FinancingApply ifinancingApply = null;
 
 	private List<ComDict> dicList = null;
-	
+
 	private List<FinancingCustomer> customerList = null;
-	
+
 	private List<ComUser> userList = null;
 
 	private String id;
 
 	public String list() throws Exception {
 		LOG.debug("--------------------BackupAction -> list----------------");
-
+		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
+		dicParam.eq("dictTypeCode", "financing_type");
+		dicList = commonService.find(dicParam, ComDict.class);
+		
 		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
-		if (null != ifinancingApply) {
-			if (StringUtils.isNotBlank(ifinancingApply.getType())) {
-				c.eq("type", ifinancingApply.getType().trim());
-			}
+		String type1 = obtionInfoVal("type", String.class);
+		String customerName = obtionInfoVal("customerName", String.class);
+		if (null != customerName) {
+			c.like("customerName", customerName);
 		}
-		if (type.equals("4")) {
-			c.eq("type", type);
-		}else {
-			c.ne("type", "4");
+		if (null != type1) {
+			if (type.equals("4")) {
+				c.eq("type", type);
+			} else {
+				c.eq("type", type1);
+				c.ne("type", "4");
+			}
+		} else {
+			if (type.equals("4")) {
+				c.eq("type", type);
+			} else {
+				c.ne("type", "4");
+			}
 		}
 		dataPage = commonService.find(c, FinancingApply.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
@@ -82,7 +94,7 @@ public class FinancingApplyAction extends BaseMgrAction {
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "financing_type");
 		dicList = commonService.find(dicParam, ComDict.class);
-		
+
 		CriteriaWrapper customerParam = CriteriaWrapper.newInstance();
 		customerList = commonService.find(customerParam, FinancingCustomer.class);
 		userList = commonService.find(customerParam, ComUser.class);
@@ -128,7 +140,7 @@ public class FinancingApplyAction extends BaseMgrAction {
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "financing_type");
 		dicList = commonService.find(dicParam, ComDict.class);
-		
+
 		CriteriaWrapper customerParam = CriteriaWrapper.newInstance();
 		customerList = commonService.find(customerParam, FinancingCustomer.class);
 		userList = commonService.find(customerParam, ComUser.class);
@@ -445,5 +457,5 @@ public class FinancingApplyAction extends BaseMgrAction {
 	public void setUserList(List<ComUser> userList) {
 		this.userList = userList;
 	}
-	
+
 }

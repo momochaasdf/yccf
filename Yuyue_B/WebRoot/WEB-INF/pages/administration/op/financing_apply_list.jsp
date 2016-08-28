@@ -45,10 +45,16 @@
 			<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
 			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 				<tr>
-	<th style="width: 20%">产品代码</th>
-	<td style="width: 30%"><input type="text" name="ifinancingApply.type" value="${ifinancingApply.type}"/></td>
+	<th style="width: 20%">产品类型</th>
+	<td style="width: 30%"><select type="text"
+						name="info.type">
+							<option value="">所有产品</option>
+							<s:iterator value="dicList" status="st">
+								<option value="${dictCode}" <s:if test="info.type ==dictCode">selected=selected</s:if>>${dictName}</option>
+							</s:iterator>
+					</select> </td>
 	<th style="width: 20%">客户名称</th>
-	<td style="width: 30%"><input type="text" name="ifinancingApply.customerName" value="${ifinancingApply.customerName}"/></td>
+	<td style="width: 30%"><input type="text" name="info.customerName" value="${info.customerName}"/></td>
      </tr> 
 			</table>
 		</fieldset>
