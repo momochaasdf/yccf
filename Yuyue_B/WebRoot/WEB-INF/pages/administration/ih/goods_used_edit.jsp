@@ -59,14 +59,6 @@
 					value="${goodsUsed.goodsName}" /></td>
 			</tr>
 			<tr>
-				<th>领取人</th>
-				<td><select type="text" name="goodsUsed.userName"  id="userName">
-						<s:iterator value="userList" status="st">
-							<option value="${userId}_${userName}" <s:if test="%{goodsUsed.userId==userId}" > selected=selected</s:if> >${userName}</option>
-						</s:iterator>
-				</select></td>
-			</tr>
-			<tr>
 				<th>领取数量</th>
 				<td><input type="number" name="goodsUsed.nums"
 					value="${goodsUsed.nums}"  class="editReadonly"/></td>
