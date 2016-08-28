@@ -41,6 +41,9 @@ public class FinancingRemindAction extends BaseMgrAction
         if (StringUtils.isNotBlank(dayType))
         {
             c.eq("dayType", dayType);
+            if(dayType.equals("2")){
+            	c.eq("status", "1");	
+            }
         }
         dataPage = commonService.find(c, FinancingRemind.class, currentPage, pageSize);
         @SuppressWarnings("unchecked")
