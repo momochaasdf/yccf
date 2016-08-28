@@ -20,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.deying.core.pojo.FinancingCustomer;
 import com.deying.core.pojo.LoanCustomer;
 import com.deying.core.pojo.user.ComDict;
+import com.deying.core.pojo.user.ComUser;
 import com.deying.core.service.FinancingCustomerService;
 import com.deying.core.service.user.impl.DictServiceImpl;
 import com.deying.util.core.com.framework.common.tools.Constants;
@@ -79,7 +80,8 @@ public class CustomerFinancingAction extends BaseMgrAction {
 	public void setDictService(DictServiceImpl dictService) {
 		this.dictService = dictService;
 	}
-
+    
+	private List<ComUser> userList = null;
 	private void init() {
 		Condition[] conds = new Condition[1];
 		conds[0] = OrderBy.desc("sortNo");
@@ -132,6 +134,8 @@ public class CustomerFinancingAction extends BaseMgrAction {
 	public String add() throws Exception {
 		init();
 		LOG.debug("--------------------FinancingCustomerAction -> add----------------");
+		CriteriaWrapper customerParam = CriteriaWrapper.newInstance();
+		userList = commonService.find(customerParam, ComUser.class);
 		return ADD;
 	}
 
@@ -166,6 +170,8 @@ public class CustomerFinancingAction extends BaseMgrAction {
 		init();
 		LOG.debug("--------------------FinancingCustomerAction -> edit----------------");
 		this.customer = this.financingCustomerService.get(id);
+		CriteriaWrapper customerParam = CriteriaWrapper.newInstance();
+		userList = commonService.find(customerParam, ComUser.class);
 		return EDIT;
 	}
 
@@ -250,5 +256,14 @@ public class CustomerFinancingAction extends BaseMgrAction {
 		init();
 		return LOAD;
 	}
+
+	public List<ComUser> getUserList() {
+		return userList;
+	}
+
+	public void setUserList(List<ComUser> userList) {
+		this.userList = userList;
+	}
+	
 
 }
