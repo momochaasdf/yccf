@@ -197,9 +197,12 @@
 					<c:if test="${fn:contains(button, 'user_role_rel') && type==0}">
 					<a href="javascript:confRole('<s:property value="userId"/>','<s:property value="userName"/>');">关联角色</a>
 					</c:if>
-					<c:if test="${fn:contains(button, 'user_role_rel') && type==0}">
-					<a href="javascript:confUser('<s:property value="userId"/>','<s:property value="userName"/>');">关联理财经理</a>
-					</c:if>
+					<s:iterator value="comUserRoles" status="ss"> 
+				      <s:if test="%{comRole.roleName=='理财团队经理'}">
+					   <a href="javascript:confUser('<s:property value="userId"/>','<s:property value="userName"/>');">关联理财经理</a>
+				      </s:if>
+				     </s:iterator> 
+					 
 				</td>
 			</tr>
 			</s:iterator>
