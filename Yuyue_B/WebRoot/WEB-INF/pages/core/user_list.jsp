@@ -31,6 +31,19 @@
 		$('#roleTree').window('open');
 		$('#userId').val(userId);
 	}
+	
+	function confUser(userId,name) {
+		$('#usertree').tree({
+			animate:true,
+			checkbox: true,
+			url: jsCtx+'/core/role/ComJ_loadRoleUser.do?userId='+userId+'&s='+Math.random()
+		});
+		$('#userTree').window({'title':'给团队理财经理"' + name + '"关联普通理财经理'});
+		$('#userTree').window('open');
+		$('#userId_team').val(userId);
+	}
+	
+	
 	$(document).ready(function(){
 		$("input.btOk").click(function(){
 			var nodes = $('#roleTree').tree('getChecked');
@@ -52,6 +65,32 @@
 				},
 				error:function(a,b,c){
 					$.messager.alert("提示", "用户角色维护失败");
+				}
+			});
+		});
+		
+		
+		
+		$("input.btUserOk").click(function(){
+			var nodes = $('#userTree').tree('getChecked');
+			var s = '';
+			for(var i=0; i<nodes.length; i++){
+				if (s == undefined)continue;
+				if (s != '') s += ',';
+				s += nodes[i].id;
+			}
+			$.ajax({
+				url: '<%=request.getContextPath()%>/core/role/ComJ_saveUserTeam.do', 
+				data: {userId:$("#userId_team").val(), userIds: s},
+				dataType:'json',
+				type: 'post',
+				success: function(data){
+					var result = eval(data);
+					$('#userTree').window('close');
+					$.messager.alert("提示", "关系维护成功");
+				},
+				error:function(a,b,c){
+					$.messager.alert("提示", "关系维护失败");
 				}
 			});
 		});
@@ -158,6 +197,9 @@
 					<c:if test="${fn:contains(button, 'user_role_rel') && type==0}">
 					<a href="javascript:confRole('<s:property value="userId"/>','<s:property value="userName"/>');">关联角色</a>
 					</c:if>
+					<c:if test="${fn:contains(button, 'user_role_rel') && type==0}">
+					<a href="javascript:confUser('<s:property value="userId"/>','<s:property value="userName"/>');">关联理财经理</a>
+					</c:if>
 				</td>
 			</tr>
 			</s:iterator>
@@ -178,6 +220,16 @@
 				</td> </tr>
 			</table>
 			<input type="hidden" name="userId" id="userId"/>
+		</div>
+		
+		<div id="userTree" class="easyui-window" closed="true" modal="true" resizable="false" collapsible="false" minimizable="false" maximizable="false" title="关联理财经理" style="width:300px;height:400px;">
+			<table style="height: 95%; width: 95%">
+				<tr><td height="90%" valign="top"><ul id="usertree"></ul></td> </tr>
+				<tr><td height="10%" align="center">
+				<input type="button" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" class="btUserOk" value="确定" />
+				</td> </tr>
+			</table>
+			<input type="hidden" name="userId" id="userId_team"/>
 		</div>
 	</body>
 </html>

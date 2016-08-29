@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.deying.core.pojo.UserTeam;
 import com.deying.core.pojo.user.ComRole;
 import com.deying.core.pojo.user.ComUser;
 import com.deying.core.pojo.user.ComUserRole;
@@ -12,32 +13,34 @@ import com.deying.core.service.user.impl.UserRoleServiceImpl;
 import com.deying.core.service.user.impl.UserServiceImpl;
 import com.deying.util.core.com.framework.common.tools.Constants;
 import com.deying.util.core.com.framework.struts2.BaseMgrAction;
-
+import com.deying.util.datawrapper.CriteriaWrapper;
 
 public class RoleAction extends BaseMgrAction {
 
 	private static final long serialVersionUID = 1L;
-	
+
 	@Autowired
 	private RoleServiceImpl roleService = null;
 	@Autowired
-	private UserServiceImpl userService  = null;
+	private UserServiceImpl userService = null;
 	@Autowired
 	private UserRoleServiceImpl userRoleService = null;
 
 	private ComRole role = null;
-	
+
 	private ComRole inRole = null;
-	
+
 	private String id;
-	
+
 	private String roleId;
 	private String funs;
 	private String userId;
 	
+	private String userIds;
+
 	public String list() throws Exception {
 		LOG.debug("--------------------RoleAction -> list----------------");
-		if (this.ctx.getSessionAttr(Constants.SEARCH_COND) instanceof ComRole && this._query == null) {//编辑或新增或删除返回检索页面使用先前保存的检索条件
+		if (this.ctx.getSessionAttr(Constants.SEARCH_COND) instanceof ComRole && this._query == null) {// 编辑或新增或删除返回检索页面使用先前保存的检索条件
 			this.inRole = (ComRole) this.ctx.getSessionAttr(Constants.SEARCH_COND);
 		}
 		this.start = this.start == null ? 0 : this.start;
@@ -49,15 +52,17 @@ public class RoleAction extends BaseMgrAction {
 		this.ctx.setSessionAttr(Constants.SEARCH_COND, this.inRole);
 		return LIST;
 	}
-	
+
 	/**
 	 * 新增对象保存
+	 * 
 	 * @return
 	 */
 	public String add() throws Exception {
 		LOG.debug("--------------------RoleAction -> add----------------");
 		return ADD;
 	}
+
 	public String save() throws Exception {
 		LOG.debug("--------------------RoleAction -> save----------------");
 		if (role != null) {
@@ -66,20 +71,23 @@ public class RoleAction extends BaseMgrAction {
 		}
 		return list();
 	}
+
 	public boolean validateSave() {
-		if(hasErrors()) {
+		if (hasErrors()) {
 			return true;
 		}
 		if (!this.exitRoleCode(this.role.getRoleCode())) {
-			this.addActionError(getText("err.exits","", getText("role.roleCode")));
+			this.addActionError(getText("err.exits", "", getText("role.roleCode")));
 		}
-		if(hasErrors()) {
+		if (hasErrors()) {
 			return true;
 		}
 		return false;
 	}
+
 	/**
 	 * 编辑对象加载
+	 * 
 	 * @return
 	 */
 	public String edit() throws Exception {
@@ -87,8 +95,10 @@ public class RoleAction extends BaseMgrAction {
 		this.role = this.roleService.get(id);
 		return EDIT;
 	}
+
 	/**
 	 * 编辑对象保存
+	 * 
 	 * @return
 	 */
 	public String upd() throws Exception {
@@ -101,25 +111,28 @@ public class RoleAction extends BaseMgrAction {
 				LOG.error("upd fail...", e);
 				this.addActionMessage(e.getMessage());
 			}
-			
+
 		}
 		return list();
 	}
+
 	public boolean validateUpd() {
-		if(hasErrors()) {
+		if (hasErrors()) {
 			return true;
 		}
 		ComRole r = this.roleService.get(this.role.getRoleId());
 		if (r == null) {
 			this.addActionError(this.getText("err.no.entity"));
 		}
-		if(hasErrors()) {
+		if (hasErrors()) {
 			return true;
 		}
 		return false;
 	}
+
 	/**
 	 * 删除
+	 * 
 	 * @return
 	 */
 	public String del() throws Exception {
@@ -127,24 +140,28 @@ public class RoleAction extends BaseMgrAction {
 		if (this.id != null) {
 			this.roleService.deleteById(this.id);
 		}
-		this.addActionMessage(this.getText("do.success.back", "", new String[]{this.getText("page.title.role_list")}));
+		this.addActionMessage(
+				this.getText("do.success.back", "", new String[] { this.getText("page.title.role_list") }));
 		return list();
 	}
+
 	public boolean validateDel() {
-		if(hasErrors()) {
+		if (hasErrors()) {
 			return true;
 		}
 		ComRole r = this.roleService.get(this.id);
 		if (r == null || this.id == null) {
 			this.addActionError(this.getText("err.no.entity"));
 		}
-		if(hasErrors()) {
+		if (hasErrors()) {
 			return true;
 		}
 		return false;
 	}
+
 	/**
 	 * 查看对象
+	 * 
 	 * @return
 	 */
 	public String load() throws Exception {
@@ -152,6 +169,7 @@ public class RoleAction extends BaseMgrAction {
 		this.role = this.roleService.get(id);
 		return LOAD;
 	}
+
 	/**
 	 * 页面输入角色代码的时候ajax验证是否存在
 	 */
@@ -162,8 +180,10 @@ public class RoleAction extends BaseMgrAction {
 			outResponseJs("false");
 		}
 	}
+
 	/**
 	 * 判断该角色代码是否存在
+	 * 
 	 * @param roleCode
 	 * @return
 	 */
@@ -171,7 +191,7 @@ public class RoleAction extends BaseMgrAction {
 		ComRole r = this.roleService.findUniqueByProperty("roleCode", roleCode);
 		return r == null;
 	}
-	
+
 	/**
 	 * 角色授权
 	 */
@@ -186,7 +206,7 @@ public class RoleAction extends BaseMgrAction {
 		}
 		outResponseJson(sb.toString());
 	}
-	
+
 	public void loadRoleAll() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("[");
@@ -210,7 +230,82 @@ public class RoleAction extends BaseMgrAction {
 		System.out.println(sb.toString());
 		outResponseJson(sb.toString());
 	}
+
+	public void loadRoleUser() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("[");
+		CriteriaWrapper c = CriteriaWrapper.newInstance();
+		List<UserTeam> teamList = null;
+		StringBuilder data = new StringBuilder();
+		try {
+			// 查询出该团队经理 已经关联的用户
+			c.eq("userId", userId);
+			teamList = commonService.find(c, UserTeam.class);
+ 
+		 
+			ComUserRole ur = new ComUserRole();
+			ComRole rr = this.roleService.get("402881c04ef67ce5014ef6b65ce30008"); 
+			ur.setComRole(rr);
+			List<ComUserRole> urs = this.userRoleService.listAll(ur, null, null, null);
+			for (ComUserRole r : urs) {
+				boolean isChecked = false;
+				for (UserTeam t : teamList) {
+					if (t.getTeamUserId().equals(r.getComUser().getUserId())) {
+						isChecked = true;
+						break;
+					}
+				}
+				data.append(data.length() > 0 ? "," : "");
+				data.append("{\"id\":\"").append(r.getComUser().getUserId()).append("\",");
+				data.append("\"text\":\"").append(r.getComUser().getUserName()).append("\",");
+				data.append("\"checked\":").append(isChecked).append(",");
+				data.append("\"open\":true");
+				data.append(",\"state\":\"open\"}");
+			}
+		} catch (Exception e) {
+
+		}
+		sb.append(data);
+		sb.append("]");
+		System.out.println(sb.toString());
+		outResponseJson(sb.toString());
+	}
 	
+	/**
+	 * 给用户赋予角色
+	 */
+	public void saveUserTeam() {
+		StringBuilder sb = new StringBuilder();
+		try {
+			ComUser user = this.userService.get(userId);
+			String[] temp = userIds.split(",");
+			CriteriaWrapper c = CriteriaWrapper.newInstance();
+			List<UserTeam> teamList = null;
+			// 删除原关联关系
+			c.eq("userId", userId);
+			teamList = commonService.find(c, UserTeam.class);
+			for(UserTeam t:teamList){
+				commonService.delete(t);
+			}
+			
+			for(String userIdTeam:temp){
+				ComUser userTeam = this.userService.get(userIdTeam);
+				UserTeam team = new UserTeam();
+				team.setCompanyId(this.getCtxUser().getCompanyId());
+				team.setTeamUserId(userTeam.getUserId());
+				team.setTeamUserName(userTeam.getUserName());
+				team.setUserId(user.getUserId());
+				team.setUserName(user.getUserName());
+				commonService.save("userTeam", team);
+			}
+			sb.append("{\"success\":true}");
+		} catch (Exception e) {
+			e.printStackTrace();
+			sb.append("{\"success\":false}");
+		}
+		outResponseJson(sb.toString());
+	}
+
 	public RoleServiceImpl getRoleService() {
 		return roleService;
 	}
@@ -226,9 +321,11 @@ public class RoleAction extends BaseMgrAction {
 	public void setId(String id) {
 		this.id = id;
 	}
+
 	public ComRole getRole() {
 		return role;
 	}
+
 	public void setRole(ComRole role) {
 		this.role = role;
 	}
@@ -281,4 +378,12 @@ public class RoleAction extends BaseMgrAction {
 		this.userRoleService = userRoleService;
 	}
 
+	public String getUserIds() {
+		return userIds;
+	}
+
+	public void setUserIds(String userIds) {
+		this.userIds = userIds;
+	}
+    
 }
