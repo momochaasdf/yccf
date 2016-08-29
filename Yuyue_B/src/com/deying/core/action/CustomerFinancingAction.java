@@ -3,6 +3,7 @@ package com.deying.core.action;
 import java.io.File;
 import java.io.PrintWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -19,6 +20,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.deying.core.pojo.FinancingCustomer;
 import com.deying.core.pojo.LoanCustomer;
+import com.deying.core.pojo.UserTeam;
 import com.deying.core.pojo.user.ComDict;
 import com.deying.core.pojo.user.ComUser;
 import com.deying.core.service.FinancingCustomerService;
@@ -33,8 +35,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public class CustomerFinancingAction extends BaseMgrAction {
-	private static final Logger log = LoggerFactory
-			.getLogger(CustomerFinancingAction.class);
+	private static final Logger log = LoggerFactory.getLogger(CustomerFinancingAction.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -50,7 +51,6 @@ public class CustomerFinancingAction extends BaseMgrAction {
 	 * 证件类型
 	 */
 	private Map<String, String> cardTypeMap;
-
 
 	public FinancingCustomer getCustomer() {
 		return customer;
@@ -72,16 +72,16 @@ public class CustomerFinancingAction extends BaseMgrAction {
 		return cardTypeMap;
 	}
 
-	public void setFinancingCustomerService(
-			FinancingCustomerService financingCustomerService) {
+	public void setFinancingCustomerService(FinancingCustomerService financingCustomerService) {
 		this.financingCustomerService = financingCustomerService;
 	}
 
 	public void setDictService(DictServiceImpl dictService) {
 		this.dictService = dictService;
 	}
-    
+
 	private List<ComUser> userList = null;
+
 	private void init() {
 		Condition[] conds = new Condition[1];
 		conds[0] = OrderBy.desc("sortNo");
@@ -98,29 +98,50 @@ public class CustomerFinancingAction extends BaseMgrAction {
 
 	public String list() throws Exception {
 		LOG.debug("--------------------FinancingCustomerAction -> list----------------");
+		String userId = this.getCtxUser().getUserId();
 		String customerName = obtionInfoVal("customerName", String.class);
 		String cardId = obtionInfoVal("cardId", String.class);
 		String telephone = obtionInfoVal("telephone", String.class);
 		String cardType = obtionInfoVal("cardType", String.class);
-
+		String userRoleNames = this.getCtxUser().getRoleNames();
 		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
-		
+
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.desc("crtTime");
-		if(customerName != null){
+		if (customerName != null) {
 			c.like("customerName", customerName);
 		}
-		if(cardId != null){
+		if (cardId != null) {
 			c.like("cardId", cardId);
 		}
 		if (telephone != null) {
-			c.like("telephone",telephone);
+			c.like("telephone", telephone);
 		}
 		if (cardType != null) {
-			c.eq("cardType",cardType);
+			c.eq("cardType", cardType);
 		}
-		dataPage = commonService.find(c
-				,FinancingCustomer.class,  currentPage, pageSize);
+		if ((userRoleNames.contains("总经理") || userRoleNames.contains("理财总监"))) {
+
+		} else if (userRoleNames.contains("理财团队经理")) {
+			// 查询出该团队经理 已经关联的用户
+			CriteriaWrapper c1 = CriteriaWrapper.newInstance();
+			List<UserTeam> teamList = null;
+			c1.eq("userId", userId);
+			teamList = commonService.find(c1, UserTeam.class);
+			List<String> userIdList = new ArrayList<>();
+			for (UserTeam team : teamList) {
+				userIdList.add(team.getTeamUserId());
+			}
+			if (userIdList.isEmpty()) {
+				c.eq("employeeId", "0");
+			} else {
+				Object[] userIds = userIdList.toArray();
+				c.in("employeeId", userIds);
+			}
+		} else if (userRoleNames.contains("理财经理")) {
+			c.eq("employeeId", userId);
+		}
+		dataPage = commonService.find(c, FinancingCustomer.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
 		init();
 		return LIST;
@@ -183,8 +204,7 @@ public class CustomerFinancingAction extends BaseMgrAction {
 	public String upd() throws Exception {
 		LOG.debug("--------------------FinancingCustomerAction -> upd----------------");
 		if (customer != null) {
-			FinancingCustomer existCustomer = this.financingCustomerService.get(customer
-					.getCustomerId());
+			FinancingCustomer existCustomer = this.financingCustomerService.get(customer.getCustomerId());
 			existCustomer.setCustomerName(customer.getCustomerName());
 			existCustomer.setBirthdayType(customer.getBirthdayType());
 			existCustomer.setCardId(customer.getCardId());
@@ -206,8 +226,7 @@ public class CustomerFinancingAction extends BaseMgrAction {
 		if (hasErrors()) {
 			return true;
 		}
-		FinancingCustomer customer = this.financingCustomerService.get(this.customer
-				.getCustomerId());
+		FinancingCustomer customer = this.financingCustomerService.get(this.customer.getCustomerId());
 		if (customer == null) {
 			this.addActionError(this.getText("err.no.entity"));
 		}
@@ -264,6 +283,5 @@ public class CustomerFinancingAction extends BaseMgrAction {
 	public void setUserList(List<ComUser> userList) {
 		this.userList = userList;
 	}
-	
 
 }

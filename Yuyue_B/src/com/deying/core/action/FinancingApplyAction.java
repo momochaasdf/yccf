@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -21,6 +22,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.deying.core.pojo.FinancingApply;
 import com.deying.core.pojo.FinancingCustomer;
+import com.deying.core.pojo.UserTeam;
 import com.deying.core.pojo.user.ComDict;
 import com.deying.core.pojo.user.ComUser;
 import com.deying.core.service.FinancingApplyService;
@@ -57,7 +59,8 @@ public class FinancingApplyAction extends BaseMgrAction {
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "financing_type");
 		dicList = commonService.find(dicParam, ComDict.class);
-		
+		String userRoleNames = this.getCtxUser().getRoleNames();
+		String userId = this.getCtxUser().getUserId();
 		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		String type1 = obtionInfoVal("type", String.class);
@@ -78,6 +81,28 @@ public class FinancingApplyAction extends BaseMgrAction {
 			} else {
 				c.ne("type", "4");
 			}
+		}
+		
+		if ((userRoleNames.contains("总经理") || userRoleNames.contains("理财总监"))) {
+
+		} else if (userRoleNames.contains("理财团队经理")) {
+			// 查询出该团队经理 已经关联的用户
+			CriteriaWrapper c1 = CriteriaWrapper.newInstance();
+			List<UserTeam> teamList = null;
+			c1.eq("userId", userId);
+			teamList = commonService.find(c1, UserTeam.class);
+			List<String> userIdList = new ArrayList<>();
+			for (UserTeam team : teamList) {
+				userIdList.add(team.getTeamUserId());
+			}
+			if (userIdList.isEmpty()) {
+				c.eq("employeeId", "0");
+			} else {
+				Object[] userIds =  userIdList.toArray();
+				c.in("employeeId", userIds);
+			}
+		} else if (userRoleNames.contains("理财经理")) {
+			c.eq("employeeId", userId);
 		}
 		dataPage = commonService.find(c, FinancingApply.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
