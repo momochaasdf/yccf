@@ -89,7 +89,7 @@ public class OutApply implements java.io.Serializable {
 		this.outApplyId = outApplyId;
 	}
 
-	@Column(name = "DEPARTMENT_ID", nullable = false, length = 128)
+	@Column(name = "DEPARTMENT_ID", length = 128)
 	public String getDepartmentId() {
 		return this.departmentId;
 	}
@@ -98,7 +98,7 @@ public class OutApply implements java.io.Serializable {
 		this.departmentId = departmentId;
 	}
 
-	@Column(name = "DEPARTMENT_NAME", nullable = false, length = 100)
+	@Column(name = "DEPARTMENT_NAME", length = 100)
 	public String getDepartmentName() {
 		return this.departmentName;
 	}
