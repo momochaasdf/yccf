@@ -73,11 +73,11 @@ public class LoanApplyAction extends BaseMgrAction {
 		c.desc("crtTime");
 		if (userId != null) {
 			if (!userRoleNames.contains("总经理") && type.equals("1"))
-				c.like("userId", userId);
+				c.like("employeeId", userId);
 		}
 		if (userName != null) {
 			if (!userRoleNames.contains("总经理") && type.equals("1"))
-				c.like("userName", userName);
+				c.like("employeeName", userName);
 		}
 		if (companyId != null) {
 			if (!userRoleNames.contains("总经理")) {
