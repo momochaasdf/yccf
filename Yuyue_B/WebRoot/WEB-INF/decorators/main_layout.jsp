@@ -199,42 +199,42 @@ font-weight: bold;font-size: 14px;line-height: 0;">(&nbsp;${sessionScope._COM_FR
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
 					href="<%=ctx%>/holidayRemind/holidayRemind_list.do">&nbsp;&nbsp;&nbsp;&nbsp;1,
-						节假日提醒</a><br></li>
+						节假日提醒【${sessionScope.holiday_count}】</a><br></li>
 				<li onmouseover="$(this).css('background','#E6FDF1');"
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
 					href="<%=ctx%>/birthdayRemind/birthdayRemind_list.do">&nbsp;&nbsp;&nbsp;&nbsp;2,
-						理财客户生日提醒</a><br></li>
+						理财客户生日提醒【${sessionScope.birthday_count}】</a><br></li>
 				<li onmouseover="$(this).css('background','#E6FDF1');"
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
 					href="<%=ctx%>/financingRemind/financingRemind_list.do?dayType=1">&nbsp;&nbsp;&nbsp;&nbsp;3,
-						理财七天到期提醒</a><br></li>
+						理财七天到期提醒【${sessionScope.fin7_count}】</a><br></li>
 				<li onmouseover="$(this).css('background','#E6FDF1');"
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
 					href="<%=ctx%>/financingRemind/financingRemind_list.do?dayType=2">&nbsp;&nbsp;&nbsp;&nbsp;4,
-						理财一天到期提醒</a><br></li>
+						理财一天到期提醒【${sessionScope.fin1_count}】</a><br></li>
 				<li onmouseover="$(this).css('background','#E6FDF1');"
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
 					href="<%=ctx%>/financingRemind/financingRemind_list.do?type=4&dayType=3">&nbsp;&nbsp;&nbsp;&nbsp;5,
-						年年红月月返提醒</a><br></li>
+						年年红月月返提醒【${sessionScope.nnhM_count}】</a><br></li>
 				<li onmouseover="$(this).css('background','#E6FDF1');"
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
 					href="<%=ctx%>/financingRemind/financingRemind_list.do?type=4&dayType=1">&nbsp;&nbsp;&nbsp;&nbsp;6,
-						年年红七天到期提醒</a><br></li>
+						年年红七天到期提醒【${sessionScope.nnh7_count}】</a><br></li>
 				<li onmouseover="$(this).css('background','#E6FDF1');"
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
 					href="<%=ctx%>/financingRemind/financingRemind_list.do?type=4&dayType=2">&nbsp;&nbsp;&nbsp;&nbsp;7,
-						年年红一天到期提醒</a><br></li>						
+						年年红一天到期提醒【${sessionScope.nnh1_count}】</a><br></li>						
 				<li onmouseover="$(this).css('background','#E6FDF1');"
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
 					href="<%=ctx %>/notice/notice_list.do?type=1">&nbsp;&nbsp;&nbsp;&nbsp;8,
-						通知提醒</a><br></li>
+						通知提醒【${sessionScope.notice_count}】</a><br></li>
 			</ul>
 		</div>
 	</div> 
