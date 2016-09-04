@@ -94,11 +94,8 @@
 				<th>审核人</th>
 				<th>审核状态</th>
 				<th>审核时间</th>
-				<c:choose> 
-						<c:when test="${fn:contains(button, 'loan_apply_load') && button_type ==0}">
-				        <th style="width: 20%">操作</th>
-				 </c:when>
-				 </c:choose>
+				 <th style="width: 20%">操作</th>
+				 
 			</tr>
 		</thead>
 		<tbody>
@@ -118,10 +115,7 @@
 					<td><s:date name="%{reviewTime}" format="yyyy-MM-dd"/> &nbsp;</td>
 					<td align="center">
 					   <c:choose> 
-					    <c:when test="${fn:contains(button, 'loan_edit') && button_type ==2}">
-					    <a href="<%=request.getContextPath()%>/core/loanApply/ComU_edit.do?type=${button_type}&id=<s:property value="loanApplyId"/>">修改</a>
-						</c:when>
-						<c:when test="${fn:contains(button, 'loan_apply_edit') && button_type ==0}">
+						<c:when test="${fn:contains(button, 'loan_apply_edit') && button_type ==0 && (status ==0 || fn:contains(userRoleNames, '总经理'))}">
 					    <a href="<%=request.getContextPath()%>/core/loanApply/ComU_edit.do?type=${button_type}&id=<s:property value="loanApplyId"/>">修改</a>
 						</c:when>
 						<c:when test="${fn:contains(button, 'loan_apply_check')  && button_type ==2}">
@@ -129,10 +123,10 @@
 						</c:when>
 						</c:choose> 
 						<c:choose> 
-						<c:when test="${fn:contains(button, 'loan_apply_del') && button_type ==0}">
+						<c:when test="${fn:contains(button, 'loan_apply_del') && button_type ==0 && (status ==0 || fn:contains(userRoleNames, '总经理'))}">
 						<a href="javascript:doDel('<s:property value="loanApplyId"/>','');">删除</a>
 						</c:when>
-						<c:when test="${fn:contains(button, 'loan_del') && button_type ==2}">
+						<c:when test="${fn:contains(button, 'loan_del') && button_type ==2 && (status ==0 || fn:contains(userRoleNames, '总经理'))}">
 						<a href="javascript:doDel('<s:property value="loanApplyId"/>','');">删除</a>
 						</c:when>
 						</c:choose>

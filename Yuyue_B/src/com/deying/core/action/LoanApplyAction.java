@@ -55,6 +55,8 @@ public class LoanApplyAction extends BaseMgrAction {
 	private String loginId;
 
 	private String userName;
+	
+	private String userRoleNames;
 
 	private List<ComDict> dicList = null;
 
@@ -91,6 +93,7 @@ public class LoanApplyAction extends BaseMgrAction {
 		}
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "department_code");
+		this.userRoleNames = userRoleNames;
 		dicList = commonService.find(dicParam, ComDict.class);
 		dataPage = commonService.find(c, LoanApply.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
@@ -121,8 +124,8 @@ public class LoanApplyAction extends BaseMgrAction {
 		LOG.debug("--------------------loanApplyAction -> save----------------");
 
 		if (loanApply != null) {
-			String customerId = loanApply.getCustomerName();
-			String customerName = loanApply.getCustomerName();
+			String customerId = loanApply.getCustomerName().split("_")[0];
+			String customerName = loanApply.getCustomerName().split("_")[1];
 			loanApply.setCustomerId(customerId);
 			loanApply.setCustomerName(customerName);
 
@@ -534,4 +537,12 @@ public class LoanApplyAction extends BaseMgrAction {
 		this.customerList = customerList;
 	}
 
+	public String getUserRoleNames() {
+		return userRoleNames;
+	}
+
+	public void setUserRoleNames(String userRoleNames) {
+		this.userRoleNames = userRoleNames;
+	}
+    
 }
