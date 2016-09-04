@@ -129,7 +129,7 @@
 							</td>
 							<td align="center">
 								 <a href="javascript:doRemind('<s:property value="financingRemindId"/>','');">提醒</a>
-								 <s:if test="%{dayType !=2}">
+								 <s:if test="%{dayType ==2}">
 								 <a href="javascript:doTake('<s:property value="financingRemindId"/>','');">已取</a>
 								 </s:if>
 							</td
