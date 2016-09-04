@@ -5,6 +5,8 @@
 <%@page import="com.deying.util.FileConstants"%>
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="decorator"
 	uri="http://www.opensymphony.com/sitemesh/decorator"%>
 <%@ taglib prefix="page" uri="http://www.opensymphony.com/sitemesh/page"%>
@@ -200,6 +202,7 @@ font-weight: bold;font-size: 14px;line-height: 0;">(&nbsp;${sessionScope._COM_FR
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
 					href="<%=ctx%>/holidayRemind/holidayRemind_list.do">&nbsp;&nbsp;&nbsp;&nbsp;1,
 						节假日提醒【${sessionScope.holiday_count}】</a><br></li>
+				<c:if test="${fn:contains(sessionScope._COM_FRAMEWORK_USER_KEY.roleNames,'总经理') || fn:contains(sessionScope._COM_FRAMEWORK_USER_KEY.roleNames,'理财') }">	
 				<li onmouseover="$(this).css('background','#E6FDF1');"
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
@@ -229,7 +232,9 @@ font-weight: bold;font-size: 14px;line-height: 0;">(&nbsp;${sessionScope._COM_FR
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
 					href="<%=ctx%>/financingRemind/financingRemind_list.do?type=4&dayType=2">&nbsp;&nbsp;&nbsp;&nbsp;7,
-						年年红一天到期提醒【${sessionScope.nnh1_count}】</a><br></li>						
+						年年红一天到期提醒【${sessionScope.nnh1_count}】</a><br></li>		
+						
+				</c:if>							
 				<li onmouseover="$(this).css('background','#E6FDF1');"
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
