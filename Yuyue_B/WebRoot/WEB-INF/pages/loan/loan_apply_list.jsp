@@ -94,7 +94,11 @@
 				<th>审核人</th>
 				<th>审核状态</th>
 				<th>审核时间</th>
-				<th style="width: 20%">操作</th>
+				<c:choose> 
+						<c:when test="${fn:contains(button, 'loan_apply_load') && button_type ==0}">
+				        <th style="width: 20%">操作</th>
+				 </c:when>
+				 </c:choose>
 			</tr>
 		</thead>
 		<tbody>
@@ -136,9 +140,7 @@
 						<c:when test="${fn:contains(button, 'loan_apply_load') && button_type ==0}">
 						<a href="<%=request.getContextPath()%>/core/loanApply/ComR_load.do?type=${button_type}&id=<s:property value="loanApplyId"/>">查看</a>
 						</c:when>
-						<c:when test="${fn:contains(button, 'loan_load') && button_type ==1}">
-						<a href="<%=request.getContextPath()%>/core/loanApply/ComR_load.do?type=${button_type}&id=<s:property value="loanApplyId"/>">查看</a>
-						</c:when>
+						
 						</c:choose>
 						<c:if test="${button_type==0}">
 						 <a href="javascript:doExport('<s:property value="loanApplyId"/>','');">导出借款协议</a>
