@@ -45,14 +45,18 @@
 			<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
 			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 				<tr>
+				<c:if test="${buttonType !=4}">
 	<th style="width: 20%">产品类型</th>
 	<td style="width: 30%"><select type="text"
 						name="info.type">
 							<option value="">所有产品</option>
-							<s:iterator value="dicList" status="st">
-								<option value="${dictCode}" <s:if test="info.type ==dictCode">selected=selected</s:if>>${dictName}</option>
-							</s:iterator>
-					</select> </td>
+								<option value="1" <c:if test="${info.type ==1}">selected=selected </c:if> >季度金</option>
+								<option value="2" <c:if test="${info.type ==2}">selected=selected </c:if> >半年金</option>
+								<option value="3" <c:if test="${info.type ==3}">selected=selected </c:if> >年年鑫</option>
+								<option value="5" <c:if test="${info.type ==5}">selected=selected </c:if> >仪诚鑫</option>
+								<option value="6" <c:if test="${info.type ==6}">selected=selected </c:if> >仪诚通</option>
+					         </select></td>
+					</c:if>
 	<th style="width: 20%">客户名称</th>
 	<td style="width: 30%"><input type="text" name="info.customerName" value="${info.customerName}"/></td>
      </tr> 
