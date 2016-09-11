@@ -146,9 +146,7 @@ font-weight: bold;font-size: 14px;line-height: 0;">(&nbsp;${sessionScope._COM_FR
 					style="vertical-align:middle" src="<%=ctx%>/common/images/man.png" />
 					返回首页</a> <a href="<%=ctx%>/exit.do" class="whiteLink"><img
 					style="vertical-align:middle" src="<%=ctx%>/common/images/quit.png" />
-					退出</a> <a href="<%=ctx%>/help.jsp" target="_blank" class="whiteLink"><img
-					style="vertical-align:middle" src="<%=ctx%>/common/images/help.png" />
-					帮助</a>
+					退出</a> <a href="<%=ctx%>/help.jsp" target="_blank" class="whiteLink"> 
 			</div>
 		</div>
 	</div>
