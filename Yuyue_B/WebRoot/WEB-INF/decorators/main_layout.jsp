@@ -122,10 +122,21 @@ loadingbox.hide();
 		$("#popWin").css('display','block');
 		$("#foodCartAllNumber").html("23");
 	}
+	function hideDiv(key){
+		var tt = $("#tt").val()
+		if(tt ==0){
+			$("#dvDockAppLsit").css("display","none")
+			$("#tt").val("1")
+		}else {
+			$("#dvDockAppLsit").css("display","block")
+			$("#tt").val("0")
+		}
+	}
 </script>
 </head>
 <body
 	<decorator:getProperty property="body.onload" writeEntireProperty="true" />>
+	<input id="tt" value="0" type="hidden">
 	<div
 		style="width:100%; height:34px; line-height:34px; background:#efefef;border-bottom: 1px solid #CCC;"
 		class="head">
@@ -191,10 +202,11 @@ font-weight: bold;font-size: 14px;line-height: 0;">(&nbsp;${sessionScope._COM_FR
 			<div style="clear: both;"></div>
 		</div>
 	</div>
-  <div style="width: 200px;position: fixed;right: 10px;bottom: 10px;border:1px solid #00B5DA;background-color: white;">
+	 
+  <div id="guanbi" style="width: 200px;position: fixed;right: 10px;bottom: 10px;border:1px solid #00B5DA;background-color: white;">
+	    <li style="height: 30px;width: 98%;margin:0px auto 0px auto;line-height:30px;padding-left: 4px;background-color: #00B5DA;color: white;">通知及提醒&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a style="float:right;margin-right: 4px" onclick="hideDiv(1)" >收起/展开</a><br></li>
 		<div id="dvDockAppLsit" class="le" style="">
 			<ul>
-				<li style="height: 30px;width: 98%;margin:0px auto 0px auto;line-height:30px;padding-left: 4px;background-color: #00B5DA;color: white;">通知及提醒<br></li>
 				<li onmouseover="$(this).css('background','#E6FDF1');"
 					onmouseout="$(this).css('background','');"
 					style="height: 25px; width: 100%; margin-bottom: 0px; line-height: 25px;"><a
