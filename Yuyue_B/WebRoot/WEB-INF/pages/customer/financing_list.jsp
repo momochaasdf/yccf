@@ -131,8 +131,8 @@
 					<td>证件号码</td>
 					<td>生日</td>
 					<td>联系电话</td>
-					<td>住址</td>
-					<td style="width: 20%">操作</td>
+					<td style="width: 30%">住址</td>
+					<td style="width: 10%">操作</td>
 				</tr>
 				<s:iterator value="dataPage.data" status="st">
 					<tr class="table_tr_content"
