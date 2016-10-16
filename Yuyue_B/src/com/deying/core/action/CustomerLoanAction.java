@@ -130,6 +130,8 @@ public class CustomerLoanAction extends BaseMgrAction {
 			String EmployeeName = customer.getEmployeeName().split("_")[1];
 			existCustomer.setEmployeeId(EmployeeId);
 			existCustomer.setEmployeeName(EmployeeName);
+			existCustomer.setPlege(customer.getPlege());
+			existCustomer.setPlegeGo(customer.getPlegeGo());
 			String picUrl = saveFile(ASSERTS_ROOT_DIR, ASSERTS_IMAGES_DIR, fileUpload);
 			if (null != picUrl) {
 				existCustomer.setPicUrl(picUrl);
