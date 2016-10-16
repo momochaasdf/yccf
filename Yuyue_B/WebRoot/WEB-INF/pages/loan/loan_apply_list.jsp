@@ -57,6 +57,8 @@
 					<th style="width: 20%">客户名称</th>
 					<td style="width: 30%"><input type="text"
 						name="iloanApply.customerName" value="${iloanApply.customerName}" /></td>
+					<th style="width: 20%">状态</th>
+					<td style="width: 30%"> <s:radio list="#{'1':'还款中','2':'已还清'}" name="iloanApply.repaymentStatus"/></td> 
 				</tr>
 			</table>
 		</fieldset>
