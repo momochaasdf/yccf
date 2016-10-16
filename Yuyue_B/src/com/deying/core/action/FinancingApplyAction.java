@@ -61,7 +61,7 @@ public class FinancingApplyAction extends BaseMgrAction {
 		dicList = commonService.find(dicParam, ComDict.class);
 		String userRoleNames = this.getCtxUser().getRoleNames();
 		String userId = this.getCtxUser().getUserId();
-		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
+		this.start = this.start == null ? 1 : this.start;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		String type1 = obtionInfoVal("type", String.class);
 		String customerName = obtionInfoVal("customerName", String.class);
@@ -104,6 +104,7 @@ public class FinancingApplyAction extends BaseMgrAction {
 		} else if (userRoleNames.contains("理财经理")) {
 			c.eq("employeeId", userId);
 		}
+		currentPage = this.start/pageSize +1 ;
 		dataPage = commonService.find(c, FinancingApply.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
 		return LIST;
