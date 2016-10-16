@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,23 +32,36 @@ public class CollectionLoanAction extends BaseMgrAction {
 	public String list() throws Exception {
 		LOG.debug("--------------------collectionAction -> list----------------");
 		String customerName = obtionInfoVal("customerName", String.class);
-		String cardId = obtionInfoVal("cardId", String.class);
-		String telephone = obtionInfoVal("telephone", String.class);
+		String isPrepayment = obtionInfoVal("isPrepayment", String.class);
+		String isOverdue = obtionInfoVal("isOverdue", String.class);
+		String status = obtionInfoVal("status", String.class);
 
 		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
 
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.desc("crtTime");
-		if (customerName != null) {
-			c.like("customerName", customerName);
+		if (null != collection) {
+			customerName = collection.getCustomerName();
+			if (StringUtils.isNotBlank(customerName)) {
+				c.like("customerName", customerName);
+			}
+			isPrepayment = collection.getIsPrepayment();
+			isOverdue = collection.getIsOverdue();
+			status = collection.getStatus();
+			if (StringUtils.isNotBlank(isPrepayment)) {
+				c.like("isPrepayment", isPrepayment);
+			}
+			if (StringUtils.isNotBlank(isOverdue)) {
+				c.like("isOverdue", isOverdue);
+			}
+			if (StringUtils.isNotBlank(status)) {
+				c.eq("status", status);
+			} else {
+				c.ne("status", "2");
+			}
+		}else {
+			c.ne("status", "2");
 		}
-		if (cardId != null) {
-			c.like("cardId", cardId);
-		}
-		if (telephone != null) {
-			c.like("telephone", telephone);
-		}
-		c.ne("status", "2");
 		dataPage = commonService.find(c, LoanCollection.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
 		return LIST;
