@@ -11,23 +11,38 @@
 			type="text/css" />
 	<script type="text/javascript">
 	$(document).ready(function(){
+		$("#mm").css("visibility","hidden");
+		$("#oo").css("visibility","hidden");
 		var _validator=$("#financingForm").validate({
 		onsubmit: true,
 		rules: {
 			'financing.type':{required: true},
 			'financing.annualizedRate':{required: true,maxbytelen:100},
+			'financing.annualizedRateEnd':{maxbytelen:100},
 			'financing.months':{min:1,number:true,required: true},
+			'financing.monthsEnd':{min:1,number:true},
 			'financing.startUp':{min:5,max:100,number:true,required: true}
 		}});
 		$("input.btOk").click(function(){
 			if(_validator.form()){doAction('financingForm','ComC_save','');}
 		});
 		$("input.btBack").click(function(){
-			_validator.resetForm();
 			doAction('financingForm','ComM_list','');
 		});
 		
 	});
+	
+	function onchange1(){
+		var code= $("#codeType").val();
+		if ("6" ==code){
+			$("#mm").css("visibility","visible");
+			$("#oo").css("visibility","visible");
+		}else {
+			$("#mm").css("visibility","hidden");
+			$("#oo").css("visibility","hidden");
+		}
+		
+	}
 	</script>
 	</head>
 	<body>
@@ -48,8 +63,8 @@
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			<tr>
-				<th>代码</th>
-				<td><select type="text" name="financing.type"   >
+				<th>产品代码</th>
+				<td><select type="text" name="financing.type" onchange="onchange1()" id="codeType">
 				 <s:iterator value="dicList" status="st">
 				   <option value="${dictCode}">${dictName}</option>
 				   </s:iterator>
@@ -62,11 +77,13 @@
 				<td><input type="text" name="financing.financingDesc" value="${financing.financingDesc}" /></td>
 			</tr><tr>
 				<th>年传化收益率(%)</th>
-				<td><input type="text" name="financing.annualizedRate" value="${financing.annualizedRate}" /></td>
+				<td><input type="text" name="financing.annualizedRate" value="${financing.annualizedRate}" /> 
+				 <t id="mm">-<input type="text" name="financing.annualizedRateEnd" value="${financing.annualizedRateEnd}" /> </t></td>
 			</tr>
 			<tr>
 				<th>封闭期(月)</th>
-				<td><input type="number" name="financing.months" value="${financing.months}" /></td>
+				<td><input type="number" name="financing.months" value="${financing.months}" />
+				 <t id="oo">-<input type="number" name="financing.monthsEnd" value="${financing.monthsEnd}" /></t></td>
 			</tr>
 			<tr>
 				<th>起点(万元)</th>

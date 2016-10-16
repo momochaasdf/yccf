@@ -9,6 +9,24 @@
 <head>
 	<link rel="stylesheet" href="<%=path%>/common/css/shopBase.css"
 			type="text/css" />
+			
+    	<script type="text/javascript">
+	$(document).ready(function(){
+		onchange1();
+	});
+	
+	function onchange1(){
+		var code= $("#codeType").val();
+		if ("仪诚通" ==code){
+			$("#mm").css("visibility","visible");
+			$("#oo").css("visibility","visible");
+		}else {
+			$("#mm").css("visibility","hidden");
+			$("#oo").css("visibility","hidden");
+		}
+		
+	}
+	</script>
 </head>
 	<body>
 		<div class="right">
@@ -28,7 +46,7 @@
 		<table cellpadding="0" cellspacing="0" class="editTable">
 			 <tr>
 				<th>代码</th>
-				<td><select type="text" name="financing.type"   >
+				<td><select type="text" name="financing.type"  id="codeType" >
 				 <s:iterator value="dicList" status="st">
 				  <c:if  test="${financing.type==dictCode}" >
 				    <option   <c:if  test="${financing.type==dictCode}" >selected</c:if> disabled>${dictName}</option>
@@ -43,11 +61,14 @@
 				<td><input type="text" name="financing.financingDesc" value="${financing.financingDesc}" readOnly/></td>
 			</tr><tr>
 				<th>年传化收益率(%)</th>
-				<td><input type="text" name="financing.annualizedRate" value="${financing.annualizedRate}" readOnly/></td>
+				<td><input type="text" name="financing.annualizedRate" value="${financing.annualizedRate}" readOnly/>
+				<t id="mm">-<input type="text" name="financing.annualizedRateEnd" value="${financing.annualizedRateEnd}" /> </t></td>
+               
 			</tr>
 			<tr>
 				<th>封闭期(月)</th>
-				<td><input type="number" name="financing.months" value="${financing.months}"  readOnly/></td>
+				<td><input type="number" name="financing.months" value="${financing.months}"  readOnly/>
+				 <t id="oo">-<input type="number" name="financing.monthsEnd" value="${financing.monthsEnd}" readOnly/></t></td>
 			</tr>
 			<tr>
 				<th>起点(万元)</th>

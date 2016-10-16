@@ -74,8 +74,8 @@
 				<td align="center"><s:property value="%{dataPage.start+#st.index + 1}"/></td>
 				<td><s:property value="type"/>&nbsp;</td>
 				<td><s:property value="financingName"/>&nbsp;</td>
-				<td><s:property value="months"/>&nbsp;</td>
-				<td><s:property value="annualizedRate"/>% &nbsp;</td>
+				<td><s:property value="months"/><s:if test="type==6">-<s:property value="monthsEnd"/> &nbsp;</s:if></td>
+				<td><s:property value="annualizedRate"/><s:if test="type==6">-<s:property value="annualizedRateEnd"/> &nbsp;</s:if>%</td>
 				<td><s:property value="startUp"/>&nbsp;</td>
 				<td><s:property value="financingDesc"/>&nbsp;</td>
 				<td align="center">
