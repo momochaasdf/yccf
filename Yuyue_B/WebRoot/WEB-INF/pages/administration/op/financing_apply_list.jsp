@@ -119,6 +119,6 @@
 			</s:iterator>
 			</tbody>
 		</table><s:url  action="ComM_list.do" id="url"></s:url>
-		<z:pgination totalCount="${pgn.totalCount}" url="${url}" type="0" pageSize="10" />
+		<z:pgination totalCount="${dataPage.totalCount}" url="${url}" type="0" pageSize="10" />
 	</body>
 </html>
