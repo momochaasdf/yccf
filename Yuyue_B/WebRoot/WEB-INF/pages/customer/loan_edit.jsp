@@ -78,10 +78,14 @@
 					value="${customer.address}" /></td>
 			</tr>
 			<tr>
-				<th style="height: 40px;">头像</th>
-				<td style="height: 40px;"><img src="${customer.picUrl}"
-					width="40px" height="40px" /></td>
-				<td style="height: 40px;"><input type="file" name="fileUpload"></input></td>
+				<th>抵押物</th>
+				<td><input type="text" name="customer.plege"
+					value="${customer.plege}"/></td>
+			</tr>
+			<tr>
+				<th>抵押物去向</th>
+				<td><input type="text" name="customer.plegeGo"
+					value="${customer.plegeGo}"/></td>
 			</tr>
 			<tr>
 				<th>业务员</th>

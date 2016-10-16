@@ -115,11 +115,12 @@
 				<tr style="background: none" class="table_tr_title title_qingse">
 					<td style="border-left: 2px solid #F5F5F5; width: 5%">序号</td>
 					<td>名称</td>
-					<td>头像</td>
 					<td>联系电话</td>
 					<td>证件号码</td>
 					<td>所属单位</td>
 					<td style="width: 30%">住址</td>
+					<td >抵押物</td>
+					<td >抵押物去向</td>
 					<td style="width: 10%">操作</td>
 				</tr>
 				<s:iterator value="dataPage.data" status="st">
@@ -130,12 +131,12 @@
 						<td align="center"><s:property
 								value="%{dataPage.start+#st.index + 1}" /></td>
 						<td><s:property value="customerName" />&nbsp;</td>
-						<td><img style="width: 60px; height: 60px;"
-							src='<s:property value="picUrl"/>'></img>&nbsp;</td>
 						<td><s:property value="telephone" />&nbsp;</td>
 						<td><s:property value="cardId" />&nbsp;</td>
 						<td><s:property value="industry" />&nbsp;</td>
 						<td><s:property value="address" />&nbsp;</td>
+						<td><s:property value="plege" />&nbsp;</td>
+						<td><s:property value="plegeGo" />&nbsp;</td>
 						<td align="center">
 						   <c:if test="${fn:contains(button, 'loan_customer_edit') && type ==0}">
 						   <a href="<%=request.getContextPath()%>/customer/loan/edit.do?type=${type}&id=<s:property value="customerId"/>">修改</a>
