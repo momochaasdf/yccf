@@ -86,7 +86,7 @@ public class FinancingApplyAction extends BaseMgrAction {
 				c.ne("type", "4");
 			}
 		}
-		
+
 		if ((userRoleNames.contains("总经理") || userRoleNames.contains("理财总监"))) {
 
 		} else if (userRoleNames.contains("理财团队经理")) {
@@ -102,13 +102,13 @@ public class FinancingApplyAction extends BaseMgrAction {
 			if (userIdList.isEmpty()) {
 				c.eq("employeeId", "0");
 			} else {
-				Object[] userIds =  userIdList.toArray();
+				Object[] userIds = userIdList.toArray();
 				c.in("employeeId", userIds);
 			}
 		} else if (userRoleNames.contains("理财经理")) {
 			c.eq("employeeId", userId);
 		}
-		currentPage = this.start/pageSize +1 ;
+		currentPage = this.start / pageSize + 1;
 		dataPage = commonService.find(c, FinancingApply.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
 		return LIST;
@@ -133,12 +133,31 @@ public class FinancingApplyAction extends BaseMgrAction {
 
 	public String save() throws Exception {
 		LOG.debug("--------------------FinancingApplyAction -> save----------------");
+		CriteriaWrapper criteriaWrapper = CriteriaWrapper.newInstance();
+		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
+		dicParam.eq("dictTypeCode", "financing_contract_code");
+		dicList = commonService.find(dicParam, ComDict.class);
+		String pic = "";
+		if (null != dicList) {
+			pic = dicList.get(0).getDictCode();
+		}
+		Long count = commonService.count(criteriaWrapper, FinancingApply.class) + 1;
+
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		StringBuffer sb = new StringBuffer();
+		int num = 8 - count.toString().length();
+		for (int i = 0; i < num; i++) {
+			sb.append("0");
+		}
+		sb.append(count);
+		String code = pic + year + "-" + sb.toString();
 		if (financingApply != null) {
 			String customerId = financingApply.getCustomerName().split("_")[0];
 			String customerName = financingApply.getCustomerName().split("_")[1];
 			financingApply.setCustomerId(customerId);
 			financingApply.setCustomerName(customerName);
-
+			financingApply.setContractId(code);
 			String EmployeeId = financingApply.getEmployeeName().split("_")[0];
 			String EmployeeName = financingApply.getEmployeeName().split("_")[1];
 			financingApply.setEmployeeId(EmployeeId);
@@ -239,7 +258,11 @@ public class FinancingApplyAction extends BaseMgrAction {
 				Calendar mm = Calendar.getInstance();// 定义日期实例
 				FinancingCustomer existCustomer = this.financingCustomerService.get(r.getCustomerId());
 				dataMap.put("customerName", existCustomer.getCustomerName());
-				dataMap.put("cardType", existCustomer.getCardType());
+				String cardType = "身份证";
+				if ("2".equals(existCustomer.getCardType())) {
+					cardType = "户口本";
+				}
+				dataMap.put("cardType", cardType);
 				dataMap.put("address", existCustomer.getAddress());
 				dataMap.put("telephone", existCustomer.getTelephone());
 				dataMap.put("cardId", existCustomer.getCardId());
@@ -341,6 +364,15 @@ public class FinancingApplyAction extends BaseMgrAction {
 						dataMap.put("monthyct", "");
 						dataMap.put("dayyct", "");
 					}
+				}
+				dataMap.put("contractCode", r.getContractId());
+				String lendingWay = r.getLendingWay();
+				if ("1".equals(lendingWay)) {
+					dataMap.put("leadingWay1", "☑");
+					dataMap.put("leadingWay2", "☒");
+				} else {
+					dataMap.put("leadingWay1", "☒");
+					dataMap.put("leadingWay2", "☑");
 				}
 				CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 				dicParam.eq("dictTypeCode", "bank_card_id");
