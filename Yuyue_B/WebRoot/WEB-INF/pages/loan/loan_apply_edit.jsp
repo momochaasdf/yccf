@@ -97,6 +97,7 @@
 	</div>
 	<form action="#" method="post" id="loanApplyForm">
 	<input type="hidden" name="type"  value="${type}" />
+	<input type="hidden" name="loanApply.contractId" value="${loanApply.contractId}"/>
 		<div class="navButton">
 			<input type="button" value="确定" name="btOk" class="btOk"
 				style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path%>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;" />
@@ -220,6 +221,11 @@
 				<th>借款用途</th>
 				<td><input type="text" name="loanApply.loanReason" class="editReadonly"
 					value="${loanApply.loanReason}" /></td>
+			</tr>
+			<tr>
+				<th>未关联金额</th>
+				<td><input type="number" name="loanApply.noRelMoney"
+					value="${loanApply.noRelMoney}" /></td>
 			</tr>
 			<tr>
 				<th>还款类型</th>

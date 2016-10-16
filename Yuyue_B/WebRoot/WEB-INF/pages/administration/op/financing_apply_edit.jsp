@@ -41,6 +41,7 @@
 		</div>
 		<div class="msg" style="clear: both;"><s:actionmessage/><s:fielderror/><s:actionerror/> </div>
 		<form action="#" method="post" id="financingApplyForm">
+		<input type="hidden" name="financingApply.contractId" value="${financingApply.contractId}"/>
 		<div class="navButton">
 		<input type="button" value="确定" name="btOk" class="btOk" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
 		<input type="button" value="返回" name="btBack" class="btBack" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
@@ -117,6 +118,10 @@
 			       <option value="2">关系受让</option>
 			      </select>
 			    </td>
+			</tr>
+			<tr>
+				<th>未债权金额</th>
+				<td><input type="number" name="financingApply.noDebtsMoney" value="${financingApply.noDebtsMoney}" /></td>
 			</tr>
 			<tr>
 				<th>开户银行（精确到支行）</th>

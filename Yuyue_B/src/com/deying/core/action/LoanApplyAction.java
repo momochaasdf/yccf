@@ -131,13 +131,32 @@ public class LoanApplyAction extends BaseMgrAction {
 
 	public String save() throws Exception {
 		LOG.debug("--------------------loanApplyAction -> save----------------");
+		CriteriaWrapper criteriaWrapper = CriteriaWrapper.newInstance();
+		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
+		dicParam.eq("dictTypeCode", "loan_contract_code");
+		dicList = commonService.find(dicParam, ComDict.class);
+		String pic = "";
+		if (null != dicList) {
+			pic = dicList.get(0).getDictCode();
+		}
+		Long count = commonService.count(criteriaWrapper, LoanApply.class) + 1;
 
+		Calendar cal = Calendar.getInstance();
+		int year = cal.get(Calendar.YEAR);
+		StringBuffer sb = new StringBuffer();
+		int num = 8 - count.toString().length();
+		for (int i = 0; i < num; i++) {
+			sb.append("0");
+		}
+		sb.append(count);
+		String code = pic + year + "-" + sb.toString();
+		
 		if (loanApply != null) {
 			String customerId = loanApply.getCustomerName().split("_")[0];
 			String customerName = loanApply.getCustomerName().split("_")[1];
 			loanApply.setCustomerId(customerId);
 			loanApply.setCustomerName(customerName);
-
+			loanApply.setContractId(code);
 			String EmployeeId = loanApply.getEmployeeName().split("_")[0];
 			String EmployeeName = loanApply.getEmployeeName().split("_")[1];
 			loanApply.setEmployeeId(EmployeeId);
@@ -281,7 +300,7 @@ public class LoanApplyAction extends BaseMgrAction {
 				dataMap.put("address", existCustomer.getAddress());
 				dataMap.put("telephone", existCustomer.getTelephone());
 				dataMap.put("cardId", existCustomer.getCardId());
-
+				dataMap.put("contractCode", r.getContractId());
 				dataMap.put("lenderName", r.getLenderName());
 				dataMap.put("lenderCardId", r.getLenderCardId());
 				dataMap.put("lenderAddress", r.getLenderAddress());

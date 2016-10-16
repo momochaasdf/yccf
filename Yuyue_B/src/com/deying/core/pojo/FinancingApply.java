@@ -34,6 +34,7 @@ public class FinancingApply implements java.io.Serializable {
 	private String type;
 	private BigDecimal annualizedRate;
 	private long money;
+	private String noDebtsMoney;
 	private String upperMoney;
 	private BigDecimal expireMoney;
 	private String upperExpireMoney;
@@ -57,7 +58,7 @@ public class FinancingApply implements java.io.Serializable {
 
 	public FinancingApply(String financingApplyId, String customerId,
 			String customerName, String type, BigDecimal annualizedRate,
-			long money, Date financingStartTime, Date financingEndTime,
+			long money,String noDebtsMoney, Date financingStartTime, Date financingEndTime,
 			String months, String depositBank, String employeeId,
 			String employeeName, String status) {
 		this.financingApplyId = financingApplyId;
@@ -66,6 +67,7 @@ public class FinancingApply implements java.io.Serializable {
 		this.type = type;
 		this.annualizedRate = annualizedRate;
 		this.money = money;
+		this.noDebtsMoney = noDebtsMoney;
 		this.financingStartTime = financingStartTime;
 		this.financingEndTime = financingEndTime;
 		this.months = months;
@@ -82,7 +84,7 @@ public class FinancingApply implements java.io.Serializable {
 			BigDecimal expireMoney, String upperExpireMoney, String lendingWay,
 			Date financingStartTime, Date financingEndTime, String months,
 			String depositBank, String bankCardId, String employeeId,
-			String employeeName, String status, String companyId,
+			String employeeName, String status, String companyId, String noDebtsMoney,
 			String crtUid, Date crtTime, String updUid, Date updTime) {
 		this.financingApplyId = financingApplyId;
 		this.customerId = customerId;
@@ -110,6 +112,7 @@ public class FinancingApply implements java.io.Serializable {
 		this.crtUid = crtUid;
 		this.crtTime = crtTime;
 		this.updUid = updUid;
+		this.noDebtsMoney = noDebtsMoney;
 		this.updTime = updTime;
 	}
 
@@ -205,6 +208,15 @@ public class FinancingApply implements java.io.Serializable {
 
 	public void setMoney(long money) {
 		this.money = money;
+	}
+	
+	@Column(name = "NO_DEBTS_MONEY", length = 100)
+	public String getNoDebtsMoney() {
+		return this.noDebtsMoney;
+	}
+
+	public void setNoDebtsMoney(String noDebtsMoney) {
+		this.noDebtsMoney = noDebtsMoney;
 	}
 
 	@Column(name = "UPPER_MONEY", length = 100)

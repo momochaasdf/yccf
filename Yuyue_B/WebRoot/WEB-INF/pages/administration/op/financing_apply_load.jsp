@@ -87,6 +87,10 @@
 			    </td>
 			</tr>
 			<tr>
+				<th>未债权金额</th>
+				<td><input type="number" name="financingApply.noDebtsMoney" value="${financingApply.noDebtsMoney}" readonly/></td>
+			</tr>
+			<tr>
 				<th>开户银行（精确到支行）</th>
 				<td><input type="text" name="financingApply.depositBank"
 					value="${financingApply.depositBank}" readonly/></td>

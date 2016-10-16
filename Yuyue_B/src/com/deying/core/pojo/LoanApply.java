@@ -50,6 +50,7 @@ public class LoanApply implements java.io.Serializable {
 	private String months;
 	private BigDecimal rate;
 	private long applyMoney;
+	private String noRelMoney;
 	private String loanReason;
 	private String status;
 	private String repayDay;
@@ -104,7 +105,7 @@ public class LoanApply implements java.io.Serializable {
 			String upperMoney, BigDecimal permonthMoney,
 			String upperPermonthMoney, String refuseReason,
 			String reviewPerson, Date reviewTime, String companyId,
-			String crtUid, Date crtTime, String updUid, Date updTime,String repayDay) {
+			String crtUid, Date crtTime, String updUid, Date updTime,String repayDay,String noRelMoney) {
 		this.loanApplyId = loanApplyId;
 		this.customerId = customerId;
 		this.customerName = customerName;
@@ -148,6 +149,7 @@ public class LoanApply implements java.io.Serializable {
 		this.updUid = updUid;
 		this.updTime = updTime;
 		this.repayDay = repayDay;
+		this.noRelMoney = noRelMoney;
 	}
 
 	@Id
@@ -205,6 +207,15 @@ public class LoanApply implements java.io.Serializable {
 
 	public void setLenderAddress(String lenderAddress) {
 		this.lenderAddress = lenderAddress;
+	}
+	
+	@Column(name = "NO_REL_MONEY", length = 200)
+	public String getNoRelMoney() {
+		return this.noRelMoney;
+	}
+
+	public void setNoRelMoney(String noRelMoney) {
+		this.noRelMoney = noRelMoney;
 	}
 
 	@Column(name = "REPAYMENT_NAME1", length = 100)

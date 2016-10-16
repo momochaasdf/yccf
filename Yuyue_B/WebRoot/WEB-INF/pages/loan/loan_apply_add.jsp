@@ -217,6 +217,11 @@
 					value="${loanApply.applyMoney}" /></td>
 			</tr>
 			<tr>
+				<th>未关联金额</th>
+				<td><input type="number" name="loanApply.noRelMoney"
+					value="${loanApply.noRelMoney}" /></td>
+			</tr>
+			<tr>
 				<th>借款用途</th>
 				<td><input type="text" name="loanApply.loanReason"
 					value="${loanApply.loanReason}" /></td>

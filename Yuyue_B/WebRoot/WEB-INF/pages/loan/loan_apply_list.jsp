@@ -100,7 +100,7 @@
 	<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 		<thead>
 			<tr>
-				<th style="width: 5%">序号</th>
+				<th style="width: 10%">合同编码</th>
 				<th>借款客户名称</th>
 				<th>出借人名称</th>
 				<th>还款方式</th>
@@ -120,7 +120,7 @@
 			<s:iterator value="dataPage.data" status="st">
 				<tr <s:if test="!#st.odd">class="trodd"</s:if>>
 					<td align="center"><s:property
-							value="%{dataPage.start+#st.index + 1}" /></td>
+							value="contractId" /></td>
 					<td><s:property value="customerName" />&nbsp;</td>
 					<td><s:property value="lenderName" />&nbsp;</td>
 					<td><z:dict  type="collection_loan_type" code="%{type}" />&nbsp;</td>

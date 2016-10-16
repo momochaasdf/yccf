@@ -144,6 +144,11 @@
 					value="${loanApply.loanReason}" readonly/></td>
 			</tr>
 			<tr>
+				<th>未关联金额</th>
+				<td><input type="number" name="loanApply.noRelMoney"
+					value="${loanApply.noRelMoney}" readonly/></td>
+			</tr>
+			<tr>
 				<th>还款类型</th>
 				<td><select name="loanApply.type" disabled>
 						<option value="1" <s:if test="%{loanApply.type==1}">selected =selected</s:if>>本息同还</option>
