@@ -52,6 +52,7 @@ public class LoanApply implements java.io.Serializable {
 	private long applyMoney;
 	private String loanReason;
 	private String status;
+	private String repayDay;
 	private String repaymentStatus;
 	private Integer overdueNums;
 	private Long agreeMoney;
@@ -103,7 +104,7 @@ public class LoanApply implements java.io.Serializable {
 			String upperMoney, BigDecimal permonthMoney,
 			String upperPermonthMoney, String refuseReason,
 			String reviewPerson, Date reviewTime, String companyId,
-			String crtUid, Date crtTime, String updUid, Date updTime) {
+			String crtUid, Date crtTime, String updUid, Date updTime,String repayDay) {
 		this.loanApplyId = loanApplyId;
 		this.customerId = customerId;
 		this.customerName = customerName;
@@ -146,6 +147,7 @@ public class LoanApply implements java.io.Serializable {
 		this.crtTime = crtTime;
 		this.updUid = updUid;
 		this.updTime = updTime;
+		this.repayDay = repayDay;
 	}
 
 	@Id
@@ -475,6 +477,15 @@ public class LoanApply implements java.io.Serializable {
 
 	public void setReviewPerson(String reviewPerson) {
 		this.reviewPerson = reviewPerson;
+	}
+	
+	@Column(name = "REPAY_DAY", length = 10)
+	public String getRepayDay() {
+		return this.repayDay;
+	}
+
+	public void setRepayDay(String repayDay) {
+		this.repayDay = repayDay;
 	}
 
 	@Temporal(TemporalType.TIMESTAMP)

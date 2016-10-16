@@ -54,11 +54,26 @@
 			<table cellpadding="0" cellspacing="0" class="navSearch"
 				id="targetTable">
 				<tr>
-					<th style="width: 20%">客户名称</th>
-					<td style="width: 30%"><input type="text"
+					<th  >客户名称</th>
+					<td  ><input type="text"
 						name="iloanApply.customerName" value="${iloanApply.customerName}" /></td>
-					<th style="width: 20%">状态</th>
-					<td style="width: 30%"> <s:radio list="#{'1':'还款中','2':'已还清'}" name="iloanApply.repaymentStatus"/></td> 
+					<th  >状态</th>
+					<td  > <s:radio list="#{'1':'还款中','2':'已还清'}" name="iloanApply.repaymentStatus"/></td> 
+				    <th>还款类型</th>
+				     <td><select name="iloanApply.type" class="editReadonly">
+				        <option  value="">请选择</option>
+						<option value="1" <s:if test="%{iloanApply.type=='1'}">selected =selected</s:if>>本息同还</option>
+						<option value="2" <s:if test="%{iloanApply.type=='2'}">selected =selected</s:if>>先息后本</option>
+				</select></td>
+				    <th>审核状态</th>
+				<td><select name="iloanApply.status">
+				        <option value="">请选择</option>
+						<option value="0"  <s:if test="%{iloanApply.status=='0'}">selected =selected</s:if>>待审批</option>
+						<option value="1"  <s:if test="%{iloanApply.status=='1'}">selected =selected</s:if>>审核中</option>
+						<option value="2"  <s:if test="%{iloanApply.status=='2'}">selected =selected</s:if>>通过</option>
+						<option value="3"  <s:if test="%{iloanApply.status=='3'}">selected =selected</s:if>>拒绝</option>
+						<option value="4"  <s:if test="%{iloanApply.status=='4'}">selected =selected</s:if>>金额待修改</option>
+				</select></td>
 				</tr>
 			</table>
 		</fieldset>

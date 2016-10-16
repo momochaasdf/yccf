@@ -112,7 +112,7 @@
 				   </s:iterator>
 				</select></td>
 			</tr>
-			<tr>
+			<%-- <tr>
 				<th>出借人名字</th>
 				<td><input type="text" name="loanApply.lenderName"
 					value="${loanApply.lenderName}" class="editReadonly"/></td>
@@ -126,7 +126,7 @@
 				<th>出借人现住地址</th>
 				<td><input type="text" name="loanApply.lenderAddress"
 					value="${loanApply.lenderAddress}" class="editReadonly"/></td>
-			</tr>
+			</tr> --%>
 			<tr>
 				<th>还款户名1</th>
 				<td><input type="text" name="loanApply.repaymentName1"
@@ -259,6 +259,11 @@
 				<th>大写月偿还本息数额</th>
 				<td><input type="text" name="loanApply.upperPermonthMoney" class="editReadonly"
 					value="${loanApply.upperPermonthMoney}" /></td>
+			</tr>
+			<tr>
+				<th>每月还款日</th>
+				<td><input type="number" name="loanApply.repayDay"  
+					value="${loanApply.repayDay}" /></td>
 			</tr>
 			<s:if test="%{type==1}">
 			<tr>

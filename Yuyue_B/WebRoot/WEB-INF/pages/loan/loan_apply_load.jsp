@@ -38,7 +38,7 @@
 				<th>客户名称</th>
 				<td><input type="text" name="loanApply.customerName" value="${loanApply.customerName}" readonly/></td>
 			</tr>
-			<tr>
+			<%-- <tr>
 				<th>出借人名字</th>
 				<td><input type="text" name="loanApply.lenderName"
 					value="${loanApply.lenderName}" readonly/></td>
@@ -52,7 +52,7 @@
 				<th>出借人现住地址</th>
 				<td><input type="text" name="loanApply.lenderAddress"
 					value="${loanApply.lenderAddress}" readonly/></td>
-			</tr>
+			</tr> --%>
 			<tr>
 				<th>还款户名1</th>
 				<td><input type="text" name="loanApply.repaymentName1"
@@ -181,6 +181,11 @@
 				<th>大写月偿还本息数额</th>
 				<td><input type="text" name="loanApply.upperPermonthMoney"
 					value="${loanApply.upperPermonthMoney}" readonly/></td>
+			</tr>
+			<tr>
+				<th>每月还款日</th>
+				<td><input type="number" name="loanApply.repayDay"  readonly
+					value="${loanApply.repayDay}" /></td>
 			</tr>
 			<tr>
 				<th>审核状态</th>

@@ -322,27 +322,38 @@ public class RemindTimer implements Timer {
 	}
 
 	public static void main(String[] args) {
-		System.out.println(DateUtils.getMonthEnd());
+		String  day = "9";
+		Integer payDay = Integer .valueOf(day);
+		String threeDayLater = DateUtils.format(DateUtils.add(Calendar.DATE, 3), "dd");
+		Integer now = Integer.valueOf(threeDayLater);
+		 
+		System.out.println(now.equals(payDay));
 	}
-
+   
+	 
+	
 	/**
 	 * 借款催收提醒
 	 * 
 	 * @throws Exception
 	 */
 	private void loanCollectionRemind() throws Exception {
-		// 获取当天的日期
-		String nowDate = DateUtils.format(new Date(), "dd");
+		 
 
 		CriteriaWrapper c3 = CriteriaWrapper.newInstance();
 		List<LoanApply> loanList = commonService.find(c3, LoanApply.class);
 
 		for (LoanApply apply : loanList) {
-			Date endDate = apply.getLoanEndTime();
-			Date startDate = apply.getLoanStartTime();
+			 
+			String day = apply.getRepayDay();
 			if (apply.getRepaymentType().equals("1")) {
-				String day = DateUtils.format(startDate, "dd");
-				if (day.equals(nowDate)) {
+				if(StringUtils.isBlank(day)){
+					day = "1";
+				}
+				Integer payDay = Integer .valueOf(day);
+				String threeDayLater = DateUtils.format(DateUtils.add(Calendar.DATE, 3), "dd");
+				Integer now = Integer.valueOf(threeDayLater);
+				if (payDay.equals(now)) {
 					CriteriaWrapper c = CriteriaWrapper.newInstance();
 					c.eq("customerId", apply.getCustomerId());
 					List<LoanCustomer> customerList = commonService.find(c, LoanCustomer.class);
