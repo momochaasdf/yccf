@@ -94,6 +94,7 @@
 				<th>审核人</th>
 				<th>审核状态</th>
 				<th>审核时间</th>
+				<th>状态</th>
 				 <th style="width: 20%">操作</th>
 				 
 			</tr>
@@ -113,6 +114,7 @@
 					<td><s:property value="reviewPerson" />&nbsp;</td>
 					<td><z:dict  type="loan_apply_status" code="%{status}" />&nbsp;</td>
 					<td><s:date name="%{reviewTime}" format="yyyy-MM-dd"/> &nbsp;</td>
+					<td style="width:5%"><s:if test="repaymentStatus==1">还款中</s:if><s:elseif test="repaymentStatus==2">已还清</s:elseif><s:else>&nbsp;</s:else> </td>
 					<td align="center">
 					   <c:choose> 
 						<c:when test="${fn:contains(button, 'loan_apply_edit') && button_type ==0 && (status ==0 || fn:contains(userRoleNames, '总经理'))}">
