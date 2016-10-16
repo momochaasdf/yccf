@@ -30,6 +30,8 @@ public class LoanCustomer implements java.io.Serializable,Cloneable {
 	private String telephone;
 	private String address;
 	private String companyId;
+	private String plege;
+	private String plegeGo;
 	private String employeeId;
 	private String employeeName;
 	private String crtUid;
@@ -50,7 +52,7 @@ public class LoanCustomer implements java.io.Serializable,Cloneable {
 
 	public LoanCustomer(String customerId, String customerName,
 			String picUrl, String industry, String cardId, String telephone,
-			String address, String companyId,String employeeId,
+			String address, String companyId,String employeeId,String plegeGo,String plege,
 			String employeeName, String crtUid, Date crtTime,
 			String updUid, Date updTime) {
 		this.customerId = customerId;
@@ -67,6 +69,8 @@ public class LoanCustomer implements java.io.Serializable,Cloneable {
 		this.updTime = updTime;
 		this.employeeId = employeeId;
 		this.employeeName = employeeName;
+		this.plege = plege;
+		this.plegeGo = plegeGo;
 	}
 
 	@Id
@@ -199,5 +203,23 @@ public class LoanCustomer implements java.io.Serializable,Cloneable {
 	public void setEmployeeName(String employeeName) {
 		this.employeeName = employeeName;
 	}
+   
+	
+	@Column(name = "PLEDGE", length = 255)
+	public String getPlege() {
+		return this.plege;
+	}
 
+	public void setPlege(String plege) {
+		this.plege = plege;
+	}
+	
+	@Column(name = "PLEDGE_GO", length = 255)
+	public String getPlegeGo() {
+		return this.plegeGo;
+	}
+
+	public void setPlegeGo(String plegeGo) {
+		this.plegeGo = plegeGo;
+	}
 }
