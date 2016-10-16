@@ -110,7 +110,13 @@
 								
 							</td>
 							<td align="left">
-								<z:dict  type="birthday_remind_status" code="%{status}" />&nbsp;
+							       <s:if test="%{status==1}">
+						         已提醒
+						        </s:if>
+						        <s:else>
+						         未提醒
+						        </s:else>
+								 &nbsp;
 							</td>
 							<td align="left">
 								<s:property value="info" />
