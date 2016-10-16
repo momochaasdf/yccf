@@ -98,7 +98,7 @@
 				<td><s:date name="%{financingStartTime}" format="yyyy-MM-dd"/> &nbsp;</td>
 				<td><s:date name="%{financingEndTime}"  format="yyyy-MM-dd"/>&nbsp;</td>
 				<td>
-				 <z:dict  type="financing_remind_status" code="%{status}" />
+				 <z:dict  type="financing_status" code="%{status}" />
 				</td>
 				<td align="center">
 				   <c:if test="${fn:contains(button, 'financing_apply_edit') && buttonType ==0}">
