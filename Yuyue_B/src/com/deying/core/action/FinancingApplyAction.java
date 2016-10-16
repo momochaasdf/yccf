@@ -64,7 +64,11 @@ public class FinancingApplyAction extends BaseMgrAction {
 		this.start = this.start == null ? 1 : this.start;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		String type1 = obtionInfoVal("type", String.class);
+		String status = obtionInfoVal("status", String.class);
 		String customerName = obtionInfoVal("customerName", String.class);
+		if (null != status) {
+			c.like("status", status);
+		}
 		if (null != customerName) {
 			c.like("customerName", customerName);
 		}
