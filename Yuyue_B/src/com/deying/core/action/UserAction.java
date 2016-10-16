@@ -208,7 +208,7 @@ public class UserAction extends BaseMgrAction {
 		msg = "删除操作成功!";
 		return list();
 	}
-
+ 
 	public boolean validateDel() {
 		if (hasErrors()) {
 			return true;
