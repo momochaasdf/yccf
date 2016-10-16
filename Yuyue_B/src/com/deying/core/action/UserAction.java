@@ -203,7 +203,7 @@ public class UserAction extends BaseMgrAction {
 	public String del() throws Exception {
 		LOG.debug("--------------------UserAction -> del----------------");
 		if (this.id != null) {
-			commonService.update(SqlGrammar.newInstance().update("status", "2").eq("id", this.id), ComUser.class);
+			commonService.update(SqlGrammar.newInstance().update("status", "0").eq("id", this.id), ComUser.class);
 		}
 		msg = "删除操作成功!";
 		return list();
