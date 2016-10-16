@@ -19,7 +19,7 @@ public class BirthdayRemindAction extends BaseMgrAction {
 
 		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
-		String[] statuss = {"0"};
+		String[] statuss = {"1"};
 		c.in("status", statuss);
 		c.desc("crtTime");
 
@@ -43,7 +43,7 @@ public class BirthdayRemindAction extends BaseMgrAction {
 			List<BirthdayRemind> remind = commonService.findList(c, BirthdayRemind.class, currentPage, pageSize);
 			if (!remind.isEmpty()) {
 				for (BirthdayRemind r : remind) {
-					r.setStatus(String.valueOf(1));
+					r.setStatus(String.valueOf(0));
 					commonService.update("rinancingRemind", r);
 				}
 			}
