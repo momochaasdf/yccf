@@ -85,7 +85,7 @@
 		<table cellpadding="0" cellspacing="0" align="center" class="listTable">
 			<thead>
 			<tr>
-				<th style="width: 5%">序号</th>
+				<th style="width: 10%">合同编码</th>
 				<th>客户名称</th>
 				<th>产品类型</th>
 				<th>年转化率</th>
@@ -99,7 +99,7 @@
 			<tbody>
 			<s:iterator value="dataPage.data" status="st">
 			<tr <s:if test="!#st.odd">class="trodd"</s:if>>
-				<td align="center"><s:property value="%{dataPage.start+#st.index + 1}"/></td>
+				<td align="center"><s:property value="contractId"/></td>
 				<td><s:property value="customerName"/>&nbsp;</td>
 				<td><z:dict  type="financing_type" code="%{type}"/>&nbsp;</td>
 				<td><s:property value="annualizedRate"/>&nbsp;</td>
