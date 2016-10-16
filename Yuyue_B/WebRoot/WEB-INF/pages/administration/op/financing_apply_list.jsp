@@ -46,8 +46,8 @@
 			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
 				<tr>
 				<c:if test="${buttonType !=4}">
-	<th style="width: 20%">产品类型</th>
-	<td style="width: 30%"><select type="text"
+	                     <th style="width: 15%">产品类型</th>
+	                      <td style="width: 19%"><select type="text"
 						name="info.type">
 							<option value="">所有产品</option>
 								<option value="1" <c:if test="${info.type ==1}">selected=selected </c:if> >季度金</option>
@@ -56,8 +56,17 @@
 								<option value="5" <c:if test="${info.type ==5}">selected=selected </c:if> >仪诚鑫</option>
 								<option value="6" <c:if test="${info.type ==6}">selected=selected </c:if> >仪诚通</option>
 					         </select></td>
+					         
+					          <th style="width: 10%">状态</th>
+	                      <td style="width: 20%"><select type="text"
+						name="info.status">
+							<option value="">所有状态</option>
+								<option value="1" <c:if test="${info.status ==1}">selected=selected </c:if> >理财中</option>
+								<option value="2" <c:if test="${info.status ==2}">selected=selected </c:if> >理财完</option>
+								<option value="3" <c:if test="${info.status ==3}">selected=selected </c:if> >中止违约</option>
+					         </select></td>
 					</c:if>
-	<th style="width: 20%">客户名称</th>
+	<th style="width: 10%">客户名称</th>
 	<td style="width: 30%"><input type="text" name="info.customerName" value="${info.customerName}"/></td>
      </tr> 
 			</table>
