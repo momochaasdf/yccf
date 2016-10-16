@@ -37,6 +37,10 @@ public class Financing implements java.io.Serializable
     
     private String months;
     
+    private BigDecimal annualizedRateEnd;
+    
+    private String monthsEnd;
+    
     private String startUp;
     
     private String companyId;
@@ -65,7 +69,7 @@ public class Financing implements java.io.Serializable
     }
     
     public Financing(String financingId, String financingTypeId, String financingName, String financingDesc,
-        String type, BigDecimal annualizedRate, String months, String startUp, String companyId, String crtUid,
+        String type, BigDecimal annualizedRate, String months,   BigDecimal annualizedRateEnd, String monthsEnd, String startUp, String companyId, String crtUid,
         Date crtTime, String updUid, Date updTime)
     {
         this.financingId = financingId;
@@ -74,6 +78,8 @@ public class Financing implements java.io.Serializable
         this.type = type;
         this.annualizedRate = annualizedRate;
         this.months = months;
+        this.annualizedRateEnd = annualizedRateEnd;
+        this.monthsEnd = monthsEnd;
         this.startUp = startUp;
         this.companyId = companyId;
         this.crtUid = crtUid;
@@ -141,6 +147,17 @@ public class Financing implements java.io.Serializable
         this.annualizedRate = annualizedRate;
     }
     
+    @Column(name = "ANNUALIZED_RATE_END", precision = 10, scale = 1)
+    public BigDecimal getAnnualizedRateEnd()
+    {
+        return this.annualizedRateEnd;
+    }
+    
+    public void setAnnualizedRateEnd(BigDecimal annualizedRateEnd)
+    {
+        this.annualizedRateEnd = annualizedRateEnd;
+    }
+    
     @Column(name = "MONTHS", nullable = false, length = 10)
     public String getMonths()
     {
@@ -150,6 +167,17 @@ public class Financing implements java.io.Serializable
     public void setMonths(String months)
     {
         this.months = months;
+    }
+    
+    @Column(name = "MONTHS_END",  length = 10)
+    public String getMonthsEnd()
+    {
+        return this.monthsEnd;
+    }
+    
+    public void setMonthsEnd(String monthsEnd)
+    {
+        this.monthsEnd = monthsEnd;
     }
     
     @Column(name = "START_UP", nullable = false, length = 2)
