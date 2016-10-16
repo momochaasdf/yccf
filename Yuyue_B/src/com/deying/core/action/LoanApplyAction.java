@@ -90,6 +90,9 @@ public class LoanApplyAction extends BaseMgrAction {
 			if (StringUtils.isNotBlank(iloanApply.getCustomerName())) {
 				c.like("customerName", iloanApply.getCustomerName().trim());
 			}
+			if (StringUtils.isNotBlank(iloanApply.getRepaymentStatus())) {
+				c.eq("repaymentStatus", iloanApply.getRepaymentStatus());
+			}
 		}
 		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
 		dicParam.eq("dictTypeCode", "department_code");
