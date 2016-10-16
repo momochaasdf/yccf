@@ -110,7 +110,7 @@
 								
 							</td>
 							<td align="left">
-							       <s:if test="%{status==1}">
+							       <s:if test="%{status==0}">
 						         已提醒
 						        </s:if>
 						        <s:else>
