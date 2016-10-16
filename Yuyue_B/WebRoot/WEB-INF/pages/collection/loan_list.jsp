@@ -75,10 +75,31 @@
 	 			<table cellpadding="0" cellspacing="0" class="navSearch"
 					id="targetTable">
 					<tr>
-						<th style="width: 20%">客户姓名</th>
-						<td style="width: 30%"><input type="text"
-							name="info.customerName" value="${info.customerName}" /></td>
-					</tr>
+						<th >客户姓名</th>
+						<td ><input type="text"
+							name="collection.customerName" value="${collection.customerName}" /></td>
+						<th>是否提前还清</th>	
+						 <td><select type="text"
+						name="collection.isPrepayment">
+							<option value="" >所有</option>
+								<option value="0" <c:if test="${collection.isPrepayment =='0'}">selected=selected </c:if> >未提前</option>
+								<option value="1" <c:if test="${collection.isPrepayment =='1'}">selected=selected </c:if> >已提前还清</option>
+					         </select></td>	
+					    <th>是否逾期</th>
+					     <td><select type="text"
+						name="collection.isOverdue">
+							<option value="">所有</option>
+								<option value="0" <c:if test="${collection.isOverdue =='0'}">selected=selected </c:if> >未逾期</option>
+								<option value="1" <c:if test="${collection.isOverdue =='1'}">selected=selected </c:if> >逾期</option>
+					         </select></td>	
+					<th>催收状态</th>
+					  <td><select type="text"
+						name="collection.status">
+							    <option value="">所有</option>
+								<option value="0" <c:if test="${collection.status =='0'}">selected=selected </c:if> >未催收</option>
+								<option value="1" <c:if test="${collection.status =='1'}">selected=selected </c:if> >已催收</option>
+								<option value="2" <c:if test="${collection.status =='2'}">selected=selected </c:if> >已还本月</option>
+					         </select></td>	
 				</table>
 				<br />
 			</fieldset>
@@ -152,9 +173,10 @@
 		<div>
 			<d:pages currentPage="%{currentPage}" showPageNumber="3"
 				totalPage="%{totalPage}" url="list.do" cssClass="pagnation">
-				<s:param name="info.collectionName">${info.collectionName}</s:param>
-				<s:param name="info.cardId">${info.cardId}</s:param>
-				<s:param name="info.telephone">${info.telephone}</s:param>
+				<s:param name="collection.customerName">${collection.customerName}</s:param>
+				<s:param name="collection.isPrepayment">${collection.isPrepayment}</s:param>
+				<s:param name="collection.isOverdue">${collection.isOverdue}</s:param>
+				<s:param name="collection.status">${collection.status}</s:param>
 				<s:param name="type">${type}</s:param>
 			</d:pages>
 		</div>
