@@ -72,6 +72,10 @@ public class FinancingAction extends BaseMgrAction
         if (financing != null)
         {
             financing.setCompanyId(this.getCtxUser().getCompanyId());
+            if(!"6".equals(financing.getType())){
+            	financing.setAnnualizedRateEnd(null);
+            	financing.setMonthsEnd(null);
+            }
             this.financingService.save(financing);
             this.addActionMessage(this.getText("do.success.back"));
         }
@@ -119,6 +123,10 @@ public class FinancingAction extends BaseMgrAction
         if (financing != null)
         {
             financing.setCompanyId(this.getCtxUser().getCompanyId());
+            if(!"6".equals(financing.getType())){
+            	financing.setAnnualizedRateEnd(null);
+            	financing.setMonthsEnd(null);
+            }
             this.financing = this.financingService.update(financing);
             this.addActionMessage(this.getText("do.success.back"));
         }
