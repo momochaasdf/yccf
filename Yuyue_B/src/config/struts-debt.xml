@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<package name="core.debt" extends="struts" namespace="/core/debt">
+		<action name="ComM_*" class="com.deying.core.action.DebtAction" method="{1}">
+			<result name="list">/WEB-INF/pages/debt/debt_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/debt/debt_list.jsp</result>
+		</action>
+		<action name="ComC_*" class="com.deying.core.action.DebtAction" method="{1}">
+			<result name="add">/WEB-INF/pages/debt/debt_add.jsp</result>
+			<result name="list">/WEB-INF/pages/debt/debt_list.jsp</result>
+			<result name="input">/WEB-INF/pages/debt/debt_add.jsp</result>
+		</action>
+		<action name="ComU_*" class="com.deying.core.action.DebtAction" method="{1}">
+			<result name="edit">/WEB-INF/pages/debt/debt_{1}.jsp</result>
+			<result name="list">/WEB-INF/pages/debt/debt_list.jsp</result>
+			<result name="input">/WEB-INF/pages/debt/debt_edit.jsp</result>
+		</action>
+		<action name="ComD_*" class="com.deying.core.action.DebtAction" method="{1}">
+			<result name="list">/WEB-INF/pages/debt/debt_list.jsp</result>
+			<result name="input">/WEB-INF/pages/debt/debt_list.jsp</result>
+		</action>
+		<action name="ComR_*" class="com.deying.core.action.DebtAction" method="{1}">
+			<result name="load">/WEB-INF/pages/debt/debt_{1}.jsp</result>
+			<result name="input">/WEB-INF/pages/debt/debt_load.jsp</result>
+		</action>
+	</package>
+	<package name="core.debt.json" extends="json" namespace="/core/debt">
+		<action name="ComJ_*" class="com.deying.core.action.DebtAction" method="{1}">
+			<result type="json"/>
+		</action>
+	</package>
+</struts>
