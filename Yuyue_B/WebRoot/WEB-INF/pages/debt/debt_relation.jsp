@@ -62,7 +62,6 @@
 		<input type="button" value="返回" name="btBack" class="btBack" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
 		</div>
 		<input type="hidden" name="debtRel.debtRelId" value="${debtRel.debtRelId}"  /> 
-		<input type="hidden" name="debtRel.financingApplyId" value="${debtRel.financingApplyId}"  /> 
 		<table cellpadding="0" cellspacing="0" class="editTable">
 		    <tr>
 				<th>理财协议ID</th>
@@ -109,7 +108,8 @@
 			</tr>
 			<tr>
 				<th>还款起始日期</th>
-				<td><input type="text" name="debtRel.loanStartTime" value="${debtRel.loanStartTime}" readonly/></td>
+				<td><input type="text" value="<s:date format="yyyy-MM-dd" name="debtRel.loanStartTime" />"
+					onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"  readonly/></td>
 			</tr>
 			<tr>
 				<th>还款期限</th>
