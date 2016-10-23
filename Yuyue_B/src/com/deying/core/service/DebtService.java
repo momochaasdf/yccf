@@ -1,7 +1,5 @@
- 
-package com.deying.core.service;
 
-import java.io.Serializable;
+package com.deying.core.service;
 
 import com.deying.core.pojo.Debt;
 import com.deying.util.core.com.framework.hibernate3.GenericServer;

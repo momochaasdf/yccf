@@ -346,7 +346,8 @@ public class LoanApplyAction extends BaseMgrAction {
 				dataMap.put("endMonth", endTime.get(Calendar.MONTH) + 1);
 				dataMap.put("endDay", endTime.get(Calendar.DATE));
 				dataMap.put("months", r.getMonths());
-
+				dataMap.put("repayDay", r.getRepayDay());
+                 
 				String upperMoney = r.getUpperMoney();
 				String upperPayMoney = r.getUpperPermonthMoney();
 

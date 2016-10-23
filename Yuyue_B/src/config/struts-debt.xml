@@ -9,9 +9,10 @@
 			<result name="input">/WEB-INF/pages/debt/debt_list.jsp</result>
 		</action>
 		<action name="ComC_*" class="com.deying.core.action.DebtAction" method="{1}">
-			<result name="add">/WEB-INF/pages/debt/debt_add.jsp</result>
+			<result name="relation">/WEB-INF/pages/debt/debt_relation.jsp</result>
+			<result name="loan">/WEB-INF/pages/debt/debt_loan.jsp</result>
+			<result name="relSave">/WEB-INF/pages/debt/debt_list.jsp</result>
 			<result name="list">/WEB-INF/pages/debt/debt_list.jsp</result>
-			<result name="input">/WEB-INF/pages/debt/debt_add.jsp</result>
 		</action>
 		<action name="ComU_*" class="com.deying.core.action.DebtAction" method="{1}">
 			<result name="edit">/WEB-INF/pages/debt/debt_{1}.jsp</result>
@@ -29,7 +30,7 @@
 	</package>
 	<package name="core.debt.json" extends="json" namespace="/core/debt">
 		<action name="ComJ_*" class="com.deying.core.action.DebtAction" method="{1}">
-			<result type="json"/>
+			<result name="list"></result>
 		</action>
 	</package>
 </struts>
