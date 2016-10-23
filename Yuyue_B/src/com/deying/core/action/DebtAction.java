@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.commons.beanutils.BeanUtils;
+import org.apache.commons.beanutils.BeanUtilsBean;
+import org.apache.commons.beanutils.BeanUtilsBean2;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -61,7 +64,7 @@ public class DebtAction extends BaseMgrAction {
 	private List<LoanApply> loanApplyList = null;
 
 	private List<Debt> debtList = null;
-
+	private List<DebtRel> debtRelList = null;
 	private String id;
 
 	private Integer page = null;
@@ -254,13 +257,29 @@ public class DebtAction extends BaseMgrAction {
 			}
 		}
 
+		CriteriaWrapper rel = CriteriaWrapper.newInstance();
+		rel.eq("financingApplyId", financingApplyId);
+		rel.eq("loanApplyId", id);
+		debtRelList = commonService.find(rel, DebtRel.class);
+		if (debtRelList.size() > 0) {
+			DebtRel debtR = debtRelList.get(0);
+			debtRel.setRate(debtR.getRate());
+			debtRel.setLoanMoney(debtR.getLoanMoney());
+			debtRel.setLoanProfession(debtR.getLoanProfession());
+			debtRel.setLoanReason(debtR.getLoanReason());
+			debtRel.setConsideration(debtR.getConsideration());
+			debtRel.setDebtRelId(debtR.getDebtRelId());
+		}
 		return "relation";
 	}
 
 	public String relSave() throws Exception {
 		LOG.debug("--------------------DebtAction -> save----------------");
-
-		debtRelService.save(debtRel);
+		if (StringUtils.isNotBlank(debtRel.getDebtRelId())) {
+			debtRelService.update(debtRel);
+		} else {
+			debtRelService.save(debtRel);
+		}
 		return list();
 	}
 
@@ -514,6 +533,14 @@ public class DebtAction extends BaseMgrAction {
 
 	public void setDebtRelService(DebtRelService debtRelService) {
 		this.debtRelService = debtRelService;
+	}
+
+	public List<DebtRel> getDebtRelList() {
+		return debtRelList;
+	}
+
+	public void setDebtRelList(List<DebtRel> debtRelList) {
+		this.debtRelList = debtRelList;
 	}
 
 }
