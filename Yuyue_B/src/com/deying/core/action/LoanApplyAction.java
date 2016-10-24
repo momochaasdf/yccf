@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
@@ -16,8 +17,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.deying.core.pojo.FinancingApply;
-import com.deying.core.pojo.FinancingCustomer;
+import com.deying.core.pojo.Debt;
+import com.deying.core.pojo.DebtRel;
 import com.deying.core.pojo.LoanApply;
 import com.deying.core.pojo.LoanCustomer;
 import com.deying.core.pojo.user.ComDict;
@@ -55,7 +56,7 @@ public class LoanApplyAction extends BaseMgrAction {
 	private String loginId;
 
 	private String userName;
-	
+
 	private String userRoleNames;
 
 	private List<ComDict> dicList = null;
@@ -150,7 +151,7 @@ public class LoanApplyAction extends BaseMgrAction {
 		}
 		sb.append(count);
 		String code = pic + year + "-" + sb.toString();
-		
+
 		if (loanApply != null) {
 			String customerId = loanApply.getCustomerName().split("_")[0];
 			String customerName = loanApply.getCustomerName().split("_")[1];
@@ -192,7 +193,7 @@ public class LoanApplyAction extends BaseMgrAction {
 
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		customerList = commonService.find(c, LoanCustomer.class);
-		
+
 		// 使用中的用户
 		c.eq("status", "1");
 		List<ComUser> userList = commonService.find(c, ComUser.class);
@@ -289,8 +290,34 @@ public class LoanApplyAction extends BaseMgrAction {
 	}
 
 	@SuppressWarnings({ "unchecked", "unchecked" })
-	private boolean getData(HttpServletResponse response, HttpServletRequest request, Map dataMap, String id) {
+	private boolean getData(HttpServletResponse response, HttpServletRequest request, Map dataMap, String id)
+			throws Exception {
 		LoanApply r = this.loanApplyService.get(id);
+		CriteriaWrapper relParam = CriteriaWrapper.newInstance();
+		CriteriaWrapper debtParam = CriteriaWrapper.newInstance();
+		List<DebtRel> relList = new ArrayList<DebtRel>();
+		List<Debt> debtList = new ArrayList<Debt>();
+		Debt debt = new Debt();
+		relParam.eq("loanApplyId", id);
+		relList = this.commonService.find(relParam, DebtRel.class);
+		if (relList.size() > 0) {
+
+			DebtRel rel = relList.get(0);
+			debtParam.eq("financingApplyId", rel.getFinancingApplyId());
+			debtList = this.commonService.find(debtParam, Debt.class);
+			if (debtList.size() > 0) {
+				debt = debtList.get(0);
+			} else {
+				debt.setCardId("无");
+				debt.setCustomerName("无");
+				debt.setAddress("无");
+			}
+		}
+		if (StringUtils.isBlank(debt.getCustomerName())) {
+			debt.setCardId("无");
+			debt.setCustomerName("无");
+			debt.setAddress("无");
+		}
 		if (null != r) {
 			try {
 				Calendar startTime = Calendar.getInstance();// 定义日期实例
@@ -301,9 +328,9 @@ public class LoanApplyAction extends BaseMgrAction {
 				dataMap.put("telephone", existCustomer.getTelephone());
 				dataMap.put("cardId", existCustomer.getCardId());
 				dataMap.put("contractCode", r.getContractId());
-				dataMap.put("lenderName", r.getLenderName());
-				dataMap.put("lenderCardId", r.getLenderCardId());
-				dataMap.put("lenderAddress", r.getLenderAddress());
+				dataMap.put("lenderName", debt.getCustomerName());
+				dataMap.put("lenderCardId", debt.getCardId());
+				dataMap.put("lenderAddress", debt.getAddress());
 				String pre = r.getRepaymentType();
 				Date loanStartTime = r.getLoanStartTime();
 				Date loanEndTime = r.getLoanEndTime();
@@ -346,8 +373,11 @@ public class LoanApplyAction extends BaseMgrAction {
 				dataMap.put("endMonth", endTime.get(Calendar.MONTH) + 1);
 				dataMap.put("endDay", endTime.get(Calendar.DATE));
 				dataMap.put("months", r.getMonths());
-				dataMap.put("repayDay", r.getRepayDay());
-                 
+				if (StringUtils.isBlank(r.getRepayDay())) {
+					dataMap.put("repayDay", startTime.get(Calendar.DATE));
+				} else {
+					dataMap.put("repayDay", r.getRepayDay());
+				}
 				String upperMoney = r.getUpperMoney();
 				String upperPayMoney = r.getUpperPermonthMoney();
 
@@ -573,5 +603,5 @@ public class LoanApplyAction extends BaseMgrAction {
 	public void setUserRoleNames(String userRoleNames) {
 		this.userRoleNames = userRoleNames;
 	}
-    
+
 }
