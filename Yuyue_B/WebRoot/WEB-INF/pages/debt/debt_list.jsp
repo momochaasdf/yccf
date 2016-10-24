@@ -43,7 +43,6 @@
 	<th style="width: 20%">债权状态</th>
     <td><select name="info.status" >
 				        <option  value="">请选择</option>
-				        <option value="0" <c:if test="${info.status ==0}">selected=selected </c:if> >未初始化</option>
 				        <option value="2" <c:if test="${info.status ==2}">selected=selected </c:if> >失效</option>
 						<option value="1" <c:if test="${info.status ==1}">selected=selected </c:if> >生效</option>
 				</select></td>

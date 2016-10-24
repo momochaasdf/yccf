@@ -94,16 +94,22 @@ public class DebtAction extends BaseMgrAction {
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		String status = obtionInfoVal("status", String.class);
 		String customerName = obtionInfoVal("customerName", String.class);
-		if (null != idebt) {
+		if (StringUtils.isNotBlank(status) && status.equals("1")) {
 			if (StringUtils.isNotBlank(customerName)) {
-
-				// c.eq("type", idebt.getType().trim());
+				c.eq("customerName", customerName.trim());
 			}
 			if (StringUtils.isNotBlank(status)) {
-				c.eq("status", idebt.getStatus());
+				c.eq("status", status);
 			}
+			dataPage = commonService.find(c, Debt.class, currentPage, pageSize);
 		} else {
 			CriteriaWrapper apply = CriteriaWrapper.newInstance();
+			if (StringUtils.isNotBlank(customerName)) {
+				apply.eq("customerName", customerName.trim());
+			}
+			if (StringUtils.isNotBlank(status)) {
+				apply.ne("status", "1");
+			}
 			dataPage = commonService.find(apply, FinancingApply.class, currentPage, pageSize);
 			List<FinancingApply> financingApplyList = dataPage.getData();
 			debtList = new ArrayList<Debt>();
