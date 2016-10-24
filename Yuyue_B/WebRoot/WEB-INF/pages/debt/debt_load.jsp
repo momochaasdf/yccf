@@ -6,79 +6,127 @@
 %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-<head>
+	<head>
 	<link rel="stylesheet" href="<%=path%>/common/css/shopBase.css"
 			type="text/css" />
-			
-    	<script type="text/javascript">
+	<script type="text/javascript">
 	$(document).ready(function(){
-		onchange1();
+		var _validator=$("#debtForm").validate({
+		onsubmit: true,
+		rules: {
+			'debt.type':{required: true},
+			'debt.annualizedRate':{required: true,maxbytelen:100},
+			'debt.annualizedRateEnd':{maxbytelen:100},
+			'debt.months':{min:1,number:true,required: true},
+			'debt.monthsEnd':{min:1,number:true},
+			'debt.startUp':{min:5,max:100,number:true,required: true}
+		}});
+		$("input.btOk").click(function(){
+			if(_validator.form()){doAction('debtForm','ComC_save','');}
+		});
+		$("input.btBack").click(function(){
+			doAction('debtForm','ComM_list','');
+		});
+		
 	});
 	
-	function onchange1(){
-		var code= $("#codeType").val();
-		if ("仪诚通" ==code){
-			$("#mm").css("visibility","visible");
-			$("#oo").css("visibility","visible");
-		}else {
-			$("#mm").css("visibility","hidden");
-			$("#oo").css("visibility","hidden");
-		}
-		
-	}
 	</script>
-</head>
+	
+		
+	<style type="text/css">
+	input[type="text"], input[type="password"], textarea {
+    border: 1px solid #CCCCCC;
+    height: 27px;
+    width: 200px;
+    line-height: 27px;
+ 
+    background-color: transparent;
+    background-color: expression((this.readOnly==true || this.disabled==true)?"#DDDDDD":"");
+    }
+	</style>
+	</head>
 	<body>
 		<div class="right">
 			<div class="o-mt">
 				<h2 style="margin-top: 0;">
-					<a href="<%=path %>/core/financing/ComM_list.do" style="color:#cc0000">理财产品管理</a>
+					<a href="<%=path %>/core/debt/ComM_list.do" style="color:#cc0000">债权管理</a>
 					&nbsp;&gt;&gt;&nbsp;
-					<a style="color:#cc0000" href="javascript:void(0);">理财产品详情</a>
+					<a style="color:#cc0000" href="javascript:void(0);">债权详情</a>
 				</h2>
 			</div>
 		</div>
-		<div class="msg" style="clear: both;"><s:actionmessage/></div>
-		<form action="#" method="post" id="financingForm">
+		<div class="msg" style="clear: both;"><s:actionmessage/><s:fielderror/><s:actionerror/> </div>
+		<form action="#" method="post" id="debtForm">
 		<div class="navButton">
-		<input type="button" value="返回" class="btBack" onclick="doAction('financingForm','ComM_list','');" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
+		<input type="button" value="确定" name="btOk" class="btOk" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
+		<input type="button" value="返回" name="btBack" class="btBack" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
 		</div>
 		<table cellpadding="0" cellspacing="0" class="editTable">
+		     <tr>
+				<th>理财协议合同编码</th>
+				<td><input type="text" name="debt.contractId" value="${debt.contractId}" placeholder="不可编辑" readonly/></td>
+			</tr>
 			 <tr>
-				<th>代码</th>
-				<td><select type="text" name="financing.type"  id="codeType" >
-				 <s:iterator value="dicList" status="st">
-				  <c:if  test="${financing.type==dictCode}" >
-				    <option   <c:if  test="${financing.type==dictCode}" >selected</c:if> disabled>${dictName}</option>
-				  </c:if>
-				   </s:iterator>
-				</select></td>
+				<th>债权人</th>
+				<td><input type="text" name="debt.customerName" value="${debt.customerName}" placeholder="不可编辑" readonly/></td>
+				<th>身份证号码</th>
+				<td><input type="text" name="debt.cardId" value="${debt.cardId}" placeholder="不可编辑" readonly/></td>
 			</tr><tr>
-				<th>产品名称</th>
-				<td><input type="text" name="financing.financingName" value="${financing.financingName}" readOnly/></td>
-			</tr><tr>
-				<th>本利回收方式</th>
-				<td><input type="text" name="financing.financingDesc" value="${financing.financingDesc}" readOnly/></td>
-			</tr><tr>
-				<th>年传化收益率(%)</th>
-				<td><input type="text" name="financing.annualizedRate" value="${financing.annualizedRate}" readOnly/>
-				<t id="mm">-<input type="text" name="financing.annualizedRateEnd" value="${financing.annualizedRateEnd}" /> </t></td>
-               
+				<th>住址</th>
+				<td><input type="text" name="debt.address" value="${debt.address}" placeholder="不可编辑" readonly /></td>
+				<th>到期总额(元)</th>
+				<td><input type="text" name="debt.expireMoney" value="${debt.expireMoney}" placeholder="不可编辑" readonly /></td>
 			</tr>
 			<tr>
-				<th>封闭期(月)</th>
-				<td><input type="number" name="financing.months" value="${financing.months}"  readOnly/>
-				 <t id="oo">-<input type="number" name="financing.monthsEnd" value="${financing.monthsEnd}" readOnly/></t></td>
+				<th>资金出借/回收方式</th>
+				<td><input type="text" name="debt.moneyOutBack" value="${debt.moneyOutBack}" readonly/></td>
+				<th>初始出借金额(元)</th>
+				<td><input type="text" name="debt.startMonery" value="${debt.startMonery}" readonly/></td>
 			</tr>
 			<tr>
-				<th>起点(万元)</th>
-				<td><input type="text" name="financing.startUp" value="${financing.startUp}" readOnly/></td>
+				<th>账户管理费(元)</th>
+				<td><input type="text" name="debt.manageMoney" value="${debt.manageMoney}" readonly /></td>
+				<th>借款开始时间</th>
+				<td><input type="text" name="debt.startTime" id="d4311"
+					value="<s:date format="yyyy-MM-dd" name="debt.startTime" />"
+				     /></td>
 			</tr>
 		</table>
+		<table cellpadding="0" cellspacing="0" align="center" class="listTable">
+		<thead>
+			<tr>
+				<th style="width: 10%">借款协议合同编码</th>
+				<th>借款客户名称</th>
+				<th>身份证</th>
+				<th>借款金额</th>
+				<th>需支付对价</th>
+				<th>借款人职业</th>
+				<th>借款用途</th>
+				<th>还款起始日期</th>
+				<th>预计债权收益率（元）</th>
+			</tr>
+		</thead>
+		<tbody>
+			<s:iterator value="debtRelList" status="st">
+				<tr <s:if test="!#st.odd">class="trodd"</s:if>>
+					<td align="center"><s:property value="loanContractId" /></td>
+					<td><s:property value="customerName" />&nbsp;</td>
+					<td><s:property value="cardId" />&nbsp;</td>
+					<td><s:property value="loanMoney" />&nbsp;</td>
+					<td><s:property value="consideration" />&nbsp;</td>
+					<td><s:property value="loanProfession" />&nbsp;</td>
+					<td><s:property value="loanReason" />&nbsp;</td>
+				    <td><s:property value="loanStartTime" />&nbsp;</td>
+				    <td><s:property value="rate" />&nbsp;</td>
+				</tr>
+			</s:iterator>
+		</tbody>
+	</table>
 		<div class="navButton">
-		<input type="button" value="返回" class="btBack" onclick="doAction('financingForm','ComM_list','');" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
+		<input type="button" value="确定" name="btOk" class="btOk" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
+		<input type="button" value="返回" name="btBack" class="btBack" style="color:#FFF;border-style:none;width:66px;height:25px;padding:0;background: url(<%=path %>/common/images/shop/anniu.png)  no-repeat scroll -63px -20px transparent;"/>
 		</div>
-		<input type="hidden" name="_ns" id="_ns" value="/core/financing/"/>
+		<input type="hidden" name="_ns" id="_ns" value="/core/debt/"/>
 		</form>
 	</body>
 </html>

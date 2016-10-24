@@ -1,5 +1,6 @@
 package com.deying.core.pojo;
 // default package
+
 // Generated 2016-10-24 0:47:45 by Hibernate Tools 3.5.0.Final
 
 import java.util.Date;
@@ -18,281 +19,265 @@ import org.hibernate.annotations.GenericGenerator;
  */
 @Entity
 @Table(name = "tbl_debt_rel")
-public class DebtRel implements java.io.Serializable
-{
-    
-    private String debtRelId;
-    
-    private String financingApplyId;
-    
-    private String loanApplyId;
-    
-    private String customerName;
-    
-    private String cardId;
-    
-    private String loanMoney;
-    
-    private String loanProfession;
-    
-    private String consideration;
-    
-    private String loanReason;
-    
-    private Date loanStartTime;
-    
-    private String months;
-    
-    private String surplusDate;
-    
-    private String rate;
-    
-    private String companyId;
-    
-    private String crtUid;
-    
-    private Date crtTime;
-    
-    private String updUid;
-    
-    private Date updTime;
-    
-    public DebtRel()
-    {
-    }
-    
-    public DebtRel(String debtRelId)
-    {
-        this.debtRelId = debtRelId;
-    }
-    
-    public DebtRel(String debtRelId, String financingApplyId, String loanApplyId, String customerName, String cardId,
-        String loanMoney, String loanProfession, String consideration, String loanReason, Date loanStartTime,
-        String months, String surplusDate, String rate, String companyId, String crtUid, Date crtTime, String updUid,
-        Date updTime)
-    {
-        this.debtRelId = debtRelId;
-        this.financingApplyId = financingApplyId;
-        this.loanApplyId = loanApplyId;
-        this.customerName = customerName;
-        this.cardId = cardId;
-        this.loanMoney = loanMoney;
-        this.loanProfession = loanProfession;
-        this.consideration = consideration;
-        this.loanReason = loanReason;
-        this.loanStartTime = loanStartTime;
-        this.months = months;
-        this.surplusDate = surplusDate;
-        this.rate = rate;
-        this.companyId = companyId;
-        this.crtUid = crtUid;
-        this.crtTime = crtTime;
-        this.updUid = updUid;
-        this.updTime = updTime;
-    }
-    
-    @Id
-    @Column(name = "DEBT_REL_ID", unique = true, nullable = false, length = 128)
-    @GeneratedValue(generator = "financingGenerator")
+public class DebtRel implements java.io.Serializable {
+
+	private String debtRelId;
+
+	private String financingApplyId;
+
+	private String loanApplyId;
+
+	private String customerName;
+
+	private String cardId;
+
+	private String loanMoney;
+
+	private String loanProfession;
+
+	private String consideration;
+
+	private String loanReason;
+
+	private Date loanStartTime;
+
+	private String months;
+
+	private String surplusDate;
+
+	private String rate;
+
+	private String companyId;
+
+	private String crtUid;
+
+	private Date crtTime;
+
+	private String updUid;
+
+	private Date updTime;
+
+	private String loanContractId;
+
+	private String financingContractId;
+
+	public DebtRel() {
+	}
+
+	public DebtRel(String debtRelId) {
+		this.debtRelId = debtRelId;
+	}
+
+	public DebtRel(String debtRelId, String financingApplyId, String loanApplyId, String customerName, String cardId,
+			String loanMoney, String loanProfession, String consideration, String loanReason, Date loanStartTime,
+			String months, String surplusDate, String rate, String companyId, String crtUid, Date crtTime,
+			String updUid, Date updTime, String financingContractId, String loanContractId) {
+		this.debtRelId = debtRelId;
+		this.financingApplyId = financingApplyId;
+		this.loanApplyId = loanApplyId;
+		this.customerName = customerName;
+		this.cardId = cardId;
+		this.loanMoney = loanMoney;
+		this.loanProfession = loanProfession;
+		this.consideration = consideration;
+		this.loanReason = loanReason;
+		this.loanStartTime = loanStartTime;
+		this.months = months;
+		this.surplusDate = surplusDate;
+		this.rate = rate;
+		this.companyId = companyId;
+		this.crtUid = crtUid;
+		this.crtTime = crtTime;
+		this.updUid = updUid;
+		this.updTime = updTime;
+		this.loanContractId = loanContractId;
+		this.financingContractId = financingContractId;
+	}
+
+	@Id
+	@Column(name = "DEBT_REL_ID", unique = true, nullable = false, length = 128)
+	@GeneratedValue(generator = "financingGenerator")
 	@GenericGenerator(name = "financingGenerator", strategy = "uuid")
-    public String getDebtRelId()
-    {
-        return this.debtRelId;
-    }
-    
-    public void setDebtRelId(String debtRelId)
-    {
-        this.debtRelId = debtRelId;
-    }
-    
-    @Column(name = "FINANCING_APPLY_ID", length = 128)
-    public String getFinancingApplyId()
-    {
-        return this.financingApplyId;
-    }
-    
-    public void setFinancingApplyId(String financingApplyId)
-    {
-        this.financingApplyId = financingApplyId;
-    }
-    
-    @Column(name = "LOAN_APPLY_ID", length = 128)
-    public String getLoanApplyId()
-    {
-        return this.loanApplyId;
-    }
-    
-    public void setLoanApplyId(String loanApplyId)
-    {
-        this.loanApplyId = loanApplyId;
-    }
-    
-    @Column(name = "CUSTOMER_NAME")
-    public String getCustomerName()
-    {
-        return this.customerName;
-    }
-    
-    public void setCustomerName(String customerName)
-    {
-        this.customerName = customerName;
-    }
-    
-    @Column(name = "CARD_ID", length = 55)
-    public String getCardId()
-    {
-        return this.cardId;
-    }
-    
-    public void setCardId(String cardId)
-    {
-        this.cardId = cardId;
-    }
-    
-    @Column(name = "LOAN_MONEY")
-    public String getLoanMoney()
-    {
-        return this.loanMoney;
-    }
-    
-    public void setLoanMoney(String loanMoney)
-    {
-        this.loanMoney = loanMoney;
-    }
-    
-    @Column(name = "LOAN_PROFESSION")
-    public String getLoanProfession()
-    {
-        return this.loanProfession;
-    }
-    
-    public void setLoanProfession(String loanProfession)
-    {
-        this.loanProfession = loanProfession;
-    }
-    
-    @Column(name = "CONSIDERATION")
-    public String getConsideration()
-    {
-        return this.consideration;
-    }
-    
-    public void setConsideration(String consideration)
-    {
-        this.consideration = consideration;
-    }
-    
-    @Column(name = "LOAN_REASON")
-    public String getLoanReason()
-    {
-        return this.loanReason;
-    }
-    
-    public void setLoanReason(String loanReason)
-    {
-        this.loanReason = loanReason;
-    }
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "LOAN_START_TIME", length = 19)
-    public Date getLoanStartTime()
-    {
-        return this.loanStartTime;
-    }
-    
-    public void setLoanStartTime(Date loanStartTime)
-    {
-        this.loanStartTime = loanStartTime;
-    }
-    
-    @Column(name = "MONTHS")
-    public String getMonths()
-    {
-        return this.months;
-    }
-    
-    public void setMonths(String months)
-    {
-        this.months = months;
-    }
-    
-    @Column(name = "SURPLUS_DATE")
-    public String getSurplusDate()
-    {
-        return this.surplusDate;
-    }
-    
-    public void setSurplusDate(String surplusDate)
-    {
-        this.surplusDate = surplusDate;
-    }
-    
-    @Column(name = "RATE")
-    public String getRate()
-    {
-        return this.rate;
-    }
-    
-    public void setRate(String rate)
-    {
-        this.rate = rate;
-    }
-    
-    @Column(name = "COMPANY_ID", length = 128)
-    public String getCompanyId()
-    {
-        return this.companyId;
-    }
-    
-    public void setCompanyId(String companyId)
-    {
-        this.companyId = companyId;
-    }
-    
-    @Column(name = "CRT_UID", length = 128)
-    public String getCrtUid()
-    {
-        return this.crtUid;
-    }
-    
-    public void setCrtUid(String crtUid)
-    {
-        this.crtUid = crtUid;
-    }
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CRT_TIME", length = 19)
-    public Date getCrtTime()
-    {
-        return this.crtTime;
-    }
-    
-    public void setCrtTime(Date crtTime)
-    {
-        this.crtTime = crtTime;
-    }
-    
-    @Column(name = "UPD_UID", length = 128)
-    public String getUpdUid()
-    {
-        return this.updUid;
-    }
-    
-    public void setUpdUid(String updUid)
-    {
-        this.updUid = updUid;
-    }
-    
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "UPD_TIME", length = 19)
-    public Date getUpdTime()
-    {
-        return this.updTime;
-    }
-    
-    public void setUpdTime(Date updTime)
-    {
-        this.updTime = updTime;
-    }
-    
+	public String getDebtRelId() {
+		return this.debtRelId;
+	}
+
+	public void setDebtRelId(String debtRelId) {
+		this.debtRelId = debtRelId;
+	}
+
+	@Column(name = "FINANCING_APPLY_ID", length = 128)
+	public String getFinancingApplyId() {
+		return this.financingApplyId;
+	}
+
+	public void setFinancingApplyId(String financingApplyId) {
+		this.financingApplyId = financingApplyId;
+	}
+
+	@Column(name = "LOAN_APPLY_ID", length = 128)
+	public String getLoanApplyId() {
+		return this.loanApplyId;
+	}
+
+	public void setLoanApplyId(String loanApplyId) {
+		this.loanApplyId = loanApplyId;
+	}
+
+	@Column(name = "CUSTOMER_NAME")
+	public String getCustomerName() {
+		return this.customerName;
+	}
+
+	public void setCustomerName(String customerName) {
+		this.customerName = customerName;
+	}
+
+	@Column(name = "CARD_ID", length = 55)
+	public String getCardId() {
+		return this.cardId;
+	}
+
+	public void setCardId(String cardId) {
+		this.cardId = cardId;
+	}
+
+	@Column(name = "LOAN_MONEY")
+	public String getLoanMoney() {
+		return this.loanMoney;
+	}
+
+	public void setLoanMoney(String loanMoney) {
+		this.loanMoney = loanMoney;
+	}
+
+	@Column(name = "LOAN_PROFESSION")
+	public String getLoanProfession() {
+		return this.loanProfession;
+	}
+
+	public void setLoanProfession(String loanProfession) {
+		this.loanProfession = loanProfession;
+	}
+
+	@Column(name = "CONSIDERATION")
+	public String getConsideration() {
+		return this.consideration;
+	}
+
+	public void setConsideration(String consideration) {
+		this.consideration = consideration;
+	}
+
+	@Column(name = "LOAN_REASON")
+	public String getLoanReason() {
+		return this.loanReason;
+	}
+
+	public void setLoanReason(String loanReason) {
+		this.loanReason = loanReason;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "LOAN_START_TIME", length = 19)
+	public Date getLoanStartTime() {
+		return this.loanStartTime;
+	}
+
+	public void setLoanStartTime(Date loanStartTime) {
+		this.loanStartTime = loanStartTime;
+	}
+
+	@Column(name = "MONTHS")
+	public String getMonths() {
+		return this.months;
+	}
+
+	public void setMonths(String months) {
+		this.months = months;
+	}
+
+	@Column(name = "SURPLUS_DATE")
+	public String getSurplusDate() {
+		return this.surplusDate;
+	}
+
+	public void setSurplusDate(String surplusDate) {
+		this.surplusDate = surplusDate;
+	}
+
+	@Column(name = "RATE")
+	public String getRate() {
+		return this.rate;
+	}
+
+	public void setRate(String rate) {
+		this.rate = rate;
+	}
+
+	@Column(name = "COMPANY_ID", length = 128)
+	public String getCompanyId() {
+		return this.companyId;
+	}
+
+	public void setCompanyId(String companyId) {
+		this.companyId = companyId;
+	}
+
+	@Column(name = "CRT_UID", length = 128)
+	public String getCrtUid() {
+		return this.crtUid;
+	}
+
+	public void setCrtUid(String crtUid) {
+		this.crtUid = crtUid;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "CRT_TIME", length = 19)
+	public Date getCrtTime() {
+		return this.crtTime;
+	}
+
+	public void setCrtTime(Date crtTime) {
+		this.crtTime = crtTime;
+	}
+
+	@Column(name = "UPD_UID", length = 128)
+	public String getUpdUid() {
+		return this.updUid;
+	}
+
+	public void setUpdUid(String updUid) {
+		this.updUid = updUid;
+	}
+
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "UPD_TIME", length = 19)
+	public Date getUpdTime() {
+		return this.updTime;
+	}
+
+	public void setUpdTime(Date updTime) {
+		this.updTime = updTime;
+	}
+
+	@Column(name = "LOAN_CONTRACT_ID", length = 128)
+	public String getLoanContractId() {
+		return this.loanContractId;
+	}
+
+	public void setLoanContractId(String loanContractId) {
+		this.loanContractId = loanContractId;
+	}
+
+	@Column(name = "FINANCING_CONTRACT_ID", length = 128)
+	public String getFinancingContractId() {
+		return this.financingContractId;
+	}
+
+	public void setFinancingContractId(String financingContractId) {
+		this.financingContractId = financingContractId;
+	}
+
 }

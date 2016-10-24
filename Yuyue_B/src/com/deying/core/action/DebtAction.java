@@ -84,6 +84,9 @@ public class DebtAction extends BaseMgrAction {
 
 	private LoanCustomer loanCustomer = null;
 
+	/*
+	 * 查询所有的债权信息
+	 */
 	public String list() throws Exception {
 		LOG.debug("--------------------BackupAction -> list----------------");
 		this.start = this.start == null ? 1 : this.start;
@@ -138,12 +141,56 @@ public class DebtAction extends BaseMgrAction {
 		return LIST;
 	}
 
+	/**
+	 * 初始化债权信息[初始化/修改]
+	 */
+	public String edit() throws Exception {
+		LOG.debug("--------------------DebtAction -> edit----------------");
+		CriteriaWrapper c = CriteriaWrapper.newInstance();
+		c.eq("financingApplyId", id);
+		debtList = commonService.find(c, Debt.class);
+		if (!debtList.isEmpty()) {
+			this.debt = debtList.get(0);
+		} else {
+			this.financingApply = this.financingApplyService.get(id);
+			if (null != financingApply) {
+				debt = new Debt();
+				debt.setCustomerName(financingApply.getCustomerName());
+				debt.setContractId(financingApply.getContractId());
+				debt.setFinancingApplyId(financingApply.getFinancingApplyId());
+				debt.setFinancingEndTime(financingApply.getFinancingEndTime());
+				Long money = financingApply.getMoney();
+				debt.setMoney(money.toString());
+				debt.setExpireMoney(financingApply.getExpireMoney().toString());
+				debt.setNoDebtsMoney(financingApply.getNoDebtsMoney());
+				debt.setStatus("0");
+				debt.setDebtId(financingApply.getFinancingApplyId());
+				Date now = new Date();
+				Date financingStartDate = financingApply.getFinancingStartTime();
+				Date startDate = now;
+				if (null != financingStartDate) {
+					startDate = financingStartDate.getTime() > now.getTime() ? financingStartDate : now;
+				}
+				debt.setStartTime(startDate);
+				this.customer = this.financingCustomerService.get(financingApply.getCustomerId());
+
+				debt.setAddress(this.customer.getAddress());
+				debt.setCardId(this.customer.getCardId());
+			}
+		}
+		return EDIT;
+	}
+
+	/*
+	 * 保存债权信息 [新增和修改]
+	 */
 	public String save() throws Exception {
 		LOG.debug("--------------------DebtAction -> save----------------");
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.eq("financingApplyId", debt.getFinancingApplyId());
 		debtList = commonService.find(c, Debt.class);
 		if (!debtList.isEmpty()) {
+			// 更新
 			Debt i = debtList.get(0);
 			i.setMoneyOutBack(debt.getMoneyOutBack());
 			i.setStartMonery(debt.getStartMonery());
@@ -151,6 +198,7 @@ public class DebtAction extends BaseMgrAction {
 			i.setStartTime(debt.getStartTime());
 			this.debtService.update(i);
 		} else {
+			// 新增
 			debt.setCompanyId(this.getCtxUser().getCompanyId());
 			debt.setStatus("1");
 			this.debtService.save(debt);
@@ -159,21 +207,9 @@ public class DebtAction extends BaseMgrAction {
 		return list();
 	}
 
-	public boolean validateSave() {
-		if (hasErrors()) {
-			return true;
-		}
-		return false;
-	}
-
 	/**
-	 * 编辑对象加载
+	 * 查询借款协议列表
 	 * 
-	 * @return
-	 */
-	/**
-	 * @return
-	 * @throws Exception
 	 */
 	public String loan() throws Exception {
 		LOG.debug("--------------------DebtAction -> edit----------------");
@@ -220,13 +256,7 @@ public class DebtAction extends BaseMgrAction {
 	}
 
 	/**
-	 * 编辑对象加载
-	 * 
-	 * @return
-	 */
-	/**
-	 * @return
-	 * @throws Exception
+	 * 借款协议和 理财协议关联
 	 */
 	public String relation() throws Exception {
 		LOG.debug("--------------------DebtAction -> edit----------------");
@@ -273,8 +303,17 @@ public class DebtAction extends BaseMgrAction {
 		return "relation";
 	}
 
+	/**
+	 * 借款协议和 理财协议关联 [新增/保存]
+	 */
 	public String relSave() throws Exception {
 		LOG.debug("--------------------DebtAction -> save----------------");
+		if (StringUtils.isNotBlank(debtRel.getLoanApplyId())) {
+			loanApply = this.loanApplyService.get(debtRel.getLoanApplyId());
+			if (null != loanApply) {
+				debtRel.setLoanContractId(loanApply.getContractId());
+			}
+		}
 		if (StringUtils.isNotBlank(debtRel.getDebtRelId())) {
 			debtRelService.update(debtRel);
 		} else {
@@ -284,62 +323,17 @@ public class DebtAction extends BaseMgrAction {
 	}
 
 	/**
-	 * 编辑对象加载
-	 * 
-	 * @return
+	 * 查看债权详情
 	 */
-	/**
-	 * @return
-	 * @throws Exception
-	 */
-	public String edit() throws Exception {
-		LOG.debug("--------------------DebtAction -> edit----------------");
+	public String load() throws Exception {
+		LOG.debug("--------------------DebtAction -> load----------------");
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.eq("financingApplyId", id);
 		debtList = commonService.find(c, Debt.class);
 		if (!debtList.isEmpty()) {
 			this.debt = debtList.get(0);
-		} else {
-			this.financingApply = this.financingApplyService.get(id);
-			if (null != financingApply) {
-				debt = new Debt();
-				debt.setCustomerName(financingApply.getCustomerName());
-				debt.setContractId(financingApply.getContractId());
-				debt.setFinancingApplyId(financingApply.getFinancingApplyId());
-				debt.setFinancingEndTime(financingApply.getFinancingEndTime());
-				Long money = financingApply.getMoney();
-				debt.setMoney(money.toString());
-				debt.setExpireMoney(financingApply.getExpireMoney().toString());
-				debt.setNoDebtsMoney(financingApply.getNoDebtsMoney());
-				debt.setStatus("0");
-				debt.setDebtId(financingApply.getFinancingApplyId());
-				Date now = new Date();
-				Date financingStartDate = financingApply.getFinancingStartTime();
-				Date startDate = now;
-				if (null != financingStartDate) {
-					startDate = financingStartDate.getTime() > now.getTime() ? financingStartDate : now;
-				}
-				debt.setStartTime(startDate);
-				this.customer = this.financingCustomerService.get(financingApply.getCustomerId());
-
-				debt.setAddress(this.customer.getAddress());
-				debt.setCardId(this.customer.getCardId());
-			}
 		}
-		return EDIT;
-	}
-
-	/**
-	 * 查看对象
-	 * 
-	 * @return
-	 */
-	public String load() throws Exception {
-		LOG.debug("--------------------DebtAction -> load----------------");
-		CriteriaWrapper dicParam = CriteriaWrapper.newInstance();
-		dicParam.eq("dictTypeCode", "debt_type");
-		dicList = commonService.find(dicParam, ComDict.class);
-		this.debt = this.debtService.get(id);
+		debtRelList = commonService.find(c, DebtRel.class);
 		return LOAD;
 	}
 
