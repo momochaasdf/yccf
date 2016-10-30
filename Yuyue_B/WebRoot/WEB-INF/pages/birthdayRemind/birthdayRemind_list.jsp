@@ -111,10 +111,10 @@
 							</td>
 							<td align="left">
 							       <s:if test="%{status==0}">
-						         已提醒
+						         已处理
 						        </s:if>
 						        <s:else>
-						         未提醒
+						         未处理
 						        </s:else>
 								 &nbsp;
 							</td>
