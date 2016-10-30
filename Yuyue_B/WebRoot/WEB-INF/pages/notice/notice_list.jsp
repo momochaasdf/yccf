@@ -97,10 +97,16 @@
 						<td>
 							内容
 						</td>
-						<td>
+						<td style="width: 10%">
+						 开始时间
+						</td>
+						<td style="width: 10%">
+						 结束时间
+						</td>
+						<td style="width: 8%">
 							状态
 						</td>
-						<td style="width: 20%">
+						<td style="width: 10%">
 							操作
 						</td>
 					</tr>
@@ -117,6 +123,12 @@
 							</td>
 							<td>
 								<s:property value="content" />
+							</td>
+							<td>
+								 <s:date name="%{startTime}" format="yyyy-MM-dd"/>  
+							</td>
+								<td>
+								 <s:date name="%{endTime}" format="yyyy-MM-dd"/>  
 							</td>
 							<td align="center">
 								<s:if test="status==1">进行中</s:if>

@@ -51,7 +51,20 @@
 			</tr><tr>
 				<th>内容</th>
 				<td><textarea rows="5" cols="50" style="height:180px" name="data.content" >${data.content}</textarea></td>
-			</tr><tr>
+			</tr>
+			<tr>
+				<th>开始时间</th>
+				<td><input type="text" name="data.startTime" id="d4311"
+					value="<s:date format="yyyy-MM-dd" name="data.startTime" />"
+					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4322\')}',dateFmt:'yyyy-MM-dd'})" /></td>
+			</tr>
+			<tr>
+				<th>结束时间</th>
+				<td><input type="text" name="data.endTime"  id="d4322"
+					value="<s:date format="yyyy-MM-dd" name="data.endTime" />"
+					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',dateFmt:'yyyy-MM-dd'})" /></td>
+			</tr>
+			<tr>
 				<th>状态</th>
 				<td>
 					<s:radio list="#{'1':'进行中','0':'已结束'}" name="data.status"/>

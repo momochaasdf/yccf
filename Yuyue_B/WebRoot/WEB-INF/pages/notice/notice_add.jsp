@@ -61,7 +61,20 @@
 					<%--<input type="radio" name="data.status" id="status1" value="1" <s:if test="data.status == 1">checked="checked"</s:if> /><label for="status1" >进行中</label>
 					<input type="radio" name="data.status" id="status0" value="0" <s:if test="data.status == 0">checked="checked"</s:if> /><label for="status0" >已结束</label>--%>
 				</td>
-			</tr><tr>
+			</tr>
+			<tr>
+				<th>开始时间</th>
+				<td><input type="text" name="data.startTime" id="d4311"
+					value="<s:date format="yyyy-MM-dd" name="data.startTime" />"
+					onfocus="WdatePicker({maxDate:'#F{$dp.$D(\'d4322\')}',dateFmt:'yyyy-MM-dd'})" /></td>
+			</tr>
+			<tr>
+				<th>结束时间</th>
+				<td><input type="text" name="data.endTime"  id="d4322"
+					value="<s:date format="yyyy-MM-dd" name="data.endTime" />"
+					onfocus="WdatePicker({minDate:'#F{$dp.$D(\'d4311\')}',dateFmt:'yyyy-MM-dd'})" /></td>
+			</tr>
+			<tr>
 				<th>通知对象</th>
 				<td>
 					<%--<select id="companyId" name="data.companyId">
