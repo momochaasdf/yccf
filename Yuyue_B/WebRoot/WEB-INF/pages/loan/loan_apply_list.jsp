@@ -105,6 +105,7 @@
 				<th>出借人名称</th>
 				<th>还款方式</th>
 				<th>借款金额</th>
+				<th>未关联金额</th>
 				<th>借款开始时间</th>
 				<th>借款结束时间</th>
 				<th>借款总时间(月)</th>
@@ -125,6 +126,7 @@
 					<td><s:property value="lenderName" />&nbsp;</td>
 					<td><z:dict  type="collection_loan_type" code="%{type}" />&nbsp;</td>
 					<td><s:property value="applyMoney" />&nbsp;</td>
+					<td><s:property value="noRelMoney" />&nbsp;</td>
 					<td><s:date name="%{loanStartTime}" format="yyyy-MM-dd" />&nbsp;</td>
 					<td><s:date name="%{loanEndTime}" format="yyyy-MM-dd" />&nbsp;</td>
 					<td><s:property value="months" />&nbsp;</td>

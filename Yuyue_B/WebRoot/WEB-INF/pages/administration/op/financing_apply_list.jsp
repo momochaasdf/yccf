@@ -90,6 +90,7 @@
 				<th>产品类型</th>
 				<th>年转化率</th>
 				<th>理财金额</th>
+				<th>未债权金额</th>
 				<th>理财开始时间</th>
 				<th>理财结束时间</th>
 				<th>理财状态</th>
@@ -104,6 +105,7 @@
 				<td><z:dict  type="financing_type" code="%{type}"/>&nbsp;</td>
 				<td><s:property value="annualizedRate"/>&nbsp;</td>
 				<td><s:property value="money"/>&nbsp;</td>
+				<td><s:property value="noDebtsMoney"/>&nbsp;</td>
 				<td><s:date name="%{financingStartTime}" format="yyyy-MM-dd"/> &nbsp;</td>
 				<td><s:date name="%{financingEndTime}"  format="yyyy-MM-dd"/>&nbsp;</td>
 				<td>
