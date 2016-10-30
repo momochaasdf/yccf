@@ -102,7 +102,6 @@
 			<tr>
 				<th style="width: 10%">合同编码</th>
 				<th>借款客户名称</th>
-				<th>出借人名称</th>
 				<th>还款方式</th>
 				<th>借款金额</th>
 				<th>未关联金额</th>
@@ -123,7 +122,6 @@
 					<td align="center"><s:property
 							value="contractId" /></td>
 					<td><s:property value="customerName" />&nbsp;</td>
-					<td><s:property value="lenderName" />&nbsp;</td>
 					<td><z:dict  type="collection_loan_type" code="%{type}" />&nbsp;</td>
 					<td><s:property value="applyMoney" />&nbsp;</td>
 					<td><s:property value="noRelMoney" />&nbsp;</td>
