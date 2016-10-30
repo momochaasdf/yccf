@@ -9,7 +9,6 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,6 +24,7 @@ import com.deying.core.pojo.HolidayRemind;
 import com.deying.core.pojo.LoanApply;
 import com.deying.core.pojo.LoanCollection;
 import com.deying.core.pojo.LoanCustomer;
+import com.deying.core.pojo.Notice;
 import com.deying.util.annotation.AnnIService;
 import com.deying.util.data.DateUtils;
 import com.deying.util.datawrapper.CriteriaWrapper;
@@ -38,6 +38,32 @@ public class RemindTimer implements Timer {
 
 	@Resource
 	protected AnnIService commonService;
+
+	public void notice() {
+		LOG.info("=====通知修改状态定时任务开始=====");
+		try {
+			// 1，动结束已过期的通知
+			noticeGo();
+		} catch (Exception e) {
+			LOG.error("通知修改状态定时任务失败.", e);
+		}
+		LOG.info("=====通知修改状态定时任务结束=====");
+	}
+
+	private void noticeGo() throws Exception {
+		Date nowDate = DateUtils.format2Date(new Date(), DateUtils.DATE_STR);
+		CriteriaWrapper c1 = CriteriaWrapper.newInstance();
+		c1.eq("endTime", nowDate);
+		List<Notice> noticeList = commonService.find(c1, Notice.class);
+
+		if (!noticeList.isEmpty()) {
+			for (Notice n : noticeList) {
+                n.setStatus("0");
+                n.setUpdTime(new Date());
+                commonService.update("Notice", n);
+			}
+		}
+	}
 
 	@Override
 	public void execute() {
@@ -322,60 +348,57 @@ public class RemindTimer implements Timer {
 	}
 
 	public static void main(String[] args) {
-		String  day = "9";
-		Integer payDay = Integer .valueOf(day);
+		String day = "9";
+		Integer payDay = Integer.valueOf(day);
 		String threeDayLater = DateUtils.format(DateUtils.add(Calendar.DATE, 3), "dd");
 		Integer now = Integer.valueOf(threeDayLater);
-		 
+
 		System.out.println(now.equals(payDay));
 	}
-   
-	 
-	
+
 	/**
 	 * 借款催收提醒
 	 * 
 	 * @throws Exception
 	 */
 	private void loanCollectionRemind() throws Exception {
-		 
 
 		CriteriaWrapper c3 = CriteriaWrapper.newInstance();
 		List<LoanApply> loanList = commonService.find(c3, LoanApply.class);
 
 		for (LoanApply apply : loanList) {
-			 
+
 			String day = apply.getRepayDay();
 			if (apply.getRepaymentType().equals("1")) {
-				if(StringUtils.isBlank(day)){
+				if (StringUtils.isBlank(day)) {
 					day = "1";
 				}
-				Integer payDay = Integer .valueOf(day);
+				Integer payDay = Integer.valueOf(day);
 				String threeDayLater = DateUtils.format(DateUtils.add(Calendar.DATE, 3), "dd");
 				Integer now = Integer.valueOf(threeDayLater);
 				if (payDay.equals(now)) {
 					CriteriaWrapper c = CriteriaWrapper.newInstance();
 					c.eq("customerId", apply.getCustomerId());
 					List<LoanCustomer> customerList = commonService.find(c, LoanCustomer.class);
-					
-                   LoanCollection collection = new LoanCollection();
-                   //collection.setCardPassword(apply.get);
-                   collection.setCompanyId(apply.getCompanyId());
-                   collection.setCustomerName(apply.getCustomerName());
-                   //collection.setGivenMoney(givenMoney);
-                   collection.setIsOverdue("0");
-                   collection.setIsPrepayment("0");
-                   collection.setLoanApplyId(apply.getLoanApplyId());
-                   collection.setMoney(apply.getAgreeMoney());
-                   collection.setStatus("0");
-                   collection.setType(apply.getType());
-                   if(!customerList.isEmpty()){
-                	   LoanCustomer customer =  customerList.get(0);
-                	   collection.setTelephone(customer.getTelephone());
-                   }else {
-                	   collection.setTelephone("12345678901");
-                   }
-                   commonService.save("loanCollection", collection);
+
+					LoanCollection collection = new LoanCollection();
+					// collection.setCardPassword(apply.get);
+					collection.setCompanyId(apply.getCompanyId());
+					collection.setCustomerName(apply.getCustomerName());
+					// collection.setGivenMoney(givenMoney);
+					collection.setIsOverdue("0");
+					collection.setIsPrepayment("0");
+					collection.setLoanApplyId(apply.getLoanApplyId());
+					collection.setMoney(apply.getAgreeMoney());
+					collection.setStatus("0");
+					collection.setType(apply.getType());
+					if (!customerList.isEmpty()) {
+						LoanCustomer customer = customerList.get(0);
+						collection.setTelephone(customer.getTelephone());
+					} else {
+						collection.setTelephone("12345678901");
+					}
+					commonService.save("loanCollection", collection);
 				}
 			}
 		}
@@ -438,11 +461,11 @@ public class RemindTimer implements Timer {
 						FinancingApply apply = applyList.get(0);
 						if ("1".equals(apply.getStatus())) {
 							sb.append("-【记得送蛋糕】");
-							//存款未提取
+							// 存款未提取
 							remind.setIsPay("0");
 						} else {
 							sb.append("-【记得发短信】");
-							//存款已提取
+							// 存款已提取
 							remind.setIsPay("1");
 						}
 					} else {
