@@ -235,6 +235,29 @@
 		</property>
 	</bean>
 	
+	<!-- 提醒定时器（1，节假日提醒，） -->
+	<bean id="noticeTimer" class="com.deying.util.timer.RemindTimer" />
+	<bean id="noticeTimerJob"
+		class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
+		<!-- 调用的类 -->
+		<property name="targetObject">
+			<ref bean="noticeTimer" />
+		</property>
+		<!-- 调用类中的方法 -->
+		<property name="targetMethod">
+			<value>notice</value>
+		</property>
+	</bean>
+	<bean id="noticeTimerTrigger" lazy-init="false"
+		class="org.springframework.scheduling.quartz.CronTriggerBean">
+		<property name="jobDetail">
+			<ref bean="noticeTimerJob" />
+		</property>
+		<property name="cronExpression">
+			<value>0 55 23 * * ?</value><!-- 每天 23:55:00 执行  -->
+		</property>
+	</bean>
+	
 	<!-- 数据库备份定时器，每天 23:45:00 执行 -->
 	<bean id="databaseBackupTimer" class="com.deying.util.timer.DatabaseBackupTimer" />
 	<bean id="databaseBackupTimerJob"
@@ -266,6 +289,7 @@
 				<!-- <ref bean="processOrderTimerTrigger" /> -->
 				<ref bean="remindTimerTrigger" />
 				<ref bean="databaseBackupTimerTrigger" />
+				<ref bean="noticeTimerTrigger" />
 			</list>
 		</property>
 	</bean>
