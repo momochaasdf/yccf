@@ -24,10 +24,18 @@ public class FinancingNnhDetailAction extends BaseMgrAction
         throws Exception
     {
         LOG.debug("--------------------FinancingNnhDetailAction -> list----------------");
-        
+        String status = obtionInfoVal("status", String.class);
+		String customerName = obtionInfoVal("customerName", String.class);
+		
         this.currentPage = this.currentPage == null ? 1 : this.currentPage;
         CriteriaWrapper c = CriteriaWrapper.newInstance();
         c.desc("crtTime");
+        if (null != status) {
+			c.like("status", status);
+		}
+		if (null != customerName) {
+			c.like("customerName", customerName);
+		}
         dataPage = commonService.find(c, FinancingNnhDetail.class, currentPage, pageSize);
         @SuppressWarnings("unchecked")
         List<FinancingNnhDetail> list = dataPage.getData();

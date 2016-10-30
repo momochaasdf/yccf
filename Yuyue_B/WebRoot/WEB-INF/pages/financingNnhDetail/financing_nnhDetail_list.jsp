@@ -3,6 +3,8 @@
 <%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib prefix="z" uri="/z-tags"%>
 <%@ taglib prefix="d" uri="/deying-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%
 	String path = request.getContextPath();
 %>
@@ -44,9 +46,35 @@
 			<div class="o-mt">
 					<h2 style="margin-top: 0;">
 						<a href="javascript:void(0);" style="color:#cc0000">年年红返还明细管理</a>&nbsp;>>&nbsp;
-						<a  style="color:#cc0000" href="<%=path %>/financingRemind/financingRemind_list.do">年年红返还明细列表</a>
+						<a  style="color:#cc0000" href="<%=path %>/financingNnhDetail/financingNnhDetail_list.do">年年红返还明细列表</a>
 					</h2>
 			</div>
+			<form action="#" method="post" id="financingNnhDetailForm" style="clear: both;">
+		<fieldset class="navSearch" >
+			<legend><span>检索条件<span id="updown" target="targetTable">[隐藏]</span></span></legend>
+			<table cellpadding="0" cellspacing="0" class="navSearch" id="targetTable">
+				<tr>
+					          <th style="width: 10%">状态</th>
+	                      <td style="width: 20%"><select type="text"
+						name="info.status">
+							<option value="">所有状态</option>
+								<option value="1" <c:if test="${info.status ==1}">selected=selected </c:if> >理财中</option>
+								<option value="2" <c:if test="${info.status ==2}">selected=selected </c:if> >理财完</option>
+								<option value="3" <c:if test="${info.status ==3}">selected=selected </c:if> >中止违约</option>
+					         </select></td>
+	<th style="width: 10%">客户名称</th>
+	<td style="width: 30%"><input type="text" name="info.customerName" value="${info.customerName}"/></td>
+     </tr> 
+			</table>
+		</fieldset>
+		<div class="navButton" >
+		<input class="btSearch" value="检索"  onclick="doAction('financingNnhDetailForm','financingNnhDetail_list','')"  style="color:#FFF;border-style:none;width:49px;height:25px;padding:0;background: url(<%=path %>/common/images/blue_bg.png)  no-repeat scroll 0px 0px transparent;text-align: center" />
+		</div>
+		<input type="hidden" name="_ns" id="_ns" value="/financingNnhDetail/"/>
+		<input type="hidden" name="id" id="id"/>
+		<input type="hidden" name=_query id="_query" value="_query"/>
+		 <input type="hidden" name="type" id="type" value="${type}" />
+		</form>
 			<div>
 				<table cellspacing="0" class="table_list" style="width: 100%">
 					<tr style="background: none" class="table_tr_title title_qingse">
@@ -110,7 +138,7 @@
 			</div>
 			<div>
 				<d:pages currentPage="%{currentPage}" showPageNumber="3"
-						totalPage="%{totalPage}" url="financingRemind_list.do" cssClass="pagnation">
+						totalPage="%{totalPage}" url="financingNnhDetail_list.do" cssClass="pagnation">
 				</d:pages>
 			</div>
 		</div>
