@@ -27,6 +27,8 @@ public class Notice implements java.io.Serializable {
 	private String title;
 	private String content;
 	private String status;
+	private Date startTime;
+	private Date endTime;
 	private String companyId;
 	private String crtUid;
 	private Date crtTime;
@@ -122,4 +124,24 @@ public class Notice implements java.io.Serializable {
 		this.updTime = updTime;
 	}
 
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "START_TIME", length = 0)
+	public Date getStartTime() {
+		return this.startTime;
+	}
+
+	public void setStartTime(Date startTime) {
+		this.startTime = startTime;
+	}
+	
+	@Temporal(TemporalType.TIMESTAMP)
+	@Column(name = "END_TIME", length = 0)
+	public Date getEndTime() {
+		return this.endTime;
+	}
+
+	public void setEndTime(Date endTime) {
+		this.endTime = endTime;
+	}
+	
 }
