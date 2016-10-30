@@ -56,7 +56,7 @@
 								<option value="5" <c:if test="${info.type ==5}">selected=selected </c:if> >仪诚鑫</option>
 								<option value="6" <c:if test="${info.type ==6}">selected=selected </c:if> >仪诚通</option>
 					         </select></td>
-					         
+					 </c:if>        
 					          <th style="width: 10%">状态</th>
 	                      <td style="width: 20%"><select type="text"
 						name="info.status">
@@ -65,7 +65,6 @@
 								<option value="2" <c:if test="${info.status ==2}">selected=selected </c:if> >理财完</option>
 								<option value="3" <c:if test="${info.status ==3}">selected=selected </c:if> >中止违约</option>
 					         </select></td>
-					</c:if>
 	<th style="width: 10%">客户名称</th>
 	<td style="width: 30%"><input type="text" name="info.customerName" value="${info.customerName}"/></td>
      </tr> 

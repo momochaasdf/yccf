@@ -102,7 +102,7 @@
 								<s:property value="employeeName" />
 							</td>
 							<td>
-								<z:dict  type="financing_remind_status" code="%{status}" />
+								<z:dict  type="financing_status" code="%{status}" />
 							</td>
 						</tr>
 					</s:iterator>
