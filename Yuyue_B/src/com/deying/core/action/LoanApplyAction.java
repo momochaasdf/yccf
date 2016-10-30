@@ -71,7 +71,7 @@ public class LoanApplyAction extends BaseMgrAction {
 		String userId = this.getCtxUser().getUserId();
 		String userName = this.getCtxUser().getUserName();
 		String userRoleNames = this.getCtxUser().getRoleNames();
-		this.currentPage = this.currentPage == null ? 1 : this.currentPage;
+		this.start = this.start == null ? 1 : this.start;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.desc("crtTime");
 		if (userId != null) {
@@ -105,6 +105,7 @@ public class LoanApplyAction extends BaseMgrAction {
 		dicParam.eq("dictTypeCode", "department_code");
 		this.userRoleNames = userRoleNames;
 		dicList = commonService.find(dicParam, ComDict.class);
+		currentPage = this.start / pageSize + 1;
 		dataPage = commonService.find(c, LoanApply.class, currentPage, pageSize);
 		setTotalPage(dataPage.getTotalPageCount());
 		return LIST;
