@@ -71,7 +71,7 @@ public class LoanApplyAction extends BaseMgrAction {
 		String userId = this.getCtxUser().getUserId();
 		String userName = this.getCtxUser().getUserName();
 		String userRoleNames = this.getCtxUser().getRoleNames();
-		this.start = this.start == null ? 1 : this.start;
+		this.start = this.start == null ? 0 : this.start;
 		CriteriaWrapper c = CriteriaWrapper.newInstance();
 		c.desc("crtTime");
 		if (userId != null) {
