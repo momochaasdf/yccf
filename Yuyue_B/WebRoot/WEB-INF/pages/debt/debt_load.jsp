@@ -103,6 +103,8 @@
 				<th>借款人职业</th>
 				<th>借款用途</th>
 				<th>还款起始日期</th>
+				<th>还款期限(月)</th>
+				<th>还款剩余月数(月)</th>
 				<th>预计债权收益率（元）</th>
 			</tr>
 		</thead>
@@ -116,7 +118,9 @@
 					<td><s:property value="consideration" />&nbsp;</td>
 					<td><s:property value="loanProfession" />&nbsp;</td>
 					<td><s:property value="loanReason" />&nbsp;</td>
-				    <td><s:property value="loanStartTime" />&nbsp;</td>
+				    <td><s:date name="%{loanStartTime}"  format="yyyy-MM-dd"/>&nbsp;</td>
+				    <td><s:property value="months" />&nbsp;</td>
+				    <td><s:property value="surplusDate" />&nbsp;</td>
 				    <td><s:property value="rate" />&nbsp;</td>
 				</tr>
 			</s:iterator>

@@ -24,7 +24,9 @@ import com.deying.core.service.FinancingCustomerService;
 import com.deying.core.service.LoanApplyService;
 import com.deying.core.service.LoanCustomerService;
 import com.deying.core.service.user.impl.DictServiceImpl;
+import com.deying.util.core.com.framework.common.tools.DateUtil;
 import com.deying.util.core.com.framework.struts2.BaseMgrAction;
+import com.deying.util.data.DateUtils;
 import com.deying.util.datawrapper.CriteriaWrapper;
 
 public class DebtAction extends BaseMgrAction {
@@ -285,7 +287,19 @@ public class DebtAction extends BaseMgrAction {
 			debtRel.setLoanMoney(this.loanApply.getNoRelMoney());
 			debtRel.setMonths(this.loanApply.getMonths());
 			debtRel.setLoanStartTime(this.loanApply.getLoanStartTime());
-			// debtRel.setSurplusDate(this.);
+			if (null != this.loanApply.getLoanEndTime()) {
+				Long day = DateUtils.getTwoDay(new Date(), this.loanApply.getLoanEndTime());
+				if (day > 0L) {
+					Long dd = day / 30;
+					debtRel.setSurplusDate(dd.toString());
+				} else {
+					debtRel.setSurplusDate("0");
+				}
+			}
+			if (StringUtils.isBlank(debtRel.getSurplusDate())) {
+				debtRel.setSurplusDate("0");
+			}
+
 			this.loanCustomer = this.loanCustomerService.get(this.loanApply.getCustomerId());
 			if (null != this.loanCustomer) {
 				debtRel.setCardId(this.loanCustomer.getCardId());

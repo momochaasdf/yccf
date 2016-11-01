@@ -109,7 +109,7 @@
 			<tr>
 				<th>还款起始日期</th>
 				<td><input type="text" value="<s:date format="yyyy-MM-dd" name="debtRel.loanStartTime" />"
-					onfocus="WdatePicker({dateFmt:'yyyy-MM-dd'})"  readonly/></td>
+				     readonly name="debtRel.loanStartTime"/></td>
 			</tr>
 			<tr>
 				<th>还款期限</th>
