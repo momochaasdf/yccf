@@ -1,8 +1,18 @@
 package com.deying.core.action;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.BeanUtilsBean;
@@ -28,6 +38,7 @@ import com.deying.util.core.com.framework.common.tools.DateUtil;
 import com.deying.util.core.com.framework.struts2.BaseMgrAction;
 import com.deying.util.data.DateUtils;
 import com.deying.util.datawrapper.CriteriaWrapper;
+import com.deying.util.excel.TempltUtil;
 
 public class DebtAction extends BaseMgrAction {
 
@@ -355,6 +366,72 @@ public class DebtAction extends BaseMgrAction {
 		}
 		debtRelList = commonService.find(c, DebtRel.class);
 		return LOAD;
+	}
+
+	private boolean getData(HttpServletResponse response, HttpServletRequest request, Map dataMap, String id)
+			throws Exception {
+		CriteriaWrapper c = CriteriaWrapper.newInstance();
+		c.eq("financingApplyId", id);
+		debtList = commonService.find(c, Debt.class);
+		if (!debtList.isEmpty()) {
+			debt = debtList.get(0);
+		}
+		debtRelList = commonService.find(c, DebtRel.class);
+		if (null != debt) {
+			try {
+				this.financingApply = this.financingApplyService.get(id);
+				dataMap.put("lendName", debt.getCustomerName());
+				dataMap.put("cardId", debt.getCardId());
+				dataMap.put("address", debt.getAddress());
+				dataMap.put("contractId", debt.getContractId());
+				dataMap.put("moneyOutBack", debt.getMoneyOutBack());
+				if (null == debt.getStartTime()) {
+					String date = DateUtil.date2String(debt.getStartTime(), "yyyy-mm-dd");
+					dataMap.put("startTime", date);
+				} else {
+					dataMap.put("startTime", " ");
+				}
+				dataMap.put("startMonery", debt.getStartMonery());
+				dataMap.put("manageMoney", debt.getManageMoney());
+				dataMap.put("expireMoney", this.financingApply.getExpireMoney());
+				if (debtRelList.isEmpty()) {
+					dataMap.put("userList", debtRelList);
+				} else {
+					dataMap.put("userList", debtRelList);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		TempltUtil.toPreview(request, "debt.ftl", dataMap);
+		return true;
+
+	}
+
+	public void excWord() throws IOException {
+
+		try {
+			Map dataMap = new HashMap();
+			if (getData(response, request, dataMap, this.id)) {
+				File previewFile = new File(
+						request.getSession().getServletContext().getRealPath(TempltUtil.PREVIEW_DOC));
+				InputStream is = new FileInputStream(previewFile);
+				response.reset();
+				response.setContentType("application/vnd.ms-word;charset=UTF-8");
+				response.addHeader("Content-Disposition", "attachment; filename=\"" + "DebtAgreement.doc" + "\"");
+				byte[] b = new byte[1024];
+				int len;
+				while ((len = is.read(b)) > 0) {
+					response.getOutputStream().write(b, 0, len);
+				}
+				is.close();
+				response.getOutputStream().flush();
+				response.getOutputStream().close();
+			}
+		} catch (Exception e) {
+			LOG.error("出错了: e{}", e);
+		}
 	}
 
 	public String getId() {

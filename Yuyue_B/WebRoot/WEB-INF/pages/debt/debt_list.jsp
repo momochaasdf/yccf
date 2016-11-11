@@ -18,6 +18,12 @@
 			if (bt){doAction('debtForm','ComD_del','')};
 		});
 	}
+	function doExport(id,name) {
+		$.messager.confirm('导出确认','你确认导出吗?', function(bt){
+			$("#id").val(id);
+			if (bt){doAction('debtForm','ComE_excWord','')};
+		});
+	}
 	$(function(){
 	 if("${msg}" != ""){ 
 	  $.colorbox.alert("${msg}");
@@ -86,7 +92,7 @@
 					<s:elseif test="%{status ==1}">
 					<a href="<%=request.getContextPath()%>/core/debt/ComU_edit.do?id=<s:property value="debtId"/>">修改</a> 
 					<a href="<%=request.getContextPath()%>/core/debt/ComC_loan.do?financingApplyId=<s:property value="debtId"/>">关联借款协议</a> 
-					
+					<a href="javascript:doExport('<s:property value="debtId"/>','');">导出债权信息</a>
 					</s:elseif>
 					<a href="<%=request.getContextPath()%>/core/debt/ComR_load.do?id=<s:property value="debtId"/>">查看</a>
 				</td>

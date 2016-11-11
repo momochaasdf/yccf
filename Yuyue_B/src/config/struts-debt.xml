@@ -27,6 +27,10 @@
 			<result name="load">/WEB-INF/pages/debt/debt_{1}.jsp</result>
 			<result name="input">/WEB-INF/pages/debt/debt_load.jsp</result>
 		</action>
+		<action name="ComE_*" class="com.deying.core.action.DebtAction" method="{1}">
+			<result name="list">/WEB-INF/pages/debt/debt_list.jsp</result>
+			<result name="input">/WEB-INF/pages/debt/debt_list.jsp</result>
+		</action>
 	</package>
 	<package name="core.debt.json" extends="json" namespace="/core/debt">
 		<action name="ComJ_*" class="com.deying.core.action.DebtAction" method="{1}">
